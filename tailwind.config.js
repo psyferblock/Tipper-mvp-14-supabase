@@ -8,7 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-    
+      // fontFamily: {
+      //   sans: ['var(--font-work)']
+      // },
       colors:{
         ruby: "#ff5c5c",
         "ruby-tint":"#ffdede",
@@ -23,7 +25,10 @@ module.exports = {
         diamond:"#ffffff",
         obsidian:"#151828"
 
-      }
+      },
+      aspectRatio: {
+        '4/3': '4 / 3',
+      },
     },
   },
   variants:{

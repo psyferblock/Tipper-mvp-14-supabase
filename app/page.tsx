@@ -1,14 +1,13 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
+import Link from "next/link";
+import HomePageSearchBar from "./root-components/HomePageSearchBar";
+import RootLayout from "./layout";
 
-const inter = Inter({ subsets: ['latin'] })
-
-export default function Home() {
+export default function TipperLandingPage() {
   return (
-    <main className="bg-ruby text-3xl ">
-    
-    hello world 
-    </main>
-  )
+      <div>
+        <div className="w-full h-full bg-amethyst font">
+
+        </div>
+      </div>
+  );
 }

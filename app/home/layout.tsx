@@ -1,7 +1,7 @@
-import NavBar from "./root-components/NavBar";
-import "./globals.css";
+import NavBar from "../root-components/NavBar";
+import "../globals.css";
 
-export default function MainLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -12,6 +12,7 @@ export default function MainLayout({
     <html lang="en">
       <div className=" bg-slate-800 h-screen w-screen">
         <body>
+          <NavBar />
           <div>{children}</div>
         </body>
       </div>
