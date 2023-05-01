@@ -12,12 +12,18 @@ function HomePage() {
             Get verified by us or your community for the entity you run in our
             society.
           </h1>
-          <div className="object-center">
+          <div className="flex object-center ">
             <button className="w-1/2  h-12 mt-10 hover:bg-pearl hover:text-lg rounded-md bg-diamond text-obsidian text-sm">
               <Link href="home/entityCreation" className="">
                 Create Now
               </Link>
             </button>
+            <button className="w-1/2  h-12 mt-10 hover:bg-pearl hover:text-lg rounded-md bg-diamond text-obsidian text-sm">
+              <Link href="home/entity" className="">
+                 Access My Entity
+              </Link>
+            </button>
+            
           </div>
         </div>
         <div className="p-3 ">
