@@ -1,22 +1,25 @@
-import NavBar from "./root-components/NavBar";
 import "./globals.css";
 
-export default function MainLayout({
+
+
+export default async function MainLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // const supabase = createServerClient();
+
+
   return (
-    // <div>
-    // <div>
-    <html lang="en">
+    <div lang="en">
       <div className=" bg-slate-800 h-screen w-screen">
         <body>
-          <div>{children}</div>
+          
+       
+            {children}
+
         </body>
       </div>
-    </html>
-    // </div>
-    // </div>
+    </div>
   );
 }
