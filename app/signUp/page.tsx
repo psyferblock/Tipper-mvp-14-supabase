@@ -1,63 +1,111 @@
 "use client";
-import { useState,useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Input from "../root-components/Input";
-import {getUserFromEmailAddress} from '@/app/lib/get/getUserFromEmailAddress'
-import { supabase } from "../utils/supabase";
-// import {createUserProfile} from '@/app/lib/create/createUserProfile'
+import { getUserFromEmailAddress } from "@/app/lib/get/getUserFromEmailAddress";
+import { supabase } from "@/app/utils/supabase";
+import createUserProfile from "../lib/create/createUserProfile";
 
 
-function SignUpPage() {
-  const router=useRouter()
 
-  const [email,setEmail]=useState('')
-  const [password,setPassword]=useState('')
-  const [confirmPass,setConfirmPass]=useState('')
+
+export default function SignUp() {
+  const router = useRouter();
+  
+
+  //all the states are under here
+  const [email, setEmail] = useState("");
+
+  const [password, setPassword] = useState("");
+  const [confirmPass, setConfirmPass] = useState("");
+
+const [submitButton,setSubmitButton]=useState(false)
   //for the open and close the eye
   const [open, setOpen] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
 
+// SUCCESS AND ERRORS 
   // the checks for state of email and password
-  const [emailIsAlreadyInUseError, setEmailIsAlreadyInUseError] =
-    useState(false);
+   
+ 
+  const [emailIsAlreadyInUseError, setEmailIsAlreadyInUseError] = useState(false);
   const [passwordsDontMatchError, setPasswordsDontMatchError] = useState(false);
   const [passwordIsTooShortError, setPasswordIsTooShortError] = useState(false);
 
-  const [hasSigndUp,setHasSignedUp]= useState(false)
+
+  const [hasSigndUp, setHasSignedUp] = useState(false);
+
+   
 
 
-  useEffect(()=>{
-    setEmailIsAlreadyInUseError(false)
+
+
+// THE FUNCTION THAT HANDLES THE COMPARISON BETWEEN PASSWORDS 
+
+const comparePasswords=(passA,passB)=>{
+ if(!passB){
+  setPasswordsDontMatchError(false)
+ }
+ else if (passA != passB) {
+  
+  setPasswordsDontMatchError(true);
+}else{
+  setPasswordsDontMatchError(false)
+  setConfirmPass(passB)
+  setSubmitButton(true)
+  console.log('first', password,email,confirmPass)
+}
+}
+
+//  THE FUNCTION THAT CHECKS FOR THE PASSWORD LENGTH 
+const checkPasswordLength=(pass)=>{
+  if(!pass){
     setPasswordIsTooShortError(false)
-    setPasswordsDontMatchError(false)
+  }
+    else if (pass?.length<6){
+    setPassword(pass)
+    setPasswordIsTooShortError(true)
+  }else{
+    setPasswordIsTooShortError(false)
+    setPassword(pass)
+    console.log('password', password)
+  }
+}
 
-
-  },[email,password,confirmPass])
-
-  // handling the signing up 
-
- const handleSignUpButton= async  ()=>{
-    const userWithEmail= await getUserFromEmailAddress(email)
-    if(userWithEmail) {setEmailIsAlreadyInUseError(true)}
-    else if (password?.length< 6){
-      setPasswordIsTooShortError(true)
-    }
-    else if(password != confirmPass){
-      setPasswordsDontMatchError(true)
-    }
-    else {
-      const {data,error}=await supabase.auth.signUp({
-        email:email,
-        password:password
+// HANDLE SUBMIT BUTTON FOR THE FORM  i am going to split it from the database in order to get a clearer code on how the steps are being done to get the data and send it 
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  // const checkUserEmail=await getUserFr omEmailAddress(email)
+  //     if(checkUserEmail ){
+  //       setEmailIsAlreadyInUseError(true);
+  //     }else {
+      const{data:createdUser,error}=await supabase.auth.signUp(
+       {email: email,
+        password: password,
+        options: {
+          emailRedirectTo: process.env.TIPPER_URL,
+        },
       })
-      if(error) throw error
-      const userId=data.user?.id 
-      console.log('userId', userId)
-      await createUserProfile(userID,email)
-      setHasSignedUp(true)
-    }
+      const emailIsTaken = createdUser.user.identities?.length === 0
+      
+      if (emailIsTaken) {
+            setEmailIsAlreadyInUseError(true);
+        
+        
+      }
+      if (error) throw error;
+      const userId = createdUser.user?.id;
+      console.log("userId", userId, email, password);
+     await createUserProfile(userId, email);
+     setHasSignedUp(true);
+    // }
+
+    
+
+ 
+};
  
 
   // handle toggle
@@ -67,23 +115,20 @@ function SignUpPage() {
   // handle toggle
   const toggle2 = () => {
     setConfirmOpen(!confirmOpen);
-
-    
   };
-  // handle back button 
-  const handleBackButton =()=>{
-    router.back()
-  }
+  // handle back button
+  const handleBackButton = () => {
+    router.back();
+  };
 
 
   return (
     <div className="bg-emerald w-auto h-full">
       <div className="h-full p-0">
-        <div className="">
+        <div className="flex flex-col">
           {/* LEFT PART OF SCREEN */}
-          <div className="w-1/3 mb-10  py-5 px-5">
-            <button className="flex items-center "
-            onClick={handleBackButton}>
+          <div className="w-1/3 mb-2 p-1">
+            <button className="flex items-center " onClick={handleBackButton}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -103,148 +148,158 @@ function SignUpPage() {
           </div>
           {/* //////////////////////////////////////////////////////////////////////////////////// */}
           {/* RIGHT PART OF SCREEN */}
-          <div className=" grow py-28 px-40 h-auto ">
+          <div className=" grow p-2 h-auto ">
             <div className="mb-7 text-center sm:text-start">
               <div className="text-3xl font-bold">Sign Up</div>
               <div className="italic text-sm font-light">
                 A node closer to the network
               </div>
+               <h1 className={emailIsAlreadyInUseError?" text-red text-5xl ": "invisible"}>email is already in use</h1> 
             </div>
-          
-            {/* EMAIL ADDRESS  */}
             <div>
-              <h1 className="ml-4 font-bold">Email Address *</h1>
+            
+            {hasSigndUp? (
+<div> We have sent an e-mail to your e-mail address. Please open the
+              e-mail and follow the instructions to access your account.</div>
+            ):
+           (
+            <>
 
-              <div className="relative text-grey-500 m-3 mb-3">
-                <input
-                  type="text"
-                  // ref={emailRef}
-                  name="Email"
-                  id="Email"
-                  className="peer h-16 text-wrap placeholder-transparent border-2 border-ruby-tint border-opacity-60 shadow indent-2 inline-block align-middle w-full  rounded-lg focus:outline-none focus:border-ruby-shade"
-                  placeholder="Enter email"
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                />
-                <label
-                  htmlFor="Email"
-                  className="absolute    left-4 top-5 z-10  text-grey  text-lg peer-placeholder-shown:text-base
-                peer-placeholder-shown:text-grey-400
-                peer-placeholder-shows:top-4
-                transition-all
-                peer-focus:top-1
-                peer-focus:text-gray-600
-                peer-focus:text-sm
-                
-                "
-                >
-                  Enter email
-                </label>
-              </div>
-            </div>
-            {/* CONTACT NUMBER  */}
-            <div>
-              <h1 className="ml-4 font-bold">Contact Number *</h1>
+             
+             {/* EMAIL ADDRESS  */}
+              <div>
+                <h1 className="ml-4 font-bold">Email Address *</h1>
+                <div className="relative text-grey-500 m-3 mb-3">
+                  <input
+                    type="text"
+                    name="EmailAddress"
+                    id="EmailAddress"
+                    className="peer h-16 placeholder-transparent text-wrap border-2 border-ruby-tint border-opacity-60 shadow indent-2 inline-block align-middle w-full  rounded-lg focus:outline-none focus:border-ruby-shade"
+                    placeholder=" email address"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    // ref={emailRef}
+                    />
 
-              <Input/>
-            </div>
-            {/* PASSWORD1 */}
-            <div>
-              <h1 className="ml-4 font-bold">Enter Password *</h1>
-
-              <div className="relative text-grey-500 m-3 mb-3">
-                <input
-                  type={open === false ? "password" : "text"}
-                  // ref={passwordRef}
-                  name="Password1"
-                  id="Password1"
-                  className="peer pr-4 h-16 text-wrap placeholder-transparent border-2 border-ruby-tint border-opacity-60 shadow indent-4 inline-block align-middle w-full  rounded-lg focus:outline-none focus:border-ruby-shade"
-                  placeholder="Password"
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                />
-                
-                <label
-                  htmlFor="Password1"
-                  className="absolute    left-4 top-5 z-10  text-grey  text-lg peer-placeholder-shown:text-base
-                peer-placeholder-shown:text-grey-400
-                peer-placeholder-shows:top-4
-                transition-all
-                peer-focus:top-1
-                peer-focus:text-gray-600
-                peer-focus:text-sm
-                
-                "
-                >
-                  Password
-                </label>
-                <div className="text-2xl absolute top-4 right-5">
-                  {confirmOpen === false ? (
-                    <AiFillEye onClick={toggle} />
-                  ) : (
-                    <AiFillEyeInvisible onClick={toggle} />
-                  )}
+                  <label
+                    htmlFor="Number"
+                    className="absolute    left-4 top-5 z-10  text-grey  text-lg peer-placeholder-shown:text-base
+                    peer-placeholder-shown:text-grey-400
+                    peer-placeholder-shows:top-4
+                  transition-all 
+                  peer-focus:top-1
+                  peer-focus:text-gray-600
+                  peer-focus:text-sm
+                  
+                  "
+                  >
+                    Email Address
+                  </label>
                 </div>
               </div>
-              
-            </div>
-            {/* PASSWORD1 */}
-            <div>
-              <h1 className="ml-4 font-bold">Confirm Password *</h1>
+              {/* //////////////////////////////////////////////////////////////////////////////////// */}
 
-              <div className="relative text-grey-500 m-3 mb-3">
-                <input
-                  type={open === false ? "password" : "text"}
-                  // ref={confirmPassRef}
-                  name="Password2"
-                  id="Password2"
-                  className="peer h-16  text-wrap placeholder-transparent border-2 border-ruby-tint border-opacity-60 shadow indent-4 inline-block align-middle w-full  rounded-lg focus:outline-none focus:border-ruby-shade"
-                  placeholder="Confirm Password"
-                  onChange={(e) => {
-                    setConfirmPass(e.target.value);
-                  }}
-                />
-                <label
-                  htmlFor="Password2"
-                  className="absolute    left-4 top-5 z-10  text-grey  text-lg peer-placeholder-shown:text-base
-                peer-placeholder-shown:transparent
-                peer-placeholder-shows:top-4
-                transition-all
-                peer-focus:top-1
-                peer-focus:text-gray-600
-                peer-focus:text-sm
-                
-                "
-                >
-                  Confirm Password
-                </label>
-                <div className="text-2xl absolute top-4 right-5">
-                  {confirmOpen === false ? (
-                    <AiFillEye onClick={toggle2} />
-                  ) : (
-                    <AiFillEyeInvisible onClick={toggle2} />
-                  )}
+              {/* PASSWORD*/}
+              <div>
+                <h1 className="ml-4 font-bold">Enter Password *</h1>
+
+                <div className="relative text-grey-500 m-3 ">
+                  <input
+                    type={open === false ? "password" : "text"}
+                    name="Password1"
+                    id="Password1"
+                    className="peer pr-4 h-16 text-wrap placeholder-transparent border-2 border-ruby-tint border-opacity-60 shadow indent-4 inline-block align-middle w-full  rounded-lg focus:outline-none focus:border-ruby-shade"
+                    placeholder="Password"
+                    onChange={(e) => {checkPasswordLength(e.target.value);}}
+                    value={password}
+                    // ref={passwordRef}
+                    />
+
+                  <label
+                    htmlFor="Password1"
+                    className="absolute    left-4 top-5 z-10  text-grey  text-lg peer-placeholder-shown:text-base
+                    peer-placeholder-shown:text-grey-400
+                  peer-placeholder-shows:top-4
+                  transition-all
+                  peer-focus:top-1
+                  peer-focus:text-gray-600
+                  peer-focus:text-sm
+                  
+                  "
+                  >
+                    Password
+                  </label>
+                  <div className="text-2xl absolute top-4 right-5">
+                    {confirmOpen === false ? (
+                      <AiFillEye onClick={toggle} />
+                    ) : (
+                      <AiFillEyeInvisible onClick={toggle} />
+                    )}
+                  </div>
                 </div>
+               <h1 className={passwordIsTooShortError?" text-1xl border-ruby border-2 rounded-md px-3 mx-3 bg-ruby-tint font-medium text-ruby-shade ": "invisible"}>Password should be minimum of 6 characters</h1> 
               </div>
-            </div>
-            <div className="ml-5 ">
+              {/* //////////////////////////////////////////////////////////////////////////////////// */}
 
-            <button className="w-11/12  h-12 mt-10 hover:bg-pearl hover:text-lg rounded-3xl bg-diamond text-emerald text-sm">
-                <Link
+              {/* PASSWORD 2*/}
+              <div>
+                <h1 className="ml-4 font-bold">Confirm Password *</h1>
+
+                <div className="relative text-grey-500 m-3 mb-3">
+                  <input
+                    type={confirmOpen === false ? "password" : "text"}
+                    name="Password2"
+                    id="Password2"
+                    className="peer h-16  text-wrap placeholder-transparent border-2 border-ruby-tint border-opacity-60 shadow indent-4 inline-block align-middle w-full  rounded-lg focus:outline-none focus:border-ruby-shade"
+                    placeholder="Confirm Password"
+                    onChange={(e) => {comparePasswords(password,e.target.value)}}
+                    // value={confirmPass}
+                    // ref={confirmPassRef}
+                    />
+                  <label
+                    htmlFor="Password2"
+                    className="absolute    left-4 top-5 z-10  text-grey  text-lg peer-placeholder-shown:text-base
+                    peer-placeholder-shown:transparent
+                    peer-placeholder-shows:top-4
+                    transition-all
+                    peer-focus:top-1
+                    peer-focus:text-gray-600
+                  peer-focus:text-sm "
+                  >
+                    Confirm Password
+                  </label>
+                  <div className="text-2xl absolute top-4 right-5">
+                    {confirmOpen === false ? (
+                      <AiFillEye onClick={toggle2} />
+                      ) : (
+                      <AiFillEyeInvisible onClick={toggle2} />
+                    )}
+                  </div>
+                </div>
+               <h1 className={passwordsDontMatchError?" text-1xl border-ruby border-2 rounded-md px-3 mx-3 bg-ruby-tint font-medium text-ruby-shade ": "invisible"}>Passwords arent the same </h1> 
+
+              </div>
+              {/* //////////////////////////////////////////////////////////////////////////////////// */}
+              {/* BUTTON CLASS FOR FORM  */}
+              <div className="ml-5 ">
+                <button className={`${submitButton?" ":"disabled"} w-11/12  h-12 mt-10 hover:bg-pearl hover:text-lg rounded-3xl bg-diamond text-emerald text-sm`}
+                onClick={(e)=>handleSubmit(e)}
+                >
+                  {/* <Link
                  href="home"
                  className=" hover:text-ruby-shade font-semibold">
-              Sign Up
-                </Link>
-            </button>
-                     </div>
+                 Sign Up
+                </Link> */}
+                  sign up
+                </button>
+              </div>
+              {/* //////////////////////////////////////////////////////////////////////////////////// */}
+              </>
+          ) }
+          </div>
           </div>
         </div>
       </div>
     </div>
   );
 }
-}
-
-export default SignUpPage;

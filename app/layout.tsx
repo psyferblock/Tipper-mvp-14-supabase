@@ -11,7 +11,7 @@ export default async function MainLayout({
 
 
   return (
-    <div lang="en">
+    <html lang="en">
       <div className=" bg-slate-800 h-screen w-screen">
         <body>
           
@@ -20,6 +20,6 @@ export default async function MainLayout({
 
         </body>
       </div>
-    </div>
+    </html>
   );
 }

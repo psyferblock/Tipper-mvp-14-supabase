@@ -5,7 +5,7 @@ export default async function getUniqueUserName(uniqueUserName){
     .from("user_profile")
     .select()
     .eq("unique_user_name",uniqueUserName)
-console.log('data', data)
+console.log('', data)
     if(error) throw error
     return data
 }

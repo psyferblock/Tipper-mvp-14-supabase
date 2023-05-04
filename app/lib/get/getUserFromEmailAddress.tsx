@@ -7,7 +7,7 @@ export async function getUserFromEmailAddress(emailAddress){
     .eq('email_address',emailAddress)
     .limit(1)
     .single()
-console.log('data', data)
-    if (error) throw error
+    if (error) throw error;
+    console.log("user with the email address:", data)
     return data
 }
