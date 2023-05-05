@@ -1,4 +1,4 @@
-import { createServerClient} from "./utils/supabase-server"
+import { createServerClient } from "./utils/supabase-server";
 
 import "./globals.css";
 // import Navbar from "./root-Components/tools-Components/NavBar";
@@ -7,8 +7,11 @@ import "./globals.css";
 import SupabaseProvider from "./supabase-provider";
 
 export default async function RootLayout({
-  children,}: {  children: React.ReactNode;}) { 
-     const supabase = createServerClient();
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const supabase = createServerClient();
 
   const {
     data: { session },
@@ -27,8 +30,8 @@ export default async function RootLayout({
           {/* <Navbar session={session} /> */}
           <div className="bg-amethyst-shade min-h-screen">
             {/* <AuthContextProvider> */}
-              {children}
-              {/* </AuthContextProvider> */}
+            {children}
+            {/* </AuthContextProvider> */}
           </div>
         </SupabaseProvider>
       </body>

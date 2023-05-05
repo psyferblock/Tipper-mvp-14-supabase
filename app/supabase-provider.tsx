@@ -4,9 +4,16 @@ import { createContext, useContext, useEffect, useState } from 'react'
 import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 
-const Context = createContext(undefined)
+import type { SupabaseClient } from "@supabase/auth-helpers-nextjs";
+import type { Database } from "./lib/database.types";
 
-export default function SupabaseProvider({ children }) {
+type SupabaseContext = {
+  supabase: SupabaseClient<Database>;
+};
+
+const Context = createContext<SupabaseContext | undefined>(undefined);
+
+export default function SupabaseProvider({ children, }:{children: React.ReactNode;}) {
   const [supabase] = useState(() => createBrowserSupabaseClient())
   const router = useRouter()
 
@@ -18,7 +25,7 @@ export default function SupabaseProvider({ children }) {
     })
 
     return () => {
-      subscription.unsubscribe()
+      subscription.unsubscribe() // the cleaning function 
     }
   }, [router, supabase])
 
@@ -28,6 +35,9 @@ export default function SupabaseProvider({ children }) {
     </Context.Provider>
   )
 }
+
+
+// created a hook so as to use context anywhere in the app 
 
 export const useSupabase = () => {
   const context = useContext(Context)
