@@ -174,8 +174,9 @@ const handleSubmit = async (event) => {
                     type="text"
                     name="EmailAddress"
                     id="EmailAddress"
-                    className="peer h-16 placeholder-transparent text-wrap border-2 border-ruby-tint border-opacity-60 shadow indent-2 inline-block align-middle w-full  rounded-lg focus:outline-none focus:border-ruby-shade"
+                    className="peer h-16 placeholder-transparent text-wrap border-2 border-ruby-tint border-opacity-60 shadow indent-2 inline-block align-middle w-full  rounded-lg focus:outline-none focus:border-ruby-shade "
                     placeholder=" email address"
+                    required
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
                     // ref={emailRef}
@@ -210,6 +211,7 @@ const handleSubmit = async (event) => {
                     id="Password1"
                     className="peer pr-4 h-16 text-wrap placeholder-transparent border-2 border-ruby-tint border-opacity-60 shadow indent-4 inline-block align-middle w-full  rounded-lg focus:outline-none focus:border-ruby-shade"
                     placeholder="Password"
+                    required
                     onChange={(e) => {checkPasswordLength(e.target.value);}}
                     value={password}
                     // ref={passwordRef}
@@ -252,6 +254,7 @@ const handleSubmit = async (event) => {
                     id="Password2"
                     className="peer h-16  text-wrap placeholder-transparent border-2 border-ruby-tint border-opacity-60 shadow indent-4 inline-block align-middle w-full  rounded-lg focus:outline-none focus:border-ruby-shade"
                     placeholder="Confirm Password"
+                    required
                     onChange={(e) => {comparePasswords(password,e.target.value)}}
                     // value={confirmPass}
                     // ref={confirmPassRef}

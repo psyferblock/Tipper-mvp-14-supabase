@@ -1,33 +1,40 @@
-// "use client";
+'use client'
 
-// import { createBrowserClient } from "./utils/supabase-browser";
-// import type { Session } from "@supabase/auth-helpers-nextjs";
-// import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from 'react'
+import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
+import { useRouter } from 'next/navigation'
 
-// // type MaybeSession = Session | null;
+const Context = createContext(undefined)
 
-// // type SupabaseContext = {
-// //   supabase: TypedSupabaseClient;
-// //   session: MaybeSession;
-// // };
+export default function SupabaseProvider({ children }) {
+  const [supabase] = useState(() => createBrowserSupabaseClient())
+  const router = useRouter()
 
-// // @ts-ignore
-// const Context = createContext<SupabaseContext>();
+  useEffect(() => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(() => {
+      router.refresh()
+    })
 
-// export default function SupabaseProvider({
-//   children,
-//   session,
-// }: {
-//   children: React.ReactNode;
-//   session: any | null;
-// }) {
-//   const [supabase] = useState(() => createBrowserClient());
+    return () => {
+      subscription.unsubscribe()
+    }
+  }, [router, supabase])
 
-//   return (
-//     <Context.Provider value={{ supabase, session }}>
-//       <>{children}</>
-//     </Context.Provider>
-//   );
-// }
+  return (
+    <Context.Provider value={{ supabase }}>
+      <>{children}</>
+    </Context.Provider>
+  )
+}
 
-// export const useSupabase = () => useContext(Context);
+export const useSupabase = () => {
+  const context = useContext(Context)
+
+  if (context === undefined) {
+    throw new Error('useSupabase must be used inside SupabaseProvider')
+  }
+
+  return context
+}

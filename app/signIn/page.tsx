@@ -7,8 +7,8 @@ import { useRouter } from "next/navigation";
 import { supabase } from "../utils/supabase";
 
 function SignInPage() {
-  const [email, setEmail] = useState<string | undefined>();
-  const [password, setPassword] = useState<string | undefined>();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
   const [open, setOpen] = useState(false);
 
   const [signInFailedError, setSignInFailedError] = useState(false);
@@ -44,10 +44,10 @@ function SignInPage() {
   }
   return (
     <div>
-      <div className="sm:h-fit sm:min-h-screen sm:px-0 px-3 py-5 sm:py-0 bg-ruby">
-        <div className="sm:flex">
+      <div className="sh-fit min-h-screen  bg-ruby p-4">
+        <div className="sm:flex ">
           {/* LEFT PART OF SCREEN */}
-          <div className="sm:w-1/3 sm:mt-5 mb-10 sm:px-5">
+          <div className="w-1/3  mb-10  ">
             <button onClick={handleBackButton} className="flex items-center ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +69,7 @@ function SignInPage() {
             </button>
             {signInFailedError && (
               <div
-                className="bg-amethyst border-1-4 border-amethyst-shade text-obsidian p-4"
+                className="bg-amethyst border-1-6 border-amethyst-shade text-obsidian p-4"
                 role="alert"
               >
                 <p className="font-bold">Damn</p>
@@ -79,7 +79,7 @@ function SignInPage() {
           </div>
           {/* //////////////// */}
           {/* right part of the screen  */}
-          <div className=" grow sm:py-28 sm:px-40 h-fit">
+          <div className=" grow  h-fit">
             <div className="mb-9 text-center sm:text-start">
               <div className="text-3xl font-bold ">Sign In</div>
               <div className="italic text-sm font-light">
@@ -95,6 +95,7 @@ function SignInPage() {
                   id="email"
                   className="peer h-16 text-wrap placeholder-transparent border-2 border-ruby-tint border-opacity-60 shadow indent-2 inline-block align-middle w-full  rounded-lg focus:outline-none focus:border-ruby-shade"
                   placeholder="email"
+                  required
                   onChange={(e) => {
                     setEmail(e.target.value);
                   }}
@@ -123,6 +124,7 @@ function SignInPage() {
                     id="Password"
                     className="peer h-16 text-wrap placeholder-transparent border-2 border-ruby-tint border-opacity-60 shadow indent-2 inline-block align-middle w-full  rounded-lg focus:outline-none focus:border-ruby-shade"
                     placeholder="password"
+                    required
                     onChange={(e) => {
                       setPassword(e.target.value);
                     }}
