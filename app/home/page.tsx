@@ -1,7 +1,11 @@
+"use client"
 import Link from "next/link";
 import React from "react";
+import { useSupabase } from "../supabase-provider";
 
 function HomePage() {
+  const {session}=useSupabase()
+  console.log('session in home page', session)
   return (
     <div className="bg-pearl w-screen h-screen p-2">
       <div>

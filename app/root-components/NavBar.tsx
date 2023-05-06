@@ -1,8 +1,13 @@
 import React from "react";
 import Link from "next/link";
 import HomePageSearchBar from "./HomePageSearchBar";
+import SignOut from "./SignOut"
+import { useSupabase } from "../supabase-provider";
+import SignInSignOut from "./SignInSIgnOut";
+
 
 function NavBar() {
+
   return (
     <div className="">
       <div className="bg-pearl text-ruby max-h-20  flex justify-between  ">
@@ -25,9 +30,7 @@ function NavBar() {
             <li className="p-2">
               <Link href="#">Contact Us</Link>
             </li>
-            <li className="p-2">
-              <Link href="signIn">Sign In</Link>
-            </li>
+           <SignInSignOut/>
           </ul>
         </div>
        

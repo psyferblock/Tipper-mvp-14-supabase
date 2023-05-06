@@ -2,10 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
-import Input from "../root-components/Input";
-import { getUserFromEmailAddress } from "@/app/lib/get/getUserFromEmailAddress";
-import { supabase } from "@/app/utils/supabase";
+import { supabase } from "@/app/utils/supabase-browser";
 import createUserProfile from "../lib/create/createUserProfile";
 
 
@@ -55,7 +52,6 @@ const comparePasswords=(passA,passB)=>{
   setPasswordsDontMatchError(false)
   setConfirmPass(passB)
   setSubmitButton(true)
-  console.log('first', password,email,confirmPass)
 }
 }
 
@@ -70,17 +66,13 @@ const checkPasswordLength=(pass)=>{
   }else{
     setPasswordIsTooShortError(false)
     setPassword(pass)
-    console.log('password', password)
   }
 }
 
 // HANDLE SUBMIT BUTTON FOR THE FORM  i am going to split it from the database in order to get a clearer code on how the steps are being done to get the data and send it 
 const handleSubmit = async (event) => {
   event.preventDefault();
-  // const checkUserEmail=await getUserFr omEmailAddress(email)
-  //     if(checkUserEmail ){
-  //       setEmailIsAlreadyInUseError(true);
-  //     }else {
+
       const{data:createdUser,error}=await supabase.auth.signUp(
        {email: email,
         password: password,
@@ -97,7 +89,6 @@ const handleSubmit = async (event) => {
       }
       if (error) throw error;
       const userId = createdUser.user?.id;
-      console.log("userId", userId, email, password);
      await createUserProfile(userId, email);
      setHasSignedUp(true);
     // }

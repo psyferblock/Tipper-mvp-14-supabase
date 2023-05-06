@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { supabase } from "../utils/supabase";
+import { supabase } from "../utils/supabase-browser";
 
 function SignInPage() {
   const [email, setEmail] = useState();
@@ -19,6 +19,8 @@ function SignInPage() {
     router.back();
   };
 
+ 
+ 
   // handle toggle
   const toggle = () => {
     setOpen(!open);
@@ -35,17 +37,43 @@ function SignInPage() {
     });
     //Check if sign in was successful
     if (error) {
-      setSignInFailedError(true);
+      setSignInFailedError(true)
+      console.log('error when signing in', error);
     } else {
+      setSignInFailedError(false)
       const userId = data;
       console.log("data after sign in", userId);
-      router.back();
+      router.push(`/home`);
     }
   }
   return (
     <div>
       <div className="sh-fit min-h-screen  bg-ruby p-4">
         <div className="sm:flex ">
+
+          {/* SIGN IN FAILURE ERROR  */}
+          {signInFailedError && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+              role="alert">
+              <strong className="font-bold">Holy smokes!</strong>
+              <span className="block sm:inline">
+                Something seriously bad happened.
+              </span>
+              <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
+                <svg
+                  className="fill-current h-6 w-6 text-red-500"
+                  role="button"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <title>Close</title>
+                  <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+                </svg>
+              </span>
+            </div>
+          )}
+          {/* //////////////////////////////////////////////////////////////////////// */}
+
           {/* LEFT PART OF SCREEN */}
           <div className="w-1/3  mb-10  ">
             <button onClick={handleBackButton} className="flex items-center ">
@@ -78,6 +106,7 @@ function SignInPage() {
             )}
           </div>
           {/* //////////////// */}
+
           {/* right part of the screen  */}
           <div className=" grow  h-fit">
             <div className="mb-9 text-center sm:text-start">
@@ -93,7 +122,7 @@ function SignInPage() {
                   type="text"
                   name="email"
                   id="email"
-                  className="peer h-16 text-wrap placeholder-transparent border-2 border-ruby-tint border-opacity-60 shadow indent-2 inline-block align-middle w-full  rounded-lg focus:outline-none focus:border-ruby-shade"
+                  className="text-wrap border-ruby-tint focus:border-ruby-shade peer inline-block h-16 w-full rounded-lg border-2 border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:outline-none "
                   placeholder="email"
                   required
                   onChange={(e) => {
@@ -102,13 +131,7 @@ function SignInPage() {
                 />
                 <label
                   htmlFor="email"
-                  className="absolute left-4 top-5 z-10  text-grey  text-lg peer-placeholder-shown:text-base
-             peer-placeholder-shown:text-grey-400
-             peer-placeholder-shows:top-4
-             transition-all
-             peer-focus:top-1
-             peer-focus:text-gray-600
-             peer-focus:text-sm
+                  className=" text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 peer-valid:top-1 peer-valid:text-sm
              
           "
                 >
@@ -122,7 +145,7 @@ function SignInPage() {
                     type="text"
                     name="Password"
                     id="Password"
-                    className="peer h-16 text-wrap placeholder-transparent border-2 border-ruby-tint border-opacity-60 shadow indent-2 inline-block align-middle w-full  rounded-lg focus:outline-none focus:border-ruby-shade"
+                    className="text-wrap border-ruby-tint focus:border-ruby-shade peer inline-block h-16 w-full rounded-lg border-2 border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:outline-none"
                     placeholder="password"
                     required
                     onChange={(e) => {
@@ -139,15 +162,7 @@ function SignInPage() {
                 </div>
                 <label
                   htmlFor="Password"
-                  className="absolute    left-4 top-5 z-10  text-grey  text-lg peer-placeholder-shown:text-base
-             peer-placeholder-shown:text-grey-400
-             peer-placeholder-shows:top-4
-             transition-all
-             peer-focus:top-1
-             peer-focus:text-gray-600
-             peer-focus:text-sm
-             
-          "
+                  className=" text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 peer-valid:top-1 peer-valid:text-sm "
                 >
                   Password
                 </label>
