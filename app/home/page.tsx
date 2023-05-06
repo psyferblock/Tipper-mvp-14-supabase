@@ -2,8 +2,13 @@
 import Link from "next/link";
 import React from "react";
 import { useSupabase } from "../supabase-provider";
+import { useHasMounted } from "../hooks/useHasMounted";
 
 function HomePage() {
+    const hasMounted = useHasMounted();
+  if (!hasMounted) {
+    return null;
+  }
   const {session}=useSupabase()
   console.log('session in home page', session)
   return (

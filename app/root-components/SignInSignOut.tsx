@@ -11,6 +11,7 @@ import { useHasMounted } from '../hooks/useHasMounted'
     return null;
   }
   const{session}=useSupabase()
+  console.log('session from sign in and out ', session)
   const router=useRouter()
   const handleSignOut = async () => {
     await supabase.auth.signOut();
@@ -24,7 +25,7 @@ import { useHasMounted } from '../hooks/useHasMounted'
           <Link href="signIn">Sign In</Link>
         </li>
        : 
-        <div>
+        <div  className="p-2">
           <button onClick={(e) => handleSignOut()}>
            Sign out
           </button>

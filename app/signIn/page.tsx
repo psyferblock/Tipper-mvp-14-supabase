@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "../utils/supabase-browser";
 
 function SignInPage() {
+  
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [open, setOpen] = useState(false);
@@ -143,8 +144,8 @@ function SignInPage() {
                 <div>
                   <input
                     type="text"
-                    name="Password"
-                    id="Password"
+                    name="password"
+                    id="password"
                     className="text-wrap border-ruby-tint focus:border-ruby-shade peer inline-block h-16 w-full rounded-lg border-2 border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:outline-none"
                     placeholder="password"
                     required
