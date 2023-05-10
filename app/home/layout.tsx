@@ -8,16 +8,13 @@ export default function RootLayout({
 }) {
   return (
     // <div>
-    // <div>
-    <html lang="en">
-      <div className=" bg-slate-800 h-screen w-screen">
-        <body>
+    <div>
+    
+        <div className=" bg-slate-800 h-screen w-screen">
           <NavBar />
           <div>{children}</div>
-        </body>
-      </div>
-    </html>
-    // </div>
+        </div>
+     </div>
     // </div>
   );
 }

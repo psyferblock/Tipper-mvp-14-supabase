@@ -6,9 +6,11 @@ import { useRouter } from "next/navigation";
 
 import type { SupabaseClient } from "@supabase/auth-helpers-nextjs";
 import type { Database } from "./lib/database.types";
+import type { Session } from "@supabase/gotrue-js/src/lib/types";
 
 type SupabaseContext = {
-  supabase: SupabaseClient<Database>;
+  supabase: SupabaseClient<any, "public", any>;
+  session:Session;
 };
 
 // @ts-ignore
@@ -21,7 +23,7 @@ export default function SupabaseProvider({
   session,
 }: {
   children: React.ReactNode;
-  session: any | null;
+  session: Session;
 }) {
   const [supabase] = useState(() => createBrowserSupabaseClient());
 // console.log('session in supabase-provider', session)

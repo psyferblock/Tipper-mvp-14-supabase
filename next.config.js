@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    compiler: {
+    reactStrictMode: true,
+    styledComponents: true,
+  },
   experimental: {
     appDir: true,
   },
@@ -16,6 +20,7 @@ const nextConfig = {
 
     return config;
   },
+ 
 }
 
 module.exports = nextConfig

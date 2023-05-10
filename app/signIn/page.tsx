@@ -5,11 +5,11 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { supabase } from "../utils/supabase-browser";
+import { useHasMounted } from "../hooks/useHasMounted";
 
 function SignInPage() {
-  
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [open, setOpen] = useState(false);
 
   const [signInFailedError, setSignInFailedError] = useState(false);
@@ -20,8 +20,6 @@ function SignInPage() {
     router.back();
   };
 
- 
- 
   // handle toggle
   const toggle = () => {
     setOpen(!open);
@@ -38,24 +36,29 @@ function SignInPage() {
     });
     //Check if sign in was successful
     if (error) {
-      setSignInFailedError(true)
-      console.log('error when signing in', error);
+      setSignInFailedError(true);
+      console.log("error when signing in", error);
     } else {
-      setSignInFailedError(false)
+      setSignInFailedError(false);
       const userId = data;
       console.log("data after sign in", userId);
       router.push(`/home`);
     }
   }
+  // const hasMounted = useHasMounted();
+  // if (!hasMounted) {
+  //   return null;
+  // }
   return (
     <div>
       <div className="sh-fit min-h-screen  bg-ruby p-4">
         <div className="sm:flex ">
-
           {/* SIGN IN FAILURE ERROR  */}
           {signInFailedError && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
-              role="alert">
+            <div
+              className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+              role="alert"
+            >
               <strong className="font-bold">Holy smokes!</strong>
               <span className="block sm:inline">
                 Something seriously bad happened.
@@ -129,30 +132,38 @@ function SignInPage() {
                   onChange={(e) => {
                     setEmail(e.target.value);
                   }}
+                  value={email||""}
                 />
                 <label
                   htmlFor="email"
-                  className=" text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 peer-valid:top-1 peer-valid:text-sm
-             
-          "
+                  className=" text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 peer-valid:top-1 peer-valid:text-sm "
                 >
                   Email address
                 </label>
               </div>
               {/* PASSWORD  */}
-              <div className="relative text-grey-500 m-3">
-                <div>
+
+              <div>
+                <div className="text-grey-500 relative m-3 mb-3">
                   <input
-                    type="text"
-                    name="password"
-                    id="password"
+                    type={open === false ? "password" : "text"}
+                    name="Password"
+                    id="Password"
                     className="text-wrap border-ruby-tint focus:border-ruby-shade peer inline-block h-16 w-full rounded-lg border-2 border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:outline-none"
-                    placeholder="password"
+                    placeholder=" email address "
                     required
                     onChange={(e) => {
                       setPassword(e.target.value);
                     }}
+                    value={password||""}
                   />
+
+                  <label
+                    htmlFor="Password"
+                    className="text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 peer-valid:top-1 peer-valid:text-sm"
+                  >
+                    Password
+                  </label>
                   <div className="text-2xl absolute top-4 right-5">
                     {open === false ? (
                       <AiFillEye onClick={toggle} />
@@ -161,26 +172,24 @@ function SignInPage() {
                     )}
                   </div>
                 </div>
-                <label
-                  htmlFor="Password"
-                  className=" text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 peer-valid:top-1 peer-valid:text-sm "
-                >
-                  Password
-                </label>
               </div>
+
               <button
                 className="w-11/12 h-10 mt-8 hover:bg-ruby-tint hover:text-lg rounded-3xl bg-diamond text-ruby text-md m-3"
-                onClick={handleSignInButton}
+                onClick={ handleSignInButton}
               >
                 Sign In
               </button>
-              <div className="flex items-center justify-center mt-3 space-x-1 flex flex-col">
-                <div> Don't have an account?</div>
+              <div className="flex items-center justify-center mt-3 space-x-1 flex-col">
+                <div>
+                  {" "}
+                  Don<span>&#39;</span>t have an account?
+                </div>
                 <Link
                   href="signUp"
                   className=" hover:text-ruby-shade font-semibold"
                 >
-                  <spam className="text-pearl">Sign Up Here</spam>
+                  <span className="text-pearl">Sign Up Here</span>
                 </Link>
               </div>
             </div>

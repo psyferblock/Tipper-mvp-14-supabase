@@ -5,14 +5,15 @@ import { useSupabase } from "../supabase-provider";
 import { useHasMounted } from "../hooks/useHasMounted";
 
 function HomePage() {
-    const hasMounted = useHasMounted();
-  if (!hasMounted) {
-    return null;
-  }
-  const {session}=useSupabase()
+    const {session}=useSupabase()
+
+  //   const hasMounted = useHasMounted();
+  // if (!hasMounted) {
+  //   return null;
+  // }
   console.log('session in home page', session)
   return (
-    <div className="bg-pearl w-screen h-screen p-2">
+    <div className="bg-pearl w-screen h-full p-2">
       <div>
         <h1 className="h1 text-3xl font-bold mb-4">Profile</h1>
         <div className="bg-amethyst w-full aspect-4/3 rounded-lg p-4">
@@ -23,12 +24,12 @@ function HomePage() {
           </h1>
           <div className="flex object-center ">
             <button className="w-1/2  h-12 mt-10 hover:bg-pearl hover:text-lg rounded-md bg-diamond text-obsidian text-sm">
-              <Link href="home/entityCreation" className="">
+              <Link href="home/createEntity" className="">
                 Create Now
               </Link>
             </button>
             <button className="w-1/2  h-12 mt-10 hover:bg-pearl hover:text-lg rounded-md bg-diamond text-obsidian text-sm">
-              <Link href="home/entity" className="">
+              <Link href={`home/${entityUniqueName}/menu/${categoryId}`} className="">
                  Access My Entity
               </Link>
             </button>

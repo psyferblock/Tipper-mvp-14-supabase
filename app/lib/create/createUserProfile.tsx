@@ -1,4 +1,4 @@
-import { supabase } from "@/app/utils/supabase";
+import { supabase } from "@/app/utils/supabase-browser";
 
 export default async function createUserProfile(userId,emailAddress){
 

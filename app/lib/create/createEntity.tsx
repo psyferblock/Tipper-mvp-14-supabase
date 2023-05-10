@@ -1,32 +1,36 @@
-import { supabase } from "@/app/utils/supabase-browser"
-function createEntity(userId,
-     entityName,
-        entityTypeId,
-        entityAddress,
-        entityEmailAddress,
-        entityPhoneNumber,
-        arrOfTags) {
-            const {data,error}=await supabase.from("entity")
-            .insert({
-                user_id: userId,
+import { supabase } from "@/app/utils/supabase-browser";
+async function createEntity(
+  userId:string,
+  entityName:string,
+  entityUniqueName:string,
+  entityArea:string,
+  entityAddress:string,
+  entityEmailAddress:string,
+  entityPhoneNumber:number,
+  entityTypeId:number,
+) {
+  const { data, error } = await supabase
+    .from("entity")
+    .insert({
+      user_id: userId,
       entity_name: entityName,
-      entity_type_id: entityTypeId,
+      entity_unique_name: entityUniqueName,
+      entity_area: entityArea,
       entity_address: entityAddress,
       entity_email: entityEmailAddress,
       entity_phone_number: entityPhoneNumber,
-      entity_tags: arrOfTags,
+      entity_type_id: entityTypeId,
       is_verified: false,
-            })
-            .select()
-            .single()
+      industry_id:5,
+    })
+    .select()
+    .single();
 
-            if (error ) throw error
-            console.log('data returned after entity creation', data)
-  return (
-    data
-  )
+  if (error) throw error;
+  console.log("data returned after entity creation", data);
+  return data;
 }
 
-export default createEntity
+export default createEntity;
 
-// this returns the entity info that has been registered. 
+// this returns the entity info that has been registered.

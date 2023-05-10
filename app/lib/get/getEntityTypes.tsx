@@ -1,7 +1,9 @@
 import { supabase } from "@/app/utils/supabase-browser"
 
 async function getEntityTypes() {
-    const {data,error}= await supabase.from("entity_type").select("*")
+    const {data,error}= await supabase
+    .from("entity_type")
+    .select("*")
     if (error) throw error
     console.log('entityTypes', data)
   return (
