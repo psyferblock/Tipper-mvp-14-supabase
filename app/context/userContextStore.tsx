@@ -9,10 +9,10 @@ const userContextState={
 const userContext=createContext(userContextState)
 
 
-function userContext() {
+function userContextStore() {
   return (
     <div>userContext</div>
   )
 }
 
-export default userContext
+export default userContextStore
