@@ -17,9 +17,13 @@ const numberValidationRegex = /^[6-9]\d{9}$/;
 
 // first create the context tools
 
-const CreateUserContextInfoTools = (userInfo, profilePicture) => {
+const CreateUserContextInfoTools = (userInfo ) => {
   const [
-    {
+    state,
+    dispatch,
+  ] = useReducer(userReducer, userContextState);
+
+  const {
       userId,
       firstName,
       lastName,
@@ -29,10 +33,7 @@ const CreateUserContextInfoTools = (userInfo, profilePicture) => {
       profilePictureUrl,
       emailAddress,
       uniqueUserName,
-    },
-    dispatch,
-  ] = useReducer(userReducer, userContextState);
-
+    }=state
   // userID
   const setUserId = useCallback((newObject) => {
     dispatch({
@@ -101,9 +102,12 @@ const CreateUserContextInfoTools = (userInfo, profilePicture) => {
     });
   }, []);
 
+  
+  
+
   useEffect(() => {
     setContactNumber(userInfo?.phone_number),
-      setDateOfBirth(userInfo),
+      setDateOfBirth(userInfo?.date_of_birth),
       setGender(userInfo?.gender),
       setProfilePicUrl(userInfo?.profilePicture),
       setUserId(userInfo?.user_id),
@@ -111,6 +115,7 @@ const CreateUserContextInfoTools = (userInfo, profilePicture) => {
       setUserName(userInfo?.first_name),
       setEmailAddress(userInfo?.email_address),
       setUniqueName(userInfo?.unique_user_name);
+      
   }, []);
 
   return {
@@ -137,22 +142,22 @@ const CreateUserContextInfoTools = (userInfo, profilePicture) => {
 
 
 
-const ManageUserInfoContext = createContext(undefined);
+const ManageUserInfoContext = createContext<
+  ReturnType<typeof CreateUserContextInfoTools>
+>({} as unknown as ReturnType<typeof CreateUserContextInfoTools>);
 
 export function UserInfoContextProvider({
   children,
   userInfo,
-  userId,
-  profilePicture,
+  
 }: {
   children: React.ReactNode;
   userInfo: any;
-  userId: String;
-  profilePicture: String;
+ 
 }) {
   return (
     <ManageUserInfoContext.Provider
-      value={CreateUserContextInfoTools(userId, userInfo)}
+      value={CreateUserContextInfoTools( userInfo)}
     >
       {children}
     </ManageUserInfoContext.Provider>
@@ -160,7 +165,7 @@ export function UserInfoContextProvider({
 }
 // CREATE THE HOOK SO YO UCAN USE CONTEXT DIRECTLY ANYWHERE YOU WANT
 export function useUsersContext() {
-  const context = useContext(userContext);
+  const context = useContext(ManageUserInfoContext);
   if (!context) {
     throw new Error("useFormContext must be used within a FormProvider");
   }

@@ -40,8 +40,7 @@ function SignInPage() {
       console.log("error when signing in", error);
     } else {
       setSignInFailedError(false);
-      const userId = data;
-      console.log("data after sign in", userId);
+      console.log("data after sign in", data);
       router.push(`/home`);
     }
   }

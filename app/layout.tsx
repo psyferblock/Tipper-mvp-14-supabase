@@ -21,7 +21,6 @@ export default async function RootLayout({
     data: { session },
   } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details. 
 
-  const userInformation= await getMyUserInfoServer(,supabaseServer,session?.user.id)
  return (
     <html lang="en">
       {/*
@@ -33,7 +32,6 @@ export default async function RootLayout({
         <SupabaseProvider session={session}>
 
           <SupabaseListener serverAccessToken={session?.access_token} />
-          <UserInfoContextProvider userInfo={userInformation} userId={session?.user.id}>
 
           
           {/* <Navbar session={session} /> */}
@@ -42,7 +40,6 @@ export default async function RootLayout({
             {children}
             {/* </AuthContextProvider> */}
           </div>
-          </UserInfoContextProvider>
         </SupabaseProvider>
       </body>
     </html>

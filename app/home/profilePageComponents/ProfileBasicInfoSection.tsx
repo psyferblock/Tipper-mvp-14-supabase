@@ -1,9 +1,47 @@
+import { useUsersContext } from '@/app/context/userContextStore';
+import updateUserProfile from '@/app/lib/update/updateUserProfile';
+import { useSupabase } from '@/app/supabase-provider';
 import Image from 'next/image';
-import React, { useState } from 'react'
+import React, { useState,ChangeEvent } from 'react'
 
 function ProfileBasicInfoSection() {
 
  const [editing, setEditing] = useState(true);
+ const {
+  userId,
+    firstName,
+    lastName,
+    dateOfBirth,
+    gender,
+    contactNumber,
+    profilePictureUrl,
+    emailAddress,
+    uniqueUserName,
+    setContactNumber,
+    setDateOfBirth,
+    setGender,
+    setProfilePicUrl,
+    setUserId,
+    setUserLastName,
+    setUserName,
+    setEmailAddress,
+    setUniqueName,
+ } =useUsersContext()
+
+ const handleUserInfo =async()=>{
+   const userUpdate=await updateUserProfile(
+     userId,
+    firstName,
+    lastName,
+    dateOfBirth,
+    gender,
+    contactNumber,
+    profilePictureUrl,
+    emailAddress,
+    uniqueUserName,
+   )
+   console.log('updating profile', userUpdate)
+ }
 
   const handleChangePhotoButton=(e:ChangeEvent<HTMLInputElement>)=>{
 let file;
@@ -11,15 +49,15 @@ let file;
     if (e.target.files) {
       file = e.target.files[0];
     }
-    // let pictureUrl = await uploadPictureToBucket(
-    //   file,
-    //   "images-restaurant",
-    //   "public"
-    // );
-    // setProfilePictureUrl(pictureUrl);
+    let pictureUrl = await uploadPictureToBucket(
+      file,
+      "images-restaurant",
+      "public"
+    );
+    setProfilePicUrl(pictureUrl);
   }
 
-  return (
+ return (
     <div> <div className="flex justify-between">
             <h1>Basic Info</h1>
             <button
@@ -62,6 +100,7 @@ let file;
                 onChange={(e) => {
                   handleChangePhotoButton(e);
                 }}
+                value={profilePictureUrl|| ''}
               />
             </label>
           </div>
@@ -78,8 +117,8 @@ let file;
             <input
               type="text"
               id="first name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              value={firstName||""}
+              onChange={(e) => setUserName(e.target.value)}
               className="h-12 block w-full rounded-md border-gray-300 pl-4 pr-12 mb-3 focus:border-indigo-500 focus:ring-indigo-500 text-xs sm:text-sm"
               placeholder="Enter First Name"
               disabled={!editing}
@@ -97,8 +136,8 @@ let file;
             <input
               type="text"
               id="last name"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
+              value={lastName ||""}
+              onChange={(e) => setUserLastName(e.target.value)}
               className="h-12 block w-full rounded-md border-gray-300 pl-4 pr-12 mb-3 focus:border-indigo-500 focus:ring-indigo-500 text-xs sm:text-sm"
               placeholder="Enter Last Name"
               disabled={!editing}
@@ -116,7 +155,7 @@ let file;
               type="date"
               name="dateofbirth"
               id="dateofbirth"
-              value={dateOfBirth}
+              value={dateOfBirth||""}
               onChange={(e) => setDateOfBirth(e.target.value)}
               className="h-12 text-gray-600 block w-full rounded-md border-gray-300 pl-4 pr-12 mb-3 focus:border-indigo-500 focus:ring-indigo-500 text-xs sm:text-sm"
               placeholder="Enter Date of Birth"
@@ -124,6 +163,103 @@ let file;
             />
           </div>
         </div>
+        {/* GENDER  */}
+         <div className="sm:w-5/12">
+          <label htmlFor="gender" className="text-xs text-gray-600 font-medium">
+            Gender
+          </label>
+          <div className="sm:space-y-6">
+            <div className="flex items-center flex-start space-x-9 py-2">
+              <div>
+                <input
+                  id="default-radio-1"
+                  type="radio"
+                  value={"Male"}
+                  checked={gender == "Male"}
+                  onChange={(e) => {
+                    setGender(e.target.value);
+                  }}
+                  name="default-radio"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  disabled={!editing}
+                />
+                <label
+                  htmlFor="default-radio-1"
+                  className="ml-2 text-xs font-normal text-gray-900 dark:text-gray-500"
+                >
+                  Male
+                </label>
+              </div>
+              <div>
+                <input
+                  id="default-radio-1"
+                  type="radio"
+                  value={"Female"}
+                  checked={gender == "Female"}
+                  onChange={(e) => {
+                    setGender(e.target.value);
+                  }}
+                  name="default-radio"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  disabled={!editing}
+                />
+                <label
+                  htmlFor="default-radio-1"
+                  className="ml-2 text-xs font-normal text-gray-900 dark:text-gray-500"
+                >
+                  Female
+                </label>
+              </div>
+              <div>
+                <input
+                  id="default-radio-1"
+                  type="radio"
+                  value={"Neutral"}
+                  checked={gender == "Neutral"}
+                  onChange={(e) => {
+                    setGender(e.target.value);
+                  }}
+                  name="default-radio"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                  disabled={!editing}
+                />
+                <label
+                  htmlFor="default-radio-1"
+                  className="ml-2 text-xs font-normal text-gray-900 dark:text-gray-500"
+                >
+                  Neutral
+                </label>
+              </div>
+            </div>
+           
+          </div>
+           {/* CONTACT NUMBER  */}
+            <div className="space-y-1 sm:space-y-1">
+              <label
+                htmlFor="names"
+                className="text-xs text-gray-600 font-medium"
+              >
+                Contact Number
+              </label>
+              <input
+                type="number"
+                id="contactNumber"
+                value={contactNumber||""}
+                onChange={(e) => {
+                  setContactNumber(e.target.value);
+                }}
+                className="h-12 block w-full rounded-md border-gray-300 pl-4 pr-12  focus:border-indigo-500 focus:ring-indigo-500 text-xs sm:text-sm"
+                placeholder="Enter Number"
+                disabled={!editing}
+              />
+            </div>
+        </div>
+        <button
+                className="w-11/12 h-10 mt-8 hover:bg-ruby-tint hover:text-lg rounded-3xl bg-diamond text-ruby text-md m-3"
+                onClick={ handleUserInfo}
+              >
+                submit 
+              </button>
           </div></div>
   )
 }
