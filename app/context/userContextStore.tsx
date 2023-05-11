@@ -17,7 +17,7 @@ const numberValidationRegex = /^[6-9]\d{9}$/;
 
 // first create the context tools
 
-const CreateUserContextInfoTools = (userInfo,profilePicture) => {
+const CreateUserContextInfoTools = (userInfo, profilePicture) => {
   const [
     {
       userId,
@@ -28,7 +28,7 @@ const CreateUserContextInfoTools = (userInfo,profilePicture) => {
       contactNumber,
       profilePictureUrl,
       emailAddress,
-    uniqueUserName,
+      uniqueUserName,
     },
     dispatch,
   ] = useReducer(userReducer, userContextState);
@@ -85,7 +85,7 @@ const CreateUserContextInfoTools = (userInfo,profilePicture) => {
     });
   }, []);
 
-  // SET EMAIL ADDRESS 
+  // SET EMAIL ADDRESS
   const setEmailAddress = useCallback((newObject) => {
     dispatch({
       type: "CHANGE_EMAIL_ADDRESS",
@@ -93,7 +93,7 @@ const CreateUserContextInfoTools = (userInfo,profilePicture) => {
     });
   }, []);
 
-  // SET UNIQUE USER NAME 
+  // SET UNIQUE USER NAME
   const setUniqueName = useCallback((newObject) => {
     dispatch({
       type: "CHANGE_UNIQUE_USER_NAME",
@@ -101,17 +101,17 @@ const CreateUserContextInfoTools = (userInfo,profilePicture) => {
     });
   }, []);
 
-  useEffect(()=>{
-  setContactNumber(userInfo?.phone_number),
-    setDateOfBirth(userInfo),
-    setGender(userInfo?.gender),
-    setProfilePicUrl(userInfo?.profilePicture),
-    setUserId(userInfo?.user_id),
-    setUserLastName(userInfo?.last_name),
-    setUserName(userInfo?.first_name),
-    setEmailAddress(userInfo?.email_address),
-    setUniqueName(userInfo?.unique_user_name)
-},[])
+  useEffect(() => {
+    setContactNumber(userInfo?.phone_number),
+      setDateOfBirth(userInfo),
+      setGender(userInfo?.gender),
+      setProfilePicUrl(userInfo?.profilePicture),
+      setUserId(userInfo?.user_id),
+      setUserLastName(userInfo?.last_name),
+      setUserName(userInfo?.first_name),
+      setEmailAddress(userInfo?.email_address),
+      setUniqueName(userInfo?.unique_user_name);
+  }, []);
 
   return {
     userId,
@@ -131,22 +131,33 @@ const CreateUserContextInfoTools = (userInfo,profilePicture) => {
     setUserLastName,
     setUserName,
     setEmailAddress,
-    setUniqueName
+    setUniqueName,
   };
 };
 
 
-const value = {  userId,
-    firstName,
-    lastName,
-    dateOfBirth,
-    gender,
-    contactNumber,
-    profilePictureUrl,};
 
+const ManageUserInfoContext = createContext(undefined);
 
-const ManageUserInfoContext =createContext(undefined)
-
+export function UserInfoContextProvider({
+  children,
+  userInfo,
+  userId,
+  profilePicture,
+}: {
+  children: React.ReactNode;
+  userInfo: any;
+  userId: String;
+  profilePicture: String;
+}) {
+  return (
+    <ManageUserInfoContext.Provider
+      value={CreateUserContextInfoTools(userId, userInfo)}
+    >
+      {children}
+    </ManageUserInfoContext.Provider>
+  );
+}
 // CREATE THE HOOK SO YO UCAN USE CONTEXT DIRECTLY ANYWHERE YOU WANT
 export function useUsersContext() {
   const context = useContext(userContext);
@@ -156,23 +167,3 @@ export function useUsersContext() {
   return context;
 }
 // / // / /// /// //// /// //// ////// ////
-
-export function ManageEntityInfoContextProvider({
-  children,
-  userInfo,
-  userId,
-  profilePicture
-}:{
-  children:React.ReactNode;
-  userInfo:any;
-  userId:String;
-  profilePicture:String;
-}){
-  return (
-    <ManageUserInfoContext.Provider value={
-      CreateUserContextInfoTools(userId,userInfo,profilePicture)
-    }>
-      {children}
-    </ManageUserInfoContext.Provider>
-  )
-}

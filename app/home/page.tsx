@@ -5,10 +5,11 @@ import { useSupabase } from "../supabase-provider";
 import { useHasMounted } from "../hooks/useHasMounted";
 import Image from "next/image";
 import ProfileBasicInfoSection from "./profilePageComponents/ProfileBasicInfoSection";
+import { useUsersContext } from "../context/userContextStore";
 
 function HomePage() {
   const { session } = useSupabase();
- 
+ const userInformation=useUsersContext()
 
   //   const hasMounted = useHasMounted();
   // if (!hasMounted) {
@@ -36,6 +37,7 @@ function HomePage() {
                  Access My Entity
               </Link>
             </button> */}
+            {JSON.stringify(userInformation)}
           </div>
         </div>
         <div className=" relative p-3 m-2 bg-diamond aspect-4/3 ">
