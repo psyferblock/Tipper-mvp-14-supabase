@@ -1,17 +1,20 @@
-"use client"
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { useSupabase } from "../supabase-provider";
 import { useHasMounted } from "../hooks/useHasMounted";
+import Image from "next/image";
+import ProfileBasicInfoSection from "./profilePageComponents/ProfileBasicInfoSection";
 
 function HomePage() {
-    const {session}=useSupabase()
+  const { session } = useSupabase();
+ 
 
   //   const hasMounted = useHasMounted();
   // if (!hasMounted) {
   //   return null;
   // }
-  console.log('session in home page', session)
+  console.log("session in home page", session);
   return (
     <div className="bg-pearl w-screen h-full p-2">
       <div>
@@ -28,20 +31,15 @@ function HomePage() {
                 Create Now
               </Link>
             </button>
-            <button className="w-1/2  h-12 mt-10 hover:bg-pearl hover:text-lg rounded-md bg-diamond text-obsidian text-sm">
+            {/* <button className="w-1/2  h-12 mt-10 hover:bg-pearl hover:text-lg rounded-md bg-diamond text-obsidian text-sm">
               <Link href={`home/${entityUniqueName}/menu/${categoryId}`} className="">
                  Access My Entity
               </Link>
-            </button>
-            
+            </button> */}
           </div>
         </div>
-        <div className="p-3 ">
-            <div className="flex justify-between">
-                <h1>Basic Info</h1>
-                <Link href="#">Edit</Link>
-            </div>
-
+        <div className=" relative p-3 m-2 bg-diamond aspect-4/3 ">
+         <ProfileBasicInfoSection/>
         </div>
       </div>
     </div>

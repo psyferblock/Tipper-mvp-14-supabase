@@ -204,7 +204,7 @@ const handleSubmit = async (event) => {
                     placeholder="Password"
                     required
                     onChange={(e) => {checkPasswordLength(e.target.value);}}
-                    value={password||""}
+                    value={password||""}  
                     // ref={passwordRef}
                     />
 
@@ -247,7 +247,7 @@ const handleSubmit = async (event) => {
                     placeholder="Confirm Password"
                     required
                     onChange={(e) => {comparePasswords(password,e.target.value)}}
-                    value={confirmPass||""}
+                    // value={confirmPass||""}
                     // ref={confirmPassRef}
                     />
                   <label
