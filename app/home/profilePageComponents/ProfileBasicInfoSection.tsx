@@ -44,15 +44,15 @@ function ProfileBasicInfoSection() {
     console.log("updating profile", userUpdate);
   };
 
-  const handleChangePhotoButton = async (e: ChangeEvent<HTMLInputElement>) => {
-    let file;
+  // const handleChangePhotoButton = async (e: ChangeEvent<HTMLInputElement>) => {
+  //   let file;
 
-    if (e.target.files) {
-      file = e.target.files[0];
-    }
-    let pictureUrl = await uploadPictureToBucked(file, split certain elements from a string js,"avatars", "public");
-    setProfilePicUrl(pictureUrl);
-  };
+  //   if (e.target.files) {
+  //     file = e.target.files[0];
+  //   }
+  //   let pictureUrl = await uploadPictureToBucked(file,"avatars", "public");
+  //   setProfilePicUrl(pictureUrl);
+  // };
 
   return (
     <div>

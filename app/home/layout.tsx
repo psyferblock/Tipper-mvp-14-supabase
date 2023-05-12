@@ -9,28 +9,28 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const supabaseServer = createServerClient();
+  // const supabaseServer = createServerClient();
 
-  const {
-    data: { session },
-  } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details.
+  // const {
+  //   data: { session },
+  // } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details.
 
-  const userInformation = await getMyUserInfoServer(
-    supabaseServer,
-    session?.user.id
-  );
+  // const userInformation = await getMyUserInfoServer(
+  //   supabaseServer,
+  //   session?.user.id
+  // );
 
   return (
     <div>
-      <UserInfoContextProvider
+      {/* <UserInfoContextProvider
         userInfo={userInformation}
         userId={session?.user.id}
-      >
+      > */}
         <div className=" bg-slate-800 h-screen w-screen">
           <NavBar />
           <div>{children}</div>
         </div>
-      </UserInfoContextProvider>
+      {/* </UserInfoContextProvider> */}
     </div>
   );
 }

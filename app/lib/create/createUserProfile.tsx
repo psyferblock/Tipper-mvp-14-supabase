@@ -1,6 +1,6 @@
 import { supabase } from "@/app/utils/supabase-browser";
 
-export default async function createUserProfile(userId,emailAddress){
+export default async function createUserProfile(userId,emailAddress ,uniqueName){
 
     
 
@@ -9,7 +9,7 @@ export default async function createUserProfile(userId,emailAddress){
     .insert({
         user_id:userId,
         email_address:emailAddress,
-        // firstName:userName
+        unique_user_name:uniqueName
     })
     .select()
     .single()

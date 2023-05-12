@@ -1,6 +1,5 @@
 import { createServerClient } from "./utils/supabase-server";
 
-
 import "./globals.css";
 // import Navbar from "./root-Components/tools-Components/NavBar";
 // import { AuthContextProvider } from "./context/Store";
@@ -15,13 +14,16 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const supabaseServer = createServerClient();
-  
 
   const {
     data: { session },
-  } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details. 
+  } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details.
 
- return (
+  const userInformation = await getMyUserInfoServer(
+    supabaseServer,
+    session?.user.id
+  );
+  return (
     <html lang="en">
       {/*
         <head /> will contain the components returned by the nearest parent
@@ -30,16 +32,18 @@ export default async function RootLayout({
       <head />
       <body>
         <SupabaseProvider session={session}>
-
           <SupabaseListener serverAccessToken={session?.access_token} />
-
-          
-          {/* <Navbar session={session} /> */}
-          <div className="bg-amethyst-shade min-h-screen">
-            {/* <AuthContextProvider> */}
-            {children}
-            {/* </AuthContextProvider> */}
-          </div>
+          <UserInfoContextProvider
+            userInfo={userInformation}
+            userId={session?.user.id}
+          >
+            {/* <Navbar session={session} /> */}
+            <div className="bg-amethyst-shade min-h-screen">
+              {/* <AuthContextProvider> */}
+              {children}
+              {/* </AuthContextProvider> */}
+            </div>
+          </UserInfoContextProvider>
         </SupabaseProvider>
       </body>
     </html>

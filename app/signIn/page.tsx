@@ -6,11 +6,15 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { supabase } from "../utils/supabase-browser";
 import { useHasMounted } from "../hooks/useHasMounted";
+import { userContextState } from "../context/userContextReducer";
+import { useUsersContext } from "../context/userContextStore";
 
 function SignInPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [open, setOpen] = useState(false);
+  const {uniqueUserName}=useUsersContext()
+
 
   const [signInFailedError, setSignInFailedError] = useState(false);
 
@@ -41,7 +45,7 @@ function SignInPage() {
     } else {
       setSignInFailedError(false);
       console.log("data after sign in", data);
-      router.push(`/home`);
+      router.push(`/${uniqueUserName}`);
     }
   }
   // const hasMounted = useHasMounted();
