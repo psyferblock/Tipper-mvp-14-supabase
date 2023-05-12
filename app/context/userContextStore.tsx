@@ -95,10 +95,19 @@ const CreateUserContextInfoTools = (userInfo ) => {
   }, []);
 
   // SET UNIQUE USER NAME
-  const setUniqueName = useCallback((newObject) => {
-    dispatch({
+  const setUniqueName = useCallback((email,id) => { 
+    // i took the first name and the last name. then took the user id and removed 2 digits from it and concatenated it to the name. as random as i can possibly think about.
+    
+    let first =email.split("@")
+    let array=first[0]
+    let uuidSample=id.slice(10,15) 
+   
+    const unique=array+uuidSample
+
+    // const getRandomInt=(max)=>{Math.floor(Math.random()*max)}
+      dispatch({
       type: "CHANGE_UNIQUE_USER_NAME",
-      payload: newObject,
+      payload: unique,
     });
   }, []);
 
