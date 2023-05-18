@@ -1,0 +1,12 @@
+
+import { supabase } from "@/app/utils/supabase-browser";
+
+export async function updateUserHasEntity(hasEntityValue){
+    const { data, error } = await supabase
+  .from('user_profile')
+  .insert([
+    { has_entity: hasEntityValue}
+  ]).select()
+  if (error) throw error
+  return data 
+}

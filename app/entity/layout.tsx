@@ -2,6 +2,7 @@ import { EntityInfosContextProvider } from '@/app/context/entityContext/entityCo
 import { getMyEntityInfoServer } from '@/app/lib/get/getEntityInfo';
 import { createServerClient } from '@/app/utils/supabase-server';
 import React from 'react'
+import { getEntityIdFromUniqueNameServer } from '../lib/get/getEntityIdFromUniqueName';
 
 type entityPageProps = {
   children:React.ReactNode,
@@ -21,8 +22,11 @@ async function EntityLayout({children}: entityPageProps
 
  const entityOwnerId=session?.user.id
 
- 
- const entityInfo= await getMyEntityInfoServer(entityOwnerId)
+ const entityInfo=await getMyEntityInfoServer(entityOwnerId)
+
+
+ console.log('entityInfo', entityInfo)
+
  
   
 

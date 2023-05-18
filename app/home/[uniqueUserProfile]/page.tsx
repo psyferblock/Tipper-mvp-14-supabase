@@ -23,26 +23,26 @@ async function userProfilePage({ params }) {
 
   // },[])
   
-  const supabaseServer = await createServerClient();
-  console.log("supabaseServer", supabaseServer);
-  // const session=useSupabase()
-  const {
-    data: { session },
-  } = await supabaseServer.auth.getSession();
-  console.log("session from app page", session);
-  const myUserId = session?.user.id;
-
-  const userData = await getMyUserInfoServer(supabaseServer, myUserId);
+  // const supabaseServer = await createServerClient();
   // console.log("supabaseServer", supabaseServer);
-  console.log('userInformation', userData)
-  console.log("myUserId", myUserId);
+  // // const session=useSupabase()
+  // const {
+  //   data: { session },
+  // } = await supabaseServer.auth.getSession();
+  // console.log("session from app page", session);
+  // const myUserId = session?.user.id;
+
+  // const userData = await getMyUserInfoServer(supabaseServer, myUserId);
+  // // console.log("supabaseServer", supabaseServer);
+  // console.log('userInformation', userData)
+  // console.log("myUserId", myUserId);
 
 
   return (
     <>
-      <UserInfoContextProvider userInfos={userData}>
+      {/* <UserInfoContextProvider userInfos={userData}> */}
      <UserMainPageComponent/>
-      </UserInfoContextProvider>
+      {/* </UserInfoContextProvider> */}
     </>
   );
 }

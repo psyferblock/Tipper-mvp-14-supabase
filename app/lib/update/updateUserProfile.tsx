@@ -9,7 +9,8 @@ export default async function updateUserProfile(
   contactNumber,
   profilePictureUrl,
   emailAddress,
-  uniqueUserName
+  uniqueUserName,
+  hasEntity
 ) {
   const { data, error } = await supabase
     .from("user_profile")
@@ -22,6 +23,7 @@ export default async function updateUserProfile(
       profile_picture_url: profilePictureUrl,
       email_address: emailAddress,
       unique_user_name: uniqueUserName,
+      has_entity:hasEntity
     })
     .eq("user_id", userId)
     .select();

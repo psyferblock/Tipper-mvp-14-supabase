@@ -1,6 +1,6 @@
 import { supabase } from "@/app/utils/supabase-browser";
 
-async function getMyEntityInfo(userId) {
+export async function getMyEntityInfo(userId) {
   const { data, error } = await supabase
     .from("entity")
     .select()
@@ -9,7 +9,7 @@ async function getMyEntityInfo(userId) {
   return data[0];
 }
 
-async function getMyEntityInfoServer(supabaseServerClient, userId) {
+export async function getMyEntityInfoServer(supabaseServerClient, userId) {
   const { data, error } = await supabaseServerClient
     .from("entity")
     .select()
