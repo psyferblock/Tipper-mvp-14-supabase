@@ -8,43 +8,40 @@ import { useRouter } from "next/navigation";
 import createEntity from "@/app/lib/create/createEntity";
 import createExchangeRate from "@/app/lib/create/createExchangeRate";
 import createMenuCategory from "@/app/lib/create/createMenuCategory";
+import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 
 function EntityCreationPage() {
   const router = useRouter();
   const { session } = useSupabase();
   const userId = session?.user.id;
 
-  //States
-  const [entityData, setEntityData] = useState({
+  const initialState = {
     entityName: "",
-    sEntityUniqueName: "",
+    entityPhoneNumber: 0,
+    entityEmailAddress: "",
     entityArea: "",
     entityAddress: "",
-    entityEmailAddress: "",
-    entityPhoneNumber: 0,
-    entityType: "Restaurant",
-    entityTypeId:0,
-    arrayOfTags: [],
-  });
-  console.log("entityData", entityData);
-  /////////    /////////     /////////
+  };
+  const [entityState, setEntityState] = useState(initialState);
 
   const {
     entityName,
-    sEntityUniqueName,
+    entityPhoneNumber,
+    entityEmailAddress,
     entityArea,
     entityAddress,
-    entityEmailAddress,
-    entityPhoneNumber,
-    entityType,
-    entityTypeId,
-  } = entityData;
+  } = entityState;
+
+  /////////    /////////     /////////
 
   /////////    /////////     /////////
 
   // handling the types of entities that exist
   const [listOfEntityTypes, setListOfEntityTypes] = useState([]);
   const [chosenType, setChosenType] = useState("");
+  const [entityUniqueName, setEntityUniqueName] = useState("");
+  const [entityTypeId, setEntityTypeId] = useState(0);
+  const [entityId, setEntityId] = useState("");
 
   /////////    /////////     /////////
 
@@ -91,29 +88,26 @@ function EntityCreationPage() {
       (word) => word != "the" && word != "and"
     );
     const newName = filteredWords?.join("");
-    const entityUniqueName = newName + "@" + entityArea;
-    setEntityData((prev) => ({ ...prev, sEntityUniqueName: entityUniqueName }));
+    const sEntityUniqueName = newName + "@" + entityArea;
+    setEntityUniqueName(sEntityUniqueName);
   }, [entityName, entityArea]);
 
-        //Finding the entity type's id
+  //Finding the entity type's id
 
-  useEffect(()=>{
-    
-      let entityTypeId;
-      listOfEntityTypes.map((entityTypeObject) => {
-        if (entityTypeObject.entity_type_name == chosenType) {
-          entityTypeId = entityTypeObject.id;
+  useEffect(() => {
+    let entityTypeId;
+    listOfEntityTypes.map((entityTypeObject) => {
+      if (entityTypeObject.entity_type_name == chosenType) {
+        entityTypeId = entityTypeObject.id;
 
-          console.log("first", entityTypeObject);
-          console.log("entityType.id", entityTypeId);
-          setEntityData((prev)=>({...prev,entityType:entityTypeObject.entity_type_name,entityTypeId:entityTypeObject.id}))
-                                       
+        console.log("first", entityTypeObject);
+        console.log("entityType.id", entityTypeId);
+        setEntityTypeId(entityTypeId);
 
-
-          // return entityTypeId;
-        }
-      });
-  },[chosenType])
+        // return entityTypeId;
+      }
+    });
+  }, [chosenType]);
   ///////////// //////////// /////////// //////////////
 
   //HANDLE CREATE NOW BUTTON MAN
@@ -143,35 +137,31 @@ function EntityCreationPage() {
       const response = await createEntity(
         userId,
         entityName,
-        sEntityUniqueName,
+        entityUniqueName,
         entityArea,
         entityAddress,
         entityEmailAddress,
         entityPhoneNumber,
-        entityTypeId,
+        entityTypeId
       );
 
-      const entityId = response.id;
+      setEntityId(response.id);
       //Creating an exchange rate row in DB referring to the newly created entity
       await createExchangeRate(entityId, "1500");
-
+      const initialMenuCategory = "main";
       const firstMenuCategoryObject = await createMenuCategory(
-        "Main",
+        initialMenuCategory,
         true,
         entityId
       );
       const firstMenuCategoryId = firstMenuCategoryObject.id;
 
-      router.push(`home/${sEntityUniqueName}/menu/${firstMenuCategoryId}`);
+      router.push(`home/${entityUniqueName}/menu/${firstMenuCategoryId}`);
     }
   }
   const HandleChange = (e) => {
-    setEntityData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setEntityState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-  // const hasMounted = useHasMounted();
-  // if (!hasMounted) {
-  //   return null;
-  // }
 
   return (
     <>
@@ -219,10 +209,10 @@ function EntityCreationPage() {
                   name="entityName"
                   id="entityName"
                   className="text-wrap border-ruby-tint focus:border-ruby-shade peer inline-block h-16 w-full rounded-lg border-2 border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:outline-none"
-                  placeholder="Enter Number"
-                  // value={entityData.entityName||""}
+                  placeholder="entityName"
+                  // value={entityState.entityName||""}
                   required
-                  onChange={(e) => HandleChange(e)}
+                  onChange={(e) => HandleChange(e.target.value)}
                 />
 
                 <label
@@ -263,8 +253,8 @@ function EntityCreationPage() {
                   placeholder="Enter Area"
                   // ref={entityAreaRef}
                   required
-                  // value={entityData.entityArea || ""}
-                  onChange={(e) => HandleChange(e)}
+                  value={entityState.entityArea || ""}
+                  onChange={(e) => HandleChange(e.target.value)}
                 />
 
                 <label
@@ -302,8 +292,8 @@ function EntityCreationPage() {
                   placeholder="Contact Number"
                   // ref={entityPhoneNumberRef}
                   required
-                  // value={entityData.entityPhoneNumber || ""}
-                  onChange={(e) => HandleChange(e)}
+                  value={entityState.entityPhoneNumber || ""}
+                  onChange={(e) => HandleChange(e.target.value)}
                 />
 
                 <label
@@ -345,8 +335,8 @@ function EntityCreationPage() {
                   placeholder="Enter emailAddress"
                   // ref={entityEmailAddressRef}
                   required
-                  // value={entityData.entityEmailAddress || ""}
-                  onChange={(e) => HandleChange(e)}
+                  value={entityState.entityEmailAddress || ""}
+                  onChange={(e) => HandleChange(e.target.value)}
                 />
 
                 <label
@@ -383,8 +373,8 @@ text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 abso
                   placeholder="Enter Number"
                   // ref={entityAddressRef}
                   required
-                  // value={entityData.entityAddress || ""}
-                  onChange={(e) => HandleChange(e)}
+                  value={entityState.entityAddress || ""}
+                  onChange={(e) => HandleChange(e.target.value)}
                 />
 
                 <label
@@ -421,14 +411,19 @@ text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 abso
                 id="business type"
                 className="h-12 block w-full rounded-md border-gray-300 pl-4 pr-12 mb-3 focus:border-indigo-500 focus:ring-indigo-500 text-xs sm:text-sm"
                 placeholder="Select a type"
-                onChange={(e) =>{
-                  const selectedType=e.target.value
-                  setChosenType(selectedType)}
-                } 
-                // value={entityTypeNameSelected || ""}
+                onChange={(e) => {
+                  const selectedType = e.target.value;
+                  HandleChange(selectedType);
+                }}
+                value={chosenType || ""}
               >
                 {listOfEntityTypes.map((entityTypeObject) => (
-                  <option key={entityTypeObject.id} value={entityTypeObject.entity_type_name}>{entityTypeObject.entity_type_name}</option>
+                  <option
+                    key={entityTypeObject.id}
+                    value={entityTypeObject.entity_type_name}
+                  >
+                    {entityTypeObject.entity_type_name}
+                  </option>
                 ))}
               </select>
             </div>

@@ -1,48 +1,35 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
-import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
-import { useRouter } from "next/navigation";
 
-import type { SupabaseClient } from "@supabase/auth-helpers-nextjs";
-import type { Database } from "./lib/database.types";
-import type { Session } from "@supabase/gotrue-js/src/lib/types";
+import { createContext, useContext, useState } from "react";
+import { createBrowserClient } from "./utils/supabase-browser";
 
-type SupabaseContext = {
-  supabase: SupabaseClient<any, "public", any>;
-  session:Session;
-};
+
 
 // @ts-ignore
-
-const Context = createContext<SupabaseContext | undefined>(undefined);
-
+const Context = createContext<SupabaseContext>();
 
 export default function SupabaseProvider({
   children,
   session,
 }: {
   children: React.ReactNode;
-  session: Session;
+  session: any | null;
 }) {
-  const [supabase] = useState(() => createBrowserSupabaseClient());
-// console.log('session in supabase-provider', session)
- 
+  const [supabase] = useState(() => createBrowserClient());
+
   return (
-    <Context.Provider value={{ supabase,session }}>
+    <Context.Provider value={{ supabase, session }}>
       <>{children}</>
     </Context.Provider>
   );
 }
 
-// created a hook so as to use context anywhere in the app
-
 export const useSupabase = () => {
-  const context = useContext(Context);
+  const context = useContext(Context)
+  if (!context){
+throw new Error("you have to have context in supabase to use this hook")
 
-  if (context === undefined) {
-    throw new Error("useSupabase must be used inside SupabaseProvider");
-  }
-
-  return context;
-};
+  };
+return context
+}

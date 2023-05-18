@@ -1,8 +1,19 @@
 import React from "react";
 import Link from "next/link";
 import HomePageSearchBar from "./HomePageSearchBar";
+import { createServerClient } from "../utils/supabase-server";
+import SignInSignOut from "./SignInSignOut";
+import { getServerSession } from "next-auth";
 
-function NavBar() {
+
+ function NavBar() {
+   const {session} = getServerSession();
+  
+  // const {
+  //   data: { session },
+  // } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details.
+
+ console.log('session in main nav page ', session)
   return (
     <div className="">
       <div className="bg-pearl text-ruby max-h-20  flex justify-between  ">
@@ -25,9 +36,8 @@ function NavBar() {
             <li className="p-2">
               <Link href="#">Contact Us</Link>
             </li>
-            <li className="p-2">
-              <Link href="signIn">Sign In</Link>
-            </li>
+           <SignInSignOut/>
+            
           </ul>
         </div>
        

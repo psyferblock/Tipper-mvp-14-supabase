@@ -10,6 +10,7 @@ export const userContextState = {
   profilePictureUrl: "",
   emailAddress:"",
     uniqueUserName:"",
+    hasEntity:false,
 };
 
 const userReducer = (userState, action) => {
@@ -34,6 +35,8 @@ const userReducer = (userState, action) => {
         return {...userState, emailAddress: payload};
         case"CHANGE_UNIQUE_USER_NAME":
         return {...userState, uniqueUserName: payload};
+        case"HAS_ENTITY":
+        return {...userState, hasEntity:payload}
     default:
       throw new Error(`no cases to switch from ${type} `);
   }

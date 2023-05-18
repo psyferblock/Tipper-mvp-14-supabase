@@ -13,7 +13,7 @@ function SignInPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [open, setOpen] = useState(false);
-  const {uniqueUserName}=useUsersContext()
+
 
 
   const [signInFailedError, setSignInFailedError] = useState(false);
@@ -45,7 +45,7 @@ function SignInPage() {
     } else {
       setSignInFailedError(false);
       console.log("data after sign in", data);
-      router.push(`/${uniqueUserName}`);
+      router.push(`/`);
     }
   }
   // const hasMounted = useHasMounted();

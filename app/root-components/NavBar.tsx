@@ -1,9 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import HomePageSearchBar from "./HomePageSearchBar";
-import SignOut from "./SignOut"
 import { useSupabase } from "../supabase-provider";
-import SignInSignOut from "./SignInSIgnOut";
+import SignInSignOut from "./SignInSignOut";
 
 
 function NavBar() {

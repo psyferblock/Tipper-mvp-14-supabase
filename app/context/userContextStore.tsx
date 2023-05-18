@@ -17,23 +17,29 @@ const numberValidationRegex = /^[6-9]\d{9}$/;
 
 // first create the context tools
 
-const CreateUserContextInfoTools = (userInfo ) => {
-  const [
-    state,
-    dispatch,
-  ] = useReducer(userReducer, userContextState);
+const CreateUserContextInfoTools = (userInfos) => {
+  const [state, dispatch] = useReducer(userReducer, userContextState);
 
   const {
-      userId,
-      firstName,
-      lastName,
-      dateOfBirth,
-      gender,
-      contactNumber,
-      profilePictureUrl,
-      emailAddress,
-      uniqueUserName,
-    }=state
+    userId,
+    firstName,
+    lastName,
+    dateOfBirth,
+    gender,
+    contactNumber,
+    profilePictureUrl,
+    emailAddress,
+    uniqueUserName,
+    hasEntity
+  } = state;
+
+    // user has entity
+  const setHasEntity = useCallback((newObject) => {
+    dispatch({
+      type: "HAS_ENTITY",
+      payload: newObject,
+    });
+  }, []);
   // userID
   const setUserId = useCallback((newObject) => {
     dispatch({
@@ -95,37 +101,25 @@ const CreateUserContextInfoTools = (userInfo ) => {
   }, []);
 
   // SET UNIQUE USER NAME
-  const setUniqueName = useCallback((newObject) => { 
-    // i took the first name and the last name. then took the user id and removed 2 digits from it and concatenated it to the name. as random as i can possibly think about.
-    
-    // let first =email.split("@")
-    // let array=first[0]
-    // let uuidSample=id.slice(10,15) 
-   
-    // const unique=array+uuidSample
-    // console.log('unique user name from the useReducer method', unique)
+  const setUniqueName = useCallback((newObject) => {
 
-    // const getRandomInt=(max)=>{Math.floor(Math.random()*max)}
-      dispatch({
+    dispatch({
       type: "CHANGE_UNIQUE_USER_NAME",
       payload: newObject,
     });
   }, []);
 
-  
-  
-
   useEffect(() => {
-    setContactNumber(userInfo?.phone_number),
-      setDateOfBirth(userInfo?.date_of_birth),
-      setGender(userInfo?.gender),
-      setProfilePicUrl(userInfo?.profilePicture),
-      setUserId(userInfo?.user_id),
-      setUserLastName(userInfo?.last_name),
-      setUserName(userInfo?.first_name),
-      setEmailAddress(userInfo?.email_address),
-      setUniqueName(userInfo?.unique_user_name);
-      
+    setContactNumber(userInfos?.phone_number),
+      setDateOfBirth(userInfos?.date_of_birth),
+      setGender(userInfos?.gender),
+      setProfilePicUrl(userInfos?.profile_picture),
+      setUserId(userInfos?.user_id),
+      setUserLastName(userInfos?.last_name),
+      setUserName(userInfos?.first_name),
+      setEmailAddress(userInfos?.email_address),
+      setUniqueName(userInfos?.unique_user_name);
+      setHasEntity(userInfos?.has_entity)
   }, []);
 
   return {
@@ -138,6 +132,7 @@ const CreateUserContextInfoTools = (userInfo ) => {
     profilePictureUrl,
     emailAddress,
     uniqueUserName,
+    hasEntity,
     setContactNumber,
     setDateOfBirth,
     setGender,
@@ -147,27 +142,25 @@ const CreateUserContextInfoTools = (userInfo ) => {
     setUserName,
     setEmailAddress,
     setUniqueName,
+    setHasEntity,
   };
 };
-
-
 
 const ManageUserInfoContext = createContext<
   ReturnType<typeof CreateUserContextInfoTools>
 >({} as unknown as ReturnType<typeof CreateUserContextInfoTools>);
 
-export function UserInfoContextProvider({
+export default function UserInfoContextProvider({
   children,
-  userInfo,
-  
+  userInfos,
 }: {
   children: React.ReactNode;
-  userInfo: any;
- 
+  userInfos: any;
+  
 }) {
   return (
     <ManageUserInfoContext.Provider
-      value={CreateUserContextInfoTools( userInfo)}
+      value={CreateUserContextInfoTools(userInfos)}
     >
       {children}
     </ManageUserInfoContext.Provider>
@@ -177,7 +170,7 @@ export function UserInfoContextProvider({
 export function useUsersContext() {
   const context = useContext(ManageUserInfoContext);
   if (!context) {
-    throw new Error("useFormContext must be used within a FormProvider");
+    throw new Error("useUsersContext must be used within a FormProvider");
   }
   return context;
 }
