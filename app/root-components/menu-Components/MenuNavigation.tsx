@@ -1,5 +1,5 @@
-import { getMenuCategoriesServer } from "@/lib/get/getMenuCategories";
-import { createServerClient } from "@/utils/supabase-server";
+import { getMenuCategoriesServer } from "@/app/lib/get/getMenuCategories";
+import { createServerClient } from "@/app/utils/supabase-server";
 import MenuCategoriesNavLink from "./MenuCategoriesNavLink";
 
 export default async function MenuNavigation({ entityId }) {

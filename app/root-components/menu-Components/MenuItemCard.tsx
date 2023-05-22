@@ -3,7 +3,8 @@ import Image from "next/image";
 export default function MenuItemCard({ menuItem, exchangeRate }) {
   const itemPictureUrl = menuItem?.item_picture_url;
 
-  const itemPrice = (exchangeRate * menuItem.item_price).toLocaleString();
+  // const itemPrice = (exchangeRate * menuItem.item_price).toLocaleString();
+  const itemPrice=19
   return (
     <div className=" h-24 flex sm:h-72 sm:flex-col bg-white rounded-md sm:w-56 overflow-hidden sm:overflow-hidden drop-shadow-lg sm:first-letter:pb-2">
       {itemPictureUrl ? (

@@ -10,18 +10,19 @@ import createExchangeRate from "@/app/lib/create/createExchangeRate";
 import createMenuCategory from "@/app/lib/create/createMenuCategory";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 import updateUserProfile from "@/app/lib/update/updateUserProfile";
+import { updateUserHasEntity } from "@/app/lib/update/updateUserHasEntity";
+import { createEntityMenu } from "@/app/lib/create/createEntityMenu";
 
-function EntityCreationPage() {
+const EntityCreationPage=()=> {
   const router = useRouter();
   const { session } = useSupabase();
   const userId = session?.user.id;
 
-  const [entityName,setEntityName]=useState("")
-  const [entityPhoneNumber,setEntityPhoneNumber]=useState(0)
-  const [entityEmailAddress,setEntityEmailAddress]=useState("")
-  const [entityArea,setEntityArea]=useState("")
-  const [entityAddress,setEntityAddress]=useState("")
-
+  const [entityName, setEntityName] = useState("");
+  const [entityPhoneNumber, setEntityPhoneNumber] = useState(0);
+  const [entityEmailAddress, setEntityEmailAddress] = useState("");
+  const [entityArea, setEntityArea] = useState("");
+  const [entityAddress, setEntityAddress] = useState("");
 
   /////////    /////////     /////////
 
@@ -29,14 +30,14 @@ function EntityCreationPage() {
 
   // handling the types of entities that exist
   const [listOfEntityTypes, setListOfEntityTypes] = useState([]);
-  const [chosenType, setChosenType] = useState("");
+  const [entityType, setEntityType] = useState("restaurant");
   const [entityUniqueName, setEntityUniqueName] = useState("");
-  const [entityTypeId, setEntityTypeId] = useState(4);
+  const [entityTypeId, setEntityTypeId] = useState(0);
   // const [entityId, setEntityId] = useState("");
 
   /////////    /////////     /////////
 
-  console.log('entityTypeId', entityTypeId)
+  console.log("entityTypeId", entityTypeId);
 
   //Error states
   const [entityNameIsNullError, setEntityNameIsNullError] = useState(false);
@@ -71,9 +72,7 @@ function EntityCreationPage() {
     };
 
     getTypes();
-
   }, []);
-
 
   // SETTING THE UNIQUE NAME AND THE ARRAY TAGS
   useEffect(() => {
@@ -81,27 +80,25 @@ function EntityCreationPage() {
     const filteredWords = splitEntityName?.filter(
       (word) => word != "the" && word != "and"
     );
-        let uuidSample = userId?.slice(10, 15);
+    let uuidSample = userId?.slice(10, 15);
 
     const newName = filteredWords?.join("");
-    const sEntityUniqueName = newName + "@" + entityArea +uuidSample ;
+    const sEntityUniqueName = newName + "-" + entityArea + "-" + uuidSample;
     setEntityUniqueName(sEntityUniqueName);
   }, [entityName, entityArea]);
 
   //Finding the entity type's id
 
   useEffect(() => {
-  
-    const isTypeObject=(type)=>{
-      return type.entity_type_name===chosenType
-    }
-        // return entityTypeId;
-      let eTypeId=listOfEntityTypes.find(isTypeObject)
-      setEntityTypeId(eTypeId?.id)
-      
-  }, [chosenType]);
-  console.log('listOfEntityTypes', listOfEntityTypes)
-            console.log('eTypeId', entityTypeId)
+    const isTypeObject = (type) => {
+      return type.entity_type_name === entityType;
+    };
+    // return entityTypeId;
+    let eTypeId = listOfEntityTypes.find(isTypeObject);
+    setEntityTypeId(eTypeId?.id);
+  }, [entityType]);
+  console.log("listOfEntityTypes", listOfEntityTypes);
+  console.log("eTypeId", entityTypeId);
 
   ///////////// //////////// /////////// //////////////
 
@@ -127,7 +124,6 @@ function EntityCreationPage() {
     } else {
       // Creating the entity
 
-      
       //Create the entity
 
       const response = await createEntity(
@@ -138,28 +134,28 @@ function EntityCreationPage() {
         entityAddress,
         entityEmailAddress,
         entityPhoneNumber,
-        entityTypeId,
+        entityTypeId
       );
 
+      const entityId = response.id;
 
-      const entityId=response.id;
-      
-      console.log('entityId', entityId)
+      console.log("entityId", entityId);
       //Creating an exchange rate row in DB referring to the newly created entity
       await createExchangeRate(entityId, "1500");
-      
-      // creating the first menu category 
-      const initialMenuCategory = "main";
-      const menuCategoryIsPublic=true
-      const firstMenuCategoryObject = await createMenuCategory(
-        initialMenuCategory,
-        menuCategoryIsPublic,
-        entityId
-      );
-      const firstMenuCategoryId = firstMenuCategoryObject.id;
 
-      router.push(`entity/${entityUniqueName}/menu/${firstMenuCategoryId}`);
-      updateUserHasEntity(true)
+      // creating the first menu category
+
+      const firstMenu = await createEntityMenu(entityId);
+      console.log('firstMenu', firstMenu)
+      const firstMenuId = firstMenu?.id;
+      console.log('firstMenuId', firstMenuId)
+        if(firstMenuId)
+        {
+
+          router.push(`/entity/${entityUniqueName}/menu/${firstMenuId}`);
+        }
+      // const userHasEntity=true
+      // updateUserHasEntity(userId,userHasEntity)
     }
   }
   // const HandleChange = (e) => {
@@ -213,7 +209,7 @@ function EntityCreationPage() {
                   id="entityName"
                   className="text-wrap border-ruby-tint focus:border-ruby-shade peer inline-block h-16 w-full rounded-lg border-2 border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:outline-none"
                   placeholder="entityName"
-                  value={entityName||""}
+                  value={entityName || ""}
                   required
                   onChange={(e) => setEntityName(e.target.value)}
                 />
@@ -410,15 +406,15 @@ text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 abso
               </label>
               {/* BUSINESS TYPE FIELD */}
               <select
-                name="business type"
-                id="business type"
+                defaultValue={"restaurant"}
+                name="entityType"
+                id="entityType"
                 className="h-12 block w-full rounded-md border-gray-300 pl-4 pr-12 mb-3 focus:border-indigo-500 focus:ring-indigo-500 text-xs sm:text-sm"
                 placeholder="Select a type"
                 onChange={(e) => {
                   const selectedType = e.target.value;
-                  setChosenType(selectedType);
+                  setEntityType(selectedType);
                 }}
-                // value={chosenType || ""}
               >
                 {listOfEntityTypes.map((entityTypeObject) => (
                   <option

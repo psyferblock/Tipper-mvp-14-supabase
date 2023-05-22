@@ -39,7 +39,7 @@ const supabaseServer=createServerClient()
           <SupabaseListener serverAccessToken={session?.access_token} />
 
             {/* <Navbar session={session} /> */}
-            <div className="bg-amethyst-shade min-h-screen">
+            <div className=" min-h-screen">
               {/* <AuthContextProvider> */}
               {children}
               {/* </AuthContextProvider> */}

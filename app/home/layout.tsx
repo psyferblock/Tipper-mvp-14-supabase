@@ -1,5 +1,5 @@
 import { EntityInfosContextProvider } from "@/app/context/entityContext/entityContextStore";
-import { getMyEntityInfoServer } from "@/app/lib/get/getEntityInfo";
+import { getMyEntityInfoServer } from "@/app/lib/get/getEntityInfos";
 import { createServerClient } from "@/app/utils/supabase-server";
 import React from "react";
 import  UserInfoContextProvider  from "@/app/context/userContextStore";

@@ -1,6 +1,6 @@
 import { supabase } from "@/app/utils/supabase-browser";
 
-export async function getExchangeRate(entityId: number) {
+export async function getExchangeRate(entityId) {
   //Exchange Rate Reading from Database
   const { data, error } = await supabase
     .from("exchange_rate")
@@ -14,7 +14,7 @@ export async function getExchangeRate(entityId: number) {
 
 export async function getExchangeRateServer(
   supabaseServerClient,
-  entityId: number
+  entityId
 ) {
   //Exchange Rate Reading from Database
   const { data, error } = await supabaseServerClient

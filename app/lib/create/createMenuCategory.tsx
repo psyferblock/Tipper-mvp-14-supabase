@@ -1,15 +1,14 @@
 import { supabase } from "@/app/utils/supabase-browser";
 
-async function createMenuCategory(categoryName, isPublic, entityId) {
+async function createMenuCategory(entityId) {
   const { data, error } = await supabase
     .from("menu_category")
     .insert({
-      menu_category_name: categoryName,
-      is_menu_category_public: isPublic,
+     
       entity_id: entityId,
     })
     .select()
-    .single();
+    // .single();
   if (error) throw error;
   return data;
 }

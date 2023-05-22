@@ -1,13 +1,35 @@
-'use client'
+"use client";
 import CreateEntityButton from "@/app/(entityCreation)/entity-components/CreateEntityButton";
+import GoToEntityButton from "@/app/(entityCreation)/entity-components/GoToEntityButton";
+import { useUsersContext } from "@/app/context/userContextStore";
 import React from "react";
 import ProfileBasicInfoSection from "./ProfileBasicInfoSection";
 
-
 function UserMainPageComponent() {
+  const {
+    userId,
+    firstName,
+    lastName,
+    dateOfBirth,
+    gender,
+    contactNumber,
+    profilePictureUrl,
+    emailAddress,
+    uniqueUserName,
+    hasEntity,
+    setContactNumber,
+    setDateOfBirth,
+    setGender,
+    setProfilePicUrl,
+    setUserId,
+    setUserLastName,
+    setUserName,
+    setEmailAddress,
+    setUniqueName,
+    setHasEntity,
+  } = useUsersContext();
   return (
     <div>
-        
       {" "}
       <div className="bg-pearl w-screen h-full p-2">
         <div>
@@ -19,7 +41,12 @@ function UserMainPageComponent() {
               society.
             </h1>
             <div className="flex object-center ">
+              {/* {hasEntity ? 
               <CreateEntityButton />
+               : 
+              <GoToEntityButton />} */}
+                            <CreateEntityButton />
+
               {/* <button className="w-1/2  h-12 mt-10 hover:bg-pearl hover:text-lg rounded-md bg-diamond text-obsidian text-sm">
     <Link href={`home/${entityUniqueName}/menu/${categoryId}`} className="">
     Access My Entity
@@ -28,7 +55,6 @@ function UserMainPageComponent() {
             </div>
           </div>
           <div className=" relative p-3 m-2 bg-diamond aspect-4/3 ">
-            
             <ProfileBasicInfoSection />
           </div>
         </div>
