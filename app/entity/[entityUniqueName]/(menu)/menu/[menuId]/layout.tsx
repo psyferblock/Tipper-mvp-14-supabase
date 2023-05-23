@@ -14,7 +14,7 @@ export default async function MenuIdPageLayout({
   params: { entityUniqueName: string };
 }) {
   const entityUniqueName = params.entityUniqueName;
-
+  
   console.log("entityUniqueName", entityUniqueName);
 
   const supabaseServer= createServerClient()
@@ -32,6 +32,7 @@ export default async function MenuIdPageLayout({
   console.log("entityFromParameter", entityInfos);
  const  userId=session?.user.id
  console.log('userId', userId)
+
   let userOwnsEntity;
   let entityOwnedId;
   if (session) {
@@ -42,8 +43,7 @@ export default async function MenuIdPageLayout({
     }
   }
 
-  const entityHighlights="something"
-  const entityCoverPictures=["hate","love"]
+ 
   return (
     <>
     <div>

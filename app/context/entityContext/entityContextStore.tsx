@@ -1,5 +1,6 @@
 "use client";
 
+import { error } from "console";
 import React, {
   useEffect,
   createContext,
@@ -13,7 +14,8 @@ import entityInfoReducer, { entityContextState } from "./entityContextReducer";
 /**
  * Function returning all the tools that children component will inherit when using the context.
  */
-function createManageEntityInfosTools(entityInfos) {
+function createManageEntityInfosTools(entityInfos, coverPictures,
+  logoPictureObject) {
   const [entityState, dispatch] = useReducer(
     entityInfoReducer,
     entityContextState
@@ -49,8 +51,8 @@ function createManageEntityInfosTools(entityInfos) {
   } = entityState;
 
   useEffect(() => {
-    setLogoObject(entityInfos?.logoPictureObject);
-    setArrayOfPictureObjects(entityInfos?.coverPictures);
+    setLogoObject(logoPictureObject);
+    setArrayOfPictureObjects(coverPictures);
     setEntityTags(entityInfos?.entity_tags);
     setPhoneNumber(entityInfos?.entity_phone_number);
     setEmailAddress(entityInfos?.entity_email);
@@ -373,15 +375,21 @@ const ManageEntityInfosContext = createContext<
 export default function EntityInfosContextProvider({
   children,
   entityInfos,
+  coverPictures,
+  logoPictureObject
   
 }: {
   children: React.ReactNode;
   entityInfos: any;
+  coverPictures:any;
+  logoPictureObject:any;
 }) {
+  console.log('entityContext from context ', entityInfos )
   // createManageEntityInfosTools(entityInfos, coverPictures, logoPictureObject);
   return (
     <ManageEntityInfosContext.Provider
-      value={createManageEntityInfosTools(entityInfos)}
+      value={createManageEntityInfosTools(entityInfos, coverPictures,
+        logoPictureObject)}
     >
       {children}
     </ManageEntityInfosContext.Provider>
@@ -392,7 +400,7 @@ export default function EntityInfosContextProvider({
 export function useEntityContext() {
   const context = useContext(ManageEntityInfosContext);
   if (!context) {
-    throw new Error("useFormContext must be used within a FormProvider");
+    throw new Error(`something seems to be wrong with ${context}`)
   }
   return context;
 }

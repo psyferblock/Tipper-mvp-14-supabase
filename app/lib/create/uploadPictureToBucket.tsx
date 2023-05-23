@@ -1,11 +1,12 @@
 import { supabase } from "@/app/utils/supabase-browser";
 
-export default async function uploadPictureToBucket(
+export default async function uploadPictureToBucket({
   file,
   storageSchema,
   bucket,
-  userId,
+  id,
   uuid
+}
   
 ) {
   const storageUrl =
@@ -14,7 +15,7 @@ export default async function uploadPictureToBucket(
   const { data, error } = await supabase.storage
     .from(bucket)
     .upload(
-       userId + "/" + uuid,
+       id + "/" + uuid,
       file as File
     );
   if (error) throw error;

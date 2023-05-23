@@ -158,6 +158,7 @@ export default function UserInfoContextProvider({
   userInfos: any;
   
 }) {
+  console.log('contextCreated', userInfos)
   return (
     <ManageUserInfoContext.Provider
       value={CreateUserContextInfoTools(userInfos)}

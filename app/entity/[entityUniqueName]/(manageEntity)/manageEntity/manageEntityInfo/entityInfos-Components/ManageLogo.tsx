@@ -1,47 +1,55 @@
 "use client";
 
-import uploadPictureToBucket from "@/lib/create/uploadPictureToBucket";
-import deleteBasicPictureWithId from "@/lib/delete/deleteBasicPictureWithId";
+import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
+import uploadPictureToBucket from "@/app/lib/create/uploadPictureToBucket";
+import deleteBasicPictureWithId from "@/app/lib/delete/deleteBasicPictureWithId";
 import Image from "next/image";
 import { ChangeEvent, useState } from "react";
-import { useManageEntityInfosContext } from "../Contexts/EntityInfoContext";
+import {v4 as uuidv4} from "uuid"
 
 export default function ManageLogo() {
-  // const { logoObject, setLogoObject } = useManageEntityInfosContext();
-  const logoObject ="/app/public/pizza-chef-logo.png"
+  const { logoObject, setLogoObject } = useEntityContext()
+  // const logoObject ="/app/public/pizza-chef-logo.png"
+ 
+  async function handleAddLogoButton(e: ChangeEvent<HTMLInputElement>) {
+    let file;
 
-  // async function handleAddLogoButton(e: ChangeEvent<HTMLInputElement>) {
-  //   let file;
+    // const fileExt = file.name.split(".").pop();
+    const uuid = uuidv4();
+    const storageSchema = "public";
+    const bucket = "entityLogo";
 
-  //   if (e.target.files) {
-  //     file = e.target.files[0];
-  //   }
-  //   let pictureUrl = await uploadPictureToBucket(
-  //     file,
-  //     "images-restaurant",
-  //     "public"
-  //   );
-  //   let newLogoObject = {
-  //     id: null,
-  //     media_url: pictureUrl,
-  //     media_category: "logo_picture",
-  //   };
-  //   setLogoObject(newLogoObject);
-  // }
+    if (e.target.files) {
+      file = e.target.files[0];
+    }
+    let pictureUrl = await uploadPictureToBucket({
+      file:file,
+      storageSchema:storageSchema,
+      bucket:bucket,
+      id:entityId,
+      uuid:uuid
+    })
+    let newLogoObject = {
+      id: null,
+      media_url: pictureUrl,
+      media_category: "logo_picture",
+    };
+    setLogoObject(newLogoObject);
+  }
 
   // console.log("logo Object in manage logo page", logoObject);
 
-  // async function handleDeletePictureButton() {
-  //   // Locating which picture should be deleted is based on the URL of the picture (could be done with
-  //   // picture Id instead, but would need to upload photo to DB and get its ID which is an extra API
-  //   // call for each picture upload)
+  async function handleDeletePictureButton() {
+    // Locating which picture should be deleted is based on the URL of the picture (could be done with
+    // picture Id instead, but would need to upload photo to DB and get its ID which is an extra API
+    // call for each picture upload)
 
-  //   // If picture alrready exists in database, we delete it from database right away
-  //   if (logoObject.id != null) {
-  //     await deleteBasicPictureWithId(logoObject.id);
-  //   }
-  //   setLogoObject("");
-  // }
+    // If picture alrready exists in database, we delete it from database right away
+    if (logoObject.id != null) {
+      await deleteBasicPictureWithId(logoObject.id);
+    }
+    setLogoObject("");
+  }
 
   return (
     <div className="h-fit  bg-white rounded-lg p-3 sm:p-4 drop-shadow-lg">
@@ -73,9 +81,9 @@ export default function ManageLogo() {
             name="add logo"
             type="file"
             className="sr-only"
-            // onChange={(e) => {
-            //   handleAddLogoButton(e);
-            // }}
+            onChange={(e) => {
+              handleAddLogoButton(e);
+            }}
           />
         </label>
       </div>
@@ -112,9 +120,9 @@ export default function ManageLogo() {
           name="add logo mobile"
           type="file"
           className="sr-only"
-          // onChange={(e) => {
-          //   handleAddLogoButton(e);
-          // }}
+          onChange={(e) => {
+            handleAddLogoButton(e);
+          }}
         />
       </label>
       {/* //////////////////////////////////////////////////////////////////////// */}
@@ -127,7 +135,7 @@ export default function ManageLogo() {
             <div className="relative bg-gray-100 w-full sm:w-full flex justify-center rounded-lg border-2 border-gray-400 ">
               <Image src={logoObject} alt="cover photo" fill />
               <button
-                // onClick={() => handleDeletePictureButton()}
+                onClick={() => handleDeletePictureButton()}
                 className="bg-white rounded-lg h-fit absolute mr-3 mb-3 bottom-0 right-0 z-10"
               >
                 {/* TRASH ICON */}

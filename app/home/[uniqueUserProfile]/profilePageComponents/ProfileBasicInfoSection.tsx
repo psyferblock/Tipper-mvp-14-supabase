@@ -43,7 +43,8 @@ function ProfileBasicInfoSection() {
       contactNumber,
       profilePictureUrl,
       emailAddress,
-      uniqueUserName
+      uniqueUserName,
+      hasEntity
     );
     console.log("updating profile", userUpdate);
   };
@@ -75,12 +76,14 @@ function ProfileBasicInfoSection() {
 
       // calling supabase to upload the pic
 
-      const pictureUrl = await uploadPictureToBucket(
-        file,
-        storageSchema,
-        bucket,
-        userId,
-        uuid
+      const pictureUrl = await uploadPictureToBucket({
+        file:file,
+        storageSchema:storageSchema,
+        bucket:bucket,
+        id:userId,
+        uuid:uuid
+      }
+        
       );
       if (pictureUrl) {
         console.log("pictureUrl", pictureUrl);

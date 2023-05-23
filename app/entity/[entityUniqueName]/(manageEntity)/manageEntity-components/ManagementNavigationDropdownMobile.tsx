@@ -13,7 +13,7 @@ export default function ManagementNavigationDropdownMobile(params) {
   const currentSegment = useSelectedLayoutSegment();
 
   const entityUniqueName = params.entityUniqueName;
-  console.log('entityUniqueName', entityUniqueName)
+  console.log('entityUniqueName', params)
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>

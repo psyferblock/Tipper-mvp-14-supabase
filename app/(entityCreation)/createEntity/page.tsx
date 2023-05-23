@@ -13,7 +13,7 @@ import updateUserProfile from "@/app/lib/update/updateUserProfile";
 import { updateUserHasEntity } from "@/app/lib/update/updateUserHasEntity";
 import { createEntityMenu } from "@/app/lib/create/createEntityMenu";
 
-const EntityCreationPage=()=> {
+const EntityCreationPage = () => {
   const router = useRouter();
   const { session } = useSupabase();
   const userId = session?.user.id;
@@ -146,14 +146,19 @@ const EntityCreationPage=()=> {
       // creating the first menu category
 
       const firstMenu = await createEntityMenu(entityId);
-      console.log('firstMenu', firstMenu)
+      console.log("firstMenu", firstMenu);
       const firstMenuId = firstMenu?.id;
-      console.log('firstMenuId', firstMenuId)
-        if(firstMenuId)
-        {
+      console.log("firstMenuId", firstMenuId);
 
-          router.push(`/entity/${entityUniqueName}/menu/${firstMenuId}`);
-        }
+      let isPublic = true;
+      let categoryName = "main";
+      const firstMenuCategory = await createMenuCategory({
+        categoryName: categoryName,
+        isPublic: isPublic,
+      });
+      if (firstMenuId) {
+        router.push(`/entity/${entityUniqueName}/menu/${firstMenuId}`);
+      }
       // const userHasEntity=true
       // updateUserHasEntity(userId,userHasEntity)
     }
@@ -439,6 +444,6 @@ text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 abso
       </div>
     </>
   );
-}
+};
 
 export default EntityCreationPage;

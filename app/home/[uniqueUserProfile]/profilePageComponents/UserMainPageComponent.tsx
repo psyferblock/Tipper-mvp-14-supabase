@@ -2,12 +2,15 @@
 import CreateEntityButton from "@/app/(entityCreation)/entity-components/CreateEntityButton";
 import GoToEntityButton from "@/app/(entityCreation)/entity-components/GoToEntityButton";
 import { useUsersContext } from "@/app/context/userContextStore";
-import React from "react";
+import { getEntityOfUser } from "@/app/lib/get/getEntityOfUser";
+import { useSupabase } from "@/app/supabase-provider";
+import React ,{useEffect,useState} from "react";
 import ProfileBasicInfoSection from "./ProfileBasicInfoSection";
 
 function UserMainPageComponent() {
+  const [entityState,setEntityState]=useState(null)
   const {
-    userId,
+    // userId,
     firstName,
     lastName,
     dateOfBirth,
@@ -28,6 +31,19 @@ function UserMainPageComponent() {
     setUniqueName,
     setHasEntity,
   } = useUsersContext();
+  const supabase= useSupabase()
+  const { session } = useSupabase();
+  const userId= session?.user.id 
+  useEffect(()=>{
+    const getEntity=async ()=>{
+      const entityInfos=await getEntityOfUser(userId)
+      setEntityState( entityInfos)
+    }
+    getEntity()
+
+
+  },[])
+
   return (
     <div>
       {" "}
@@ -46,12 +62,9 @@ function UserMainPageComponent() {
                : 
               <GoToEntityButton />} */}
                             <CreateEntityButton />
+                            <GoToEntityButton  entityInfos={entityState} />
 
-              {/* <button className="w-1/2  h-12 mt-10 hover:bg-pearl hover:text-lg rounded-md bg-diamond text-obsidian text-sm">
-    <Link href={`home/${entityUniqueName}/menu/${categoryId}`} className="">
-    Access My Entity
-    </Link>
-</button> */}
+          
             </div>
           </div>
           <div className=" relative p-3 m-2 bg-diamond aspect-4/3 ">

@@ -2,8 +2,8 @@ import React from "react";
 import MobileHeaderOfCurrentManagementPage from "../manageEntity-components/MobileHeaderOfCurrentManagementPage";
 import Link from "next/link";
 import ManagementNavigationDropdownMobile from "../manageEntity-components/ManagementNavigationDropdownMobile";
-function layout({ children }: { children: React.ReactNode }) {
-  const entityUserName = "smurfvillage-78-fdd-4";
+function layout({ children,params }: { children: React.ReactNode,params:any }) {
+  const entityUniqueName = params.entityUniqueName;
   const firstMenuId = 12;
   const firstMenuCategoryId = 1;
   return (
@@ -14,7 +14,7 @@ function layout({ children }: { children: React.ReactNode }) {
 
           {/* // this is the back tick that will take us to the entityUniqueName Page.  */}
           <Link
-            href={`${entityUserName}/menu/${firstMenuId}/${firstMenuCategoryId}`}
+            href={`${entityUniqueName}/menu/${firstMenuId}/${firstMenuCategoryId}`}
             className="flex -ml-2 mr-1 w-fit items-center font-bold text-2xl"
           >
             <svg
@@ -36,7 +36,7 @@ function layout({ children }: { children: React.ReactNode }) {
           
             <MobileHeaderOfCurrentManagementPage />
             <div className="sm:hidden">
-          <ManagementNavigationDropdownMobile entityUserName={entityUserName} />
+          <ManagementNavigationDropdownMobile entityUserName={entityUniqueName} />
         </div>
         </div>
         

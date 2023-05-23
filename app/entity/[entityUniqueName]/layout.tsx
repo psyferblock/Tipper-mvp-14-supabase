@@ -17,6 +17,7 @@ export default async function EntityPageLayout({
 
   console.log("entityUniqueName", entityUniqueName);
 
+
   const supabaseServer= createServerClient()
   // getting session
   const {
@@ -35,7 +36,7 @@ export default async function EntityPageLayout({
     <>
     
   
-      welcome to entityUniqueName layout page 
+      welcome to entityUniqueName/menu layout page 
       {children}
     </>
   );

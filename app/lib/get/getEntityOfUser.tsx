@@ -9,7 +9,7 @@ export  async function getEntityOfUser( userId) {
     .limit(1)
     .single();
   if (error) console.log(error);
-  console.log("data returned after fetching the entity of a user", data);
+  console.log("data returned from getEntityOfUser", data);
   return data;
 }
 
@@ -21,6 +21,6 @@ export  async function getEntityOfUserServer(supabaseServerClient, userId) {
     .limit(1)
     .single();
   if (error) console.log(error);
-  console.log("data returned after fetching the entity of a user", data);
+  console.log("data returned from getEntityOfUser", data);
   return data;
 }
