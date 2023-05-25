@@ -4,7 +4,7 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/app/utils/supabase-browser";
 import createUserProfile from "../lib/create/createUserProfile";
-import { userContextState } from "../context/userContextReducer";
+import { userContextState } from "../context/userContext/userContextReducer";
 
 export default function SignUp() {
   const router = useRouter();

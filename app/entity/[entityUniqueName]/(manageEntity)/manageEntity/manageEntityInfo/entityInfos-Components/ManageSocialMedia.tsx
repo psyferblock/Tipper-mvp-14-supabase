@@ -1,39 +1,41 @@
 "use client";
 
+import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 import ToggleButton from "@/app/root-Components/tools-Components/ToggleButton";
 import { useManageEntityInfosContext } from "../Contexts/EntityInfoContext";
 
 export default function ManageSocialMedia() {
-  // const {
-  //   phoneNumber,
-  //   emailAddress,
-  //   instagramUrl,
-  //   isInstagramUrlPublic,
-  //   facebookUrl,
-  //   isFacebookUrlPublic,
-  //   whatsappNumber,
-  //   isWhatsappNumberPublic,
-  //   setPhoneNumber,
-  //   setEmailAddress,
-  //   setInstagramUrl,
-  //   setIsInstagramUrlPublic,
-  //   setFacebookUrl,
-  //   setIsFacebookUrlPublic,
-  //   setWhatsappNumber,
-  //   setIsWhatsappNumberPublic,
-  // } = useManageEntityInfosContext();
+  const {
+    entityPhoneNumber,
+    entityEmailAddress,
+    instagramUrl,
+    isInstagramUrlPublic,
+    facebookUrl,
+    isFacebookUrlPublic,
+    whatsappNumber,
+    isWhatsappNumberPublic,
+    setPhoneNumber,
+    setEmailAddress,
+    setInstagramUrl,
+    setIsInstagramUrlPublic,
+    setFacebookUrl,
+    setIsFacebookUrlPublic,
+    setWhatsappNumber,
+    setIsWhatsappNumberPublic,
+    changeInput,
+  } = useEntityContext();
 
-  // //Changing the state in context of isPublic to the opposite boolean value of current state
-  // function handleInstagramToggleButton(boolean) {
-  //   // setIsInstagramUrlPublic(boolean);
-  
-  // }
-  // function handleFacebookToggleButton(boolean) {
-  //   setIsFacebookUrlPublic(boolean);
-  // }
-  // function handleWhatsappToggleButton(boolean) {
-  //   setIsWhatsappNumberPublic(boolean);
-  // }
+  //Changing the state in context of isPublic to the opposite boolean value of current state
+  function handleInstagramToggleButton(boolean) {
+    setIsInstagramUrlPublic(boolean);
+  }
+
+  function handleFacebookToggleButton(boolean) {
+    setIsFacebookUrlPublic(boolean);
+  }
+  function handleWhatsappToggleButton(boolean) {
+    setIsWhatsappNumberPublic(boolean);
+  }
 
   return (
     <div className=" bg-white rounded-lg p-3 sm:p-4 drop-shadow-lg">
@@ -62,17 +64,19 @@ export default function ManageSocialMedia() {
           <div className="sm:w-96">
             <input
               type="numeric"
-              name="phoneNumber"
-              id="phoneNumber"
+              name="entityPhoneNumber"
+              id="entityPhoneNumber"
               className="h-12 block sm:w-3/4 rounded-md border-gray-400 pl-7 pr-12  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               placeholder="03 456 789"
-              // value={phoneNumber}
-              // onChange={(e) => setPhoneNumber(e.target.value)}
+              value={entityPhoneNumber}
+              onChange={(e) => changeInput(e.target.value)}
             />
           </div>
           {/* <div className="flex space-x-2 sm:space-x-3 grow sm:px-9">
             <div className="mt-0.5">
-              <ToggleButton />
+            <ToggleButton
+                
+              />
             </div>
             <p className=" sm:text-sm text-gray-500">Show on your page</p>
           </div> */}
@@ -101,12 +105,12 @@ export default function ManageSocialMedia() {
           <div className=" sm:w-96">
             <input
               type="text"
-              name="emailAddress"
-              id="emailAddress"
+              name="entityEmailAddress"
+              id="entityEmailAddress"
               className="h-12 block sm:w-3/4 rounded-md border-gray-400 pl-7 pr-12  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               placeholder="Email Address"
-              // value={emailAddress}
-              // onChange={(e) => setEmailAddress(e.target.value)}
+              value={entityEmailAddress}
+              onChange={(e) => changeInput(e.target.value)}
             />
           </div>
           {/* <div className="flex space-x-2 sm:space-x-3 grow sm:px-9">
@@ -140,17 +144,16 @@ export default function ManageSocialMedia() {
               id="instagramUrl"
               className="h-12 block sm:w-3/4 rounded-md border-gray-400 pl-7 pr-12  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               placeholder="Link"
-              // value={instagramUrl}
-              // onChange={(e) => setInstagramUrl(e.target.value)}
+              value={instagramUrl}
+              onChange={(e) => changeInput(e.target.value)}
             />
           </div>
           <div className="flex space-x-2 sm:space-x-3 grow sm:px-9">
             <div className="mt-0.5">
-              {/* <ToggleButton
+              <ToggleButton
                 handleToggleButton={handleInstagramToggleButton}
                 switchedOn={isInstagramUrlPublic}
-              /> */}
-              yoggle button
+              />
             </div>
             <p className=" sm:text-sm text-gray-500">Show on your page</p>
           </div>
@@ -179,17 +182,16 @@ export default function ManageSocialMedia() {
               id="facebookUrl"
               className="h-12 block sm:w-3/4 rounded-md border-gray-400 pl-7 pr-12  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               placeholder="Link"
-              // value={facebookUrl}
-              // onChange={(e) => setFacebookUrl(e.target.value)}
+              value={facebookUrl}
+              onChange={(e) => changeInput(e.target.value)}
             />
           </div>
           <div className="flex space-x-2 sm:space-x-3 grow sm:px-9">
             <div className="mt-0.5">
-              {/* <ToggleButton
+              <ToggleButton
                 handleToggleButton={handleFacebookToggleButton}
                 switchedOn={isFacebookUrlPublic}
-              /> */}
-              toggle button
+              />
             </div>
             <p className=" sm:text-sm text-gray-500">Show on your page</p>
           </div>
@@ -218,18 +220,16 @@ export default function ManageSocialMedia() {
               id="whatsappNumber"
               className="h-12 block sm:w-3/4 rounded-md border-gray-400 pl-7 pr-12  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               placeholder="Whatsapp Number"
-              // value={whatsappNumber}
-              // onChange={(e) => setWhatsappNumber(e.target.value)}
-              
+              value={whatsappNumber}
+              onChange={(e) => changeInput(e.target.value)}
             />
           </div>
           <div className="flex space-x-2 sm:space-x-3 grow sm:px-9">
             <div className="mt-0.5">
-              {/* <ToggleButton
+              <ToggleButton
                 handleToggleButton={handleWhatsappToggleButton}
                 switchedOn={isWhatsappNumberPublic}
-              /> */}
-              toggle button 
+              />
             </div>
             <p className="sm:text-sm text-gray-500">Show on your page</p>
           </div>

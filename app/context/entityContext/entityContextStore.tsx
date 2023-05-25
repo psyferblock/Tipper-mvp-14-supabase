@@ -8,18 +8,23 @@ import React, {
   useReducer,
   useCallback,
   useState,
+  useRef,
 } from "react";
 import entityInfoReducer, { entityContextState } from "./entityContextReducer";
 
 /**
  * Function returning all the tools that children component will inherit when using the context.
  */
-function createManageEntityInfosTools(entityInfos, coverPictures,
-  logoPictureObject) {
+function createManageEntityInfosTools(
+  entityInfos,
+  coverPictures,
+  logoPictureObject
+) {
   const [entityState, dispatch] = useReducer(
     entityInfoReducer,
     entityContextState
   );
+ 
   const {
     entityName,
     logoObject,
@@ -47,7 +52,7 @@ function createManageEntityInfosTools(entityInfos, coverPictures,
     isWhatsappNumberPublic,
     entityUniqueName,
     entityArea,
-    entityId
+    entityId,
   } = entityState;
 
   useEffect(() => {
@@ -76,20 +81,19 @@ function createManageEntityInfosTools(entityInfos, coverPictures,
     setEntityUniqueName(entityInfos?.entity_unique_name);
     setEntityAddress(entityInfos?.entity_address);
     setEntityName(entityInfos?.entity_name);
-    setEntityId(entityInfos?.id)
+    setEntityId(entityInfos?.id);
   }, []);
 
-
-const setEntityId = useCallback((name: string) => {
+  const setEntityId = useCallback((id: string) => {
     dispatch({
-      type: "SET_ENTITY_ID",
-      payload: name,
+      type: "ENTITY_ID",
+      payload: id,
     });
   }, []);
-  
-   const setEntityName = useCallback((name: string) => {
+
+  const setEntityName = useCallback((name: string) => {
     dispatch({
-      type: "SET_ENTITY_NAME",
+      type: "ENTITY_NAME",
       payload: name,
     });
   }, []);
@@ -98,7 +102,7 @@ const setEntityId = useCallback((name: string) => {
    */
   const setLogoObject = useCallback((newObject: string) => {
     dispatch({
-      type: "SET_LOGO_OBJECT",
+      type: "LOGO_OBJECT",
       payload: newObject,
     });
   }, []);
@@ -106,9 +110,9 @@ const setEntityId = useCallback((name: string) => {
   /**
    * Setter function for arrayOfObjectPictures state variable
    */
-  const setArrayOfPictureObjects = useCallback((newArray: string[]) => {
+  const setArrayOfPictureObjects = useCallback((newArray) => {
     dispatch({
-      type: "SET_ARRAY_OF_PICTURE_OBJECTS",
+      type: "ARRAY_OF_PICTURE_OBJECTS",
       payload: newArray,
     });
   }, []);
@@ -118,7 +122,7 @@ const setEntityId = useCallback((name: string) => {
    */
   const setEntityTags = useCallback((currentTags: string[]) => {
     dispatch({
-      type: "SET_ENTITY_TAGS",
+      type: "ENTITY_TAGS",
       payload: currentTags,
     });
   }, []);
@@ -128,7 +132,7 @@ const setEntityId = useCallback((name: string) => {
    */
   const setPhoneNumber = useCallback((number: string) => {
     dispatch({
-      type: "SET_PHONE_NUMBER",
+      type: "PHONE_NUMBER",
       payload: number,
     });
   }, []);
@@ -138,7 +142,7 @@ const setEntityId = useCallback((name: string) => {
    */
   const setEmailAddress = useCallback((email: string) => {
     dispatch({
-      type: "SET_EMAIL_ADDRESS",
+      type: "EMAIL_ADDRESS",
       payload: email,
     });
   }, []);
@@ -148,7 +152,7 @@ const setEntityId = useCallback((name: string) => {
    */
   const setInstagramUrl = useCallback((url: string) => {
     dispatch({
-      type: "SET_INSTAGRAM_URL",
+      type: "INSTAGRAM_URL",
       payload: url,
     });
   }, []);
@@ -158,7 +162,7 @@ const setEntityId = useCallback((name: string) => {
    */
   const setIsInstagramUrlPublic = useCallback((isPublic: boolean) => {
     dispatch({
-      type: "SET_IS_INSTAGRAM_URL_PUBLIC",
+      type: "IS_INSTAGRAM_URL_PUBLIC",
       payload: isPublic,
     });
   }, []);
@@ -168,7 +172,7 @@ const setEntityId = useCallback((name: string) => {
    */
   const setFacebookUrl = useCallback((url: string) => {
     dispatch({
-      type: "SET_FACEBOOK_URL",
+      type: "FACEBOOK_URL",
       payload: url,
     });
   }, []);
@@ -178,7 +182,7 @@ const setEntityId = useCallback((name: string) => {
    */
   const setIsFacebookUrlPublic = useCallback((isPublic: boolean) => {
     dispatch({
-      type: "SET_IS_FACEBOOK_URL_PUBLIC",
+      type: "IS_FACEBOOK_URL_PUBLIC",
       payload: isPublic,
     });
   }, []);
@@ -188,7 +192,7 @@ const setEntityId = useCallback((name: string) => {
    */
   const setWhatsappNumber = useCallback((number: string) => {
     dispatch({
-      type: "SET_WHATSAPP_NUMBER",
+      type: "WHATSAPP_NUMBER",
       payload: number,
     });
   }, []);
@@ -198,7 +202,7 @@ const setEntityId = useCallback((name: string) => {
    */
   const setIsWhatsappNumberPublic = useCallback((isPublic: boolean) => {
     dispatch({
-      type: "SET_IS_WHATSAPP_NUMBER_PUBLIC",
+      type: "IS_WHATSAPP_NUMBER_PUBLIC",
       payload: isPublic,
     });
   }, []);
@@ -208,7 +212,7 @@ const setEntityId = useCallback((name: string) => {
    */
   const setAboutUsDescription = useCallback((description: string) => {
     dispatch({
-      type: "SET_ABOUT_US_DESCRIPTION",
+      type: "ABOUT_US_DESCRIPTION",
       payload: description,
     });
   }, []);
@@ -218,7 +222,7 @@ const setEntityId = useCallback((name: string) => {
    */
   const setAboutUsPictureUrl = useCallback((url: string) => {
     dispatch({
-      type: "SET_ABOUT_US_PICTURE_URL",
+      type: "ABOUT_US_PICTURE_URL",
       payload: url,
     });
   }, []);
@@ -228,7 +232,7 @@ const setEntityId = useCallback((name: string) => {
    */
   const setIsContactUsSectionPublic = useCallback((isPublic: boolean) => {
     dispatch({
-      type: "SET_IS_CONTACT_US_SECTION_PUBLIC",
+      type: "IS_CONTACT_US_SECTION_PUBLIC",
       payload: isPublic,
     });
   }, []);
@@ -238,7 +242,7 @@ const setEntityId = useCallback((name: string) => {
    */
   const setContactUsDescription = useCallback((description: string) => {
     dispatch({
-      type: "SET_CONTACT_US_DESCRIPTION",
+      type: "CONTACT_US_DESCRIPTION",
       payload: description,
     });
   }, []);
@@ -248,59 +252,85 @@ const setEntityId = useCallback((name: string) => {
    */
   const setContactUsPictureUrl = useCallback((url: string) => {
     dispatch({
-      type: "SET_CONTACT_US_PICTURE_URL",
+      type: "CONTACT_US_PICTURE_URL",
       payload: url,
     });
   }, []);
 
   const setIsVerified = useCallback((verified: boolean) => {
     dispatch({
-      type: "SET_IS_VERIFIED",
+      type: "IS_VERIFIED",
       payload: verified,
     });
   }, []);
   const setEntityOwnerId = useCallback((ownerId: string) => {
     dispatch({
-      type: "SET_ENTITY_OWNER_ID",
+      type: "ENTITY_OWNER_ID",
       payload: ownerId,
     });
   }, []);
   const setIndustryId = useCallback((industryId: number) => {
     dispatch({
-      type: "SET_INDUSTRY_ID",
+      type: "INDUSTRY_ID",
       payload: industryId,
     });
   }, []);
   const setEntityTypeId = useCallback((entityType: number) => {
     dispatch({
-      type: "SET_ENTITY_TYPE_ID",
+      type: "ENTITY_TYPE_ID",
       payload: entityType,
     });
   }, []);
   const setLocationId = useCallback((locationId: number) => {
     dispatch({
-      type: "SET_LOCATION_ID",
+      type: "LOCATION_ID",
       payload: locationId,
     });
   }, []);
   const setEntityArea = useCallback((entityArea: string) => {
     dispatch({
-      type: "SET_ENTITY_AREA",
+      type: "ENTITY_AREA",
       payload: entityArea,
     });
   }, []);
   const setEntityUniqueName = useCallback((uniqueName: string) => {
     dispatch({
-      type: "SET_ENTITY_UNIQUE_NAME",
+      type: "ENTITY_UNIQUE_NAME",
       payload: uniqueName,
     });
   }, []);
   const setEntityAddress = useCallback((entityAddress: string) => {
     dispatch({
-      type: "SET_ENTITY_ADDRESS",
+      type: "ENTITY_ADDRESS",
       payload: entityAddress,
     });
   }, []);
+  const changeInput = useCallback((e) => {
+    dispatch({
+      type: "CHANGE_INPUT",
+      payload: { name: e.target.value, value: e.target.value },
+    });
+  }, []);
+
+  const handleTags = useCallback((tagRef) => {
+    const tags = tagRef.split(",");
+    tags.forEach((tag) => {
+      dispatch({
+        type: "ADD_TAG",
+        payload: tag,
+      });
+    });
+  }, []);
+
+  const removeTag = useCallback((tag) => {
+    dispatch({
+      type: "REMOVE_TAG",
+      payload: tag,
+    });
+  }, []);
+
+ 
+  console.log("entityState", entityState);
 
   return {
     entityName,
@@ -356,6 +386,9 @@ const setEntityId = useCallback((name: string) => {
     setEntityUniqueName,
     setEntityAddress,
     setEntityId,
+    handleTags,
+    removeTag,
+    changeInput
   };
 }
 
@@ -376,20 +409,21 @@ export default function EntityInfosContextProvider({
   children,
   entityInfos,
   coverPictures,
-  logoPictureObject
-  
+  logoPictureObject,
 }: {
   children: React.ReactNode;
   entityInfos: any;
-  coverPictures:any;
-  logoPictureObject:any;
+  coverPictures: any;
+  logoPictureObject: any;
 }) {
-  console.log('entityContext from context ', entityInfos )
   // createManageEntityInfosTools(entityInfos, coverPictures, logoPictureObject);
   return (
     <ManageEntityInfosContext.Provider
-      value={createManageEntityInfosTools(entityInfos, coverPictures,
-        logoPictureObject)}
+      value={createManageEntityInfosTools(
+        entityInfos,
+        coverPictures,
+        logoPictureObject
+      )}
     >
       {children}
     </ManageEntityInfosContext.Provider>
@@ -400,7 +434,7 @@ export default function EntityInfosContextProvider({
 export function useEntityContext() {
   const context = useContext(ManageEntityInfosContext);
   if (!context) {
-    throw new Error(`something seems to be wrong with ${context}`)
+    throw new Error(`something seems to be wrong with ${context}`);
   }
   return context;
 }

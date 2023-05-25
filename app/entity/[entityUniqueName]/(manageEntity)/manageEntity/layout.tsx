@@ -2,10 +2,38 @@ import React from "react";
 import MobileHeaderOfCurrentManagementPage from "../manageEntity-components/MobileHeaderOfCurrentManagementPage";
 import Link from "next/link";
 import ManagementNavigationDropdownMobile from "../manageEntity-components/ManagementNavigationDropdownMobile";
-function layout({ children,params }: { children: React.ReactNode,params:any }) {
+import { getEntityIdFromUniqueNameServer } from "@/app/lib/get/getEntityIdFromUniqueName";
+import { createServerClient } from "@/app/utils/supabase-server";
+import { getEntityUsingUniqueNameServer } from "@/app/lib/get/getEntityUsingUniqueName";
+import { getEntityMenu, getEntityMenuServer } from "@/app/lib/get/getEntityMenu";
+import { getMenuCategoriesServer } from "@/app/lib/get/getMenuCategories";
+
+async function layout({ children,params }: { children: React.ReactNode,params:any }) {
+
   const entityUniqueName = params.entityUniqueName;
-  const firstMenuId = 12;
-  const firstMenuCategoryId = 1;
+  const supabaseServer = createServerClient();
+
+  // getting session
+  const {
+    data: { session },
+  } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details.
+
+  //Fetching  entity information from DB
+  const entityInfos = await getEntityUsingUniqueNameServer(
+    supabaseServer,
+    entityUniqueName
+  );
+  const entityId=entityInfos.id
+
+  // menu stuff 
+  const menuInfo = await getEntityMenuServer(supabaseServer,entityId);
+  const menuId=menuInfo[0].id
+  console.log('menuId from layout/manageEntity', menuId )
+// categories stuff 
+  const categories = await getMenuCategoriesServer(supabaseServer,menuId);
+    console.log('menu categories from  layout/manageEntity', categories)
+    const categoryId=categories.id
+
   return (
     <div>
       
@@ -14,7 +42,7 @@ function layout({ children,params }: { children: React.ReactNode,params:any }) {
 
           {/* // this is the back tick that will take us to the entityUniqueName Page.  */}
           <Link
-            href={`${entityUniqueName}/menu/${firstMenuId}/${firstMenuCategoryId}`}
+            href={`entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}`}
             className="flex -ml-2 mr-1 w-fit items-center font-bold text-2xl"
           >
             <svg

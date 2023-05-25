@@ -14,10 +14,10 @@ export default async function MenuIdPageLayout({
   params: { entityUniqueName: string };
 }) {
   const entityUniqueName = params.entityUniqueName;
-  
-  console.log("entityUniqueName", entityUniqueName);
 
-  const supabaseServer= createServerClient()
+
+  const supabaseServer = createServerClient();
+
   // getting session
   const {
     data: { session },
@@ -29,44 +29,38 @@ export default async function MenuIdPageLayout({
     entityUniqueName
   );
 
-  console.log("entityFromParameter", entityInfos);
- const  userId=session?.user.id
- console.log('userId', userId)
+  const userId = session?.user.id;
 
   let userOwnsEntity;
-  let entityOwnedId;
+  let entityOwnedId = entityInfos.user_id;
   if (session) {
-    const ownerOfCurrentEntity = entityInfos.user_id;
-    if (userId == ownerOfCurrentEntity) {
+    const ownerOfCurrentEntity = entityOwnedId;
+    if (userId === ownerOfCurrentEntity) {
       userOwnsEntity = true;
       entityOwnedId = entityInfos.id;
     }
   }
 
- 
   return (
     <>
-    <div>
-    <div className="flex items-center justify-between m-2 border-stone-500 border-2">
+      <div>
+        <div className="flex items-center justify-between m-2 border-stone-500 border-2">
           <div>{entityInfos.entity_name}</div>
           {userOwnsEntity && (
-            <button className="bg-amethyst rounded-md h-10 w-32 m-2">
-
-            <Link
-              href={`entity/${entityUniqueName}/manageEntity/entityInfo`}
-              className=" "
+            <button className="bg-amethyst rounded-md h-12 w-32 m-2">
+              <Link
+                href={`entity/${entityUniqueName}/manageEntity/manageEntityInfo`}
+                className=" "
               >
-              Manage Entity
-            </Link>
-              </button>
+                Manage Entity
+              </Link>
+            </button>
           )}
         </div>
         <div className=" border-stone-500 border-2 m-2">
-        <CopyUrlShareWhatsappButtons />
-          
+          <CopyUrlShareWhatsappButtons />
         </div>
-    </div>
-  
+      </div>
       welcome to entityUniqueName /menuId home
       {children}
     </>

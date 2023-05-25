@@ -12,11 +12,25 @@ import { useEntityContext } from "@/app/context/entityContext/entityContextStore
 import updateUserProfile from "@/app/lib/update/updateUserProfile";
 import { updateUserHasEntity } from "@/app/lib/update/updateUserHasEntity";
 import { createEntityMenu } from "@/app/lib/create/createEntityMenu";
+import { useUsersContext } from "@/app/context/userContext/userContextStore";
 
 const EntityCreationPage = () => {
   const router = useRouter();
   const { session } = useSupabase();
-  const userId = session?.user.id;
+  // const userId = session?.user.id;
+  const {
+    userId,
+    firstName,
+    lastName,
+    dateOfBirth,
+    gender,
+    contactNumber,
+    profilePictureUrl,
+    emailAddress,
+    uniqueUserName,
+    hasEntity,
+    setHasEntity,
+  } = useUsersContext();
 
   const [entityName, setEntityName] = useState("");
   const [entityPhoneNumber, setEntityPhoneNumber] = useState(0);
@@ -77,13 +91,15 @@ const EntityCreationPage = () => {
   // SETTING THE UNIQUE NAME AND THE ARRAY TAGS
   useEffect(() => {
     const splitEntityName = entityName?.split(" ");
+    const entityAreaSplit = entityArea?.split(" ");
+    const connectedArea = entityAreaSplit?.join("");
     const filteredWords = splitEntityName?.filter(
       (word) => word != "the" && word != "and"
     );
     let uuidSample = userId?.slice(10, 15);
 
     const newName = filteredWords?.join("");
-    const sEntityUniqueName = newName + "-" + entityArea + "-" + uuidSample;
+    const sEntityUniqueName = newName + "-" + connectedArea + "-" + uuidSample;
     setEntityUniqueName(sEntityUniqueName);
   }, [entityName, entityArea]);
 
@@ -136,28 +152,49 @@ const EntityCreationPage = () => {
         entityPhoneNumber,
         entityTypeId
       );
+      if (response) {
+        const entityId = response.id;
 
-      const entityId = response.id;
+        console.log("entityId", entityId);
+        //Creating an exchange rate row in DB referring to the newly created entity
+        await createExchangeRate(entityId, "1500");
 
-      console.log("entityId", entityId);
-      //Creating an exchange rate row in DB referring to the newly created entity
-      await createExchangeRate(entityId, "1500");
+        // creating the first menu category
+const menuName="original"
+        const firstMenu = await createEntityMenu({entityId:entityId,menuName:menuName});
+        console.log("firstMenu", firstMenu);
+        const firstMenuId = firstMenu?.id;
+        console.log("firstMenuId", firstMenuId);
 
-      // creating the first menu category
-
-      const firstMenu = await createEntityMenu(entityId);
-      console.log("firstMenu", firstMenu);
-      const firstMenuId = firstMenu?.id;
-      console.log("firstMenuId", firstMenuId);
-
-      let isPublic = true;
-      let categoryName = "main";
-      const firstMenuCategory = await createMenuCategory({
-        categoryName: categoryName,
-        isPublic: isPublic,
-      });
-      if (firstMenuId) {
-        router.push(`/entity/${entityUniqueName}/menu/${firstMenuId}`);
+        let isPublic = true;
+        let categoryName = "main";
+        const firstMenuCategory = await createMenuCategory({
+          categoryName: categoryName,
+          isPublic: isPublic,
+          menuId: firstMenuId,
+          
+        });
+        if (firstMenuId) {
+          router.push(
+            `/entity/${entityUniqueName}/menu/${firstMenuId}/category/${firstMenuCategory}`
+          );
+        }
+        setHasEntity(!hasEntity);
+        console.log('hasEntity', hasEntity)
+        await updateUserProfile({
+          userId: userId,
+          firstName: firstName,
+          lastName: lastName,
+          dateOfBirth: dateOfBirth,
+          gender: gender,
+          contactNumber: contactNumber,
+          profilePictureUrl: profilePictureUrl,
+          emailAddress: emailAddress,
+          uniqueUserName: uniqueUserName,
+          hasEntity: true,
+        });
+      } else {
+        throw new Error("sorry something went wrong");
       }
       // const userHasEntity=true
       // updateUserHasEntity(userId,userHasEntity)

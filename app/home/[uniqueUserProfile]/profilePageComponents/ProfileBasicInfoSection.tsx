@@ -1,5 +1,5 @@
 "use client";
-import { useUsersContext } from "@/app/context/userContextStore";
+import { useUsersContext } from "@/app/context/userContext/userContextStore";
 import uploadPictureToBucket from "@/app/lib/create/uploadPictureToBucket";
 import updateUserProfile from "@/app/lib/update/updateUserProfile";
 import { useSupabase } from "@/app/supabase-provider";
@@ -21,6 +21,7 @@ function ProfileBasicInfoSection() {
     profilePictureUrl,
     emailAddress,
     uniqueUserName,
+    hasEntity,
     setContactNumber,
     setDateOfBirth,
     setGender,
@@ -30,22 +31,23 @@ function ProfileBasicInfoSection() {
     setUserName,
     setEmailAddress,
     setUniqueName,
+    setHasEntity,
   } = useUsersContext();
 
   // managing state with context was truly a good day for me
   const handleUserInfo = async () => {
-    const userUpdate = await updateUserProfile(
-      userId,
-      firstName,
-      lastName,
-      dateOfBirth,
-      gender,
-      contactNumber,
-      profilePictureUrl,
-      emailAddress,
-      uniqueUserName,
-      hasEntity
-    );
+    const userUpdate = await updateUserProfile({
+      userId: userId,
+      firstName: firstName,
+      lastName: lastName,
+      dateOfBirth: dateOfBirth,
+      gender: gender,
+      contactNumber: contactNumber,
+      profilePictureUrl: profilePictureUrl,
+      emailAddress: emailAddress,
+      uniqueUserName: uniqueUserName,
+      hasEntity: hasEntity,
+    });
     console.log("updating profile", userUpdate);
   };
 
@@ -77,14 +79,12 @@ function ProfileBasicInfoSection() {
       // calling supabase to upload the pic
 
       const pictureUrl = await uploadPictureToBucket({
-        file:file,
-        storageSchema:storageSchema,
-        bucket:bucket,
-        id:userId,
-        uuid:uuid
-      }
-        
-      );
+        file: file,
+        storageSchema: storageSchema,
+        bucket: bucket,
+        id: userId,
+        uuid: uuid,
+      });
       if (pictureUrl) {
         console.log("pictureUrl", pictureUrl);
         setProfilePicUrl(pictureUrl);
@@ -101,7 +101,6 @@ function ProfileBasicInfoSection() {
   };
 
   return (
-
     <div>
       {" "}
       <div className="flex justify-between">
@@ -111,7 +110,7 @@ function ProfileBasicInfoSection() {
           onClick={() => {
             setEditing(!editing);
           }}
-          >
+        >
           Edit
         </button>
       </div>
@@ -123,10 +122,10 @@ function ProfileBasicInfoSection() {
             alt={"profile Pic"}
             src={
               profilePictureUrl
-              ? profilePictureUrl
-              : "https://zluncbhyhpxonqhigbhn.supabase.co/storage/v1/object/public/avatars/b72b3811-cfdd-4f09-9ebc-4464cf3bad89/8df4a812-99b4-4443-984a-f8c1cc68d103"
+                ? profilePictureUrl
+                : "https://zluncbhyhpxonqhigbhn.supabase.co/storage/v1/object/public/avatars/b72b3811-cfdd-4f09-9ebc-4464cf3bad89/8df4a812-99b4-4443-984a-f8c1cc68d103"
             }
-            ></Image>
+          ></Image>
         </div>
         <div className="text-blue-500 flex sm:flex justify-center sm:justify-center space-x-[3px] sm:space-x-[0.6px] text-xs sm:text-xs  ">
           {/* <button disabled={!editing} >Change photo</button> */}
@@ -134,10 +133,10 @@ function ProfileBasicInfoSection() {
             htmlFor="profilePicture"
             className={
               editing
-              ? "relative cursor-pointer rounded-md bg-gray-100 font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-400"
-              : "text-gray-500"
+                ? "relative cursor-pointer rounded-md bg-gray-100 font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-400"
+                : "text-gray-500"
             }
-            >
+          >
             <span className={`${!editing && "hidden"} p-2`}>
               {selectedFile ? "photo selected" : "Change photo"}
             </span>
@@ -156,7 +155,7 @@ function ProfileBasicInfoSection() {
                 fileSelectHandler(e);
               }}
               // value={profilePictureUrl || ""}
-              />
+            />
           </label>
 
           <button
@@ -164,7 +163,7 @@ function ProfileBasicInfoSection() {
             onClick={() => {
               fileUploadHandler(selectedFile);
             }}
-            >
+          >
             upload picture
           </button>
         </div>
@@ -172,20 +171,17 @@ function ProfileBasicInfoSection() {
           {!editing ? (
             <div className="flex p-2 flex-col ">
               <div>
-              <span className="m-2">{firstName}</span>
-              <span className="m-2">{lastName}</span>
+                <span className="m-2">{firstName}</span>
+                <span className="m-2">{lastName}</span>
               </div>
               <div className="flex space-between m-2">
                 <span className="">birthday: {dateOfBirth}</span>
-                                <span className="">{gender}</span>
-
-                </div>
-                <div>
-                   <span>{emailAddress}</span>
-                                      <span>{contactNumber}</span>
-
-                  </div>
-
+                <span className="">{gender}</span>
+              </div>
+              <div>
+                <span>{emailAddress}</span>
+                <span>{contactNumber}</span>
+              </div>
             </div>
           ) : (
             <div>
@@ -197,7 +193,7 @@ function ProfileBasicInfoSection() {
                     <label
                       htmlFor="first name"
                       className="text-xs text-gray-600 font-medium pb-5"
-                      >
+                    >
                       First Name
                     </label>
                     {/* FIRST NAME INPUT FIELD */}
@@ -236,7 +232,7 @@ function ProfileBasicInfoSection() {
                   <label
                     htmlFor="names"
                     className="text-xs text-gray-600 font-medium pb-3"
-                    >
+                  >
                     Date of birth
                   </label>
                   {/* DATE OF BIRTH INPUT FIELD */}
@@ -249,12 +245,15 @@ function ProfileBasicInfoSection() {
                     className="h-12 text-gray-600 block w-full rounded-md border-gray-300 pl-4 pr-12 mb-3 focus:border-indigo-500 focus:ring-indigo-500 text-xs sm:text-sm"
                     placeholder="Enter Date of Birth"
                     disabled={!editing}
-                    />
+                  />
                 </div>
               </div>
-          {/* GENDER  */}
+              {/* GENDER  */}
               <div className="sm:w-5/12">
-                <label htmlFor="gender" className="text-xs text-gray-600 font-medium">
+                <label
+                  htmlFor="gender"
+                  className="text-xs text-gray-600 font-medium"
+                >
                   Gender
                 </label>
                 <div className="sm:space-y-6">
@@ -271,11 +270,11 @@ function ProfileBasicInfoSection() {
                         name="default-radio"
                         className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
                         disabled={!editing}
-                        />
+                      />
                       <label
                         htmlFor="default-radio-1"
                         className="ml-2 text-xs font-normal text-gray-900 dark:text-gray-500"
-                        >
+                      >
                         Male
                       </label>
                     </div>
@@ -291,11 +290,11 @@ function ProfileBasicInfoSection() {
                         name="default-radio"
                         className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
                         disabled={!editing}
-                        />
+                      />
                       <label
                         htmlFor="default-radio-1"
                         className="ml-2 text-xs font-normal text-gray-900 dark:text-gray-500"
-                        >
+                      >
                         Female
                       </label>
                     </div>
@@ -311,11 +310,11 @@ function ProfileBasicInfoSection() {
                         name="default-radio"
                         className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
                         disabled={!editing}
-                        />
+                      />
                       <label
                         htmlFor="default-radio-1"
                         className="ml-2 text-xs font-normal text-gray-900 dark:text-gray-500"
-                        >
+                      >
                         Neutral
                       </label>
                     </div>
@@ -326,7 +325,7 @@ function ProfileBasicInfoSection() {
                   <label
                     htmlFor="names"
                     className="text-xs text-gray-600 font-medium"
-                    >
+                  >
                     Contact Number
                   </label>
                   <input
@@ -339,19 +338,19 @@ function ProfileBasicInfoSection() {
                     className="h-12 block w-full rounded-md border-gray-300 pl-4 pr-12  focus:border-indigo-500 focus:ring-indigo-500 text-xs sm:text-sm"
                     placeholder="Enter Number"
                     disabled={!editing}
-                    />
+                  />
                 </div>
               </div>
               <button
-              className="w-11/12 h-10 mt-8 hover:bg-ruby-tint hover:text-lg rounded-3xl bg-diamond text-ruby text-md m-3"
-              onClick={handleUserInfo}
+                className="w-11/12 h-10 mt-8 hover:bg-ruby-tint hover:text-lg rounded-3xl bg-diamond text-ruby text-md m-3"
+                onClick={handleUserInfo}
               >
                 submit
               </button>
             </div>
-      )}
+          )}
         </div>
-    </div>
+      </div>
     </div>
   );
 }

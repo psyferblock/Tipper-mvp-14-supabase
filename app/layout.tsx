@@ -5,7 +5,7 @@ import "./globals.css";
 // import { AuthContextProvider } from "./context/Store";
 import SupabaseListener from "./supabase-listener";
 import SupabaseProvider from "./supabase-provider";
-import  UserInfoContextProvider  from "@/app/context/userContextStore";
+import  UserInfoContextProvider  from "@/app/context/userContext/userContextStore";
 import { getMyUserInfoServer } from "./lib/get/getMyUserInfo";
 
 
@@ -24,7 +24,10 @@ const supabaseServer=createServerClient()
     data: { session },
   } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details.
 
- 
+  
+  const myUserId = session?.user.id;
+
+  const userInformation = await getMyUserInfoServer(supabaseServer, myUserId);
    
  
   return (
@@ -37,7 +40,7 @@ const supabaseServer=createServerClient()
       <body>
         <SupabaseProvider session={session}>
           <SupabaseListener serverAccessToken={session?.access_token} />
-          {/* <UserInfoContextProvider userInfos={userInformation}> */}
+          <UserInfoContextProvider userInfos={userInformation}>
 
             {/* <Navbar session={session} /> */}
             <div className=" min-h-screen">
@@ -45,8 +48,7 @@ const supabaseServer=createServerClient()
               {children}
               {/* </AuthContextProvider> */}
             </div>
-            {/* </UserInfoContextProvider> */}
-            {/* </UserInfoContextProvider> */}
+            </UserInfoContextProvider>
         </SupabaseProvider>
       </body>
     </html>

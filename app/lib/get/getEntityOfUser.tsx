@@ -1,16 +1,16 @@
 import { supabase } from "@/app/utils/supabase-browser";
 
 
-export  async function getEntityOfUser( userId) {
+export  async function getEntityOfUser(userId:string) {
   let { data, error } = await supabase
     .from("entity")
     .select()
     .eq("user_id", userId)
-    .limit(1)
-    .single();
-  if (error) console.log(error);
+    // .limit(1)
+    // .single();
+  if (error) throw (error);
   console.log("data returned from getEntityOfUser", data);
-  return data;
+  return data[0]
 }
 
 export  async function getEntityOfUserServer(supabaseServerClient, userId) {
@@ -18,9 +18,9 @@ export  async function getEntityOfUserServer(supabaseServerClient, userId) {
     .from("entity")
     .select()
     .eq("user_id", userId)
-    .limit(1)
-    .single();
-  if (error) console.log(error);
+    // .limit(1)
+    // .single();
+  if (error) throw (error);
   console.log("data returned from getEntityOfUser", data);
-  return data;
+  return data[0]
 }

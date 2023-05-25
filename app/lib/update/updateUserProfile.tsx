@@ -1,16 +1,17 @@
 import { supabase } from "@/app/utils/supabase-browser";
 
 export default async function updateUserProfile(
-  userId,
-  firstName,
-  lastName,
-  dateOfBirth,
-  gender,
-  contactNumber,
-  profilePictureUrl,
-  emailAddress,
-  uniqueUserName,
-  hasEntity
+{ userId:userId,
+  firstName:firstName,
+  lastName:lastName,
+  dateOfBirth:dateOfBirth,
+  gender:gender,
+  contactNumber:contactNumber,
+  profilePictureUrl:profilePictureUrl,
+  emailAddress:emailAddress,
+  uniqueUserName:uniqueUserName,
+  hasEntity:hasEntity
+}
 ) {
   const { data, error } = await supabase
     .from("user_profile")

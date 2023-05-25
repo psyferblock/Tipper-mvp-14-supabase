@@ -16,7 +16,7 @@ function CreateEntityButton() {
     // all of these meet the standard then we will allow to go create entity else we will ahve to let him go to fill his profile.
   return (
     <div>
-        <button className="w-1/2  h-12 mt-10 hover:bg-pearl hover:text-lg rounded-md bg-diamond text-obsidian text-sm">
+        <button className="w-32  h-12 mt-10 hover:bg-pearl hover:text-lg rounded-md bg-diamond text-obsidian text-sm">
               <Link href="/createEntity" className="">
                 Create Now
               </Link>

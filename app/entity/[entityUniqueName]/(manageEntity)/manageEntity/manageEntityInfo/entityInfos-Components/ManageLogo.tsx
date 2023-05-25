@@ -10,31 +10,36 @@ import {v4 as uuidv4} from "uuid"
 export default function ManageLogo() {
   const { logoObject, setLogoObject } = useEntityContext()
   // const logoObject ="/app/public/pizza-chef-logo.png"
- 
+  const {entityId}=useEntityContext()
+
   async function handleAddLogoButton(e: ChangeEvent<HTMLInputElement>) {
+    e.preventDefault()
     let file;
 
     // const fileExt = file.name.split(".").pop();
     const uuid = uuidv4();
     const storageSchema = "public";
-    const bucket = "entityLogo";
+    const bucket = "logos";
+   
 
     if (e.target.files) {
       file = e.target.files[0];
     }
-    let pictureUrl = await uploadPictureToBucket({
+    const pictureUrl = await uploadPictureToBucket({
       file:file,
       storageSchema:storageSchema,
       bucket:bucket,
       id:entityId,
       uuid:uuid
     })
+    console.log('pictureUrl', pictureUrl)
+
     let newLogoObject = {
       id: null,
       media_url: pictureUrl,
       media_category: "logo_picture",
     };
-    setLogoObject(newLogoObject);
+    setLogoObject(newLogoObject)
   }
 
   // console.log("logo Object in manage logo page", logoObject);
@@ -47,8 +52,10 @@ export default function ManageLogo() {
     // If picture alrready exists in database, we delete it from database right away
     if (logoObject.id != null) {
       await deleteBasicPictureWithId(logoObject.id);
+
     }
     setLogoObject("");
+
   }
 
   return (
@@ -133,7 +140,7 @@ export default function ManageLogo() {
           {/* remember the logo object is an object brought from the database.  */}
           {logoObject ? (
             <div className="relative bg-gray-100 w-full sm:w-full flex justify-center rounded-lg border-2 border-gray-400 ">
-              <Image src={logoObject} alt="cover photo" fill />
+              <Image src={logoObject.media_url} alt="cover photo" fill />
               <button
                 onClick={() => handleDeletePictureButton()}
                 className="bg-white rounded-lg h-fit absolute mr-3 mb-3 bottom-0 right-0 z-10"

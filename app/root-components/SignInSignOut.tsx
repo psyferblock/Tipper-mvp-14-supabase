@@ -5,7 +5,7 @@ import { useSupabase } from "../supabase-provider";
 import { useRouter } from "next/navigation";
 import { useHasMounted } from "../hooks/useHasMounted";
 import Image from "next/image";
-import { useUsersContext } from "../context/userContextStore";
+import { useUsersContext } from "../context/userContext/userContextStore";
 import { getMyUserInfos } from "../lib/get/getMyUserInfo";
 import { useEffect, useState } from "react";
 

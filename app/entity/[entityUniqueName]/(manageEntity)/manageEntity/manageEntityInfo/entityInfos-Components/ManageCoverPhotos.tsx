@@ -1,16 +1,18 @@
 "use client";
 
-import uploadPictureToBucket from "@/lib/create/uploadPictureToBucket";
-import deleteBasicPictureWithId from "@/lib/delete/deleteBasicPictureWithId";
+import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
+import uploadPictureToBucket from "@/app/lib/create/uploadPictureToBucket";
+import deleteBasicPictureWithId from "@/app/lib/delete/deleteBasicPictureWithId";
 import Image from "next/image";
 import { ChangeEvent } from "react";
-import { useManageEntityInfosContext } from "../Contexts/EntityInfoContext";
+import {v4 as uuidv4} from "uuid"
+
 
 export default function ManageCoverPhotos() {
   // Could be used for when Add Highlight button is clicked to go to new pic
   // const buttonRef = useRef(null);
 
-  //"arrayOfPictureObjects" is an array containing a list of the following object:
+  // "arrayOfPictureObjects" is an array containing a list of the following object:
   // {
   //   id:"...",
   //   created_at: "...",
@@ -18,46 +20,56 @@ export default function ManageCoverPhotos() {
   //   media_url:"...",
   //   entity_highlight_id:"...",
   // }
-  // const { arrayOfPictureObjects, setArrayOfPictureObjects } =
-  //   useManageEntityInfosContext();
-  const arrayOfPictureObjects=["app\public\DefaultProfilePicture.jpg","app\public\japanese-chef-noodles.jpg","app\public\chef-cooking.jpg"]
+  const { arrayOfPictureObjects, setArrayOfPictureObjects ,entityId} =
+    useEntityContext();
 
-  // async function handleUploadImageButton(e: ChangeEvent<HTMLInputElement>) {
-  //   let file;
+  async function handleUploadImageButton(e: ChangeEvent<HTMLInputElement>) {
+    let file;
 
-  //   if (e.target.files) {
-  //     file = e.target.files[0];
-  //   }
-  //   let pictureUrl = await uploadPictureToBucket(
-  //     file,
-  //     "images-restaurant",
-  //     "public"
-  //   );
-  //   let newArray = arrayOfPictureObjects.concat({
-  //     id: null,
-  //     media_url: pictureUrl,
-  //     media_category: "cover_picture",
-  //   });
-  //   setArrayOfPictureObjects(newArray);
-  // }
-  // console.log("array of pics in manage cover photos:", arrayOfPictureObjects);
+    if (e.target.files) {
+      file = e.target.files[0];
+    }
+    // handling the update to bucket
+    
+    const uuid = uuidv4();
+    const storageSchema = "public";
+    const bucket = "restaurant_images";
+   
+    bucket
+    let pictureUrl = await uploadPictureToBucket({
+      file,
+      storageSchema,
+      bucket,
+      id:entityId,
+      uuid,
+       
+    }
+    );
+    let newArray = arrayOfPictureObjects.concat({
+      id: null,
+      media_url: pictureUrl,
+      media_category: "cover_picture",
+    });
+    setArrayOfPictureObjects(newArray);
+  }
+  console.log("array of pics in manage cover photos:", arrayOfPictureObjects);
 
-  // async function handleDeletePictureButton(deletedPicutreObject) {
-  //   //Locating which picture should be deleted is based on the URL of the picture (could be done with
-  //   // picture Id instead, but would need to upload photo to DB and get its ID which is an extra API
-  //   // call for each picture upload)
+  async function handleDeletePictureButton(deletedPicutreObject) {
+    //Locating which picture should be deleted is based on the URL of the picture (could be done with
+    // picture Id instead, but would need to upload photo to DB and get its ID which is an extra API
+    // call for each picture upload)
 
-  //   //If picture alrready exists in database, we delete it from database right away
-  //   if (deletedPicutreObject.id != null) {
-  //     await deleteBasicPictureWithId(deletedPicutreObject.id);
-  //   }
-  //   //Remove the picture from the state variable array
-  //   const newArray = arrayOfPictureObjects.filter(
-  //     (pictureObject) =>
-  //       pictureObject.media_url != deletedPicutreObject.media_url
-  //   );
-  //   setArrayOfPictureObjects(newArray);
-  // }
+    //If picture alrready exists in database, we delete it from database right away
+    if (deletedPicutreObject.id != null) {
+      await deleteBasicPictureWithId(deletedPicutreObject.id);
+    }
+    //Remove the picture from the state variable array
+    const newArray = arrayOfPictureObjects.filter(
+      (pictureObject) =>
+        pictureObject.media_url != deletedPicutreObject.media_url
+    );
+    setArrayOfPictureObjects(newArray);
+  }
 
   return (
     <div className="h-fit  bg-white rounded-lg p-3 sm:p-4 drop-shadow-lg">
@@ -126,9 +138,9 @@ export default function ManageCoverPhotos() {
           name="add slide mobile"
           type="file"
           className="sr-only"
-          // onChange={(e) => {
-          //   handleUploadImageButton(e);
-          // }}
+          onChange={(e) => {
+            handleUploadImageButton(e);
+          }}
         />
       </label>
       {/* ///////////////////////////////////////////////////////////////// */}
@@ -175,7 +187,7 @@ export default function ManageCoverPhotos() {
                       fill
                     />
                     <button
-                      // onClick={() => handleDeletePictureButton(pictureObject)}
+                      onClick={() => handleDeletePictureButton(pictureObject)}
                       className="bg-white rounded-lg h-fit absolute mr-3 mb-3 bottom-0 right-0 z-10"
                     >
                       {/* TRASH ICON */}

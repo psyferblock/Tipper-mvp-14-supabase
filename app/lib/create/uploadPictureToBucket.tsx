@@ -10,7 +10,7 @@ export default async function uploadPictureToBucket({
   
 ) {
   const storageUrl =
-    "https://zluncbhyhpxonqhigbhn.supabase.co/storage/v1/object/";
+    "https://zluncbhyhpxonqhigbhn.supabase.co/storage/v1/object";
 
   const { data, error } = await supabase.storage
     .from(bucket)

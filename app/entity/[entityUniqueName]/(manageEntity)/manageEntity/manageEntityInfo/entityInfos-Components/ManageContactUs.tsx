@@ -1,58 +1,109 @@
 "use client";
 
 import ToggleButton from "@/app/root-Components/tools-Components/ToggleButton";
-import uploadPicture from "@/lib/create/uploadPictureToBucket";
-import { deleteContactUsPicture } from "@/lib/update/deleteContactOrAboutUsPicture";
+import uploadPicture from "@/app/lib/create/uploadPictureToBucket";
+import { deleteContactUsPicture } from "@/app/lib/update/deleteContactOrAboutUsPicture";
 import Image from "next/image";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useManageEntityInfosContext } from "../Contexts/EntityInfoContext";
+import {v4 as uuidv4} from "uuid"
+import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
+
 
 export default function ManageContactUsPage(props) {
-  // const {
-  //   contactUsDescription,
-  //   isContactUsSectionPublic,
-  //   setContactUsDescription,
-  //   contactUsPictureUrl,
-  //   setContactUsPictureUrl,
-  //   setIsContactUsSectionPublic,
-  // } = useManageEntityInfosContext();
+  const {
+       entityName,
+    logoObject,
+    arrayOfPictureObjects,
+    entityTags,
+    entityPhoneNumber,
+    entityEmailAddress,
+    instagramUrl,
+    isInstagramUrlPublic,
+    facebookUrl,
+    isFacebookUrlPublic,
+    whatsappNumber,
+    isWhatsappNumberPublic,
+    aboutUsDescription,
+    aboutUsPictureUrl,
+    isContactUsSectionPublic,
+    contactUsDescription,
+    contactUsPictureUrl,
+    entityOwnerId,
+    industryId,
+    entityTypeId,
+    locationId,
+    isContactUsPublic,
+    isVerified,
+    entityUniqueName,
+    entityArea,
+    entityAddress,
+    entityId,
+    setEntityName,
+    setLogoObject,
+    setArrayOfPictureObjects,
+    setEntityTags,
+    setPhoneNumber,
+    setEmailAddress,
+    setInstagramUrl,
+    setIsInstagramUrlPublic,
+    setFacebookUrl,
+    setIsFacebookUrlPublic,
+    setWhatsappNumber,
+    setIsWhatsappNumberPublic,
+    setAboutUsDescription,
+    setAboutUsPictureUrl,
+    setIsContactUsSectionPublic,
+    setContactUsDescription,
+    setContactUsPictureUrl,
+    setEntityOwnerId,
+    setIsVerified,
+    setIndustryId,
+    setEntityTypeId,
+    setLocationId,
+    setEntityArea,
+    setEntityUniqueName,
+    setEntityAddress,
+    setEntityId,
+    handleTags,
+    removeTag,
+    changeInput
+  } = useEntityContext();
 
-  // async function handleUploadImageButton(e: ChangeEvent<HTMLInputElement>) {
-  //   let file;
+  async function handleUploadImageButton(e: ChangeEvent<HTMLInputElement>) {
+    let file;
 
-  //   if (e.target.files) {
-  //     file = e.target.files[0];
-  //   }
-  //   let pictureUrl = await uploadPicture(file, "images-restaurant", "public");
-  //   //Setting the picture URL in context
-  //   setContactUsPictureUrl(pictureUrl);
-  // }
+    if (e.target.files) {
+      file = e.target.files[0];
+    }
+    let pictureUrl = await uploadPicture(file, "images-restaurant", "public");
+    //Setting the picture URL in context
+    setContactUsPictureUrl(pictureUrl);
+  }
 
-  //Changing the state in context of isContactUsSectionPublic to the opposite boolean value of current state
-  // function handleToggleButton(boolean) {
-  //   setIsContactUsSectionPublic(boolean);
-  // }
+  // Changing the state in context of isContactUsSectionPublic to the opposite boolean value of current state
+  function handleToggleButton(boolean) {
+    setIsContactUsSectionPublic(boolean);
+  }
 
-  const entityId = props.entityId;
-  const contactUsPictureUrl=false
-  // async function handleDeletePictureButton() {
-  //   //Delete picture from DB
-  //   await deleteContactUsPicture(entityId);
 
-  //   //Delete picture from state
-  //   setContactUsPictureUrl("");
-  // }
+  async function handleDeletePictureButton() {
+    //Delete picture from DB
+    // await deleteContactUsPicture(entityId);
+
+    //Delete picture from state
+    setContactUsPictureUrl("");
+  }
   return (
     <div className="h-fit  bg-white rounded-lg p-3 sm:p-4 drop-shadow-lg space-y-4">
       <div className="sm:flex sm:justify-between items-center sm:space-x-6">
         <div className="text-lg font-bold mb-1">Contact Us</div>
         <div className="flex items-center pb-0.5 space-x-1 sm:py-0 py-1">
           <div className="pt-0.5">
-            {/* <ToggleButton
+            <ToggleButton
               handleToggleButton={handleToggleButton}
               switchedOn={isContactUsSectionPublic}
-            /> */}
-            toggle button
+            />
           </div>
           <div className="text-xs sm:mt-0">
             Show "Contact Us" section on your entity's public page
@@ -70,8 +121,8 @@ export default function ManageContactUsPage(props) {
           id="contact us"
           className="wrap h-8 pt-4 px-4 sm:h-32 block w-full rounded-md border-gray-300 pb-24 sm:pl-4 sm:pr-12 sm:mt-1 focus:border-indigo-500 focus:ring-indigo-500 text-xs sm:text-sm"
           placeholder="Enter a description of products people can order by contacting you."
-          // value={contactUsDescription}
-          // onChange={(e) => setContactUsDescription(e.target.value)}
+          value={contactUsDescription}
+          onChange={(e) => setContactUsDescription(e.target.value)}
         />
       </div>
       <div>
@@ -87,7 +138,7 @@ export default function ManageContactUsPage(props) {
                 fill
               />
               <button
-                // onClick={() => handleDeletePictureButton()}
+                onClick={() => handleDeletePictureButton()}
                 className="bg-white rounded-lg h-fit absolute mr-3 mb-3 bottom-0 right-0 z-10"
               >
                 {/* TRASH ICON */}
@@ -135,9 +186,9 @@ export default function ManageContactUsPage(props) {
                       name="contactUsPicture"
                       type="file"
                       className="sr-only"
-                      // onChange={(e) => {
-                      //   handleUploadImageButton(e);
-                      // }}
+                      onChange={(e) => {
+                        handleUploadImageButton(e);
+                      }}
                     />
                   </label>
                   <div className="pl-1">or drag and drop</div>

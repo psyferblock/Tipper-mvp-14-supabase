@@ -9,7 +9,7 @@ import {
   useContext,
   useCallback,
 } from "react";
-import { useSupabase } from "../supabase-provider";
+import { useSupabase } from "../../supabase-provider";
 
 const emailValidationRegex =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -30,14 +30,18 @@ const CreateUserContextInfoTools = (userInfos) => {
     profilePictureUrl,
     emailAddress,
     uniqueUserName,
-    hasEntity
+    hasEntity,
   } = state;
 
-    // user has entity
-  const setHasEntity = useCallback((newObject) => {
+  // user has entity
+  const setHasEntity = useCallback(() => {
     dispatch({
       type: "HAS_ENTITY",
-      payload: newObject,
+    });
+  }, []);
+  const setHasNotEntity = useCallback(() => {
+    dispatch({
+      type: "HAS_NOT_ENTITY",
     });
   }, []);
   // userID
@@ -102,7 +106,6 @@ const CreateUserContextInfoTools = (userInfos) => {
 
   // SET UNIQUE USER NAME
   const setUniqueName = useCallback((newObject) => {
-
     dispatch({
       type: "CHANGE_UNIQUE_USER_NAME",
       payload: newObject,
@@ -119,8 +122,13 @@ const CreateUserContextInfoTools = (userInfos) => {
       setUserName(userInfos?.first_name),
       setEmailAddress(userInfos?.email_address),
       setUniqueName(userInfos?.unique_user_name);
-      setHasEntity(userInfos?.has_entity)
+    if (userInfos?.hasEntity) {
+      setHasEntity();
+    } else {
+      setHasNotEntity();
+    }
   }, []);
+  console.log("reduced state in user context ", state);
 
   return {
     userId,
@@ -143,6 +151,7 @@ const CreateUserContextInfoTools = (userInfos) => {
     setEmailAddress,
     setUniqueName,
     setHasEntity,
+    setHasNotEntity,
   };
 };
 
@@ -156,9 +165,8 @@ export default function UserInfoContextProvider({
 }: {
   children: React.ReactNode;
   userInfos: any;
-  
 }) {
-  console.log('contextCreated', userInfos)
+  console.log("contextCreated", userInfos);
   return (
     <ManageUserInfoContext.Provider
       value={CreateUserContextInfoTools(userInfos)}

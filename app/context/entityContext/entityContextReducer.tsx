@@ -1,13 +1,13 @@
 "use client";
 
 export const entityContextState = {
-  entityName:"",
+  entityName: "",
   logoObject: "",
   arrayOfPictureObjects: [],
   entityTags: [],
   entityPhoneNumber: "",
   entityEmailAddress: "",
-  entityAddress:"",
+  entityAddress: "",
   instagramUrl: "",
   facebookUrl: "",
   whatsappNumber: "",
@@ -28,64 +28,79 @@ export const entityContextState = {
   isWhatsappNumberPublic: false,
   entityUniqueName: "",
   entityArea: "",
-  entityId:"",
+  entityId: "",
 };
 
 const entityInfoReducer = (entityState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case"SET_ENTITY_NAME":
-    return {...entityState,entityName:payload}
-    case "SET_LOGO_OBJECT":
+    case "ENTITY_NAME":
+      return { ...entityState, entityName: payload };
+    case "LOGO_OBJECT":
       return { ...entityState, logoObject: payload }; //  logoObject: "",
-    case " SET_ARRAY_OF_PICTURE_OBJECTS":
+    case "ARRAY_OF_PICTURE_OBJECTS":
       return { ...entityState, arrayOfPictureObjects: payload }; //arrayOfPictureObjects: [],
-    case " SET_ENTITY_TAGS":
+    case "ENTITY_TAGS":
       return { ...entityState, entityTags: payload }; //entityTags: [],
-    case " SET_PHONE_NUMBER":
+    case "PHONE_NUMBER":
       return { ...entityState, entityPhoneNumber: payload }; // phoneNumber: "",
-    case " SET_EMAIL_ADDRESS":
-      return { ...entityState, emailAddress: payload }; // emailAddress: "",
-    case " SET_INSTAGRAM_URL":
+    case "EMAIL_ADDRESS":
+      return { ...entityState, entityEmailAddress: payload }; // emailAddress: "",
+    case "INSTAGRAM_URL":
       return { ...entityState, instagramUrl: payload }; // instagramUrl: "",
-    case " SET_IS_INSTAGRAM_URL_PUBLIC":
+    case "IS_INSTAGRAM_URL_PUBLIC":
       return { ...entityState, isInstagramUrlPublic: payload }; //  isInstagramUrlPublic: false,
-    case " SET_FACEBOOK_URL":
+    case "FACEBOOK_URL":
       return { ...entityState, facebookUrl: payload }; // facebookUrl: "",
-    case " SET_IS_FACEBOOK_URL_PUBLIC":
+    case "IS_FACEBOOK_URL_PUBLIC":
       return { ...entityState, isFacebookUrlPublic: payload }; // isFacebookUrlPublic: false,
-    case " SET_WHATSAPP_NUMBER":
+    case "WHATSAPP_NUMBER":
       return { ...entityState, whatsappNumber: payload }; // whatsappNumber: "",
-    case " SET_IS_WHATSAPP_NUMBER_PUBLIC":
+    case "IS_WHATSAPP_NUMBER_PUBLIC":
       return { ...entityState, isWhatsappNumberPublic: payload }; // isWhatsappNumberPublic: false,
-    case " SET_ABOUT_US_DESCRIPTION":
+    case "ABOUT_US_DESCRIPTION":
       return { ...entityState, aboutUsDescription: payload }; // aboutUsDescription: "",
-    case " SET_ABOUT_US_PICTURE_URL":
+    case "ABOUT_US_PICTURE_URL":
       return { ...entityState, aboutUsPictureUrl: payload }; // aboutUsPictureUrl: "",
-    case " SET_IS_CONTACT_US_SECTION_PUBLIC":
+    case "IS_CONTACT_US_SECTION_PUBLIC":
       return { ...entityState, isContactUsSectionPublic: payload }; // isContactUsSectionPublic: false,
-    case " SET_CONTACT_US_DESCRIPTION":
+    case "CONTACT_US_DESCRIPTION":
       return { ...entityState, contactUsDescription: payload }; // contactUsDescription: "",
-    case " SET_CONTACT_US_PICTURE_URL":
+    case "CONTACT_US_PICTURE_URL":
       return { ...entityState, contactUsPictureUrl: payload }; // contactUsPictureUrl: "",
-    case " SET_IS_VERIFIED":
+    case "IS_VERIFIED":
       return { ...entityState, contactUsPictureUrl: payload }; //isVerified: false,
-    case "SET_ENTITY_OWNER_ID":
+    case "ENTITY_OWNER_ID":
       return { ...entityState, entityOwnerId: payload }; // entityOwnerId: "",
-    case "SET_INDUSTRY_ID":
+    case "INDUSTRY_ID":
       return { ...entityState, industryId: payload }; // industryId: "",
-    case "SET_ENTITY_TYPE_ID":
+    case "ENTITY_TYPE_ID":
       return { ...entityState, entityTypeId: payload }; // entityTypeId: "",
-    case "SET_LOCATION_ID":
+    case "LOCATION_ID":
       return { ...entityState, locationId: payload }; // locationId: "",
-    case "SET_ENTITY_AREA":
+    case "ENTITY_AREA":
       return { ...entityState, entityArea: payload }; // entityArea: "",
-    case "SET_ENTITY_UNIQUE_NAME":
+    case "ENTITY_UNIQUE_NAME":
       return { ...entityState, entityUniqueName: payload }; // entityUniqueName: "",
-      case"SET_ENTITY_ADDRESS":
-      return {...entityState,entityAddress:payload}
-      case"SET_ENTITY_ID":
-      return {...entityState,entityId:payload}
+    case "ENTITY_ADDRESS":
+      return { ...entityState, entityAddress: payload };
+    case "ENTITY_ID":
+      return { ...entityState, entityId: payload };
+    case "CHANGE_INPUT":
+      return {
+        ...entityState,
+        [action.payload.name]: action.payload.value,
+      };
+    case "ADD_TAG":
+      return {
+        ...entityState,
+        entityTags: [...entityState.entityTags, action.payload],
+      };
+    case "REMOVE_TAG":
+      return {
+        ...entityState,
+        entityTags: entityState.entityTags.filter((tag) => tag !== action.payload),
+      };
     default:
       throw new Error(`no cases to switch from entity of ${type} `);
   }
