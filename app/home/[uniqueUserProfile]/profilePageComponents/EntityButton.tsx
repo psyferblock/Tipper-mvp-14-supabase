@@ -18,6 +18,8 @@ const EntityButton = () => {
   const supabase = useSupabase();
   const { session } = useSupabase();
 
+  if (hasEntity) {
+  
   useEffect(() => {
     const getEntity = async () => {
       const entityInfos = await getEntityOfUser(userId);
@@ -25,9 +27,8 @@ const EntityButton = () => {
         setEntityState(entityInfos);
       }
     };
-    if (hasEntity) {
-      getEntity();
-    }
+    getEntity();
+   
   }, []);
   console.log("entityState", entityState);
 
@@ -62,9 +63,11 @@ const EntityButton = () => {
     };
     getEntity();
   }, [menuId]);
+
   console.log("categoryState", categoryState);
   const categoryId = categoryState.id;
   console.log("categoryId", categoryId);
+}
   return (
     <div>
       {" "}

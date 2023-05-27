@@ -11,8 +11,8 @@ export async function getMyUserInfos(userId){
     return data[0]
 }
 
-export async function getMyUserInfoServer(supabaseServerClient,userId){
-    const {data,error} = await supabaseServerClient
+export async function getMyUserInfoServer(supabaseServer,userId){
+    const {data,error} = await supabaseServer
     .from("user_profile")
     .select()
     .eq("user_id",userId)

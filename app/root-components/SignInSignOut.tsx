@@ -15,7 +15,7 @@ function SignInSignOut() {
   const router = useRouter();
 
   const userAuthenticated = session ? session?.user.aud : "not authenticated";
-  // console.log('userAuthenticated ', userAuthenticated )
+  console.log('userAuthenticated ', userAuthenticated )
 
   const userId=session?.user.id
   //get user data 
