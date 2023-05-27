@@ -17,10 +17,11 @@ function SignInSignOut() {
   const userAuthenticated = session ? session?.user.aud : "not authenticated";
   // console.log('userAuthenticated ', userAuthenticated )
 
+  const userId=session?.user.id
   //get user data 
   useEffect(()=>{
     const userData= async ()=>{
-      const data=await getMyUserInfos(session?.user.id)
+      const data=await getMyUserInfos(userId)
       setUserInfo(data)  
     }
     userData()

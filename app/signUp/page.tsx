@@ -156,7 +156,7 @@ export default function SignUp() {
                         type="text"
                         name="EmailAddress"
                         id="EmailAddress"
-                        className="peer h-16 placeholder-transparent text-wrap border-2 border-ruby-tint border-opacity-60 shadow indent-2 inline-block align-middle w-full  rounded-lg focus:outline-none focus:border-ruby-shade "
+                        className="text-wrap border-ruby-tint focus:border-ruby-shade peer inline-block h-16 w-full rounded-lg border-2 border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:outline-none "
                         placeholder=" email address"
                         required
                         onChange={(e) => setEmail(e.target.value)}
@@ -166,15 +166,9 @@ export default function SignUp() {
 
                       <label
                         htmlFor="Number"
-                        className="absolute    left-4 top-5 z-10  text-grey  text-lg peer-placeholder-shown:text-base
-                    peer-placeholder-shown:text-grey-400
-                    peer-placeholder-shows:top-4
-                  transition-all 
-                  peer-focus:top-1
-                  peer-focus:text-gray-600
-                  peer-focus:text-sm
+                        className=" text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 peer-valid:top-1 peer-valid:text-sm "
+
                   
-                  "
                       >
                         Email Address
                       </label>
@@ -191,7 +185,7 @@ export default function SignUp() {
                         type={open === false ? "password" : "text"}
                         name="Password1"
                         id="Password1"
-                        className="peer pr-4 h-16 text-wrap placeholder-transparent border-2 border-ruby-tint border-opacity-60 shadow indent-4 inline-block align-middle w-full  rounded-lg focus:outline-none focus:border-ruby-shade"
+                        className="text-wrap border-ruby-tint focus:border-ruby-shade peer inline-block h-16 w-full rounded-lg border-2 border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:outline-none "
                         placeholder="Password"
                         required
                         onChange={(e) => {
@@ -203,15 +197,8 @@ export default function SignUp() {
 
                       <label
                         htmlFor="Password1"
-                        className="absolute    left-4 top-5 z-10  text-grey  text-lg peer-placeholder-shown:text-base
-                    peer-placeholder-shown:text-grey-400
-                  peer-placeholder-shows:top-4
-                  transition-all
-                  peer-focus:top-1
-                  peer-focus:text-gray-600
-                  peer-focus:text-sm
-                  
-                  "
+                        className=" text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 peer-valid:top-1 peer-valid:text-sm "
+
                       >
                         Password
                       </label>
@@ -244,7 +231,7 @@ export default function SignUp() {
                         type={confirmOpen === false ? "password" : "text"}
                         name="Password2"
                         id="Password2"
-                        className="peer h-16  text-wrap placeholder-transparent border-2 border-ruby-tint border-opacity-60 shadow indent-4 inline-block align-middle w-full  rounded-lg focus:outline-none focus:border-ruby-shade"
+                        className="text-wrap border-ruby-tint focus:border-ruby-shade peer inline-block h-16 w-full rounded-lg border-2 border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:outline-none "
                         placeholder="Confirm Password"
                         required
                         onChange={(e) => {
@@ -255,13 +242,8 @@ export default function SignUp() {
                       />
                       <label
                         htmlFor="Password2"
-                        className="absolute    left-4 top-5 z-10  text-grey  text-lg peer-placeholder-shown:text-base
-                    peer-placeholder-shown:transparent
-                    peer-placeholder-shows:top-4
-                    transition-all
-                    peer-focus:top-1
-                    peer-focus:text-gray-600
-                  peer-focus:text-sm "
+                        className=" text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 peer-valid:top-1 peer-valid:text-sm "
+
                       >
                         Confirm Password
                       </label>

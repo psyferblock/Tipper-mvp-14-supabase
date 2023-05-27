@@ -28,6 +28,7 @@ const supabaseServer=createServerClient()
   const myUserId = session?.user.id;
 
   const userInformation = await getMyUserInfoServer(supabaseServer, myUserId);
+  console.log('userInformation from RootLayoutPage ', userInformation)
    
  
   return (

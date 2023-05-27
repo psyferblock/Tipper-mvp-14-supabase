@@ -1,7 +1,7 @@
 import { supabase } from "@/app/utils/supabase-browser";
 
 export default async function addOpeningHours({
-  openingHoursMonday: openingHoursMonday,
+  openingHoursMondayFriday: openingHoursMondayFriday,
   openingHoursSaturday: openingHoursSaturday,
   openingHoursSunday: openingHoursSunday,
   entityId: entityId,
@@ -9,7 +9,7 @@ export default async function addOpeningHours({
   const { data, error } = await supabase
     .from("opening_hours")
     .update({
-      monday_friday: openingHoursMonday,
+      monday_friday: openingHoursMondayFriday,
       saturday: openingHoursSaturday,
       sunday: openingHoursSunday,
       entity_id: entityId,

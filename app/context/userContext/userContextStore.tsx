@@ -22,6 +22,7 @@ const CreateUserContextInfoTools = (userInfos) => {
 
   const {
     userId,
+    profileId,
     firstName,
     lastName,
     dateOfBirth,
@@ -32,105 +33,108 @@ const CreateUserContextInfoTools = (userInfos) => {
     uniqueUserName,
     hasEntity,
   } = state;
-
-  // user has entity
-  const setHasEntity = useCallback(() => {
-    dispatch({
-      type: "HAS_ENTITY",
-    });
-  }, []);
-  const setHasNotEntity = useCallback(() => {
-    dispatch({
-      type: "HAS_NOT_ENTITY",
-    });
-  }, []);
-  // userID
-  const setUserId = useCallback((newObject) => {
-    dispatch({
-      type: "SET_USER_ID",
-      payload: newObject,
-    });
-  }, []);
-  // user name
-  const setUserName = useCallback((newObject) => {
-    dispatch({
-      type: "CHANGE_FIRST_NAME",
-      payload: newObject,
-    });
-  }, []);
-  // user last name
-  const setUserLastName = useCallback((newObject) => {
-    dispatch({
-      type: "CHANGE_LAST_NAME",
-      payload: newObject,
-    });
-  }, []);
-
-  //CHANGE DATE OF BIRTH
-  const setDateOfBirth = useCallback((newObject) => {
-    dispatch({
-      type: "CHANGE_DATE_OF_BIRTH",
-      payload: newObject,
-    });
-  }, []);
-  // CHANGE GENDER
-  const setGender = useCallback((newObject) => {
-    dispatch({
-      type: "CHANGE_GENDER",
-      payload: newObject,
-    });
-  }, []);
-
-  // CHANGE CONTACT NUMBER
-  const setContactNumber = useCallback((newObject) => {
-    dispatch({
-      type: "CHANGE_CONTACT_NUMBER",
-      payload: newObject,
-    });
-  }, []);
-
-  const setProfilePicUrl = useCallback((newObject) => {
-    dispatch({
-      type: "CHANGE_PROFILE_PIC_URL",
-      payload: newObject,
-    });
-  }, []);
-
-  // SET EMAIL ADDRESS
-  const setEmailAddress = useCallback((newObject) => {
-    dispatch({
-      type: "CHANGE_EMAIL_ADDRESS",
-      payload: newObject,
-    });
-  }, []);
-
-  // SET UNIQUE USER NAME
-  const setUniqueName = useCallback((newObject) => {
-    dispatch({
-      type: "CHANGE_UNIQUE_USER_NAME",
-      payload: newObject,
-    });
-  }, []);
-
+  
   useEffect(() => {
     setContactNumber(userInfos?.phone_number),
       setDateOfBirth(userInfos?.date_of_birth),
       setGender(userInfos?.gender),
       setProfilePicUrl(userInfos?.profile_picture),
+      setProfileId(userInfos?.id)
       setUserId(userInfos?.user_id),
       setUserLastName(userInfos?.last_name),
       setUserName(userInfos?.first_name),
       setEmailAddress(userInfos?.email_address),
-      setUniqueName(userInfos?.unique_user_name);
-    if (userInfos?.hasEntity) {
-      setHasEntity();
-    } else {
-      setHasNotEntity();
-    }
+      setUniqueName(userInfos?.unique_user_name);   
+      setHasEntity(userInfos?.has_entity);
+   
   }, []);
+  // user has entity
+  const setHasEntity = useCallback((boolean) => {
+    dispatch({
+      type: "HAS_ENTITY",
+      payload:boolean
+    });
+  }, []);
+  
+  // userID
+  const setUserId = useCallback((userId) => {
+    dispatch({
+      type: "SET_USER_ID",
+      payload: userId,
+    });
+  }, []);
+  // user name
+  const setUserName = useCallback((userName) => {
+    dispatch({
+      type: "CHANGE_FIRST_NAME",
+      payload: userName,
+    });
+  }, []);
+  // user last name
+  const setUserLastName = useCallback((lastName) => {
+    dispatch({
+      type: "CHANGE_LAST_NAME",
+      payload: lastName,
+    });
+  }, []);
+
+  //CHANGE DATE OF BIRTH
+  const setDateOfBirth = useCallback((dob) => {
+    dispatch({
+      type: "CHANGE_DATE_OF_BIRTH",
+      payload: dob,
+    });
+  }, []);
+  // CHANGE GENDER
+  const setGender = useCallback((gender) => {
+    dispatch({
+      type: "CHANGE_GENDER",
+      payload: gender,
+    });
+  }, []);
+
+  // CHANGE CONTACT NUMBER
+  const setContactNumber = useCallback((contactNumber) => {
+    dispatch({
+      type: "CHANGE_CONTACT_NUMBER",
+      payload: contactNumber,
+    });
+  }, []);
+
+  const setProfilePicUrl = useCallback((profilePic) => {
+    dispatch({
+      type: "CHANGE_PROFILE_PIC_URL",
+      payload: profilePic,
+    });
+  }, []);
+
+  // SET EMAIL ADDRESS
+  const setEmailAddress = useCallback((email) => {
+    dispatch({
+      type: "CHANGE_EMAIL_ADDRESS",
+      payload: email,
+    });
+  }, []);
+
+  // SET UNIQUE USER NAME
+  const setUniqueName = useCallback((uniqueName) => {
+    dispatch({
+      type: "CHANGE_UNIQUE_USER_NAME",
+      payload: uniqueName,
+    });
+  }, []);
+  const setProfileId = useCallback((profileId) => {
+    dispatch({
+      type: "ADD_PROFILE_ID",
+      payload: profileId,
+    });
+  }, []);
+
+ 
   console.log("reduced state in user context ", state);
 
   return {
+    profileId,
     userId,
     firstName,
     lastName,
@@ -141,6 +145,7 @@ const CreateUserContextInfoTools = (userInfos) => {
     emailAddress,
     uniqueUserName,
     hasEntity,
+    setProfileId,
     setContactNumber,
     setDateOfBirth,
     setGender,
@@ -151,7 +156,6 @@ const CreateUserContextInfoTools = (userInfos) => {
     setEmailAddress,
     setUniqueName,
     setHasEntity,
-    setHasNotEntity,
   };
 };
 
@@ -166,7 +170,6 @@ export default function UserInfoContextProvider({
   children: React.ReactNode;
   userInfos: any;
 }) {
-  console.log("contextCreated", userInfos);
   return (
     <ManageUserInfoContext.Provider
       value={CreateUserContextInfoTools(userInfos)}

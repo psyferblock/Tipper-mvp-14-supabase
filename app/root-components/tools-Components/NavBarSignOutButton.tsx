@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/utils/supabase-browser";
+import { supabase } from "@/app/utils/supabase-browser";
+
 
 export default function NavBarSignOutButton() {
   const router = useRouter();

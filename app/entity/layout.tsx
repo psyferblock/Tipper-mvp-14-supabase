@@ -16,12 +16,8 @@ async function EntityLayout({ children }: {children:React.ReactNode}) {
 
   const entityOwnerId = session?.user.id;
 
-  const entityInfo = await getMyEntityInfosServer(
-    supabaseServer,
-    entityOwnerId
-  );
+ 
 
-  console.log("entityInfo", entityInfo);
 
   return (
     <>

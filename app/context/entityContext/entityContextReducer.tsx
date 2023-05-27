@@ -99,7 +99,7 @@ const entityInfoReducer = (entityState, action) => {
     case "REMOVE_TAG":
       return {
         ...entityState,
-        entityTags: entityState.entityTags.filter((tag) => tag !== action.payload),
+        entityTags: entityState.entityTags.filter((tag) => tag !== action.payload ),
       };
     default:
       throw new Error(`no cases to switch from entity of ${type} `);

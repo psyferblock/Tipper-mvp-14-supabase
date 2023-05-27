@@ -5,11 +5,12 @@
 //containing an id, media category, and media url
 import { supabase } from "@/app/utils/supabase-browser";
 
-export default async function addBasicPictures(
-  arrayOfPictureObjects,
-  entityId
+export default async function addBasicPictures({
+  arrayOfPictureObjects:arrayOfPictureObjects,
+  entityId:entityId
+}
 ) {
-  for (let i = 0; i < arrayOfPictureObjects.length; i++) {
+  for (let i in arrayOfPictureObjects) {
     const { data, error } = await supabase
       .from("entity_basic_media")
       .insert({

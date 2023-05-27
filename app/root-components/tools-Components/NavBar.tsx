@@ -2,14 +2,14 @@ import Link from "next/link";
 import NavBarSignOutButton from "./NavBarSignOutButton";
 import DefaultProfilePicture from "@/public/DefaultProfilePicture.jpg";
 import Image from "next/image";
-import { createServerClient } from "@/utils/supabase-server";
-import { getMyUserInfosServer } from "@/lib/get/getMyUserInfos";
+import { createServerClient } from "@/app/utils/supabase-server";
+import { getMyUserInfoServer } from "@/app/lib/get/getMyUserInfo";
 
 export default async function Navbar({ session }) {
   let profilePictureUrl = "";
   if (session) {
     const supabase = createServerClient();
-    const res = await getMyUserInfosServer(supabase, session.user.id);
+    const res = await getMyUserInfoServer(supabase, session.user.id);
     profilePictureUrl = res?.profile_picture_url;
   }
   return (

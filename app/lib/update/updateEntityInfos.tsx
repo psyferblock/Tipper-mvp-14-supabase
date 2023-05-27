@@ -32,7 +32,7 @@ export default async function updateEntityInfos({
   //Entity Infos Updating from Database
   const { data, error } = await supabase
     .from("entity")
-    .update({
+    .insert({
       entity_name:entityName,
       entity_tags:entityTags,
       entity_phone_number:entityPhoneNumber,
@@ -53,15 +53,12 @@ export default async function updateEntityInfos({
       industry_id:industryId,
       entity_type_id:entityTypeId,
       location_id:locationId,
-      isContactUsPublic:isContactUsPublic,
-      entity_area:isVerified,
       entity_unique_name:entityUniqueName,
-      entityArea:entityArea,
+      entity_area:entityArea,
       entity_address:entityAddress,
-      id:entityId,
     })
     .eq("id", entityId)
-    .select();
+    .select()
   if (error) throw error;
   console.log(data);
 }

@@ -25,7 +25,7 @@ function GoToEntityButton({
         >
           go to entity
         </Link>
-        go to entity
+       
       </button>
     </div>
   );

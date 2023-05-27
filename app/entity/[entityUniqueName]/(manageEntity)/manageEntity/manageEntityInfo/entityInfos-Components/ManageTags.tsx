@@ -1,24 +1,13 @@
 "use client";
 
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
-import { useState,useRef } from "react";
+import { useState, useRef } from "react";
 
 export default function ManageTags() {
-  const { entityTags, setEntityTags,handleTags,removeTag } = useEntityContext();
+  const { entityTags, handleTags, removeTag } = useEntityContext();
+
   const [tags, setTag] = useState<string>("");
-  const tagRef=useRef()
-
-  function handleAddButton() {
-    const tagsArray=tags.split(" ")
-    const newArray = entityTags.concat(tags);
-    setEntityTags(newArray);
-  }
-
-  function handleDeleteTagButton(deletedTag) {
-    const newArray = entityTags.filter((tag) => tag != deletedTag);
-    setEntityTags(newArray);
-  }
-
+  const tagRef = useRef();
 
   return (
     <div className="h-fit bg-white rounded-lg p-3 sm:p-4 drop-shadow-lg">
@@ -32,13 +21,12 @@ export default function ManageTags() {
           name="tags"
           id="price"
           className="h-12 block w-full rounded-md border-gray-400 pl-7 pr-12 mt-2 mb-6 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-          placeholder="Seperate tags with commas..."
+          placeholder="Seperate tags with spaces..."
           // value={tag}
           ref={tagRef}
           // onChange={(e) => handleTags(e.target.value)}
         />
-         
-        
+
         <button
           onClick={() => handleTags(tagRef.current.value)}
           className={
@@ -50,36 +38,33 @@ export default function ManageTags() {
         >
           Add
         </button>
-
       </div>
       {/* TAGS ROW */}
       <div className=" grid grid-flow-col gap-3 pb-3 sm:pb-2 px-1 sm:px-2 sm:py-1 overflow-x-auto sm:space-x-3">
         {entityTags?.map((tag) => (
-          <div className="px-2 py-1 w-fit flex items-center justify-between bg-gray-100 rounded-lg text-black text-xs  drop-shadow-md">
-            <div >{tag}</div>
-            <small className="w-fit mr-3" 
-            onClick={() => removeTag(tag)}
+          <small
+            onClick={() =>removeTag(tag)}
+            className="px-2 py-1 w-fit flex items-center justify-between bg-gray-100 rounded-lg text-black text-xs  drop-shadow-md"
+            key={tag}
+          >
+            {tag}
 
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className="w-4 h-4 text-gray-400"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                className="w-4 h-4 text-gray-400"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-              {/* {tag} */}
-            </small>
-          </div>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </small>
         ))}
-        map of all the tags
       </div>
     </div>
   );

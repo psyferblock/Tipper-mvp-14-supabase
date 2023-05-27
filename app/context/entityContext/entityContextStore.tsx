@@ -313,7 +313,7 @@ function createManageEntityInfosTools(
   }, []);
 
   const handleTags = useCallback((tagRef) => {
-    const tags = tagRef.split(",");
+    const tags = tagRef.split(" ");
     tags.forEach((tag) => {
       dispatch({
         type: "ADD_TAG",
@@ -330,7 +330,7 @@ function createManageEntityInfosTools(
   }, []);
 
  
-  console.log("entityState", entityState);
+  console.log("entityState in context ", entityState);
 
   return {
     entityName,

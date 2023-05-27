@@ -4,9 +4,8 @@ import { useEntityContext } from "@/app/context/entityContext/entityContextStore
 import uploadPictureToBucket from "@/app/lib/create/uploadPictureToBucket";
 import deleteBasicPictureWithId from "@/app/lib/delete/deleteBasicPictureWithId";
 import Image from "next/image";
-import { ChangeEvent } from "react";
-import {v4 as uuidv4} from "uuid"
-
+import { ChangeEvent, Key } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export default function ManageCoverPhotos() {
   // Could be used for when Add Highlight button is clicked to go to new pic
@@ -20,31 +19,26 @@ export default function ManageCoverPhotos() {
   //   media_url:"...",
   //   entity_highlight_id:"...",
   // }
-  const { arrayOfPictureObjects, setArrayOfPictureObjects ,entityId} =
+  const { arrayOfPictureObjects, setArrayOfPictureObjects, entityId } =
     useEntityContext();
 
   async function handleUploadImageButton(e: ChangeEvent<HTMLInputElement>) {
-    let file;
 
+    let file 
+    // handling the update to bucket
     if (e.target.files) {
       file = e.target.files[0];
     }
-    // handling the update to bucket
-    
     const uuid = uuidv4();
     const storageSchema = "public";
     const bucket = "restaurant_images";
-   
-    bucket
-    let pictureUrl = await uploadPictureToBucket({
-      file,
-      storageSchema,
-      bucket,
-      id:entityId,
-      uuid,
-       
-    }
-    );
+      const pictureUrl = await uploadPictureToBucket({
+        file,
+        storageSchema:storageSchema,
+        bucket:bucket,
+        id: entityId,
+        uuid,
+      });
     let newArray = arrayOfPictureObjects.concat({
       id: null,
       media_url: pictureUrl,
@@ -54,7 +48,7 @@ export default function ManageCoverPhotos() {
   }
   console.log("array of pics in manage cover photos:", arrayOfPictureObjects);
 
-  async function handleDeletePictureButton(deletedPicutreObject) {
+  async function handleDeletePictureButton(deletedPicutreObject: { id: null; media_url: any; }) {
     //Locating which picture should be deleted is based on the URL of the picture (could be done with
     // picture Id instead, but would need to upload photo to DB and get its ID which is an extra API
     // call for each picture upload)
@@ -65,7 +59,7 @@ export default function ManageCoverPhotos() {
     }
     //Remove the picture from the state variable array
     const newArray = arrayOfPictureObjects.filter(
-      (pictureObject) =>
+      (pictureObject: { media_url: any; }) =>
         pictureObject.media_url != deletedPicutreObject.media_url
     );
     setArrayOfPictureObjects(newArray);
@@ -101,7 +95,6 @@ export default function ManageCoverPhotos() {
             name="add slide"
             type="file"
             className="sr-only"
-           
           />
         </label>
       </div>
@@ -179,8 +172,8 @@ export default function ManageCoverPhotos() {
           <div className="space-x-2 flex">
             {arrayOfPictureObjects ? (
               <>
-                {arrayOfPictureObjects.map((pictureObject) => (
-                  <div className="relative w-[268px] sm:w-[340px] bg-gray-100 flex justify-center sm:h-56 h-40 rounded-lg border-2 border-gray-400 ">
+                {arrayOfPictureObjects.map((pictureObject,key: Key | null | undefined) => (
+                  <div key={key} className="relative w-[268px] sm:w-[340px] bg-gray-100 flex justify-center sm:h-56 h-40 rounded-lg border-2 border-gray-400 ">
                     <Image
                       src={pictureObject.media_url}
                       alt="cover photo"

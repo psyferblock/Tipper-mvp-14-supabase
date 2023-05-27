@@ -7,9 +7,8 @@ export async function getEntityUsingUniqueNameServer(
     .select()
     .eq("entity_unique_name", uniqueName)
 
-    .single()
-    .limit(1)
+    
   if (error) throw error;
   console.log("data getEntityUsingUniqueNameServer ", data);
-  return data;
+  return data[0];
 }

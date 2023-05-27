@@ -76,7 +76,15 @@ export default function ManageContactUsPage(props) {
     if (e.target.files) {
       file = e.target.files[0];
     }
-    let pictureUrl = await uploadPicture(file, "images-restaurant", "public");
+    const storageSchema="restaurant_images"
+    const bucket="public"
+    const uuid=uuidv4()
+    let pictureUrl = await uploadPicture({
+      file,
+      storageSchema: storageSchema,
+      bucket: bucket,
+      id: entityId,
+      uuid: uuid,});
     //Setting the picture URL in context
     setContactUsPictureUrl(pictureUrl);
   }
@@ -95,7 +103,7 @@ export default function ManageContactUsPage(props) {
     setContactUsPictureUrl("");
   }
   return (
-    <div className="h-fit  bg-white rounded-lg p-3 sm:p-4 drop-shadow-lg space-y-4">
+    <div className="h-fit  bg-white rounded-lg p-3 sm:p-4 drop-shadow-lg space-y-4 pb-16">
       <div className="sm:flex sm:justify-between items-center sm:space-x-6">
         <div className="text-lg font-bold mb-1">Contact Us</div>
         <div className="flex items-center pb-0.5 space-x-1 sm:py-0 py-1">
@@ -185,6 +193,7 @@ export default function ManageContactUsPage(props) {
                       id="contactUsPicture"
                       name="contactUsPicture"
                       type="file"
+                      multiple // to upload multile files at once 
                       className="sr-only"
                       onChange={(e) => {
                         handleUploadImageButton(e);

@@ -8,11 +8,12 @@ import updateEntityInfos from "@/app/lib/update/updateEntityInfos";
 import { supabase } from "@/app/utils/supabase-browser";
 import { useRouter } from "next/navigation";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
+import { useManageOpeningHoursContext } from "@/app/context/openingHoursContext/openingClosingStore";
 
 export default function StickyBarSaveCancel(props) {
   const router = useRouter();
 
-  const contextState = useEntityContext();
+  const hoursContextState = useManageOpeningHoursContext();
 
   const {
     entityName,
@@ -137,17 +138,21 @@ export default function StickyBarSaveCancel(props) {
       await addBasicPictures(arrayOfNewPictureObjects, entityId);
     }
 
-    await addClosingHours(
-      contextState.openingHoursMondayFriday,
-      contextState.openingHoursSaturday,
-      contextState.openingHoursSunday,
-      entityId
-    );
-    await addOpeningHours(
-      contextState.closingHoursMondayFriday,
-      contextState.closingHoursSaturday,
-      contextState.closingHoursSunday,
-      entityId
+    await addOpeningHours({
+
+      openingHoursMondayFriday:hoursContextState.openingHoursMondayFriday,
+      openingHoursSaturday:hoursContextState.openingHoursSaturday,
+      openingHoursSunday:hoursContextState.openingHoursSunday,
+      entityId:entityId,
+    }
+      );
+    await addClosingHours ({
+
+      closingHoursMondayFriday:hoursContextState.closingHoursMondayFriday,
+      closingHoursSaturday:hoursContextState.closingHoursSaturday,
+      closingHoursSunday:hoursContextState.closingHoursSunday,
+      entityId:entityId
+    }
     );
   }
 

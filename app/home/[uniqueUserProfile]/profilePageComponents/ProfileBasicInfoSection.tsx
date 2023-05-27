@@ -6,13 +6,20 @@ import { useSupabase } from "@/app/supabase-provider";
 import Image from "next/image";
 import React, { useState, ChangeEvent } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { supabase } from "@/app/utils/supabase-browser";
+import ProfileInfoFromContext from "./ProfileInfoFromContext";
 
 function ProfileBasicInfoSection() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [editing, setEditing] = useState(false);
+
+  const { session } = useSupabase();
+  const userId = session?.user.id;
+  console.log("userId", userId);
+
   const {
-    userId,
+    profileId,
     firstName,
     lastName,
     dateOfBirth,
@@ -32,6 +39,7 @@ function ProfileBasicInfoSection() {
     setEmailAddress,
     setUniqueName,
     setHasEntity,
+    setProfileId,
   } = useUsersContext();
 
   // managing state with context was truly a good day for me
@@ -48,6 +56,7 @@ function ProfileBasicInfoSection() {
       uniqueUserName: uniqueUserName,
       hasEntity: hasEntity,
     });
+    setEditing(false);
     console.log("updating profile", userUpdate);
   };
 
@@ -169,20 +178,7 @@ function ProfileBasicInfoSection() {
         </div>
         <div className="sm:w-5/12 sm:h-full space-y-3 sm:space-y-3">
           {!editing ? (
-            <div className="flex p-2 flex-col ">
-              <div>
-                <span className="m-2">{firstName}</span>
-                <span className="m-2">{lastName}</span>
-              </div>
-              <div className="flex space-between m-2">
-                <span className="">birthday: {dateOfBirth}</span>
-                <span className="">{gender}</span>
-              </div>
-              <div>
-                <span>{emailAddress}</span>
-                <span>{contactNumber}</span>
-              </div>
-            </div>
+            <ProfileInfoFromContext />
           ) : (
             <div>
               <div>
