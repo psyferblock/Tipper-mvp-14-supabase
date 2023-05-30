@@ -8,7 +8,6 @@ import DeleteHighlightModal from "./DeleteHighlightModal";
 import EditHighlightModal from "./EditHighlightModal";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 
-
 export default function ManageHighlights({ listOfHighlights }) {
 
   const {entityId}=useEntityContext()
@@ -108,7 +107,7 @@ export default function ManageHighlights({ listOfHighlights }) {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-300 text-gray-500">
-                {listOfHighlights.map((highlight,index) => (
+                {listOfHighlights.map((highlight, index) => (
                   <tr key={index}>
                     <td>{highlight.highlight_name}</td>
                     <td className="flex items-center justify-between">
@@ -212,8 +211,8 @@ export default function ManageHighlights({ listOfHighlights }) {
             <div className="grid overflow-x-auto pb-4">
               <div className="flex space-x-7">
                 <div className="font-bold mb-2">Publish</div>
-          {/* <div className="font-bold mb-2">Edit/Remove</div> */}
-          </div>
+                {/* <div className="font-bold mb-2">Edit/Remove</div> */}
+              </div>
               <div className="divide-y">
                 <div className="flex items-center space-x-1 pb-1">
                   <div className="flex items-center pt-2 space-x-2 w-20">
@@ -225,7 +224,6 @@ export default function ManageHighlights({ listOfHighlights }) {
                     <button>Remove</button>
                   </div>
                 </div>
-  
               </div>
             </div>
           </div>
