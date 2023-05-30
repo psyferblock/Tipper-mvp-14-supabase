@@ -71,44 +71,42 @@ export default function StickyBarSaveCancel(props) {
     setEntityId,
     handleTags,
     removeTag,
-    changeInput
+    changeInput,
   } = useEntityContext();
 
   async function handleSaveButton() {
     await updateEntityInfos({
-        entityName:entityName,
-       
-        entityTags:entityTags,
-        entityPhoneNumber:entityPhoneNumber,
-        entityEmailAddress:entityEmailAddress,
-        instagramUrl:instagramUrl,
-        isInstagramUrlPublic:isInstagramUrlPublic,
-        facebookUrl:facebookUrl,
-        isFacebookUrlPublic:isFacebookUrlPublic,
-        whatsappNumber:whatsappNumber,
-        isWhatsappNumberPublic:isWhatsappNumberPublic,
-        aboutUsDescription:aboutUsDescription,
-        aboutUsPictureUrl:aboutUsPictureUrl,
-        isContactUsSectionPublic:isContactUsSectionPublic,
-        contactUsDescription:contactUsDescription,
-        contactUsPictureUrl:contactUsPictureUrl,
-        entityOwnerId:entityOwnerId,
-        industryId:industryId,
-        entityTypeId:entityTypeId,
-        locationId:locationId,
-        isContactUsPublic:isContactUsPublic,
-        isVerified:isVerified,
-        entityUniqueName:entityUniqueName,
-        entityArea:entityArea,
-        entityAddress:entityAddress,
-        entityId:entityId,
-        
-  });
+      entityTags: entityTags,
+      entityPhoneNumber: entityPhoneNumber,
+      entityEmailAddress: entityEmailAddress,
+      instagramUrl: instagramUrl,
+      isInstagramUrlPublic: isInstagramUrlPublic,
+      facebookUrl: facebookUrl,
+      isFacebookUrlPublic: isFacebookUrlPublic,
+      whatsappNumber: whatsappNumber,
+      isWhatsappNumberPublic: isWhatsappNumberPublic,
+      aboutUsDescription: aboutUsDescription,
+      aboutUsPictureUrl: aboutUsPictureUrl,
+      isContactUsSectionPublic: isContactUsSectionPublic,
+      contactUsDescription: contactUsDescription,
+      contactUsPictureUrl: contactUsPictureUrl,
+      // entityArea: entityArea,
+      // entityAddress: entityAddress,
+      entityId: entityId,
+      entityLogoUrl: logoObject.media_url,
+    });
+ 
+    console.log("entityId ,closingHoutsMondayFriday", entityId);
+    console.log(
+      "closingHoursMondayFriday",
+      hoursContextState.closingHoursMondayFriday
+    );
+    console.log("we are before save new pictures await ");
     await saveNewPictures();
 
     //Refresh page every change is saved
     //Im not doing router.refresh because i want to refresh the data fetched and the data fetched is in layout page
-    router.push(`${entityId}/manageEntity/entityInfo`);
+    router.push(`${entityId}/manageEntity/Menu`);
   }
 
   //Function that removes the objects that were added but then user pressed on "Cancel" instead of "Save"
@@ -139,21 +137,17 @@ export default function StickyBarSaveCancel(props) {
     }
 
     await addOpeningHours({
-
-      openingHoursMondayFriday:hoursContextState.openingHoursMondayFriday,
-      openingHoursSaturday:hoursContextState.openingHoursSaturday,
-      openingHoursSunday:hoursContextState.openingHoursSunday,
-      entityId:entityId,
-    }
-      );
-    await addClosingHours ({
-
-      closingHoursMondayFriday:hoursContextState.closingHoursMondayFriday,
-      closingHoursSaturday:hoursContextState.closingHoursSaturday,
-      closingHoursSunday:hoursContextState.closingHoursSunday,
-      entityId:entityId
-    }
-    );
+      openingHoursMondayFriday: hoursContextState.openingHoursMondayFriday,
+      openingHoursSaturday: hoursContextState.openingHoursSaturday,
+      openingHoursSunday: hoursContextState.openingHoursSunday,
+      entityId: entityId,
+    });
+    await addClosingHours({
+      closingHoursMondayFriday: hoursContextState.closingHoursMondayFriday,
+      closingHoursSaturday: hoursContextState.closingHoursSaturday,
+      closingHoursSunday: hoursContextState.closingHoursSunday,
+      entityId: entityId,
+    });
   }
 
   return (

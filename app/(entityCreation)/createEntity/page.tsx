@@ -14,6 +14,8 @@ import { updateUserHasEntity } from "@/app/lib/update/updateUserHasEntity";
 import { createEntityMenu } from "@/app/lib/create/createEntityMenu";
 import { useUsersContext } from "@/app/context/userContext/userContextStore";
 import { supabase } from "@/app/utils/supabase-browser";
+import addOpeningHours from "@/app/lib/update/addOpeningHours";
+import addClosingHours from "@/app/lib/update/addClosingHours";
 
 const EntityCreationPage = () => {
   const router = useRouter();
@@ -179,12 +181,28 @@ const EntityCreationPage = () => {
           isPublic: isPublic,
           menuId: firstMenuId,
         });
-        if (firstMenuId) {
+        console.log('firstMenuId', firstMenuId)
+        const firstMenuCategoryId=firstMenuCategory.id
+        console.log('firstMenuCategoryId', firstMenuCategoryId)
+        await addOpeningHours({
+          openingHoursMondayFriday:"8:00",
+          openingHoursSaturday:"9:00",
+          openingHoursSunday:"9:00",
+          entityId:entityId
+        })
+        await addClosingHours({
+          closingHoursMondayFriday:"20:00",
+          closingHoursSaturday:"20:00",
+          closingHoursSunday:"20:00",
+          entityId:entityId
+        })
+        
+        if (firstMenuCategoryId) {
           router.push(
-            `/entity/${entityUniqueName}/menu/${firstMenuId}/category/${firstMenuCategory}`
+            `/entity/${entityUniqueName}/menu/${firstMenuId}/category/${firstMenuCategoryId}`
           );
         }
-        setHasEntity(!hasEntity);
+        setHasEntity(true);
         console.log("hasEntity", hasEntity);
         // await updateUserProfile({
         //   userId: userId,
@@ -198,7 +216,7 @@ const EntityCreationPage = () => {
         //   uniqueUserName: uniqueUserName,
         //   hasEntity: true,
         // });
-        await supabase.from("user_profil").update({has_entity:hasEntity}).match("profile_id",profileId)
+        await supabase.from('user_profile').update({has_entity:true}).match({"id":profileId})
       } else {
         throw new Error("sorry something went wrong");
       }

@@ -21,7 +21,7 @@ export const entityContextState = {
   industryId: "",
   entityTypeId: "",
   locationId: "",
-  isContactUsPublic: false,
+  // isContactUsPublic: false,
   isVerified: false,
   isInstagramUrlPublic: false,
   isFacebookUrlPublic: false,

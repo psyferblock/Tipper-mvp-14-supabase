@@ -20,7 +20,7 @@ export async function getExchangeRateServer(
   const { data, error } = await supabaseServerClient
     .from("exchange_rate")
     .select()
-    .eq("entity_id", entityId);
+    .eq("entity_id", entityId).single();
   if (error) throw error;
   console.log("ex rate:", data);
   const rate = data[0]?.usd_lbp_rate;

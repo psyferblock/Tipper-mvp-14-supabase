@@ -7,7 +7,7 @@ export default function MobileHeaderOfCurrentManagementPage() {
   const currentSegment = useSelectedLayoutSegment();
 
   let currentPageHeader;
-  managementCategories.map((managementCategory) => {
+  managementCategories.map((managementCategory,index) => {
     if (managementCategory.route == currentSegment) {
       currentPageHeader = `Manage ${managementCategory.name}`;
     }

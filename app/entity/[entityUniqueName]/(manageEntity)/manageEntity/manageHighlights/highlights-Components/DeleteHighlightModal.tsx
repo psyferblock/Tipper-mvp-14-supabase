@@ -2,27 +2,28 @@
 
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import createMenuCategory from "@/lib/create/createMenuCategory";
-import deleteHighlight from "@/lib/delete/deleteHighlight";
+import createMenuCategory from "@/app/lib/create/createMenuCategory";
 import { useSupabase } from "@/app/supabase-provider";
 import { useRouter } from "next/navigation";
+import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
+import deleteHighlight from "@/app/lib/delete/deleteHighlight";
 
-export default function DeleteHighlightModal(props) {
+export default function DeleteHighlightModal(props,{params}:{params:{entityUniqueName:string}}) {
   //Apply "buttonRef" to field to decide which section is focused on when modal is opened
   const buttonRef = useRef(null);
 
-  // const router = useRouter();
+  const router = useRouter();
+const {entityId,entityUniqueName} =useEntityContext()
 
-  // const entityId = props.entityId;
-  // async function handleDeleteButton() {
-  //   const highlightId = props.highlightIdToDelete;
-  //   await deleteHighlight(highlightId);
+  async function handleDeleteButton() {
+    const highlightId = props.highlightIdToDelete;
+    await deleteHighlight(highlightId);
 
-  //   props.closeModal();
+    props.closeModal();
 
-  //   //refresh page by rerouting since we cant use router.refresh since calls to DB are in page.tsx (server component)
-  //   router.push(`${entityId}/manageEntity/highlights`);
-  // }
+    //refresh page by rerouting since we cant use router.refresh since calls to DB are in page.tsx (server component)
+    router.push(`${entityUniqueName}/manageEntity/highlights`);
+  }
 
   return (
     <Transition.Root show={props.open} as={Fragment}>
@@ -87,7 +88,7 @@ export default function DeleteHighlightModal(props) {
                     <button
                       type="button"
                       className="inline-flex justify-center rounded-3xl border border-transparent bg-blue-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
-                      // onClick={() => handleDeleteButton()}
+                      onClick={() => handleDeleteButton()}
                     >
                       Delete
                     </button>

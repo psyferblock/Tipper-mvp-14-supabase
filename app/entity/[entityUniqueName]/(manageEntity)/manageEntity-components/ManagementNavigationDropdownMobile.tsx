@@ -6,14 +6,15 @@ import Link from "next/link";
 import { useSupabase } from "@/app/supabase-provider";
 import { managementCategories } from "./ManagementCategories";
 import { useSelectedLayoutSegment } from "next/navigation";
+import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 
 
 
 export default function ManagementNavigationDropdownMobile(params) {
   const currentSegment = useSelectedLayoutSegment();
 
-  const entityUniqueName = params.entityUniqueName;
-  console.log('entityUniqueName', params)
+  const {entityUniqueName} = useEntityContext() 
+  console.log('entityUniqueName from the navigation menu ', params)
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -48,8 +49,8 @@ export default function ManagementNavigationDropdownMobile(params) {
       >
         <Menu.Items className="absolute right-0 z-10 mt-2 w-[170px] origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
-            {managementCategories.map((categoryObject) => (
-              <Menu.Item key={categoryObject}>
+            {managementCategories.map((categoryObject,index) => (
+              <Menu.Item key={index}>
                 {() => {
                   const isActive = categoryObject.route == currentSegment;
                   return (

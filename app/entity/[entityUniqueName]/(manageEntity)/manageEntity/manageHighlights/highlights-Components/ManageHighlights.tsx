@@ -1,13 +1,17 @@
 "use client";
 import ToggleButton from "@/app/root-Components/tools-Components/ToggleButton";
-import deleteHighlight from "@/lib/delete/deleteHighlight";
-import updateIsHighlightPublic from "@/lib/update/updateIsHighlightPublic";
+import deleteHighlight from "@/app/lib/delete/deleteHighlight";
+import updateIsHighlightPublic from "@/app/lib/update/updateIsHighlightPublic";
 import { useState } from "react";
 import AddNewHighlightModal from "./AddNewHighlightModal";
 import DeleteHighlightModal from "./DeleteHighlightModal";
 import EditHighlightModal from "./EditHighlightModal";
+import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 
-export default function ManageHighlights({ listOfHighlights, entityUniqueName }) {
+
+export default function ManageHighlights({ listOfHighlights }) {
+
+  const {entityId}=useEntityContext()
   //Add new highlight modal
   const [isAddHighlightModalOpen, setIsAddHighlightModalOpen] = useState(false);
   const [isEditHighlightModalOpen, setIsEditHighlightModalOpen] =
@@ -22,46 +26,46 @@ export default function ManageHighlights({ listOfHighlights, entityUniqueName })
   //Storing the id of the highlight to be deleted and passing it as props to the delete highlight modal
   const [highlightIdToDelete, setHighlightIdToDelete] = useState();
 
-  // const handleAddHighlightButton = (e) => {
-  //   e.preventDefault();
-  //   setIsAddHighlightModalOpen(true);
-  // };
+  const handleAddHighlightButton = (e) => {
+    e.preventDefault();
+    setIsAddHighlightModalOpen(true);
+  };
 
-  // const closeHighlightModal = () => {
-  //   setIsAddHighlightModalOpen(false);
-  // };
+  const closeHighlightModal = () => {
+    setIsAddHighlightModalOpen(false);
+  };
 
-  // //EDIT HIGHLIGHT MODAL
-  // const closeEditHighlightModal = () => {
-  //   setIsEditHighlightModalOpen(false);
-  // };
+  //EDIT HIGHLIGHT MODAL
+  const closeEditHighlightModal = () => {
+    setIsEditHighlightModalOpen(false);
+  };
 
-  // //DELETE HIGHLIGHT MODAL
-  // const closeDeleteHighlightModal = () => {
-  //   setIsDeleteHighlightModalOpen(false);
-  // };
+  //DELETE HIGHLIGHT MODAL
+  const closeDeleteHighlightModal = () => {
+    setIsDeleteHighlightModalOpen(false);
+  };
 
-  // //Function used to find the highlight being edited and its Id
-  // function handleEditHighlightButton(highlightId) {
-  //   setHighlightBeingEditedId(highlightId);
-  //   listOfHighlights.map((highlight) => {
-  //     if (highlight.id == highlightId) {
-  //       setHighlightObjectBeingEdited(highlight);
-  //     }
-  //   });
-  //   setIsEditHighlightModalOpen(true);
-  // }
+  //Function used to find the highlight being edited and its Id
+  function handleEditHighlightButton(highlightId) {
+    setHighlightBeingEditedId(highlightId);
+    listOfHighlights.map((highlight) => {
+      if (highlight.id == highlightId) {
+        setHighlightObjectBeingEdited(highlight);
+      }
+    });
+    setIsEditHighlightModalOpen(true);
+  }
 
-  // function handleRemoveHighlightButton(highlightId) {
-  //   setHighlightIdToDelete(highlightId);
-  //   setIsDeleteHighlightModalOpen(true);
-  // }
+  function handleRemoveHighlightButton(highlightId) {
+    setHighlightIdToDelete(highlightId);
+    setIsDeleteHighlightModalOpen(true);
+  }
 
-  // //Storing the highlight Id that is being toggled to public or not public
-  // let highlightIdToggled;
-  // async function handleToggleButton(boolean) {
-  //   await updateIsHighlightPublic(boolean, highlightIdToggled);
-  // }
+  //Storing the highlight Id that is being toggled to public or not public
+  let highlightIdToggled;
+  async function handleToggleButton(boolean) {
+    await updateIsHighlightPublic(boolean, highlightIdToggled);
+  }
 
   return (
     <>
@@ -73,7 +77,7 @@ export default function ManageHighlights({ listOfHighlights, entityUniqueName })
               Highlights
             </div>
             <button
-              // onClick={handleAddHighlightButton}
+              onClick={handleAddHighlightButton}
               className="text-blue-500 flex w-full justify-end items-center space-x-1 "
             >
               <svg
@@ -104,18 +108,18 @@ export default function ManageHighlights({ listOfHighlights, entityUniqueName })
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-300 text-gray-500">
-                {listOfHighlights.map((highlight) => (
-                  <tr>
+                {listOfHighlights.map((highlight,index) => (
+                  <tr key={index}>
                     <td>{highlight.highlight_name}</td>
                     <td className="flex items-center justify-between">
                       <div className="flex items-center space-x-1 sm:space-x-2 pt-1 my-3 sm:my-3">
-                        {/* <ToggleButton
+                        <ToggleButton
                           switchedOn={highlight.is_highlight_public}
                           handleToggleButton={(booleanProp) => {
                             highlightIdToggled = highlight.id;
                             handleToggleButton(booleanProp);
                           }}
-                        /> */}
+                        />
                         toggle button
                         <div className="pb-1">
                           {highlight.is_highlight_public ? "Yes" : "No"}
@@ -124,18 +128,18 @@ export default function ManageHighlights({ listOfHighlights, entityUniqueName })
                       <div className="flex items-center space-x-1 sm:space-x-10 text-blue-600">
                         <button
                           className="hidden sm:block"
-                          // onClick={() => {
-                          //   handleEditHighlightButton(highlight.id);
-                          // }}
+                          onClick={() => {
+                            handleEditHighlightButton(highlight.id);
+                          }}
                         >
                           Edit
                         </button>
 
                         <button
                           className="hidden sm:block"
-                          // onClick={() =>
-                          //   handleRemoveHighlightButton(highlight.id)
-                          // }
+                          onClick={() =>
+                            handleRemoveHighlightButton(highlight.id)
+                          }
                         >
                           Delete
                         </button>
@@ -143,9 +147,9 @@ export default function ManageHighlights({ listOfHighlights, entityUniqueName })
                         {/* EDIT ICON */}
                         <button
                           className="sm:hidden"
-                          // onClick={() => {
-                          //   handleEditHighlightButton(highlight.id);
-                          // }}
+                          onClick={() => {
+                            handleEditHighlightButton(highlight.id);
+                          }}
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -166,9 +170,9 @@ export default function ManageHighlights({ listOfHighlights, entityUniqueName })
                         {/* TRASH ICON */}
                         <button
                           className="sm:hidden"
-                          // onClick={() =>
-                          //   handleRemoveHighlightButton(highlight.id)
-                          // }
+                          onClick={() =>
+                            handleRemoveHighlightButton(highlight.id)
+                          }
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -194,7 +198,7 @@ export default function ManageHighlights({ listOfHighlights, entityUniqueName })
           </div>
 
           {/* MOBILE VERSION HIGHLIGHT TABLE */}
-          {/* <div className="sm:hidden grid grid-cols-2 ">
+          <div className="sm:hidden grid grid-cols-2 ">
             <div>
               <div className="font-bold pb-2">Highlight</div>
               <div className="divide-y">
@@ -207,9 +211,9 @@ export default function ManageHighlights({ listOfHighlights, entityUniqueName })
             </div>
             <div className="grid overflow-x-auto pb-4">
               <div className="flex space-x-7">
-                <div className="font-bold mb-2">Publish</div> */}
+                <div className="font-bold mb-2">Publish</div>
           {/* <div className="font-bold mb-2">Edit/Remove</div> */}
-          {/* </div>
+          </div>
               <div className="divide-y">
                 <div className="flex items-center space-x-1 pb-1">
                   <div className="flex items-center pt-2 space-x-2 w-20">
@@ -224,11 +228,11 @@ export default function ManageHighlights({ listOfHighlights, entityUniqueName })
   
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
 
-      {/* <AddNewHighlightModal
+      <AddNewHighlightModal
         open={isAddHighlightModalOpen}
         closeModal={closeHighlightModal}
         entityId={entityId}
@@ -245,7 +249,7 @@ export default function ManageHighlights({ listOfHighlights, entityUniqueName })
         closeModal={closeDeleteHighlightModal}
         highlightIdToDelete={highlightIdToDelete}
         entityId={entityId}
-      /> */}
+      />
     </>
   );
 }

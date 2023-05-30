@@ -2,15 +2,18 @@
 
 import { ChangeEvent, Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-// import createHighlight from "@/app/lib/create/createHighlight";
+import createHighlight from "@/app/lib/create/createHighlight";
 import Image from "next/image";
 import uploadPictureToBucket from "@/app/lib/create/uploadPictureToBucket";
-// import insertUrlsToHighlight from "@/app/lib/create/insertUrlsToHighlight";
+import insertUrlsToHighlight from "@/app/lib/create/insertUrlsToHighlight";
 import { useRouter } from "next/navigation";
 import { useSupabase } from "@/app/supabase-provider";
+import { v4 as uuidv4 } from "uuid";
+import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 
 export default function AddNewHighlightModal(props) {
   //State
+  const {entityUniqueName} = useEntityContext()
   const [highlightName, setHighlightName] = useState<string | undefined>();
   const [arrayOfPictureUrls, setArrayOfPictureUrls] = useState([]);
 
@@ -20,54 +23,60 @@ export default function AddNewHighlightModal(props) {
 
   const router = useRouter();
 
-  // async function handleAddButton() {
-  //   const newHighlightId = await createHighlight(highlightName, props.entityId);
-  //   await insertUrlsToHighlight(arrayOfPictureUrls, newHighlightId);
+  async function handleAddButton() {
+    const newHighlightId = await createHighlight(highlightName, props.entityId);
+    await insertUrlsToHighlight(arrayOfPictureUrls, newHighlightId);
 
-  //   props.closeModal();
-  //   router.push(`${props.entityId}/manageEntity/highlights`);
-  // }
+    props.closeModal();
+    router.push(`${entityUniqueName}/manageEntity/highlights`);
+  }
 
-  // async function handleUploadImageButton(e: ChangeEvent<HTMLInputElement>) {
-  //   let file;
+  async function handleUploadImageButton(e: ChangeEvent<HTMLInputElement>) {
+    let file;
 
-  //   if (e.target.files) {
-  //     file = e.target.files[0];
-  //   }
-  //   let pictureUrl = await uploadPictureToBucket(
-  //     file,
-  //     "images-restaurant",
-  //     "public"
-  //   );
-  //   let newArray = arrayOfPictureUrls.concat(pictureUrl);
-  //   console.log("new array after concat:", newArray);
-  //   setArrayOfPictureUrls(newArray);
-  // }
+    if (e.target.files) {
+      file = e.target.files[0];
+    }
+    const storageSchema = "public";
+    const uuid = uuidv4();
+    const bucket = "restaurant_images";
 
-  // async function handleDeletePictureButton(deletedPicutreUrl) {
-  //   //Locating which picture should be deleted is based on the URL of the picture (could be done with
-  //   // picture Id instead, but would need to upload photo to DB and get its ID which is an extra API
-  //   // call for each picture upload)
+    let pictureUrl = await uploadPictureToBucket({
+      file,
+      storageSchema: storageSchema,
+      bucket: bucket,
+      id: entityId,
+      uuid: uuid,
+    });
+    let newArray = arrayOfPictureUrls.concat(pictureUrl);
+    console.log("new array after concat:", newArray);
+    setArrayOfPictureUrls(newArray);
+  }
 
-  //   //Remove the picture from the state variable array
-  //   const newArray = arrayOfPictureUrls.filter(
-  //     (pictureUrl) => pictureUrl != deletedPicutreUrl
-  //   );
-  //   setArrayOfPictureUrls(newArray);
-  // }
+  async function handleDeletePictureButton(deletedPicutreUrl) {
+    //Locating which picture should be deleted is based on the URL of the picture (could be done with
+    // picture Id instead, but would need to upload photo to DB and get its ID which is an extra API
+    // call for each picture upload)
 
-  // function handleCancelButton() {
-  //   setArrayOfPictureUrls([]);
-  //   setHighlightName("");
-  //   props.closeModal();
-  // }
+    //Remove the picture from the state variable array
+    const newArray = arrayOfPictureUrls.filter(
+      (pictureUrl) => pictureUrl != deletedPicutreUrl
+    );
+    setArrayOfPictureUrls(newArray);
+  }
+
+  function handleCancelButton() {
+    setArrayOfPictureUrls([]);
+    setHighlightName("");
+    props.closeModal();
+  }
   return (
     <Transition.Root show={props.open} as={Fragment}>
       <Dialog
         as="div"
         className="relative z-50"
         initialFocus={buttonRef}
-        // onClose={() => handleCancelButton()}
+        onClose={() => handleCancelButton()}
       >
         <Transition.Child
           as={Fragment}
@@ -141,8 +150,8 @@ export default function AddNewHighlightModal(props) {
                         className="h-14 w-full sm:h-12 block rounded-md border-gray-300 sm:pl-4  mt-2 mb-6 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         placeholder="Type highlight name"
                         ref={buttonRef}
-                        // value={highlightName}
-                        // onChange={(e) => setHighlightName(e.target.value)}
+                        value={highlightName}
+                        onChange={(e) => setHighlightName(e.target.value)}
                       />
                       {/* ADD MEDia BUTTON */}
                       <div className="flex justify-end sm:mb-3">
@@ -170,9 +179,9 @@ export default function AddNewHighlightModal(props) {
                             name="add slide"
                             type="file"
                             className="sr-only"
-                            // onChange={(e) => {
-                            //   handleUploadImageButton(e);
-                            // }}
+                            onChange={(e) => {
+                              handleUploadImageButton(e);
+                            }}
                           />
                         </label>
                       </div>
@@ -220,9 +229,9 @@ export default function AddNewHighlightModal(props) {
                                   />
 
                                   <button
-                                    // onClick={() =>
-                                    //   handleDeletePictureButton(pictureUrl)
-                                    // }
+                                    onClick={() =>
+                                      handleDeletePictureButton(pictureUrl)
+                                    }
                                     className="bg-white rounded-lg h-fit absolute mr-3 mb-3 bottom-0 right-0 z-10"
                                   >
                                     {/* TRASH ICON */}
@@ -256,14 +265,14 @@ export default function AddNewHighlightModal(props) {
                   <button
                     type="button"
                     className="inline-flex w-full ml-3 justify-center rounded-3xl border border-transparent bg-blue-500 px-7 sm:px-11 py-2 sm:py-2 text-base font-medium text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
-                    // onClick={() => handleAddButton()}
+                    onClick={() => handleAddButton()}
                   >
                     Add
                   </button>
                   <button
                     type="button"
                     className=" inline-flex w-full justify-center rounded-3xl border border-gray-300 bg-white px-8 py-2 sm:py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                    // onClick={() => handleCancelButton()}
+                    onClick={() => handleCancelButton()}
                   >
                     Cancel
                   </button>

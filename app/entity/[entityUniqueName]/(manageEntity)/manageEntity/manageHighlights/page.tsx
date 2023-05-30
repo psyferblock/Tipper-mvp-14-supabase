@@ -13,7 +13,6 @@ export default function ManageHighlightsPage(params) {
       </div>
     </div>
     <ManageHighlights
-      entityUniqueName={params.entityUniqueName}
       listOfHighlights={entityHighlights}
     />
   </div>

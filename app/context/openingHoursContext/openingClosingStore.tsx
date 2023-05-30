@@ -1,4 +1,8 @@
-"use client";
+"use client"
+
+import React from 'react'
+import entityWorkingHoursReducer, {  workingHoursState,} from "./openingHoursReducer";
+
 import {
   useReducer,
   useEffect,
@@ -6,21 +10,62 @@ import {
   useContext,
   createContext,
 } from "react";
-import entityWorkingHoursReducer, {  workingHoursState,} from "./openingHoursReducer";
 
-const createWorkingHoursTools = (hoursInput) => {
-  const [
-    {
-      openingHoursMondayFriday,
-      openingHoursSaturday,
-      openingHoursSunday,
-      closingHoursMondayFriday,
-      closingHoursSaturday,
-      closingHoursSunday,
-    },
-    dispatch,
-  ] = useReducer(entityWorkingHoursReducer, workingHoursState);
 
+
+function CreateWorkingHoursTools  (hoursInput) {
+  const [ hoursState,dispatch] = useReducer(entityWorkingHoursReducer, workingHoursState);
+
+  const {
+    openingHoursMondayFriday,
+    openingHoursSaturday,
+    openingHoursSunday,
+    closingHoursMondayFriday,
+    closingHoursSaturday,
+    closingHoursSunday,
+  } =hoursState
+
+
+
+  const addMonFridayOpening = useCallback((input) => {
+    dispatch({
+      type: "ADD_OPENING_HOURS_MONDAY_FRIDAY",
+      payload: input,
+    });
+  }, []);
+
+  const addSaturdayOpening = useCallback((input) => {
+    dispatch({
+      type: "ADD_OPENING_HOURS_SATURDAY",
+      payload: input,
+    });
+  }, []);
+  const addSundayOpening = useCallback((input) => {
+    dispatch({
+      type: "ADD_OPENING_HOURS_SUNDAY",
+      payload: input,
+    });
+  }, []);
+  const addMonFridayClosing = useCallback((input) => {
+    dispatch({
+      type: "ADD_CLOSING_HOURS_MONDAY_FRIDAY",
+      payload: input,
+    });
+  }, []);
+  const addSaturdayClosing = useCallback((input) => {
+    dispatch({
+      type: "ADD_CLOSING_HOURS_SATURDAY",
+      payload: input,
+    });
+  }, []);
+
+  const addSundayClosing = useCallback((input) => {
+    dispatch({
+      type: "ADD_CLOSING_HOURS_SUNDAY",
+      payload: input,
+    });
+  }, []);
+  
   useEffect(() => {
     addMonFridayOpening(hoursInput.monTime);
     addSaturdayOpening(hoursInput.satTime);
@@ -29,46 +74,8 @@ const createWorkingHoursTools = (hoursInput) => {
     addSaturdayClosing(hoursInput.satTimeClosing);
     addSundayClosing(hoursInput.sunTimeClosing);
   }, []);
-
-  const addMonFridayOpening = useCallback((input: string) => {
-    dispatch({
-      type: "ADD_OPENING_HOURS_MONDAY_FRIDAY",
-      payload: input,
-    });
-  }, []);
-
-  const addSaturdayOpening = useCallback((input: string) => {
-    dispatch({
-      type: "ADD_OPENING_HOURS_SATURDAY",
-      payload: input,
-    });
-  }, []);
-  const addSundayOpening = useCallback((input: string) => {
-    dispatch({
-      type: "ADD_OPENING_HOURS_SUNDAY",
-      payload: input,
-    });
-  }, []);
-  const addMonFridayClosing = useCallback((input: string) => {
-    dispatch({
-      type: "ADD_CLOSING_HOURS_MONDAY_FRIDAY",
-      payload: input,
-    });
-  }, []);
-  const addSaturdayClosing = useCallback((input: string) => {
-    dispatch({
-      type: "ADD_CLOSING_HOURS_SATURDAY",
-      payload: input,
-    });
-  }, []);
-
-  const addSundayClosing = useCallback((input: string) => {
-    dispatch({
-      type: "ADD_CLOSING_HOURS_SUNDAY",
-      payload: input,
-    });
-  }, []);
-
+  
+  console.log('reducedState in context hours ', hoursState )
   
 
   return {
@@ -88,26 +95,32 @@ const createWorkingHoursTools = (hoursInput) => {
 };
 
 const ManageOpeningHoursContext = createContext<
-  ReturnType<typeof createWorkingHoursTools>
->({} as unknown as ReturnType<typeof createWorkingHoursTools>);
+  ReturnType<typeof CreateWorkingHoursTools>
+>({} as unknown as ReturnType<typeof CreateWorkingHoursTools>);
 
-export function useManageOpeningHoursContext() {
-  return useContext(ManageOpeningHoursContext);
-}
 
-export function ManageOpeningHoursContextProvider({
+
+export  function ManageOpeningHoursContextProvider({
   children,
   hoursInput,
 }: {
   children: React.ReactNode;
   hoursInput: any;
 }) {
-  createWorkingHoursTools(hoursInput);
   return (
     <ManageOpeningHoursContext.Provider
-      value={createWorkingHoursTools(hoursInput)}
+      value={CreateWorkingHoursTools(hoursInput)}
     >
       {children}
     </ManageOpeningHoursContext.Provider>
   );
+}
+
+// hours context hook 
+export function useManageOpeningHoursContext() {
+  const context= useContext(ManageOpeningHoursContext);
+  if (!context) {
+    throw new Error("useUsersContext must be used within a FormProvider");
+  }
+  return context 
 }

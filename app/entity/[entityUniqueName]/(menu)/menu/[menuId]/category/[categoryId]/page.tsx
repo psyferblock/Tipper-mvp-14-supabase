@@ -1,8 +1,8 @@
 import React from 'react'
 
-function MenuCategoriesPage() {
+function MenuCategoriesPage(params) {
   return (
-    <div>MenuCategoriesPage</div>
+    <div>{params.categoryId}</div>
   )
 }
 

@@ -1,4 +1,4 @@
-import EntityInfosContextProvider from "@/app/context/entityContext/entityContextStore";
+import EntityInfosContextProvider, { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 import { ManageOpeningHoursContextProvider } from "@/app/context/openingHoursContext/openingClosingStore";
 import { useUsersContext } from "@/app/context/userContext/userContextStore";
 import { getBasicPicturesServer } from "@/app/lib/get/getBasicPictures";
@@ -15,16 +15,34 @@ export default async function ManageEntityInfosLayout({
   params: { entityUniqueName: number };
 }) {
   // Fetching from DB
+  const supabaseServer=createServerClient()
+
+  const entityInfo= await getEntityUsingUniqueNameServer(supabaseServer,params.entityUniqueName)
+const entityId=entityInfo?.id
+
+  const openingHours= await supabaseServer.from("opening_hours").select().eq("entity_id",entityId)
+  const closingHours= await supabaseServer.from("closingHours").select().eq("entity_id",entityId)
+
+  const hoursInput={
+    openingHoursMondayFriday: openingHours?.monday_friday,
+    openingHoursSaturday: openingHours?.saturday,
+    openingHoursSunday: openingHours?.sunday,
+    closingHoursMondayFriday: closingHours?.monday_friday,
+    closingHoursSaturday:closingHours?.saturday ,
+    closingHoursSunday: closingHours?.sunday,
+  }
+
+  console.log('hoursInput', hoursInput)
  
   return (
     <>
      
-      {/* <ManageOpeningHoursContextProvider hoursInput={hoursInput}> */}
+      <ManageOpeningHoursContextProvider hoursInput={hoursInput}>
           
         we are at the entity info management layout
         
         {children}
-        {/* </ManageOpeningHoursContextProvider> */}
+        </ManageOpeningHoursContextProvider>
     </>
   );
 }

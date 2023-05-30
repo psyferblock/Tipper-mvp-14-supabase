@@ -15,7 +15,7 @@ import entityInfoReducer, { entityContextState } from "./entityContextReducer";
 /**
  * Function returning all the tools that children component will inherit when using the context.
  */
-function createManageEntityInfosTools(
+function CreateManageEntityInfosTools(
   entityInfos,
   coverPictures,
   logoPictureObject
@@ -45,7 +45,7 @@ function createManageEntityInfosTools(
     industryId,
     entityTypeId,
     locationId,
-    isContactUsPublic,
+    // isContactUsPublic,
     isVerified,
     isInstagramUrlPublic,
     isFacebookUrlPublic,
@@ -82,7 +82,10 @@ function createManageEntityInfosTools(
     setEntityAddress(entityInfos?.entity_address);
     setEntityName(entityInfos?.entity_name);
     setEntityId(entityInfos?.id);
+    
   }, []);
+  console.log("reduced state in context ", entityState);
+
 
   const setEntityId = useCallback((id: string) => {
     dispatch({
@@ -330,7 +333,6 @@ function createManageEntityInfosTools(
   }, []);
 
  
-  console.log("entityState in context ", entityState);
 
   return {
     entityName,
@@ -354,7 +356,7 @@ function createManageEntityInfosTools(
     industryId,
     entityTypeId,
     locationId,
-    isContactUsPublic,
+    // isContactUsPublic,
     isVerified,
     entityUniqueName,
     entityArea,
@@ -399,8 +401,8 @@ function createManageEntityInfosTools(
  */
 
 const ManageEntityInfosContext = createContext<
-  ReturnType<typeof createManageEntityInfosTools>
->({} as unknown as ReturnType<typeof createManageEntityInfosTools>);
+  ReturnType<typeof CreateManageEntityInfosTools>
+>({} as unknown as ReturnType<typeof CreateManageEntityInfosTools>);
 
 /**
  * Component that provides context for the children
@@ -419,7 +421,7 @@ export default function EntityInfosContextProvider({
   // createManageEntityInfosTools(entityInfos, coverPictures, logoPictureObject);
   return (
     <ManageEntityInfosContext.Provider
-      value={createManageEntityInfosTools(
+      value={CreateManageEntityInfosTools(
         entityInfos,
         coverPictures,
         logoPictureObject

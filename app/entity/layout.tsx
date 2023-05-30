@@ -1,7 +1,7 @@
 import { EntityInfosContextProvider } from "@/app/context/entityContext/entityContextStore";
 import { createServerClient } from "@/app/utils/supabase-server";
 import React from "react";
-import { getEntityIdFromUniqueNameServer } from "../lib/get/getEntityIdFromUniqueName";
+import { getEntityIdFromUniqueNameServer } from "@/app/lib/get/getEntityIdFromUniqueName";
 import { getMyEntityInfosServer } from "../lib/get/getMyEntityInfos";
 import NavBar from "../root-components/NavBar";
 

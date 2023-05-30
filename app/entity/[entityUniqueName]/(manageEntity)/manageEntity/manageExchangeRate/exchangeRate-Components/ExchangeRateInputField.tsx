@@ -1,17 +1,28 @@
 "use client";
 
+import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 import updateExchangeRate from "@/app/lib/update/updateExchangeRate";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
-export default function ExchangeRateInputField({ exchangeRate, entityUniqueName }) {
-  // const [newExchangeRate, setNewExchangeRate] = useState(exchangeRate);
+export default function ExchangeRateInputField(exchangeRate) {
+  const [newExchangeRate, setNewExchangeRate] = useState(exchangeRate);
+  const newRateRef = useRef(exchangeRate);
 
   const [editing, setEditing] = useState(false);
+  const { entityId } = useEntityContext();
 
-  // async function handleApplyButton() {
-  //   await updateExchangeRate(newExchangeRate, entityId);
-  //   setEditing(false);
-  // }
+  console.log("entityId", entityId);
+  async function handleApplyButton() {
+    await updateExchangeRate({
+      exchangeRate: newExchangeRate,
+      entityId: entityId,
+    });
+    setEditing(false);
+  }
+  const handleEdit = () => {
+    setEditing(true);
+    newRateRef.current.focus();
+  };
   return (
     <>
       <div className="flex py-4 items-center border border-gray-300 hover:border-indigo-500 rounded-lg h-12 pl-4 mb-4">
@@ -21,8 +32,9 @@ export default function ExchangeRateInputField({ exchangeRate, entityUniqueName 
         <input
           type="number"
           id="price"
-          // value={newExchangeRate}
-          // onChange={(e) => setNewExchangeRate(e.target.value)}
+          ref={newRateRef}
+          value={newExchangeRate}
+          onChange={(e) => setNewExchangeRate(e.target.value)}
           className="h-6 block w-3/5 border-0 pl-4 pr-12 my-0.5 py-0 focus:border-0 focus:ring-0 sm:text-sm"
           placeholder="1506.00"
           disabled={!editing}
@@ -30,14 +42,14 @@ export default function ExchangeRateInputField({ exchangeRate, entityUniqueName 
         <div className="pt-4 sm:hidden ">
           {editing ? (
             <button
-              // onClick={() => handleApplyButton()}
+              onClick={() => handleApplyButton()}
               className=" h-fit block text-blue-500 pb-4"
             >
               Apply
             </button>
           ) : (
             <button
-              // onClick={() => setEditing(true)}
+              onClick={() => handleEdit()}
               className=" h-fit block text-blue-500 pb-4"
             >
               Edit
@@ -94,14 +106,14 @@ export default function ExchangeRateInputField({ exchangeRate, entityUniqueName 
       </div>
       {editing ? (
         <button
-          // onClick={() => handleApplyButton()}
+          onClick={() => handleApplyButton()}
           className="hidden sm:block text-blue-500 hover:text-indigo-700 pb-4"
         >
           Apply
         </button>
       ) : (
         <button
-          // onClick={() => setEditing(true)}
+          onClick={() => handleEdit()}
           className="hidden sm:block text-blue-500 hover:text-indigo-700 pb-4"
         >
           Edit

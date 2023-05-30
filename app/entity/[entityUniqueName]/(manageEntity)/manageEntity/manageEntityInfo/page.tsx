@@ -14,11 +14,10 @@ export default function ManageEntityInfosPage({ params }) {
       <div className="flex flex-col w-full pb-10">
         <div className="space-y-5">
           {/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
-          <ManageLogo />//done
-          <ManageCoverPhotos /> //done
+          <ManageLogo />
+          <ManageCoverPhotos /> 
           <ManageTags />
           <ManageWorkingHours />
-          {/* <BrowserTestingComponent /> */}
           <ManageSocialMedia />
           <ManageAboutUs entityUniqueName={params.entityUniqueName} />
           <ManageContactUs entityUniqueName={params.entityUniqueName} />

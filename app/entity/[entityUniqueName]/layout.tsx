@@ -15,7 +15,7 @@ export default async function EntityPageLayout({
 }) {
   const entityUniqueName = params.entityUniqueName;
 
-  console.log("entityUniqueName", entityUniqueName);
+  console.log("entityUniqueName from entityUniqueName layout", entityUniqueName);
 
 
   const supabaseServer= createServerClient()

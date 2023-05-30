@@ -76,8 +76,8 @@ export default function ManageContactUsPage(props) {
     if (e.target.files) {
       file = e.target.files[0];
     }
-    const storageSchema="restaurant_images"
-    const bucket="public"
+    const storageSchema="public"
+    const bucket="restaurant_images"
     const uuid=uuidv4()
     let pictureUrl = await uploadPicture({
       file,

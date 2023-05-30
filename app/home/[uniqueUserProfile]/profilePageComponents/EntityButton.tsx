@@ -18,7 +18,6 @@ const EntityButton = () => {
   const supabase = useSupabase();
   const { session } = useSupabase();
 
-  if (hasEntity) {
   
   useEffect(() => {
     const getEntity = async () => {
@@ -67,7 +66,7 @@ const EntityButton = () => {
   console.log("categoryState", categoryState);
   const categoryId = categoryState.id;
   console.log("categoryId", categoryId);
-}
+
   return (
     <div>
       {" "}
