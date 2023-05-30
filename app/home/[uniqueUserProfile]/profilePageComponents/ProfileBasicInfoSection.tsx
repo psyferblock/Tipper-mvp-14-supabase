@@ -45,16 +45,16 @@ function ProfileBasicInfoSection() {
   // managing state with context was truly a good day for me
   const handleUserInfo = async () => {
     const userUpdate = await updateUserProfile({
-      userId: userId,
+      profileId:profileId,
       firstName: firstName,
       lastName: lastName,
       dateOfBirth: dateOfBirth,
       gender: gender,
       contactNumber: contactNumber,
-      profilePictureUrl: profilePictureUrl,
-      emailAddress: emailAddress,
-      uniqueUserName: uniqueUserName,
-      hasEntity: hasEntity,
+      // profilePictureUrl: profilePictureUrl,
+      // emailAddress: emailAddress,
+      // uniqueUserName: uniqueUserName,
+      // hasEntity: hasEntity,
     });
     setEditing(false);
     console.log("updating profile", userUpdate);
@@ -66,7 +66,6 @@ function ProfileBasicInfoSection() {
       file = e.target.files[0];
       console.log("selectedFile", file);
       setSelectedFile(file);
-      // fileUploadHandler(file)
     }
   };
 
@@ -97,6 +96,7 @@ function ProfileBasicInfoSection() {
       if (pictureUrl) {
         console.log("pictureUrl", pictureUrl);
         setProfilePicUrl(pictureUrl);
+        await updateProfilePictureUrl({profilePicture:pictureUrl,profileId:profileId})
         setUploading(false);
       } else {
         console.log("didnt recieve url ", pictureUrl);

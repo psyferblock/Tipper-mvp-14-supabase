@@ -4,13 +4,17 @@ import ManageMenuCategories from "./ManageMenuCategories";
 
 export default async function ManageMenuCategoriesPage({ params }) {
   //Fetching from DB
-  const supabase = createServerClient();
+  const supabaseServer = createServerClient();
 
-
+console.log('params', params)
   // console.log("menu categgg", menuCategories);
   return (
-    <ManageMenuCategories
+    <div>
+      get menu id 
+      send menu id to get categories 
+    {/* // <ManageMenuCategories
      
-    />
+    // /> */}
+    </div>
   );
 }

@@ -3,11 +3,13 @@
 import ToggleButton from "@/app/root-Components/tools-Components/ToggleButton";
 import { useSupabase } from "@/app/supabase-provider";
 
-import updateIsMenuCategoryPublic from "@/lib/update/updateIsMenuCategoryPublic";
+import updateIsMenuCategoryPublic from "@/app/lib/update/updateIsMenuCategoryPublic";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
-export default function MenuCategoryCard(props) {
+export default function MenuCategoryCard(props ) {
+  
   const entityId = props.entityId;
 
   const categoryId = props.categoryId;
@@ -35,10 +37,11 @@ export default function MenuCategoryCard(props) {
         >
           <div className="sm:space-y-2">
             <div className="h-20 w-20 rounded-full mx-auto overflow-hidden">
-              <img
+              <Image
                 className=" h-24 w-24"
                 src="https://cdn.ldsliving.com/dims4/default/2040800/2147483647/strip/true/crop/640x395+0+0/resize/640x395!/format/webp/quality/90/?url=http%3A%2F%2Flds-living-brightspot.s3.amazonaws.com%2F7c%2F30%2F864e82a22a48241f8a28bc7abb4d%2F42088.jpg"
-                alt=""
+                alt="menu item image"
+                fill
               />
             </div>
             <div className="hidden sm:block text-center font-semibold text-gray-700">
@@ -51,7 +54,7 @@ export default function MenuCategoryCard(props) {
         <div className="sm:hidden w-full flex justify-between">
           <div className="sm:hidden ml-2 space-y-2">
             <Link
-              href={`${entityId}/manageEntity/menuCategories/${categoryId}?categoryName=${categoryName}`}
+              href={`${props.entityUniqueName}/manageEntity/${props.menuId}?categoryName=${categoryName}`}
             >
               <div className="sm:hidden text-start mr-2 font-semibold text-gray-700">
                 {props.categoryName}
