@@ -122,7 +122,7 @@ const CreateUserContextInfoTools = (userInfos) => {
     setContactNumber(userInfos?.phone_number);
       setDateOfBirth(userInfos?.date_of_birth);
       setGender(userInfos?.gender);
-      setProfilePicUrl(userInfos?.profile_picture);
+      setProfilePicUrl(userInfos?.profile_picture_url);
       setProfileId(userInfos?.id);
       setUserId(userInfos?.user_id);
       setUserLastName(userInfos?.last_name);

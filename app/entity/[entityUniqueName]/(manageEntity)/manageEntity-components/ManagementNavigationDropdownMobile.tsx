@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
@@ -7,10 +7,13 @@ import { useSupabase } from "@/app/supabase-provider";
 import { managementCategories } from "./ManagementCategories";
 import { useSelectedLayoutSegment } from "next/navigation";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
+import {useParams} from "next/navigation"
 
 
 
-export default function ManagementNavigationDropdownMobile(params) {
+export default function ManagementNavigationDropdownMobile() {
+  const params=useParams()
+  
   const currentSegment = useSelectedLayoutSegment();
 
   const {entityUniqueName} = useEntityContext() 

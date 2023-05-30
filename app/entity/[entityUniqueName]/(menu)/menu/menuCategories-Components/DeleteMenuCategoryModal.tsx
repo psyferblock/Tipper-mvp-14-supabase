@@ -4,7 +4,7 @@ import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useSupabase } from "@/app/supabase-provider";
 import { useRouter } from "next/navigation";
-import deleteMenuCategory from "@/lib/delete/deleteMenuCategory";
+import deleteMenuCategory from "@/app/lib/delete/deleteMenuCategory";
 
 export default function DeleteMenuCategoryModal(props) {
   //Apply "buttonRef" to field to decide which section is focused on when modal is opened

@@ -2,7 +2,7 @@
 
 import { Fragment, useEffect, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import updateMenuCategoryName from "@/lib/update/updateMenuCategoryName";
+import updateMenuCategoryName from "@/app/lib/update/updateMenuCategoryName";
 import { useRouter } from "next/navigation";
 import { useSupabase } from "@/app/supabase-provider";
 

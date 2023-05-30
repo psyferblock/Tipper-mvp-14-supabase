@@ -1,7 +1,7 @@
 "use client";
 import { useUsersContext } from "@/app/context/userContext/userContextStore";
 import uploadPictureToBucket from "@/app/lib/create/uploadPictureToBucket";
-import updateUserProfile from "@/app/lib/update/updateUserProfile";
+import updateUserProfile, { updateProfilePictureUrl } from "@/app/lib/update/updateUserProfile";
 import { useSupabase } from "@/app/supabase-provider";
 import Image from "next/image";
 import React, { useState, ChangeEvent } from "react";
@@ -56,6 +56,8 @@ function ProfileBasicInfoSection() {
       // uniqueUserName: uniqueUserName,
       // hasEntity: hasEntity,
     });
+    await updateProfilePictureUrl({profilePictureUrl:profilePictureUrl,profileId:profileId})
+
     setEditing(false);
     console.log("updating profile", userUpdate);
   };
@@ -96,7 +98,6 @@ function ProfileBasicInfoSection() {
       if (pictureUrl) {
         console.log("pictureUrl", pictureUrl);
         setProfilePicUrl(pictureUrl);
-        await updateProfilePictureUrl({profilePicture:pictureUrl,profileId:profileId})
         setUploading(false);
       } else {
         console.log("didnt recieve url ", pictureUrl);
@@ -131,8 +132,7 @@ function ProfileBasicInfoSection() {
             alt={"profile Pic"}
             src={
               profilePictureUrl
-                ? profilePictureUrl
-                : "https://zluncbhyhpxonqhigbhn.supabase.co/storage/v1/object/public/avatars/b72b3811-cfdd-4f09-9ebc-4464cf3bad89/8df4a812-99b4-4443-984a-f8c1cc68d103"
+               
             }
           ></Image>
         </div>

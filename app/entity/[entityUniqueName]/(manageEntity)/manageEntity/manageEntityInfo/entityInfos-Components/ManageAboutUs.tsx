@@ -1,6 +1,7 @@
 "use client";
 
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
+import uploadPictureToBucket from "@/app/lib/create/uploadPictureToBucket";
 // import ToggleButton from "@/app/root-Components/tools-Components/ToggleButton";
 import uploadPicture from "@/app/lib/create/uploadPictureToBucket";
 import ToggleButton from "@/app/root-Components/tools-Components/ToggleButton";
@@ -79,7 +80,7 @@ export default function ManageAboutUsPage(props) {
     const storageSchema = "public";
     const bucket = "restaurant_images";
     const uuid = uuidv4();
-    let pictureUrl = await uploadPicture({
+    let pictureUrl = await uploadPictureToBucket({
       file,
       storageSchema: storageSchema,
       bucket: bucket,

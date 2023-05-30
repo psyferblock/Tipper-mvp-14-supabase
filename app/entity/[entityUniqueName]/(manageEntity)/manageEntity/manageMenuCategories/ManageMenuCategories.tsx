@@ -16,7 +16,7 @@ export default function ManageMenuCategories() {
   const menuCategories=["love","breakfast","lunch","dinner","specials"]
   const [menuId,setMenuId]=useState("")
 
-  // const {entityId}= useEntityContext()
+  const {entityId}= useEntityContext()
 
   useEffect(()=>{
     const menuInfo = async () =>{
@@ -78,7 +78,7 @@ export default function ManageMenuCategories() {
     setIsDeleteMenuCategoryModalOpen(false);
   };
 
-  const entityId = props.entityId;
+  // const entityId = props.entityId;
 
   return (
     <>
