@@ -29,20 +29,20 @@ const UploadPdfMenu = () => {
     });
     //Setting the picture URL in context
     setPdfMenu(pictureUrl);
-    const pdfMenuFromDatabase=await addMenuPdf({pictureUrl:pdfMenu,entityId:entityId})
-    console.log('pdfMenuFromDatabase', pdfMenuFromDatabase)
   }
+  const uploadPdfToDatabase = async () => {
+    const pdfMenuFromStorage = await addMenuPdf({
+      pictureUrl: pdfMenu,
+      entityId: entityId,
+    });
+    console.log("pdfMenuFromStorage", pdfMenuFromStorage);
+  };
   return (
     <div className="p-2 m-2 border-2 flex flex-col justify-between ">
       <div className="">
         <div className=" p-2 m-2 flex justify-between">
           <h1 className="text-lg text-bold">usePdf</h1> <ToggleButton />{" "}
         </div>
-        <Image 
-        fill
-        alt="menu pdf"
-        src={pdfMenu}
-        />
 
         <h1>
           {" "}
@@ -52,7 +52,32 @@ const UploadPdfMenu = () => {
           itaque!
         </h1>
       </div>
-      <button onClick={()=>handleUploadPdf}>upload PDF</button>
+      <div className="flex justify-between">
+
+      <div className="flex text-sm text-gray-600 align-middle justify-center">
+        <label htmlFor="menuPdf" className="relative cursor-pointer rounded-md bg-gray-100 font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-400"> 
+
+          <span>upload pdf </span>
+          <input
+            id="menuPdf"
+            name="menuPdf"
+            type="file"
+            className=""
+            onChange={(e) => handleUploadPdf(e)}
+          />
+       </label>
+      </div>
+      <button
+      className=" m-2 p-2 h-12 w-32 border-2 border-amethyst"
+      onClick={()=>uploadPdfToDatabase()}> save menu pdf</button>
+      </div>
+      <div className="relative bg-gray-100 sm:h-56 h-auto rounded-lg border-2 border-dashed border-gray-400 mt-1">
+          {pdfMenu ? (
+            <Image fill alt="menu pdf" src={pdfMenu} />
+          ) : (
+            "{your image comes here} "
+          )}
+        </div>
     </div>
   );
 };
