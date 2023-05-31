@@ -18,65 +18,65 @@ export default function ManageMenuCategories() {
 
   const {entityId}= useEntityContext()
 
-  useEffect(()=>{
-    const menuInfo = async () =>{
-      await getEntityMenu(entityId)
-      let menuId=menuInfo.id
-      setMenuId(menuId)
-    }
-    menuInfo()
-  },[entityId])
+  // useEffect(()=>{
+  //   const menuInfo = async () =>{
+  //     await getEntityMenu(entityId)
+  //     let menuId=menuInfo.id
+  //     setMenuId(menuId)
+  //   }
+  //   menuInfo()
+  // },[entityId])
 
-  //Edit Category Name Modal
-  const [isEditCategoryNameModalOpen, setIsEditCategoryNameModalOpen] =
-    useState(false);
-  //State variable to store the menu category name being edited to send to modal
-  const [
-    categoryNameInEditCategoryNameModal,
-    setCategoryNameInEditCategoryNameModal,
-  ] = useState();
-  //State to know what is the Id of the menu category name having its name edited
-  const [editNameCategoryId, setEditNameCategoryId] = useState();
-  //Add New Category Modal
-  const [isAddCategoryModalOpen, setIsAddCategoryModalOpen] = useState(false);
-  //DELETE CATEGORY MODAL
-  const [isDeleteMenuCategoryModalOpen, setIsDeleteMenuCategoryModalOpen] =
-    useState(false);
-  const [menuCategoryIdToDelete, setMenuCategoryIdToDelete] = useState();
+  // //Edit Category Name Modal
+  // const [isEditCategoryNameModalOpen, setIsEditCategoryNameModalOpen] =
+  //   useState(false);
+  // //State variable to store the menu category name being edited to send to modal
+  // const [
+  //   categoryNameInEditCategoryNameModal,
+  //   setCategoryNameInEditCategoryNameModal,
+  // ] = useState();
+  // //State to know what is the Id of the menu category name having its name edited
+  // const [editNameCategoryId, setEditNameCategoryId] = useState();
+  // //Add New Category Modal
+  // const [isAddCategoryModalOpen, setIsAddCategoryModalOpen] = useState(false);
+  // //DELETE CATEGORY MODAL
+  // const [isDeleteMenuCategoryModalOpen, setIsDeleteMenuCategoryModalOpen] =
+  //   useState(false);
+  // const [menuCategoryIdToDelete, setMenuCategoryIdToDelete] = useState();
 
-  const firstMenuCategoryIdOfEntity = props.firstMenuCategoryIdOfEntity;
+  // // const firstMenuCategoryIdOfEntity = props.firstMenuCategoryIdOfEntity;
 
-  function handleEditCategoryNameButton(categoryId) {
-    setEditNameCategoryId(categoryId);
-    menuCategories.map((category) => {
-      if (category.id == categoryId) {
-        setCategoryNameInEditCategoryNameModal(category.menu_category_name);
-      }
-    });
-    setIsEditCategoryNameModalOpen(true);
-  }
+  // function handleEditCategoryNameButton(categoryId) {
+  //   setEditNameCategoryId(categoryId);
+  //   menuCategories.map((category) => {
+  //     if (category.id == categoryId) {
+  //       setCategoryNameInEditCategoryNameModal(category.menu_category_name);
+  //     }
+  //   });
+  //   setIsEditCategoryNameModalOpen(true);
+  // }
 
-  function handleDeleteCategoryButton(categoryIdToDelete) {
-    setMenuCategoryIdToDelete(categoryIdToDelete);
-    setIsDeleteMenuCategoryModalOpen(true);
-  }
+  // function handleDeleteCategoryButton(categoryIdToDelete) {
+  //   setMenuCategoryIdToDelete(categoryIdToDelete);
+  //   setIsDeleteMenuCategoryModalOpen(true);
+  // }
 
-  const closeEditCategoryNameModal = () => {
-    setIsEditCategoryNameModalOpen(false);
-  };
+  // const closeEditCategoryNameModal = () => {
+  //   setIsEditCategoryNameModalOpen(false);
+  // };
 
-  const handleAddCategoryButton = (e) => {
-    e.preventDefault();
-    setIsAddCategoryModalOpen(true);
-  };
+  // const handleAddCategoryButton = (e) => {
+  //   e.preventDefault();
+  //   setIsAddCategoryModalOpen(true);
+  // };
 
-  const closeAddCategoryModal = () => {
-    setIsAddCategoryModalOpen(false);
-  };
+  // const closeAddCategoryModal = () => {
+  //   setIsAddCategoryModalOpen(false);
+  // };
 
-  const closeDeleteCategoryModal = () => {
-    setIsDeleteMenuCategoryModalOpen(false);
-  };
+  // const closeDeleteCategoryModal = () => {
+  //   setIsDeleteMenuCategoryModalOpen(false);
+  // };
 
   // const entityId = props.entityId;
 
@@ -87,7 +87,7 @@ export default function ManageMenuCategories() {
         <div className="flex  items-center justify-end">
           {/* ADD CATEGORY BUTTON */}
           <button
-            onClick={handleAddCategoryButton}
+            // onClick={handleAddCategoryButton}
             className="hidden sm:block w-32 h-10 hover:bg-blue-600 text-xs rounded-3xl bg-blue-500 text-white -mt-2"
           >
             Add New Category
@@ -137,7 +137,7 @@ export default function ManageMenuCategories() {
             <BasicSearchBar placeHolder="Seach for a category" />
             {/* ADD CATEGORY FOR MOBILE */}
             <button
-              onClick={handleAddCategoryButton}
+              // onClick={handleAddCategoryButton}
               className="sm:hidden w-fit text-blue-500 flex items-center justify-between space-x-1"
             >
               <svg
@@ -158,7 +158,7 @@ export default function ManageMenuCategories() {
             </button>
             <div>
               {/* MENU CATEGORIES */}
-              <div className="grid sm:grid-cols-4 gap-4">
+              {/* <div className="grid sm:grid-cols-4 gap-4">
                 {menuCategories.map((category,index) => (
                   <MenuCategoryCard
                     categoryName={category.menu_category_name}
@@ -170,7 +170,7 @@ export default function ManageMenuCategories() {
                     entityId={entityId}
                   />
                 ))}
-              </div>
+              </div> */}
             </div>
           </>
         )}
@@ -179,25 +179,25 @@ export default function ManageMenuCategories() {
       {/* ////////////////////////////////////////////////////////////////////////////////////////////////// */}
 
       {/* MODALS */}
-      <EditMenuCategoryNameModal
+      {/* <EditMenuCategoryNameModal
         open={isEditCategoryNameModalOpen}
         closeModal={closeEditCategoryNameModal}
         currentName={categoryNameInEditCategoryNameModal}
         categoryId={editNameCategoryId}
         entityId={entityId}
-      /> <div>edit modal</div>
-      <AddNewMenuCategoryModal
+      /> <div>edit modal</div> */}
+      {/* <AddNewMenuCategoryModal
         open={isAddCategoryModalOpen}
         closeModal={closeAddCategoryModal}
         entityId={entityId}
-      /><div>add menu catefory modal</div>
+      /><div>add menu catefory modal</div> */}
 
-      <DeleteMenuCategoryModal
+      {/* <DeleteMenuCategoryModal
         open={isDeleteMenuCategoryModalOpen}
         closeModal={closeDeleteCategoryModal}
         entityId={entityId}
         categoryIdToDelete={menuCategoryIdToDelete}
-      /> <div>delete menu category </div>
+      /> <div>delete menu category </div> */}
     </>
   );
 }

@@ -1,8 +1,10 @@
 "use client";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 import uploadPictureToBucket from "@/app/lib/create/uploadPictureToBucket";
+import { addMenuPdf } from "@/app/lib/update/addMenuPdf";
 import ToggleButton from "@/app/root-Components/tools-Components/ToggleButton";
-import React, { useState } from "react";
+import Image from "next/image";
+import React, { ChangeEvent, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 const UploadPdfMenu = () => {
@@ -16,7 +18,7 @@ const UploadPdfMenu = () => {
       file = e.target.files[0];
     }
     const storageSchema = "public";
-    const bucket = "restaurant_images";
+    const bucket = "pdf_menu";
     const uuid = uuidv4();
     let pictureUrl = await uploadPictureToBucket({
       file,
@@ -27,6 +29,8 @@ const UploadPdfMenu = () => {
     });
     //Setting the picture URL in context
     setPdfMenu(pictureUrl);
+    const pdfMenuFromDatabase=await addMenuPdf({pictureUrl:pdfMenu,entityId:entityId})
+    console.log('pdfMenuFromDatabase', pdfMenuFromDatabase)
   }
   return (
     <div className="p-2 m-2 border-2 flex flex-col justify-between ">
@@ -34,6 +38,11 @@ const UploadPdfMenu = () => {
         <div className=" p-2 m-2 flex justify-between">
           <h1 className="text-lg text-bold">usePdf</h1> <ToggleButton />{" "}
         </div>
+        <Image 
+        fill
+        alt="menu pdf"
+        src={pdfMenu}
+        />
 
         <h1>
           {" "}
@@ -43,7 +52,7 @@ const UploadPdfMenu = () => {
           itaque!
         </h1>
       </div>
-      <button onClick={handleUploadPdf}>upload PDF</button>
+      <button onClick={()=>handleUploadPdf}>upload PDF</button>
     </div>
   );
 };
