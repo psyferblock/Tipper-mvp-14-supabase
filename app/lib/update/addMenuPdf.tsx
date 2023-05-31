@@ -2,13 +2,13 @@ import { supabase } from "@/app/utils/supabase-browser";
 
 export async function addMenuPdf({
   pictureUrl: pictureUrl,
-  entityId: entityId,
+  menuId: menuId,
 }) {
   const { data, error } = await supabase
     .from("menu_pdf")
     .insert({
       pdf_url: pictureUrl,
-      entity_id: entityId,
+      menu_id: menuId,
     })
     .select()
     .single();

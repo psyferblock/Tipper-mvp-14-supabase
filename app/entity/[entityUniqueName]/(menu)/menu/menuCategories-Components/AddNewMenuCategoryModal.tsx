@@ -5,6 +5,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import createMenuCategory from "@/app/lib/create/createMenuCategory";
 import { useRouter } from "next/navigation";
 import { useSupabase } from "@/app/supabase-provider";
+import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 
 export default function AddNewMenuCategoryModal(props) {
   //State
@@ -12,29 +13,38 @@ export default function AddNewMenuCategoryModal(props) {
 
   //Apply "buttonRef" to field to decide which section is focused on when modal is opened
   const buttonRef = useRef(null);
-
-  const entityId = props.entityId;
+  const { entityUniqueName } = useEntityContext();
+  const menuId = props.menuId;
+  console.log('menuId from addnewmenucategorymodal', menuId)
 
   const router = useRouter();
 
   async function handlePublishButton() {
     //After published button in modal is clicked:
-    await createMenuCategory(categoryName, true, entityId);
+    await createMenuCategory({
+      categoryName: categoryName,
+      isPublic: true,
+      menuId: menuId,
+    });
 
     props.closeModal();
 
     //refresh page by rerouting since we cant use router.refresh since calls to DB are in page.tsx (server component)
-    router.push(`${entityId}/manageEntity/menuCategories`);
+    router.push(`${entityUniqueName}/manageEntity/manageMenuCategories`);
   }
 
   async function handleSaveAsDraftButton() {
     //After published button in modal is clicked:
-    await createMenuCategory(categoryName, false, entityId);
+    await createMenuCategory({
+      categoryName: categoryName,
+      isPublic: false,
+      menuId: menuId,
+    });
 
     props.closeModal();
 
     //refresh page by rerouting since we cant use router.refresh since calls to DB are in page.tsx (server component)
-    router.push(`${entityId}/manageEntity/menuCategories`);
+    router.push(`${entityUniqueName}/manageEntity/manageMenuCategories`);
   }
 
   return (
@@ -126,14 +136,14 @@ export default function AddNewMenuCategoryModal(props) {
                     <button
                       type="button"
                       className="mt-3 inline-flex justify-center rounded-3xl border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                      onClick={() => handleSaveAsDraftButton(categoryName)}
+                      onClick={() => handleSaveAsDraftButton()}
                     >
                       Save as Draft
                     </button>
                     <button
                       type="button"
                       className="inline-flex justify-center rounded-3xl border border-transparent bg-blue-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
-                      onClick={() => handlePublishButton(categoryName)}
+                      onClick={() => handlePublishButton()}
                     >
                       Publish
                     </button>

@@ -42,7 +42,9 @@ export async function updateProfilePictureUrl({
     })
     .match({ id: profileId })
     .single();
-    if (error){ throw error }
-    console.log('data from update profilePictureUrl ', data )
-    return data
+  if (error) {
+    throw error;
+  }
+  console.log("data from update profilePictureUrl ", data);
+  return data;
 }

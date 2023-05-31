@@ -1,13 +1,13 @@
 import { supabase } from "@/app/utils/supabase-browser";
 
-export async function getMenuCategories(menuId:number) {
+export async function getMenuCategories({menuId:menuId}) {
   const { data, error } = await supabase
     .from("menu_category")
     .select()
-    .eq("menu_id", menuId)
+    .match({"menu_id": menuId})
     .order("id", { ascending: true })
 
-    .single()
+    // .single()
 
   if (error) throw error;
   console.log('data from getMenuCategories browser ', data )
@@ -22,7 +22,7 @@ export async function getMenuCategoriesServer(
   const { data, error } = await supabaseServerClient
     .from("menu_category")
     .select()
-    .eq("menu_id", menuId)
+    .match({"menu_id": menuId})
     .order("id", { ascending: true })
   
   if (error) throw error;
