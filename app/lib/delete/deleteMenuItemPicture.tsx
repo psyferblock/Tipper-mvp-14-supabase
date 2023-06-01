@@ -1,4 +1,4 @@
-import { supabase } from "@/utils/supabase-browser";
+import { supabase } from "@/app/utils/supabase-browser";
 
 export default async function deleteMenuItemPicture(menuItemId) {
   const { data, error } = await supabase

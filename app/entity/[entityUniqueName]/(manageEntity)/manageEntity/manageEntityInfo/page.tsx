@@ -6,7 +6,7 @@ import ManageTags from "./entityInfos-Components/ManageTags";
 import ManageWorkingHours from "./entityInfos-Components/showHours/ManageWorkingHours";
 import StickyBarSaveCancel from "./entityInfos-Components/StickyBarSaveCancel";
 import ManageLogo from "./entityInfos-Components/ManageLogo";
-import BrowserTestingComponent from "@/app/entity/[entityUniqueName]/(manageEntity)/manageEntity/manageEntityInfo/BrowserTestingComponent";
+import BrowserTestingComponent from "@/app/BrowserTestingComponent";
 
 export default function ManageEntityInfosPage({ params }) {
   return (

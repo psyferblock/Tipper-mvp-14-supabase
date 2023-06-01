@@ -3,7 +3,7 @@ import { supabase } from "@/app/utils/supabase-browser";
 export async function getMyEntityInfos(userId) {
   const { data, error } = await supabase
     .from("entity")
-    .select()
+    .select("*")
     .eq("user_id", userId);
   if (error) throw error;
   return data[0];

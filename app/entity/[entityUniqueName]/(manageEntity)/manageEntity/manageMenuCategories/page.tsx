@@ -11,8 +11,6 @@ export default async function ManageMenuCategoriesPage({
   //Fetching from DB
   const supabaseServer = createServerClient();
 
-  console.log("params", params);
-  // console.log("menu categgg", menuCategories);
   return (
     <div>
       <UploadPdfMenu />

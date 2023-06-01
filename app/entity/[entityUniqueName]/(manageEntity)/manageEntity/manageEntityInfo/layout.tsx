@@ -32,7 +32,6 @@ const entityId=entityInfo?.id
     closingHoursSunday: closingHours?.sunday,
   }
 
-  console.log('hoursInput', hoursInput)
  
   return (
     <>

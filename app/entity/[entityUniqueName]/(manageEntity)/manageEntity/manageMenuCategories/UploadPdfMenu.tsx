@@ -20,31 +20,35 @@ const UploadPdfMenu = () => {
     const getMenuId = async () => {
       const menu = await getEntityMenu(entityId);
       setMenuInfo(menu);
-      console.log("menu", menu);
     };
     getMenuId();
   }, [entityId]);
 
   const menuId = menuInfo.id;
 
-  const handlePdfMenuTogglebutton = (bool) => {
+  // an attempt to update teh database directly on toggle click 
+  
+  const handlePdfMenuTogglebutton =async  (bool) => {
     setIsPdfPublic(bool);
+    await changePdfPublicFromMenu({
+      menuId: menuId,
+      isPdfPublic: isPdfPublic,
+    });
   };
-console.log('isPdfPublic', isPdfPublic)
   
 
 // FOR SOME REASON THIS PART OF THE CODE ISNT WORKING. MAYBE ITS THE USE EFFECT OR MAYBE ITS THE CHANGE PDF FROM MENU TO PUBLIC FUNCTION.
-useEffect(() => {
-    const changePdfPublic = async () => {
-      //change pdf is public
-      await changePdfPublicFromMenu({
-        menuId: menuId,
-        isPdfPublic: isPdfPublic,
-      });
-      console.log('were in the change pdf public menu')
-      changePdfPublic()
-    };
-  }, [isPdfPublic]);
+// useEffect(() => {
+//     const changePdfPublic = async () => {
+//       //change pdf is public
+//       await changePdfPublicFromMenu({
+//         menuId: menuId,
+//         isPdfPublic: isPdfPublic,
+//       });
+//       console.log('were in the change pdf public menu')
+//       changePdfPublic()
+//     };
+//   }, [isPdfPublic]);
 
 
   async function handleUploadPdf(e: ChangeEvent<HTMLInputElement>) {

@@ -16,7 +16,6 @@ function ProfileBasicInfoSection() {
 
   const { session } = useSupabase();
   const userId = session?.user.id;
-  console.log("userId", userId);
 
   const {
     profileId,

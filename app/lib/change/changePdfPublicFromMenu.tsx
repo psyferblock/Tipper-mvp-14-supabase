@@ -8,7 +8,7 @@ export async function changePdfPublicFromMenu({
   const { data, error } = await supabase
     .from("entity_menu_id")
     .update({ "is_pdf_public": isPdfPublic })
-    .match({ "id": menuId })
+    .eq( "id", menuId )
   if (error) throw error;
   console.log("data from changePdfPublicFromMenu", data);
   return data;

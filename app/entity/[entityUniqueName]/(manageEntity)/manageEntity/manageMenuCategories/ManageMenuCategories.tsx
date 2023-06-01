@@ -14,22 +14,18 @@ import { getMenuCategories } from "@/app/lib/get/getMenuCategories";
 export default function ManageMenuCategories() {
   // //Owner chooses between pdf and manually inputting items
   const [isPdf, setIsPdf] = useState(false);
-  // const menuCategories=["love","breakfast","lunch","dinner","specials"]
   const [menuId,setMenuId]=useState("")
   const [menuCategories,setMenuCategories]=useState(null)
 
   const {entityId}= useEntityContext()
-  console.log('entityId from context ', entityId)
 
   useEffect(()=>{
     const menuInfo = async () =>{
       const menuFromEntity=await getEntityMenu(entityId)
       let menuId=menuFromEntity.id
-      console.log('menuId in useEffect', menuId)
       setMenuId(menuId)
       const menuCategoriesData=await getMenuCategories({menuId:menuId})
       setMenuCategories(menuCategoriesData)
-      console.log('menuCategoriesData', menuCategoriesData)
     }
     menuInfo()
   },[entityId])
@@ -52,26 +48,26 @@ export default function ManageMenuCategories() {
     useState(false);
   const [menuCategoryIdToDelete, setMenuCategoryIdToDelete] = useState();
 
-  // // const firstMenuCategoryIdOfEntity = props.firstMenuCategoryIdOfEntity;
+  // const firstMenuCategoryIdOfEntity = props.firstMenuCategoryIdOfEntity;
 
-  // function handleEditCategoryNameButton(categoryId) {
-  //   setEditNameCategoryId(categoryId);
-  //   menuCategories.map((category) => {
-  //     if (category.id == categoryId) {
-  //       setCategoryNameInEditCategoryNameModal(category.menu_category_name);
-  //     }
-  //   });
-  //   setIsEditCategoryNameModalOpen(true);
-  // }
+  function handleEditCategoryNameButton(categoryId) {
+    setEditNameCategoryId(categoryId);
+    menuCategories.map((category) => {
+      if (category.id == categoryId) {
+        setCategoryNameInEditCategoryNameModal(category.menu_category_name);
+      }
+    });
+    setIsEditCategoryNameModalOpen(true);
+  }
 
-  // function handleDeleteCategoryButton(categoryIdToDelete) {
-  //   setMenuCategoryIdToDelete(categoryIdToDelete);
-  //   setIsDeleteMenuCategoryModalOpen(true);
-  // }
+  function handleDeleteCategoryButton(categoryIdToDelete) {
+    setMenuCategoryIdToDelete(categoryIdToDelete);
+    setIsDeleteMenuCategoryModalOpen(true);
+  }
 
-  // const closeEditCategoryNameModal = () => {
-  //   setIsEditCategoryNameModalOpen(false);
-  // };
+  const closeEditCategoryNameModal = () => {
+    setIsEditCategoryNameModalOpen(false);
+  };
 
   const handleAddCategoryButton = (e) => {
     e.preventDefault();
@@ -82,9 +78,9 @@ export default function ManageMenuCategories() {
     setIsAddCategoryModalOpen(false);
   };
 
-  // const closeDeleteCategoryModal = () => {
-  //   setIsDeleteMenuCategoryModalOpen(false);
-  // };
+  const closeDeleteCategoryModal = () => {
+    setIsDeleteMenuCategoryModalOpen(false);
+  };
 
   // const entityId = props.entityId;
 
@@ -166,19 +162,23 @@ export default function ManageMenuCategories() {
             </button>
             <div>
               {/* MENU CATEGORIES */}
-              {/* <div className="grid sm:grid-cols-4 gap-4">
+              <div >
+                {menuCategories?<div className="grid sm:grid-cols-4 gap-4">
                 {menuCategories.map((category,index) => (
+                  <div key={index}>
                   <MenuCategoryCard
                     categoryName={category.menu_category_name}
                     categoryId={category.id}
-                    firstMenuCategoryIdOfEntity={firstMenuCategoryIdOfEntity}
-                    isMenuCategoryPublic={category.is_menu_category_public}
+                    // firstMenuCategoryIdOfEntity={firstMenuCategoryIdOfEntity}
+                    isMenuCategoryPublic={category.category_public}
                     openEditNameModal={handleEditCategoryNameButton}
                     openDeleteMenuCategoryModal={handleDeleteCategoryButton}
-                    entityId={entityId}
+                    menuId={menuId}
                   />
+                  </div>
                 ))}
-              </div> */}
+                </div>: "here is where the categories will show up"}
+              </div>
             </div>
           </>
         )}
@@ -187,25 +187,25 @@ export default function ManageMenuCategories() {
       {/* ////////////////////////////////////////////////////////////////////////////////////////////////// */}
 
       {/* MODALS */}
-      {/* <EditMenuCategoryNameModal
+      <EditMenuCategoryNameModal
         open={isEditCategoryNameModalOpen}
         closeModal={closeEditCategoryNameModal}
         currentName={categoryNameInEditCategoryNameModal}
         categoryId={editNameCategoryId}
         entityId={entityId}
-      /> <div>edit modal</div> */}
+      /> 
       <AddNewMenuCategoryModal
         open={isAddCategoryModalOpen}
         closeModal={closeAddCategoryModal}
         menuId={menuId}
-      /><div>add menu category modal</div>
+      />
 
-      {/* <DeleteMenuCategoryModal
+      <DeleteMenuCategoryModal
         open={isDeleteMenuCategoryModalOpen}
         closeModal={closeDeleteCategoryModal}
         entityId={entityId}
         categoryIdToDelete={menuCategoryIdToDelete}
-      /> <div>delete menu category </div> */}
+      />
     </>
   );
 }

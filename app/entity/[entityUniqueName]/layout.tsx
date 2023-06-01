@@ -1,3 +1,5 @@
+import GoToEntityButton from "@/app/(entityCreation)/entity-components/GoToEntityButton";
+import EntityButton from "@/app/home/[uniqueUserProfile]/profilePageComponents/EntityButton";
 import { getEntityUsingUniqueNameServer } from "@/app/lib/get/getEntityUsingUniqueName";
 import CopyUrlShareWhatsappButtons from "@/app/root-components/entityPage-Components/CopyUrlShareWhatsappButtons";
 import EntityPageCoverPhotosSection from "@/app/root-components/entityPage-Components/CoverPhotosSection";
@@ -14,8 +16,8 @@ export default async function EntityPageLayout({
   params: { entityUniqueName: string };
 }) {
   const entityUniqueName = params.entityUniqueName;
+  
 
-  console.log("entityUniqueName from entityUniqueName layout", entityUniqueName);
 
 
   const supabaseServer= createServerClient()
@@ -24,11 +26,7 @@ export default async function EntityPageLayout({
     data: { session },
   } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details.
 
-  //Fetching from DB
-  // const entityInfos = await getEntityUsingUniqueNameServer(
-  //   supabaseServer,
-  //   entityUniqueName
-  // );
+
 
  const  userId=session?.user.id
 
@@ -37,6 +35,7 @@ export default async function EntityPageLayout({
     
   
       welcome to entityUniqueName/menu layout page 
+      <EntityButton/>
       {children}
     </>
   );

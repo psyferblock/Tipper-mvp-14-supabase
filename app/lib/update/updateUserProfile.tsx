@@ -1,6 +1,6 @@
 import { supabase } from "@/app/utils/supabase-browser";
 
-export async function updateUserProfile({
+export default async function updateUserProfile({
   profileId: profileId,
   firstName: firstName,
   lastName: lastName,

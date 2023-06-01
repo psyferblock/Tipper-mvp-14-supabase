@@ -7,8 +7,6 @@ import { getEntityUsingUniqueNameServer } from "@/app/lib/get/getEntityUsingUniq
 async function ManageEntityExhangeRate({params}:{params: { entityUniqueName: string }}) {
   const entityUniqueName = params.entityUniqueName; ///// THIS IS WRONG. I DONT KNOW WHY IT IS TAKING uniqueUserName when the param is uniqueEntityName
 
-  console.log("params ", params);
-  console.log("entityUniqueName from page of exchangeRate", entityUniqueName);
 
   // const exchangeRate=15
   const supabaseServer = createServerClient();
@@ -19,7 +17,6 @@ async function ManageEntityExhangeRate({params}:{params: { entityUniqueName: str
     supabaseServer,
     entityId
   );
-  console.log('exchangeRate', exchangeRate)
   return (
     <>
       <div className="flex flex-col space-y-5 sm:space-y-0 w-full">

@@ -24,7 +24,7 @@ function CreateManageEntityInfosTools(
     entityInfoReducer,
     entityContextState
   );
- 
+
   const {
     entityName,
     logoObject,
@@ -53,6 +53,7 @@ function CreateManageEntityInfosTools(
     entityUniqueName,
     entityArea,
     entityId,
+    entityMenuInfo,
   } = entityState;
 
   useEffect(() => {
@@ -82,11 +83,18 @@ function CreateManageEntityInfosTools(
     setEntityAddress(entityInfos?.entity_address);
     setEntityName(entityInfos?.entity_name);
     setEntityId(entityInfos?.id);
-    
+    setEntityMenuInfo(entityInfos?.entity_menu_id);
   }, []);
   console.log("reduced state in context ", entityState);
 
-
+  //set entityMenuId
+  const setEntityMenuInfo = useCallback((array) => {
+    dispatch({
+      type: "ENTITY_MENU_INFO",
+      payload: array,
+    });
+  }, []);
+  //set enttiy id
   const setEntityId = useCallback((id: string) => {
     dispatch({
       type: "ENTITY_ID",
@@ -332,8 +340,6 @@ function CreateManageEntityInfosTools(
     });
   }, []);
 
- 
-
   return {
     entityName,
     logoObject,
@@ -362,6 +368,7 @@ function CreateManageEntityInfosTools(
     entityArea,
     entityAddress,
     entityId,
+    entityMenuInfo,
     setEntityName,
     setLogoObject,
     setArrayOfPictureObjects,
@@ -390,7 +397,8 @@ function CreateManageEntityInfosTools(
     setEntityId,
     handleTags,
     removeTag,
-    changeInput
+    changeInput,
+    setEntityMenuInfo,
   };
 }
 

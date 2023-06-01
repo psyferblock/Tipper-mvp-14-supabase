@@ -43,7 +43,7 @@ async function layout({
   console.log("menuId from layout/manageEntity", menuId);
   // categories stuff
   const categories = await getMenuCategoriesServer(supabaseServer, menuId);
-  console.log("menu categories from  layout/manageEntity", categories);
+  console.log("menu categories from  layout/manageEntity", categories );
   const categoryId = categories.id;
 
   const userId = session?.user.id;
@@ -73,7 +73,9 @@ async function layout({
           <div className="sm:hidden pr-3 flex items-center justify-between h-20 sm:mt-0 bg-gray-300 w-full  text-xl font-bold">
             {/* // this is the back tick that will take us to the entityUniqueName Page.  */}
             <Link
-              href={`entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}`}
+              href={`entity/${entityUniqueName}/menu/${menuId}
+              /category/${categoryId}
+              `}
               className="flex -ml-2 mr-1 w-fit items-center font-bold text-2xl"
             >
               <svg

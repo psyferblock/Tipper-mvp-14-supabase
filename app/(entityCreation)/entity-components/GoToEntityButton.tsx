@@ -19,7 +19,7 @@ function GoToEntityButton({
  
   return (
     <div>
-      <button className="border-spacing-4 w-32 h-12 bg-white rounded-md  border-white-2 text-center p-3 m-4">
+      <button className="border-spacing-4 w-32 h-12 bg-white rounded-md  border-white-2 text-center p-3 m-4 border-amethyst border-2 shadow-amethyst-shade shadow-md">
         <Link
           href={`entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}`}
         >

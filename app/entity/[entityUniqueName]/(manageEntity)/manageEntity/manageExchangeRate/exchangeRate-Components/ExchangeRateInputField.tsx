@@ -11,7 +11,6 @@ export default function ExchangeRateInputField(exchangeRate) {
   const [editing, setEditing] = useState(false);
   const { entityId } = useEntityContext();
 
-  console.log("entityId", entityId);
   async function handleApplyButton() {
     await updateExchangeRate({
       exchangeRate: newExchangeRate,

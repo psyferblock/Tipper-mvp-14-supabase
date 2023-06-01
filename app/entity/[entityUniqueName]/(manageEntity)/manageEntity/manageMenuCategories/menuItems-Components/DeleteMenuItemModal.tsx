@@ -2,49 +2,31 @@
 
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import createMenuCategory from "@/app/lib/create/createMenuCategory";
-import { useRouter } from "next/navigation";
 import { useSupabase } from "@/app/supabase-provider";
-import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
+import { useRouter } from "next/navigation";
+import deleteMenuCategory from "@/app/lib/delete/deleteMenuCategory";
+import deleteMenuItem from "@/app/lib/delete/deleteMenuItem";
 
-export default function AddNewMenuCategoryModal(props) {
-  //State
-  const [categoryName, setCategoryName] = useState<string | undefined>();
 
+export default function DeleteMenuItemModal(props) {
   //Apply "buttonRef" to field to decide which section is focused on when modal is opened
   const buttonRef = useRef(null);
-  const { entityUniqueName } = useEntityContext();
-  const menuId = props.menuId;
-  console.log('menuId from addnewmenucategorymodal', menuId)
 
   const router = useRouter();
 
-  async function handlePublishButton() {
-    //After published button in modal is clicked:
-    await createMenuCategory({
-      categoryName: categoryName,
-      isPublic: true,
-      menuId: menuId,
-    });
+  const entityId = props.entityId;
 
+  async function handleDeleteButton() {
+    const itemIdToDelete = props.itemIdToDelete;
+    await deleteMenuItem(itemIdToDelete);
     props.closeModal();
 
+    const categoryName = props.categoryName;
+    const categoryId = props.menuCategoryId;
     //refresh page by rerouting since we cant use router.refresh since calls to DB are in page.tsx (server component)
-    router.push(`${entityUniqueName}/manageEntity/manageMenuCategories`);
-  }
-
-  async function handleSaveAsDraftButton() {
-    //After published button in modal is clicked:
-    await createMenuCategory({
-      categoryName: categoryName,
-      isPublic: false,
-      menuId: menuId,
-    });
-
-    props.closeModal();
-
-    //refresh page by rerouting since we cant use router.refresh since calls to DB are in page.tsx (server component)
-    router.push(`entity/${entityUniqueName}/manageEntity/manageMenuCategories`);
+    router.push(
+      `/entity/${props.entityUniqueName}/manageEntity/manageMenuCategories/${categoryId}?categoryName=${categoryName}`
+    );
   }
 
   return (
@@ -87,65 +69,32 @@ export default function AddNewMenuCategoryModal(props) {
                           as="h3"
                           className="text-start sm:text-center text-lg font-medium leading-6 text-gray-900 sm:mb-4"
                         >
-                          Add New Category
+                          Delete Menu Item
                         </Dialog.Title>
-                        <button
-                          onClick={props.closeModal}
-                          className="sm:hidden"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="w-6 h-6 text-gray-600"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M6 18L18 6M6 6l12 12"
-                            />
-                          </svg>
-                        </button>
                       </div>
-                      <div className="flex justify-between text-xs">
-                        <p>Category Name</p>
-                        <p className="text-gray-400">150</p>
+                      <div className="flex justify-between text-sm">
+                        <div>
+                          Are you sure you want to delete this menu item?
+                        </div>
                       </div>
-                      {/* CATEGORY NAME INPUT FIELD */}
-                      <input
-                        type="text"
-                        name="tags"
-                        id="price"
-                        className="h-12 block w-full rounded-md border-gray-300 pl-4 pr-12 mt-1 mb-3 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                        placeholder="Type new category name"
-                        ref={buttonRef}
-                        onChange={(e) => {
-                          setCategoryName(e.target.value);
-                        }}
-                      />
                     </div>
                   </div>
                 </div>
-                <div className="bg-gray-50 px-4 sm:px-6 space-x-5 sm:space-x-0 py-3 flex justify-end sm:justify-between items-center ">
-                  <div className="hidden sm:block">
-                    <button onClick={props.closeModal}>Cancel</button>
-                  </div>
+                <div className="bg-gray-50 px-4 sm:px-6 space-x-5 sm:space-x-0 py-3 flex justify-end sm:justify-end items-center ">
                   <div className="space-x-3 sm:space-x-3">
                     <button
                       type="button"
                       className="mt-3 inline-flex justify-center rounded-3xl border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                      onClick={() => handleSaveAsDraftButton()}
+                      onClick={props.closeModal}
                     >
-                      Save as Draft
+                      Cancel
                     </button>
                     <button
                       type="button"
                       className="inline-flex justify-center rounded-3xl border border-transparent bg-blue-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
-                      onClick={() => handlePublishButton()}
+                      onClick={() => handleDeleteButton()}
                     >
-                      Publish
+                      Delete
                     </button>
                   </div>
                 </div>

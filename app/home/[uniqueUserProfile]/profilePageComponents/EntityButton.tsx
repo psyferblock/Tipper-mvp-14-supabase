@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import CreateEntityButton from "@/app/(entityCreation)/entity-components/CreateEntityButton";
 import GoToEntityButton from "@/app/(entityCreation)/entity-components/GoToEntityButton";
@@ -12,13 +12,12 @@ import React, { useEffect, useState } from "react";
 const EntityButton = () => {
   const [entityState, setEntityState] = useState({});
   const [menuState, setMenuState] = useState({});
-  const [categoryState, setCategoryState] = useState({});
+  const [categoryState, setCategoryState] = useState([]);
 
   const { userId, hasEntity } = useUsersContext();
   const supabase = useSupabase();
   const { session } = useSupabase();
 
-  
   useEffect(() => {
     const getEntity = async () => {
       const entityInfos = await getEntityOfUser(userId);
@@ -27,7 +26,6 @@ const EntityButton = () => {
       }
     };
     getEntity();
-   
   }, []);
   console.log("entityState", entityState);
 
@@ -48,16 +46,18 @@ const EntityButton = () => {
   }, [entityId]);
 
   const menuId = menuState?.id;
-  console.log("menuState", menuState);
-  console.log("menuId", menuId);
 
   //////////////  //////////////  //////////////  //////////////
   //// getting the category informat{ion
   useEffect(() => {
+    console.log('useState', )
     const getEntity = async () => {
-      const categoryInfo = await getMenuCategories(menuId);
-      if (categoryInfo) {
-        setCategoryState(categoryInfo);
+      const categoryInfo = await getMenuCategories({menuId:menuId});
+      console.log("categoryInfo", categoryInfo);
+      const category1 = categoryInfo[0];
+      console.log("category1", category1);
+      if (category1) {
+        setCategoryState(category1);
       }
     };
     getEntity();

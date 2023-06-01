@@ -4,7 +4,7 @@ export async function getMenuCategories({menuId:menuId}) {
   const { data, error } = await supabase
     .from("menu_category")
     .select()
-    .match({"menu_id": menuId})
+    .eq("menu_id",menuId)
     .order("id", { ascending: true })
 
     // .single()
@@ -22,7 +22,7 @@ export async function getMenuCategoriesServer(
   const { data, error } = await supabaseServerClient
     .from("menu_category")
     .select()
-    .match({"menu_id": menuId})
+    .eq("menu_id",menuId)
     .order("id", { ascending: true })
   
   if (error) throw error;

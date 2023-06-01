@@ -7,43 +7,45 @@ import updateIsMenuCategoryPublic from "@/app/lib/update/updateIsMenuCategoryPub
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 
-export default function MenuCategoryCard(props ) {
-  
-  const entityId = props.entityId;
+export default function MenuCategoryCard(props) {
+  const { entityUniqueName } = useEntityContext();
+  const menuId = props.menuId;
 
   const categoryId = props.categoryId;
 
   const categoryName = props.categoryName;
+  const isPublic = props.isMenuCategoryPublic;
 
-  const [isMenuCategoryPublic, setIsMenuCategoryPublic] = useState(
-    props.isMenuCategoryPublic
+  const [isCategoryPublic, setIsMenuCategoryPublic] = useState(isPublic);
+  console.log(
+    "isMenuCategoryPublic outside handle toggle button",
+    isCategoryPublic
   );
 
   async function handleToggleButton(boolean) {
     setIsMenuCategoryPublic(boolean);
     await updateIsMenuCategoryPublic(categoryId, boolean);
+    // console.log('isMenuCategoryPublic inside handle toggle button ', isMenuCategoryPublic)
   }
-
-  const firstMenuCategoryIdOfEntity = props.firstMenuCategoryIdOfEntity;
-  const isFirstMenuCategory = firstMenuCategoryIdOfEntity == categoryId;
 
   return (
     <>
       <div className="h-fit sm:h-[198px] w-full space-y-3 bg-white drop-shadow-lg rounded-md sm:divide-y py-5 px-3 sm:px-4 flex sm:flex-col hover:cursor-pointer">
         {/* UPPER PART OF CARD */}
         <Link
-          href={`${entityId}/manageEntity/menuCategories/${categoryId}?categoryName=${categoryName}`}
+          href={`entity/${entityUniqueName}/manageEntity/manageMenuCategories/${categoryId}`}
         >
           <div className="sm:space-y-2">
-            <div className="h-20 w-20 rounded-full mx-auto overflow-hidden">
+            {/* <div className="h-20 w-20 rounded-full mx-auto overflow-hidden">
               <Image
                 className=" h-24 w-24"
                 src="https://cdn.ldsliving.com/dims4/default/2040800/2147483647/strip/true/crop/640x395+0+0/resize/640x395!/format/webp/quality/90/?url=http%3A%2F%2Flds-living-brightspot.s3.amazonaws.com%2F7c%2F30%2F864e82a22a48241f8a28bc7abb4d%2F42088.jpg"
                 alt="menu item image"
                 fill
               />
-            </div>
+            </div> */}
             <div className="hidden sm:block text-center font-semibold text-gray-700">
               {props.categoryName}
             </div>
@@ -54,7 +56,7 @@ export default function MenuCategoryCard(props ) {
         <div className="sm:hidden w-full flex justify-between">
           <div className="sm:hidden ml-2 space-y-2">
             <Link
-              href={`${props.entityUniqueName}/manageEntity/${props.menuId}?categoryName=${categoryName}`}
+              href={`entity/${entityUniqueName}/manageEntity/manageMenuCategories/${categoryId}`}
             >
               <div className="sm:hidden text-start mr-2 font-semibold text-gray-700">
                 {props.categoryName}
@@ -62,7 +64,7 @@ export default function MenuCategoryCard(props ) {
             </Link>
             <div className="text-sm flex text-start space-x-2 ">
               <ToggleButton
-                switchedOn={isMenuCategoryPublic}
+                switchedOn={isCategoryPublic}
                 handleToggleButton={handleToggleButton}
               />
               <div>Publish</div>
@@ -76,7 +78,7 @@ export default function MenuCategoryCard(props ) {
           >
             Rename
           </button>
-          {!isFirstMenuCategory && (
+          <div>
             <button
               onClick={() => {
                 props.openDeleteMenuCategoryModal(props.categoryId);
@@ -99,7 +101,7 @@ export default function MenuCategoryCard(props ) {
                 />
               </svg>
             </button>
-          )}
+          </div>
         </div>
 
         {/* LOWER PART OF CARD */}
@@ -107,7 +109,7 @@ export default function MenuCategoryCard(props ) {
           <div>
             <div className="flex space-x-1">
               <ToggleButton
-                switchedOn={isMenuCategoryPublic}
+                switchedOn={isCategoryPublic}
                 handleToggleButton={handleToggleButton}
               />
               <p className="pt-0.5">Publish</p>
@@ -123,31 +125,6 @@ export default function MenuCategoryCard(props ) {
             >
               Rename
             </button>
-            {!isFirstMenuCategory && (
-              <button
-                onClick={() => {
-                  props.openDeleteMenuCategoryModal(props.categoryId);
-                }}
-                className="bg-white rounded-lg sm:mb-1 h-fit"
-              >
-                {" "}
-                {/* TRASH ICON */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-5 h-5 text-blue-500 m-1"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                  />
-                </svg>
-              </button>
-            )}
           </div>
         </div>
       </div>

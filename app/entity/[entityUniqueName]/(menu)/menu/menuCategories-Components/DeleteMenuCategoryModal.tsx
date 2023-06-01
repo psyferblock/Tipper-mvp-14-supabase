@@ -5,13 +5,14 @@ import { Dialog, Transition } from "@headlessui/react";
 import { useSupabase } from "@/app/supabase-provider";
 import { useRouter } from "next/navigation";
 import deleteMenuCategory from "@/app/lib/delete/deleteMenuCategory";
+import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 
 export default function DeleteMenuCategoryModal(props) {
   //Apply "buttonRef" to field to decide which section is focused on when modal is opened
   const buttonRef = useRef(null);
 
   const router = useRouter();
-
+  const {entityUniqueName} =useEntityContext()
   const entityId = props.entityId;
 
   async function handleDeleteButton() {
@@ -20,7 +21,7 @@ export default function DeleteMenuCategoryModal(props) {
     props.closeModal();
 
     //refresh page by rerouting since we cant use router.refresh since calls to DB are in page.tsx (server component)
-    router.push(`${entityId}/manageEntity/menuCategories`);
+    router.push(`entity/${entityUniqueName}/manageEntity/manageMenuCategories`);
   }
 
   return (
