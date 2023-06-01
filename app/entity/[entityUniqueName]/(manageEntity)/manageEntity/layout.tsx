@@ -12,6 +12,7 @@ import {
 import { getMenuCategoriesServer } from "@/app/lib/get/getMenuCategories";
 import { getBasicPicturesServer } from "@/app/lib/get/getBasicPictures";
 import EntityInfosContextProvider from "@/app/context/entityContext/entityContextStore";
+import EntityButton from "@/app/home/[uniqueUserProfile]/profilePageComponents/EntityButton";
 
 async function layout({
   children,
@@ -70,6 +71,8 @@ async function layout({
         logoPictureObject={logoPictureObject}
       >
         <div className="flex p-2 m-2 justify-between">
+      <EntityButton/>
+
           <div className="sm:hidden pr-3 flex items-center justify-between h-20 sm:mt-0 bg-gray-300 w-full  text-xl font-bold">
             {/* // this is the back tick that will take us to the entityUniqueName Page.  */}
             <Link

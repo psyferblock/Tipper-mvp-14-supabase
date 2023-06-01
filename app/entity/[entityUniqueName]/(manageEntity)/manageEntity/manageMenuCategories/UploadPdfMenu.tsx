@@ -6,7 +6,7 @@ import ToggleButton from "@/app/root-Components/tools-Components/ToggleButton";
 import Image from "next/image";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import MenuIdPageLayout from "../../../(menu)/menu/[menuId]/layout";
+import MenuIdPageLayout from "../../../(menu)/menu/[menuId]/category/layout";
 import { changePdfPublicFromMenu } from "@/app/lib/change/changePdfPublicFromMenu";
 import { getEntityMenu } from "@/app/lib/get/getEntityMenu";
 
@@ -26,30 +26,28 @@ const UploadPdfMenu = () => {
 
   const menuId = menuInfo.id;
 
-  // an attempt to update teh database directly on toggle click 
-  
-  const handlePdfMenuTogglebutton =async  (bool) => {
+  // an attempt to update teh database directly on toggle click
+
+  const handlePdfMenuTogglebutton = async (bool) => {
     setIsPdfPublic(bool);
     await changePdfPublicFromMenu({
       menuId: menuId,
       isPdfPublic: isPdfPublic,
     });
   };
-  
 
-// FOR SOME REASON THIS PART OF THE CODE ISNT WORKING. MAYBE ITS THE USE EFFECT OR MAYBE ITS THE CHANGE PDF FROM MENU TO PUBLIC FUNCTION.
-// useEffect(() => {
-//     const changePdfPublic = async () => {
-//       //change pdf is public
-//       await changePdfPublicFromMenu({
-//         menuId: menuId,
-//         isPdfPublic: isPdfPublic,
-//       });
-//       console.log('were in the change pdf public menu')
-//       changePdfPublic()
-//     };
-//   }, [isPdfPublic]);
-
+  // FOR SOME REASON THIS PART OF THE CODE ISNT WORKING. MAYBE ITS THE USE EFFECT OR MAYBE ITS THE CHANGE PDF FROM MENU TO PUBLIC FUNCTION.
+  // useEffect(() => {
+  //     const changePdfPublic = async () => {
+  //       //change pdf is public
+  //       await changePdfPublicFromMenu({
+  //         menuId: menuId,
+  //         isPdfPublic: isPdfPublic,
+  //       });
+  //       console.log('were in the change pdf public menu')
+  //       changePdfPublic()
+  //     };
+  //   }, [isPdfPublic]);
 
   async function handleUploadPdf(e: ChangeEvent<HTMLInputElement>) {
     let file;

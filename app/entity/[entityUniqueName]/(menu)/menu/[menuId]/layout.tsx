@@ -1,68 +1,42 @@
 import { getEntityUsingUniqueNameServer } from "@/app/lib/get/getEntityUsingUniqueName";
-import CopyUrlShareWhatsappButtons from "@/app/root-components/entityPage-Components/CopyUrlShareWhatsappButtons";
-import EntityPageCoverPhotosSection from "@/app/root-components/entityPage-Components/CoverPhotosSection";
-import EntityPageContainerWithEntityInfos from "@/app/root-components/entityPage-Components/EntityPageContainerWithEntityInfos";
-import EntityPageHighlightsSection from "@/app/root-components/entityPage-Components/HighlightsSection";
-import { createServerClient } from "@/app/utils/supabase-server";
-import Link from "next/link";
+import MenuNavigation from "@/app/root-Components/menu-Components/MenuNavigation";
+import { getExchangeRateServer } from "@/lib/get/getExchangeRate";
+import { createServerClient } from "@/utils/supabase-server";
 
-export default async function MenuIdPageLayout({
+export default async function EntityPageMenuSectionLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
   params: { entityUniqueName: string };
 }) {
-  const entityUniqueName = params.entityUniqueName;
-
-
-  const supabaseServer = createServerClient();
-
-  // getting session
-  const {
-    data: { session },
-  } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details.
-
   //Fetching from DB
-  const entityInfos = await getEntityUsingUniqueNameServer(
-    supabaseServer,
-    entityUniqueName
-  );
+  const supabaseServer = createServerClient();
+  const entityUniqueName=params.entityUniqueName
+  const entityInfos=await getEntityUsingUniqueNameServer(supabaseServer,entityUniqueName)
 
-  const userId = session?.user.id;
-
-  let userOwnsEntity;
-  let entityOwnedId = entityInfos.user_id;
-  if (session) {
-    const ownerOfCurrentEntity = entityOwnedId;
-    if (userId === ownerOfCurrentEntity) {
-      userOwnsEntity = true;
-      entityOwnedId = entityInfos.id;
-    }
-  }
+  const exchangeRate=entityInfos
+  // const exchangeRate = await getExchangeRateServer(supabaseServer, params.entityUniqueName);
+  const exchangeRateFormatted = exchangeRate?.toLocaleString();
 
   return (
-    <>
-      <div>
-        <div className="flex items-center justify-between m-2 border-stone-500 border-2">
-          <div>{entityInfos.entity_name}</div>
-          {userOwnsEntity && (
-            <button className="bg-amethyst rounded-md h-12 w-32 m-2">
-              <Link
-                href={`entity/${entityUniqueName}/manageEntity/manageEntityInfo`}
-                className=" "
-              >
-                Manage Entity
-              </Link>
-            </button>
-          )}
+    <div className="bg-gray-100 py-6 sm:py-8">
+      <div className="text-center sm:my-5 pb-4 sm:pb-4">
+        <div className="font-bold text-xl mx-auto pt-2 sm:pt-3 border-t-4 border-blue-500 w-fit">
+          Our Menu
         </div>
-        <div className=" border-stone-500 border-2 m-2">
-          <CopyUrlShareWhatsappButtons />
+        <div className="text-xs font-semibold">
+          (Rate: {exchangeRateFormatted}LBP)
         </div>
       </div>
-      welcome to entityUniqueName /menuId home
-      {children}
-    </>
+      <div className=" sm:flex sm:space-x-1">
+        <div className="sm:w-1/6 ">
+          {/* @ts-expect-error Server Component */}
+          <MenuNavigation entityId={params.entityId} />
+        </div>
+        {/* MENU ITEM CARDS */}
+        {children}
+      </div>
+    </div>
   );
 }

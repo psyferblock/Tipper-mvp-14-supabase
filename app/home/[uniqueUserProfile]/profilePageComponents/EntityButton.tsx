@@ -81,7 +81,6 @@ const EntityButton = () => {
           />
         )}
 
-        {/* <GoToEntityButton  entityUniqueName={} entityMenuId={} entityFirstCategoryId={} /> */}
       </div>
     </div>
   );
