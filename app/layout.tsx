@@ -29,7 +29,7 @@ if(session){
   
       const userInformation = await getMyUserInfoServer(supabaseServer, myUserId);
       userData=userInformation
-      console.log("userInformation from RootLayoutPage ", userInformation);
+      // console.log("userInformation from RootLayoutPage ", userInformation);
     
 } 
 

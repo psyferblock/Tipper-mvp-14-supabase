@@ -1,4 +1,7 @@
+import { getBasicPicturesServer } from "@/app/lib/get/getBasicPictures";
 import { getEntityUsingUniqueNameServer } from "@/app/lib/get/getEntityUsingUniqueName";
+import EntityPageAboutUsSection from "@/app/root-components/entityPage-Components/AboutUsSection";
+import EntityPageContactUsSection from "@/app/root-components/entityPage-Components/ContactUsSection";
 import CopyUrlShareWhatsappButtons from "@/app/root-components/entityPage-Components/CopyUrlShareWhatsappButtons";
 import EntityPageCoverPhotosSection from "@/app/root-components/entityPage-Components/CoverPhotosSection";
 import EntityPageContainerWithEntityInfos from "@/app/root-components/entityPage-Components/EntityPageContainerWithEntityInfos";
@@ -27,8 +30,17 @@ export default async function MenuIdPageLayout({
     supabaseServer,
     entityUniqueName
   );
+  const entityId = entityInfos?.id;
+  // console.log('entityInfos from entityUniqueName layout ', entityInfos)
+
+  ////getting pictures
+  const allBasicPictures = await getBasicPicturesServer(
+    supabaseServer,
+    entityId
+  );
 
   const userId = session?.user.id;
+  const isContactUsSectionPublic = entityInfos.is_contact_us_public;
 
   let userOwnsEntity;
   let entityOwnedId = entityInfos?.user_id;
@@ -43,6 +55,7 @@ export default async function MenuIdPageLayout({
   return (
     <>
       <div>
+        layout for entityUniqueName
         <div className="flex items-center justify-between m-2 border-stone-500 border-2">
           <div>{entityInfos?.entity_name}</div>
           {userOwnsEntity && (
@@ -57,7 +70,7 @@ export default async function MenuIdPageLayout({
           )}
         </div>
         <div className=" border-stone-500 border-2 m-2">
-          <CopyUrlShareWhatsappButtons />
+          {/* <CopyUrlShareWhatsappButtons /> */}
         </div>
       </div>
       {/* TOP OF THE PAGE CONTAINER */}
@@ -67,9 +80,11 @@ export default async function MenuIdPageLayout({
         {/* EVERYTHING ON THE RIGHT OF THE LEFT COLUMN */}
         <div className="sm:h-[496px] sm:flex sm:flex-col justify-between sm:w-1/4 sm:grow">
           {/*  COVER PHOTOS CONTAINER */}
-          <EntityPageCoverPhotosSection
+          {/* <EntityPageCoverPhotosSection
             entityCoverPictures={entityCoverPictures}
-          />
+          /> */}
+
+          <span className="bg-emerald">cover photos</span>
           {/* HIGHLIGHTS CONTAINER */}
 
           {/* <EntityPageHighlightsSection
@@ -80,6 +95,21 @@ export default async function MenuIdPageLayout({
         </div>
       </div>
       {children}
+      <div>
+        {isContactUsSectionPublic && (
+          <EntityPageContactUsSection
+            description={entityInfos.contact_us_description}
+            phoneNumber={entityInfos.entity_phone_number}
+            pictureUrl={entityInfos.contact_us_picture_url}
+          />
+        )}
+
+        {/* ABOUT US SECTION */}
+        <EntityPageAboutUsSection
+          description={entityInfos.about_us_description}
+          pictureUrl={entityInfos.about_us_picture_url}
+        />
+      </div>
     </>
   );
 }

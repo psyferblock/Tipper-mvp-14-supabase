@@ -5,23 +5,29 @@ import InstagramButton from "./ConnectWithUsButtons/InstagramButton";
 import PhoneCallButton from "./ConnectWithUsButtons/PhoneCallButton";
 import TextUsWhatsappButton from "./ConnectWithUsButtons/TextUsWhatsappButton";
 
-//remember to insert props here 
-export default function EntityPageContainerWithEntityInfos({ 
-  entityInfos 
+//remember to insert props here
+export default function EntityPageContainerWithEntityInfos({
+  entityInfos: entityInfos,
 }) {
+  console.log(
+    "entitiyInfos FROM entitypagecontainerwith entity infos",
+    entityInfos
+  );
   return (
     <div className=" bg-white rounded-lg mb-5 sm:mb-0 sm:pb-6 py-4 drop-shadow-xl px-3 sm:px-6 flex-none sm:w-[307px]">
       <div className="font-semibold flex justify-between flex-col space-y-3 sm:space-y-4">
         {/* ENTITY TAGS DIV */}
         <div>
           <div>Entity Tags</div>
-          <div className="grid grid-rows-2 grid-flow-col gap-2 sm:gap-2 sm:pb-3 pb-3 pt-2 sm:pt-2 overflow-auto">
-            {/* {entityInfos.entity_tags?.map((tag) => (
-              <div className="w-fit  mr-3 flex bg-gray-200 rounded-xl text-black text-xs px-4 py-1 drop-shadow-sm">
+          <div className="flex flex-auto gap-2 sm:gap-2 sm:pb-3 pb-3 pt-2 sm:pt-2 overflow-auto">
+            {entityInfos.entity_tags?.map((tag,index) => (
+              <div
+                key={index}
+                className="w-fit flex px-2 bg-ruby rounded-lg mx-1 text-black text-xs  py-1 drop-shadow-sm"
+              >
                 {tag}
               </div>
-            ))} */}
-            enittyInfos and tags 
+            ))}
           </div>
         </div>
         {/* OPENING HOURS DIV */}

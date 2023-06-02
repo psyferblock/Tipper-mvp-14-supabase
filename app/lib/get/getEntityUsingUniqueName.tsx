@@ -8,6 +8,6 @@ export async function getEntityUsingUniqueNameServer(
     .eq("entity_unique_name", uniqueName);
 
   if (error) throw error;
-  console.log("data getEntityUsingUniqueNameServer ", data);
+  // console.log("data getEntityUsingUniqueNameServer ", data);
   return data[0];
 }

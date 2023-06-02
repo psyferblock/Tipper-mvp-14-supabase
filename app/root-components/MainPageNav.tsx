@@ -13,7 +13,7 @@ import { getServerSession } from "next-auth";
   //   data: { session },
   // } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details.
 
- console.log('session in main nav page ', session)
+//  console.log('session in main nav page ', session)
   return (
     <div className="">
       <div className="bg-pearl text-ruby max-h-20  flex justify-between  ">

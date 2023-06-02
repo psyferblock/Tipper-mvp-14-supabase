@@ -6,7 +6,7 @@ export async function getEntityInfos(entityId) {
     .select()
     .eq("id", entityId);
   if (error) throw error;
-  console.log("browser side entity profile data", data);
+  // console.log("browser side entity profile data", data);
   return data[0];
 }
 
@@ -17,7 +17,7 @@ export async function getEntityInfosServer(supabaseServerClient, entityId) {
     .eq("id", entityId)
     // .single();
   if (error) throw error;
-  console.log("server side entity information data", data);
+  // console.log("server side entity information data", data);
   return data[0]
 }
 

@@ -15,13 +15,14 @@ export async function getMenuCategories({menuId:menuId}) {
   return data
 }
 
-export async function getMenuCategoriesServer(
-  supabaseServerClient,
-  menuId
+export async function getMenuCategoriesServer({
+  supabaseServer:supabaseServer,
+  menuId:menuId
+}
 ) {
-  const { data, error } = await supabaseServerClient
+  const { data, error } = await supabaseServer
     .from("menu_category")
-    .select()
+    .select(`*,menu_item(*)`)
     .eq("menu_id",menuId)
     .order("id", { ascending: true })
   

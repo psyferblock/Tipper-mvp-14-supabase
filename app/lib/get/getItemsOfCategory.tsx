@@ -1,6 +1,6 @@
 import { supabase } from "@/app/utils/supabase-browser";
 
-export async function getMenuItems(categoryId: number) {
+export async function getItemsOfCategory(categoryId: number) {
   //Menu Items Reading from Database
   const { data, error } = await supabase
     .from("menu_item")
@@ -10,12 +10,12 @@ export async function getMenuItems(categoryId: number) {
   return data;
 }
 
-export async function getMenuItemsServer(
-  supabaseServerClient,
-  categoryId: number
-) {
+export async function getItemsOfCategoryServer({
+  supabaseServer:supabaseServer,
+  categoryId: categoryId
+}) {
   //Menu Items Reading from Database
-  const { data, error } = await supabaseServerClient
+  const { data, error } = await supabaseServer
     .from("menu_item")
     .select()
     .eq("menu_category_id", categoryId)

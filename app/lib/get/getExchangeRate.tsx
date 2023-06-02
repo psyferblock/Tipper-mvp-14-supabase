@@ -5,10 +5,10 @@ export async function getExchangeRate(entityId) {
   const { data, error } = await supabase
     .from("exchange_rate")
     .select()
-    .eq("entity_id", entityId);
+    .eq("entity_id", entityId).single();
   if (error) throw error;
   console.log("ex rate:", data);
-  const rate = data[0]?.usd_lbp_rate;
+  const rate = data?.usd_lbp_rate;
   return rate;
 }
 
@@ -23,6 +23,6 @@ export async function getExchangeRateServer(
     .eq("entity_id", entityId).single();
   if (error) throw error;
   console.log("ex rate:", data);
-  const rate = data[0]?.usd_lbp_rate;
+  const rate = data?.usd_lbp_rate;
   return rate;
 }

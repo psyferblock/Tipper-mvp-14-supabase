@@ -1,7 +1,8 @@
 import { getEntityUsingUniqueNameServer } from "@/app/lib/get/getEntityUsingUniqueName";
-import MenuNavigation from "@/app/root-Components/menu-Components/MenuNavigation";
-import { getExchangeRateServer } from "@/lib/get/getExchangeRate";
-import { createServerClient } from "@/utils/supabase-server";
+import MenuNavigation from "@/app/root-components/menu-Components/MenuNavigation";
+
+import { getExchangeRateServer } from "@/app/lib/get/getExchangeRate";
+import { createServerClient } from "@/app/utils/supabase-server";
 
 export default async function EntityPageMenuSectionLayout({
   children,
@@ -12,11 +13,22 @@ export default async function EntityPageMenuSectionLayout({
 }) {
   //Fetching from DB
   const supabaseServer = createServerClient();
-  const entityUniqueName=params.entityUniqueName
-  const entityInfos=await getEntityUsingUniqueNameServer(supabaseServer,entityUniqueName)
+  const entityUniqueName = params.entityUniqueName;
+  console.log("entityUniqueName", entityUniqueName);
+  const entityInfos = await getEntityUsingUniqueNameServer(
+    supabaseServer,
+    entityUniqueName
+  );
+  const entityId = entityInfos.id;
 
-  const exchangeRate=entityInfos
-  // const exchangeRate = await getExchangeRateServer(supabaseServer, params.entityUniqueName);
+  const menuInfo = entityInfos.entity_menu_id[0];
+  const menuId = menuInfo.id;
+  console.log("menuId from layout ", menuId);
+
+  console.log("menuInfo from categoryId layout ", menuInfo);
+  const exchangeRate = entityInfos.exchange_rate[0].usd_lbp_rate;
+  console.log("exchangeRate", exchangeRate);
+  // // const exchangeRate = await getExchangeRateServer(supabaseServer, params.entityUniqueName);
   const exchangeRateFormatted = exchangeRate?.toLocaleString();
 
   return (
@@ -25,14 +37,14 @@ export default async function EntityPageMenuSectionLayout({
         <div className="font-bold text-xl mx-auto pt-2 sm:pt-3 border-t-4 border-blue-500 w-fit">
           Our Menu
         </div>
-        <div className="text-xs font-semibold">
-          (Rate: {exchangeRateFormatted}LBP)
+        <div className="text-xs font-semibold bg-emerald-tint">
+          (Rate: {exchangeRateFormatted} LBP)
         </div>
       </div>
       <div className=" sm:flex sm:space-x-1">
         <div className="sm:w-1/6 ">
           {/* @ts-expect-error Server Component */}
-          <MenuNavigation entityId={params.entityId} />
+          <MenuNavigation menuId={menuId} entityUniqueName={entityUniqueName} />
         </div>
         {/* MENU ITEM CARDS */}
         {children}

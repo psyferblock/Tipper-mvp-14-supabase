@@ -12,7 +12,7 @@ export default function EntityPageHighlightsSection(props) {
 
   const handleAddHighlightButton = (e) => {
     e.preventDefault();
-    router.push(`${entityOwnedId}/manageEntity/highlights`);
+    router.push(`entity/${entityOwnedId}/manageEntity/highlights`);
   };
   return (
     <div className="flex sm:space-x-3">

@@ -1,33 +1,50 @@
-import Carousel from '@/app/root-components/entityPage-Components/carousel/CarouselComponent'
-import React from 'react'
-import MenuItemCard from '@/app/root-components/menu-Components/MenuItemCard';
+import Carousel from "@/app/root-components/entityPage-Components/carousel/CarouselComponent";
+import React from "react";
+import MenuItemCard from "@/app/root-components/menu-Components/MenuItemCard";
 import { getExchangeRateServer } from "@/app/lib/get/getExchangeRate";
-import { getMenuItemsServer } from "@/app/lib/get/getMenuItems";
+import { getItemsOfCategoryServer } from "@/app/lib/get/getItemsOfCategory";
 import { createServerClient } from "@/app/utils/supabase-server";
+import { getMenuCategoriesServer } from "@/app/lib/get/getMenuCategories";
+import { getEntityInfosServer } from "@/app/lib/get/getEntityInfos";
+import { getEntityUsingUniqueNameServer } from "@/app/lib/get/getEntityUsingUniqueName";
+import { getEntityIdUsingUniqueNameServer } from "@/app/lib/get/getEntityIdUsingUniqueName";
 
- async function MenuCategoriesPage({params}:{params:{entityUniqueName:string,menuId:string,categoryId:string}}) {
+async function MenuCategoriesPage({
+  params,
+}: {
+  params: { entityUniqueName: string; menuId: string; categoryId: string };
+}) {
+  const entityUniqueName = params.entityUniqueName;
+  const menuId = params.menuId;
+  const categoryId = params.categoryId;
 
-  const entityUniqueName=params.entityUniqueName 
-  const menuId=params.menuId
-  const categoryId=params.categoryId
- 
-
-
-  const supabase = createServerClient();
-
-  const allMenuItems = await getMenuItemsServer(supabase, params.categoryId);
-  const publicMenuItems = allMenuItems.filter(
-    (menuItem) => menuItem.is_menu_item_public == true
+  const supabaseServer = createServerClient();
+  const categoryItems = await getItemsOfCategoryServer({
+    supabaseServer: supabaseServer,
+    categoryId: categoryId,
+  });
+  console.log("categoryItems", categoryItems);
+  const publicMenuItems = categoryItems.filter(
+    (item) => item.is_menu_item_public == true
   );
+  console.log("publicMenuItems", publicMenuItems);
 
-  const exchangeRate = await getExchangeRateServer(supabase, params.entityId);
+  const entityIdObject = await getEntityIdUsingUniqueNameServer({
+    supabaseServer: supabaseServer,
+    entityUniqueName: entityUniqueName,
+  });
+  // console.log('entityIdObject', entityIdObject)
+  const entityId = entityIdObject.id;
+  const exchangeRate = await getExchangeRateServer(supabaseServer, entityId);
+  console.log("exchangeRate", exchangeRate);
+
   return (
     <>
-      <div className="grid h-96 gap-3 overflow-y-auto sm:h-96 sm:grid sm:grid-cols-4 sm:gap-5 sm:pb-5 sm:overflow-y-auto">
-        {publicMenuItems.map((item,index) => (
+      <div className="grid h-96 gap-3 overflow-y-auto sm:h-96 sm:grid sm:grid-cols-3 md:grid-cols-4 sm:gap-5 sm:pb-5 sm:overflow-y-auto sm:mx-3 ">
+        {publicMenuItems.map((item, index) => (
           <div key={index}>
-          <MenuItemCard menuItem={item} exchangeRate={exchangeRate} />
-            </div>
+            <MenuItemCard menuItem={item} exchangeRate={exchangeRate} />
+          </div>
         ))}
       </div>
       {/* LEFT / RIGHT NAVIGATION BUTTONS */}
@@ -69,4 +86,4 @@ import { createServerClient } from "@/app/utils/supabase-server";
   );
 }
 
-export default MenuCategoriesPage
+export default MenuCategoriesPage;

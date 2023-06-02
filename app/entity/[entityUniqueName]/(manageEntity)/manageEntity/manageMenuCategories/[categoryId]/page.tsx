@@ -1,6 +1,5 @@
 import { getEntityUsingUniqueNameServer } from "@/app/lib/get/getEntityUsingUniqueName";
-import { getMenuCategories } from "@/app/lib/get/getMenuCategories";
-import { getMenuItems } from "@/app/lib/get/getMenuItems";
+import { getItemsOfCategory } from "@/app/lib/get/getItemsOfCategory";
 import MenuItemCard from "@/app/root-components/menu-Components/MenuItemCard";
 import { createServerClient } from "@/app/utils/supabase-server";
 import Link from "next/link";
@@ -24,26 +23,24 @@ const menuCategoryPage = async ({
     supabaseServer,
     params.entityUniqueName
   );
-  console.log("entityinfo", entityInfo);
-  const entityId=entityInfo.id
+  const entityId = entityInfo.id;
   const menuId = entityInfo.entity_menu_id[0].id;
-  console.log("menuId", menuId);
-  const categoryId=parseInt(params.categoryId)
-  const categoryItems= await getMenuItems(categoryId)
-  const categoryName= await getCategoryFromCategoryId(categoryId)
+  const categoryId = parseInt(params.categoryId);
+  const categoryItems = await getItemsOfCategory(categoryId);
+  const categoryName = await getCategoryFromCategoryId(categoryId);
 
   return (
     <div>
       <h1>manage categories and items page</h1>
-    
+
       <div className="align-middle">
-          <ManageMenuItems
-            entityUniqueName={params.entityUniqueName}
-            categoryItems={categoryItems}
-            menuCategoryId={categoryId}
-            categoryName={categoryName.menu_category_name}
-          />
-        </div>
+        <ManageMenuItems
+          entityUniqueName={params.entityUniqueName}
+          categoryItems={categoryItems}
+          menuCategoryId={categoryId}
+          categoryName={categoryName.menu_category_name}
+        />
+      </div>
       {/* <div>
           {menuCategories ? (
             <div>
