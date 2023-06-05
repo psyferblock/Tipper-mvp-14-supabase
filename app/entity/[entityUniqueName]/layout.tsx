@@ -7,6 +7,7 @@ import EntityPageCoverPhotosSection from "@/app/root-components/entityPage-Compo
 import EntityPageContainerWithEntityInfos from "@/app/root-components/entityPage-Components/EntityPageContainerWithEntityInfos";
 import EntityPageHighlightsSection from "@/app/root-components/entityPage-Components/HighlightsSection";
 import { createServerClient } from "@/app/utils/supabase-server";
+import Image from "next/image";
 import Link from "next/link";
 
 export default async function MenuIdPageLayout({
@@ -41,6 +42,10 @@ export default async function MenuIdPageLayout({
 
   const userId = session?.user.id;
   const isContactUsSectionPublic = entityInfos.is_contact_us_public;
+  const entityCoverPictures=  allBasicPictures.filter((pic)=>(
+    pic.media_category=="cover_picture"
+  ))
+  console.log('entityCoverPictures', entityCoverPictures)
 
   let userOwnsEntity;
   let entityOwnedId = entityInfos?.user_id;
@@ -57,7 +62,17 @@ export default async function MenuIdPageLayout({
       <div>
         layout for entityUniqueName
         <div className="flex items-center justify-between m-2 border-stone-500 border-2">
-          <div>{entityInfos?.entity_name}</div>
+          
+          <div className="flex">
+          <div className="aspect-1/1 relative mx-auto h-10 w-10 overflow-hidden rounded-full bg-ruby-tint ring-2 ring-ruby-tint">
+
+
+            <Image src={entityInfos?.entity_logo_url} fill alt="entity_logo_url"/>
+            </div>
+            <div>
+
+            {entityInfos?.entity_name}</div>
+            </div>
           {userOwnsEntity && (
             <button className="bg-amethyst rounded-md h-12 w-32 m-2">
               <Link
@@ -80,9 +95,9 @@ export default async function MenuIdPageLayout({
         {/* EVERYTHING ON THE RIGHT OF THE LEFT COLUMN */}
         <div className="sm:h-[496px] sm:flex sm:flex-col justify-between sm:w-1/4 sm:grow">
           {/*  COVER PHOTOS CONTAINER */}
-          {/* <EntityPageCoverPhotosSection
+          <EntityPageCoverPhotosSection
             entityCoverPictures={entityCoverPictures}
-          /> */}
+          />
 
           <span className="bg-emerald">cover photos</span>
           {/* HIGHLIGHTS CONTAINER */}

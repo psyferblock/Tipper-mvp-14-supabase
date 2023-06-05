@@ -23,11 +23,11 @@ async function MenuCategoriesPage({
     supabaseServer: supabaseServer,
     categoryId: categoryId,
   });
-  console.log("categoryItems", categoryItems);
+  // console.log("categoryItems", categoryItems);
   const publicMenuItems = categoryItems.filter(
     (item) => item.is_menu_item_public == true
   );
-  console.log("publicMenuItems", publicMenuItems);
+  // console.log("publicMenuItems", publicMenuItems);
 
   const entityIdObject = await getEntityIdUsingUniqueNameServer({
     supabaseServer: supabaseServer,
@@ -36,11 +36,11 @@ async function MenuCategoriesPage({
   // console.log('entityIdObject', entityIdObject)
   const entityId = entityIdObject.id;
   const exchangeRate = await getExchangeRateServer(supabaseServer, entityId);
-  console.log("exchangeRate", exchangeRate);
+  // console.log("exchangeRate", exchangeRate);
 
   return (
     <>
-      <div className="grid h-96 gap-3 overflow-y-auto sm:h-96 sm:grid sm:grid-cols-3 md:grid-cols-4 sm:gap-5 sm:pb-5 sm:overflow-y-auto sm:mx-3 ">
+      <div className="grid h-96 gap-3 overflow-y-auto sm:mx-3 sm:grid sm:h-96 sm:grid-cols-3 sm:gap-5 sm:overflow-y-auto sm:pb-5 md:grid-cols-4 ">
         {publicMenuItems.map((item, index) => (
           <div key={index}>
             <MenuItemCard menuItem={item} exchangeRate={exchangeRate} />

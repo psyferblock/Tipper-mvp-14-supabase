@@ -1,11 +1,12 @@
 "use client";
+
 import Link from "next/link";
 // import { supabase } from "../utils/supabase-browser";
 import { useSupabase } from "../supabase-provider";
 import { useRouter } from "next/navigation";
 import { useHasMounted } from "../hooks/useHasMounted";
 import Image from "next/image";
-import UserInfoContextProvider, { useUsersContext } from "../context/userContext/userContextStore";
+import { useUsersContext } from "../context/userContext/userContextStore";
 import { getMyUserInfos } from "../lib/get/getMyUserInfo";
 import { useEffect, useState } from "react";
 
@@ -14,7 +15,7 @@ function SignInSignOut() {
   const { session, supabase } = useSupabase();
   const router = useRouter();
 
-  const {profilePictureUrl}=useUsersContext()
+  const { profilePictureUrl } = useUsersContext();
   const userAuthenticated = session ? session?.user.aud : "not authenticated";
   // console.log("userAuthenticated ", userAuthenticated);
 
@@ -48,13 +49,11 @@ function SignInSignOut() {
           <li className="">
             <button onClick={handleHomeButton} className="flex flex-row">
               <h1>{firstName || "sanfour"}</h1>
-              <div className="relative rounded-full aspect-1/1 w-10 h-10 ring-2 ring-ruby-tint overflow-hidden mx-auto bg-ruby-tint">
+              <div className="aspect-1/1 relative mx-auto h-10 w-10 overflow-hidden rounded-full bg-ruby-tint ring-2 ring-ruby-tint">
                 <Image
-                  width={500} 
+                  width={500}
                   height={500}
-                  src={
-                    profilePictureUrl
-                  }
+                  src={profilePictureUrl}
                   alt={"profile picture"}
                 />
               </div>

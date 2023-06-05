@@ -1,10 +1,11 @@
-import Carousel from "./carousel/CarouselComponent";
+import Image from "next/image";
+import CarouselComponent from "./carousel/CarouselComponent";
 
 export default function EntityPageCoverPhotosSection({ entityCoverPictures }) {
   const slides = entityCoverPictures.map(
     (pictureObject) => pictureObject.media_url
   );
-
+  console.log("slides", slides);
   return (
     // <div
     //   className="h-40 sm:h-[360px] sm:w-full bg-gray-300 rounded-lg drop-shadow-lg sm:px-6"
@@ -13,12 +14,21 @@ export default function EntityPageCoverPhotosSection({ entityCoverPictures }) {
     //   }}
     // ></div>
 
-    <div className="h-40 sm:h-[360px] sm:w-full bg-gray-300 rounded-lg overflow-hidden drop-shadow-lg sm:px-6">
-      <Carousel autoSlide={true} autoSlideInterval={3000}>
-        {slides.map((slide) => (
-          <img alt="cover-photo" src={slide} />
+    <div className="h-56 overflow-hidden rounded-lg bg-gray-300 drop-shadow-lg sm:h-[360px] sm:w-full sm:px-6">
+      <button>click here to change interval/autoslide...</button>
+      <CarouselComponent autoSlide={false} autoSlideInterval={3000} >
+        {slides.map((slide, index) => (
+          <div key={index} className=" h-auto w-full">
+            <Image
+              width={500}
+              height={500}
+              alt="cover-photo"
+              src={slide}
+              key={index}
+            />
+          </div>
         ))}
-      </Carousel>
+      </CarouselComponent>
     </div>
   );
 }

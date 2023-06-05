@@ -19,7 +19,7 @@ export default function EntityPageContactUsSection({
         </button>
       </div>
       {/* IMAGE */}
-      <div className="relative sm:w-[598px] w-full mx-auto h-32 sm:h-[320px] sm:bg-gray-400">
+      <div className="relative sm:w-[598px] w-full mx-auto h-32 sm:h-[320px] sm:bg-gray-400 ">
         {pictureUrl ? (
           <Image src={pictureUrl} alt="Contact Us Picture" fill />
         ) : (

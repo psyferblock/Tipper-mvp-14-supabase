@@ -1,13 +1,14 @@
 import EntitiesCardsInScrollRowDirection from "./EntitiesCardsInScrollRowDirection";
 import Link from "next/link";
-import { getAllEntitiesServer } from "@/lib/get/getAllEntities";
+import { getAllEntitiesServer } from "@/app/lib/get/getAllEntitiesServer";
 
-import { createServerClient } from "@/utils/supabase-server";
+import { createServerClient } from "@/app/utils/supabase-server";
 
 export default async function HomePageListingOfEntitiesCards(props) {
   //Fetch from DB
-  const supabase = createServerClient();
-  let listOfEntities = await getAllEntitiesServer(supabase);
+  const supabaseServer = createServerClient();
+  let listOfEntities = await getAllEntitiesServer({supabaseServer:supabaseServer});
+  console.log('listOfEntities', listOfEntities)
 
   const industries = [
     {
@@ -30,8 +31,8 @@ export default async function HomePageListingOfEntitiesCards(props) {
 
   return (
     <>
-      {industries.map((industry) => (
-        <div>
+      {industries.map((industry,index) => (
+        <div key={index}>
           {/* MOBILE VERSION WITH FLEX */}
           <div className="sm:hidden flex items-center justify-between  pb-2 sm:pb-2">
             <div className="font-bold text-lg sm:text-center">
