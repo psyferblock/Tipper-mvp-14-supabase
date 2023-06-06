@@ -1,4 +1,3 @@
-// 'use client '
 import EntityInfosContextProvider from "./context/entityContext/entityContextStore";
 import UserInfoContextProvider from "./context/userContext/userContextStore";
 import { getBasicPicturesServer } from "./lib/get/getBasicPictures";

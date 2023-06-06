@@ -4,11 +4,16 @@ export async function getAllEntitiesServer({ supabaseServer: supabaseServer }) {
   const { data, error } = await supabaseServer
     .from("entity")
     .select(
-      `unique_user_name,entity_name,industry_id,entity_type_id,entity_address,entity_menu_id(id,menu_category(id))`
+      `id,entity_unique_name,entity_name,industry_id,entity_type_id,entity_address,entity_logo_url,entity_area,
+      entity_menu_id(id,
+        menu_category(id)
+        ),
+      entity_basic_media(media_category,media_url)
+      `
     )
-    .match({"is_verified": true});
+    .match({ is_verified: false });
   if (error) throw error;
-
+console.log('data from getAllEntitiesServer', data)
   return data;
 }
 

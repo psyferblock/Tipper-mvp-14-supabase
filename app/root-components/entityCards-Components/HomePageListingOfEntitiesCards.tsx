@@ -4,11 +4,11 @@ import { getAllEntitiesServer } from "@/app/lib/get/getAllEntitiesServer";
 
 import { createServerClient } from "@/app/utils/supabase-server";
 
-export default async function HomePageListingOfEntitiesCards(props) {
+export default async function HomePageListingOfEntitiesCards() {
   //Fetch from DB
   const supabaseServer = createServerClient();
   let listOfEntities = await getAllEntitiesServer({supabaseServer:supabaseServer});
-  console.log('listOfEntities', listOfEntities)
+  
 
   const industries = [
     {
@@ -86,10 +86,13 @@ export default async function HomePageListingOfEntitiesCards(props) {
               </svg>
             </Link>
           </div>
+          <div className="h-auto">
+
           <EntitiesCardsInScrollRowDirection
             listOfEntities={listOfEntities}
             industryId={industry.id}
-          />
+            />
+            </div>
         </div>
       ))}
     </>
