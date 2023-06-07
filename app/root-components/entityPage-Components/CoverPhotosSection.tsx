@@ -14,7 +14,6 @@ export default function EntityPageCoverPhotosSection({ entityCoverPictures }) {
         height={500}
         alt="cover-photo"
         src={slide}
-        key={index}
       />
       <div className="">{JSON.stringify(slide)}</div>
     </div>

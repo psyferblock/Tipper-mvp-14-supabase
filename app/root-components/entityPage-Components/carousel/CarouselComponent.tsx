@@ -21,7 +21,7 @@ function CarouselComponent({
     setCurrent((current) => (current === slides.length - 1 ? 0 : current + 1));
   };
 
- console.log('current', current)
+  console.log("current", current);
 
   const goToSlide = (slideIndex) => {
     setCurrent(slideIndex);
@@ -37,16 +37,14 @@ function CarouselComponent({
     <div className="relative h-full w-full overflow-hidden">
       {/* the translateX property moves the slide through css by 100 % so the current index will allow a move where 100% of the picture will slide. */}
       <div
-        className="flex transition-transform duration-500 ease-out h-full w-full object-cover"
-        style={{ transform: `translateX(-${current * 100}%)`,
-         }}
+        className="flex h-full w-full object-center transition-transform duration-500 ease-out"
+        style={{ transform: `translateX(-${current * 100}%)` }}
       >
-    
         {slides}
       </div>
 
       {/* BELOW IS THE DIV THATS CAUSING THE HYDRATION ERRORS. ITS JUST A LEFT AND RIGHT BUTTON TO MOVE THE PICTURES. */}
-      <div className="absolute inset-1 flex items-center justify-between p-4 z-2">
+      <div className="z-2 absolute inset-1 flex items-center justify-between p-4">
         <button
           onClick={previous}
           className="rounded-full bg-white/80 p-1 text-gray-800 shadow hover:bg-white"
@@ -62,13 +60,15 @@ function CarouselComponent({
       </div>
       {/* <LeftRightButtons current={current} slides={slides} /> */}
       {/* auto slide function  */}
-      <div className="absolute bottom-4 left-0 right-0 pb-1 z-4 ">
+      <div className="z-4 absolute bottom-4 left-0 right-0 pb-1 ">
         <div className="flex items-center justify-center gap-2">
           {slides.map((_, i) => (
             // here we are changing the color of the dots that are used to determine where we are on the slide
             // eslint-disable-next-line react/jsx-key
             <div
-            onClick={()=>{ goToSlide(i)}}
+              onClick={() => {
+                goToSlide(i);
+              }}
               className={`h-3 w-3 rounded-full bg-white transition-all ${
                 current === i ? "p-2" : "bg-opacity-50"
               }`}
@@ -77,7 +77,6 @@ function CarouselComponent({
         </div>
       </div>
     </div>
-
   );
 }
 
