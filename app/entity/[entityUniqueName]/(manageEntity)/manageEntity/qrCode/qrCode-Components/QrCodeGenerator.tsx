@@ -6,9 +6,9 @@ import { usePathname } from "next/navigation";
 import { QRCodeCanvas } from "qrcode.react";
 import ReactDOM from "react-dom";
 
-export default function QrCodeGenerator({ logo }) {
+export default function QrCodeGenerator({ logo,entityUniqueName,menuId,categoryId }) {
   //Setting the page URL to which the QR code redirects you on scan
-  const pageUrl = usePathname();
+  const pageUrl = `entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}`;
 
   //   const [url, setUrl] = useState<string>("");
   const qrRef = useRef<HTMLDivElement | null>(null);
@@ -67,8 +67,8 @@ export default function QrCodeGenerator({ logo }) {
         src: logo, // this src button gets the image needed. for now its hard coded but will make it dynamic when its tested and done.
         excavate: true,
         // these two the "width " and "height" are the size of the image. here we marked them at 10% of the total size.
-        width: parseInt(size) * 0.2, // thes
-        height: parseInt(size) * 0.2,
+        width: parseInt(size) * 0.1, // thes
+        height: parseInt(size) * 0.1,
       }}
     />
   );

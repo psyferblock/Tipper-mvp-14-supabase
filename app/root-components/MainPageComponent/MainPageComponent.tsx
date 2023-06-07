@@ -24,7 +24,7 @@ function MainPageComponent() {
   ));
   console.log("images", images);
   return (
-    <div className="h-screen w-full bg-ruby ">
+    <div className="h-screen w-full bg-ruby-tint ">
       <div className=" h-64 w-full p-2 ">
         <CarouselComponent autoSlide={false} autoSlideInterval={3000}>
           {images}

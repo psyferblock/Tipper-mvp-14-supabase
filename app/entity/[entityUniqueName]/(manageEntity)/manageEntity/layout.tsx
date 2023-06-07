@@ -43,7 +43,7 @@ async function layout({
   
   console.log("menuId from layout/manageEntity", menuId);
   // categories stuff
-  const categories = await getMenuCategoriesServer(supabaseServer, menuId);
+  const categories = await getMenuCategoriesServer({supabaseServer, menuId});
   console.log("menu categories from  layout/manageEntity", categories );
   const categoryId = categories.id;
 
