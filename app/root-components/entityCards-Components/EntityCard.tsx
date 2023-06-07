@@ -36,52 +36,34 @@ export default async function EntityCard({ entity }) {
       <Link
         href={`entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}`}
       >
-        {/* <!-- Card wrapper -->/\ */}
-        <div className="mx-auto flex w-2/5 flex-wrap  p-4 shadow-lg lg:w-4/5">
-          {/* <!-- Card image --> */}
-          <div className="-z-2 relative h-32 w-full border bg-cover bg-bottom object-center md:h-auto md:w-1/3">
-            {/* <div className="absolute text-xl"> */}
-            {/* <i className="fa fa-heart hover:text-red-light ml-4 mt-4 cursor-pointer text-white"></i> */}
-            <Image
-              className="mt-1 inline-block rounded-sm ring-2"
-              src={entityCoverPhoto}
-              alt="entityCoverPhoto"
-              fill
-            />
-            {/* </div> */}
-          </div>
-          {/* <!-- ./Card image --> */}
-          {/* <!-- Card body --> */}
-          <div className="bg-grey-200 w-full  md:w-2/3">
-            {/* <!-- Card body - outer wrapper --> */}
-            <div className="relative m-1 mx-auto h-full border-2  border-green-800 px-6 md:-ml-6 md:px-0 md:pt-6">
-              {/* <!-- Card body - inner wrapper --> */}
-              <div className=" -mt-6 mb-4 flex flex-wrap items-center  rounded-md border-2 border-blue-800 bg-white p-1 text-center md:mb-0 md:mt-0 md:flex-wrap lg:h-full">
-                {/* <!-- Card title and subtitle --> */}
-                <div className="lg:border-right m-1 h-12 w-full rounded-sm border-2 border-orange-500 p-1 shadow-sm  md:text-left lg:w-1/5 lg:border-solid">
-                  <h3>{entityName}</h3>
-                  <h1 className="text-grey-dark m-1 text-sm italic">
-                    {entityArea}
-                  </h1>
-                  <hr className="mt-4 w-1/4 border  md:ml-0 lg:hidden" />
-                </div>
-                {/* <!-- ./Card title and subtitle --> */}
-
-                {/* <!-- Card Address --> */}
-                <div className="w-full border-2 border-purple-800 lg:w-3/5 lg:px-3">
-                  <h1 className="text-md mt-2 p-2 text-justify text-sm md:text-left lg:mt-0">
-                    {entityAddress}
-                  </h1>
-                </div>
-                {/* <!-- ./Card Address --> */}
+        <div
+          id="app"
+          className=" w-42  text-grey-darkest m-1 flex h-32 rounded bg-white  shadow-md max-w-md"
+        >
+          <Image
+            className="  h-11/12 left-0 top-0 w-1/2 rounded-l-sm p-1"
+            src={entityCoverPhoto}
+            alt="Room Image"
+            width={500}
+            height={500}
+          />
+          <div className="flex w-full flex-col">
+            <div className="flex-1 p-4 pb-0">
+              <h3 className="text-grey-darkest mb-1 font-light">
+                {entityName}
+              </h3>
+              <div className="mb-4 flex items-center text-xs">
+                <i className="fas fa-map-marker-alt text-grey-dark mr-1"></i>
+                {entityArea}
               </div>
-              {/* <!-- ./Card body - inner wrapper --> */}
+
+              <div className="px-2 text-xs">
+                <i className="text-grey-darker far fa-building"></i>{" "}
+                {entityAddress}
+              </div>
             </div>
-            {/* <!-- ./Card body - outer wrapper --> */}
           </div>
-          {/* <!-- ./Card body --> */}
         </div>
-        {/* <!-- ./Card wrapper --> */}
       </Link>
     </>
   );

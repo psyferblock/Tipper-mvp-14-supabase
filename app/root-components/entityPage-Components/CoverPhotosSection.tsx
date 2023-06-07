@@ -6,6 +6,19 @@ export default function EntityPageCoverPhotosSection({ entityCoverPictures }) {
     (pictureObject) => pictureObject.media_url
   );
   console.log("slides", slides);
+  const slideChildren = slides.map((slide, index) => (
+    <div key={index} className=" h-auto max-w-fit">
+      <Image
+      className="max-w-full h-auto"
+        width={500}
+        height={500}
+        alt="cover-photo"
+        src={slide}
+        key={index}
+      />
+      <div className="">{JSON.stringify(slide)}</div>
+    </div>
+  ));
   return (
     // <div
     //   className="h-40 sm:h-[360px] sm:w-full bg-gray-300 rounded-lg drop-shadow-lg sm:px-6"
@@ -14,20 +27,9 @@ export default function EntityPageCoverPhotosSection({ entityCoverPictures }) {
     //   }}
     // ></div>
 
-    <div className="h-56 overflow-hidden rounded-lg bg-gray-300 drop-shadow-lg sm:h-[360px] sm:w-full sm:px-6">
-      <button>click here to change interval/autoslide...</button>
-      <CarouselComponent autoSlide={false} autoSlideInterval={3000} >
-        {slides.map((slide, index) => (
-          <div key={index} className=" h-auto w-full">
-            <Image
-              width={500}
-              height={500}
-              alt="cover-photo"
-              src={slide}
-              key={index}
-            />
-          </div>
-        ))}
+    <div className=" h-64 w-full overflow-hidden rounded-lg bg-gray-300 p-2 drop-shadow-lg sm:h-[360px] sm:w-full sm:px-6">
+      <CarouselComponent autoSlide={false} autoSlideInterval={3000}>
+        {slideChildren}
       </CarouselComponent>
     </div>
   );

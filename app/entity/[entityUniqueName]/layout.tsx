@@ -99,7 +99,6 @@ export default async function MenuIdPageLayout({
             entityCoverPictures={entityCoverPictures}
           />
 
-          <span className="bg-emerald">cover photos</span>
           {/* HIGHLIGHTS CONTAINER */}
 
           {/* <EntityPageHighlightsSection

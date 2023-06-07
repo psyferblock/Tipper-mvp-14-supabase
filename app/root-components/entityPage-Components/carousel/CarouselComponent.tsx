@@ -34,15 +34,15 @@ function CarouselComponent({
   }, []);
 
   return (
-    <div className="relative h-full overflow-hidden">
+    <div className="relative h-full w-full overflow-hidden">
       {/* the translateX property moves the slide through css by 100 % so the current index will allow a move where 100% of the picture will slide. */}
       <div
-        className="flex transition-transform duration-500 ease-out h-full w-full"
+        className="flex transition-transform duration-500 ease-out h-full w-full object-cover"
         style={{ transform: `translateX(-${current * 100}%)`,
          }}
       >
     
-        {slides[current]}
+        {slides}
       </div>
 
       {/* BELOW IS THE DIV THATS CAUSING THE HYDRATION ERRORS. ITS JUST A LEFT AND RIGHT BUTTON TO MOVE THE PICTURES. */}
