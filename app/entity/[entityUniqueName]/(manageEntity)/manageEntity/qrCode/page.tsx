@@ -9,7 +9,6 @@ export default function ManageQrCodePage() {
   const [categoryId,setCategoryId]=useState(null)
   const {entityUniqueName,entityMenuInfo,logoObject}=useEntityContext()
   const menuId =entityMenuInfo[0].id
-  console.log('menuId', menuId)
   
   useEffect(()=>{
     const getCategory= async ()=>{
@@ -19,7 +18,6 @@ export default function ManageQrCodePage() {
     }
     getCategory()
   },[menuId])
-  console.log('logoObject', logoObject)
   const logo=logoObject.media_url
   return (
     <>

@@ -6,23 +6,29 @@ import { usePathname } from "next/navigation";
 import { QRCodeCanvas } from "qrcode.react";
 import ReactDOM from "react-dom";
 
-export default function QrCodeGenerator({ logo,entityUniqueName,menuId,categoryId }) {
+export default function QrCodeGenerator({
+  logo,
+  entityUniqueName,
+  menuId,
+  categoryId,
+}) {
   //Setting the page URL to which the QR code redirects you on scan
   const pageUrl = `entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}`;
 
   //   const [url, setUrl] = useState<string>("");
-  const qrRef = useRef<HTMLDivElement | null>(null);
+  const qrRef = useRef<HTMLCanvasElement | null>();
   const [color, setColor] = useState<string>("black");
   const [size, setSize] = useState<string>("300");
+  const [url, setUrl] = useState("");
 
   const downloadQrCode = (e: FormEvent) => {
     e.preventDefault();
     //  @ts-ignore
-    // setUrl(pageUrl);
+    setUrl(pageUrl);
     let canvas = qrRef.current?.querySelector("canvas");
-    console.log("after canvas");
-    let imageUrl = canvas.toDataURL("image/png", 0.8); // programatically generating an image
-    console.log("after imageUrl");
+    console.log("after canvas", canvas);
+    let imageUrl = canvas.toDataURL("image/png"); // programatically generating an image
+    console.log("after imageUrl", imageUrl);
 
     let anchor = document.createElement("a");
     console.log("after anchor");
@@ -30,23 +36,15 @@ export default function QrCodeGenerator({ logo,entityUniqueName,menuId,categoryI
     anchor.href = imageUrl; // programatically creaing a link .( by adding the image to the href value in the "a" tag created )
     // console.log("imageUrl", imageUrl);
 
-    anchor.download = "qr-code-image.png"; // programatially naming the image
-    console.log("after anchor.download");
+    anchor.download = `${entityUniqueName}.png`; // programatially naming the image
 
     document.body.appendChild(anchor); // attaching it to the dom
-    console.log("after document.body.appendChild");
-
-    // console.log("anchor", anchor);
 
     anchor.click(); // clicking on it
-    console.log("after anchor.click");
 
     document.body.removeChild(anchor); //and removing it
-    console.log("after  document.body.removeChild");
 
-    // console.log("anchor", anchor);
-
-    // setUrl(""); // setting the url in the form to empty
+    setUrl(""); // setting the url in the form to empty
   };
 
   const qrCode = (
@@ -96,10 +94,10 @@ export default function QrCodeGenerator({ logo,entityUniqueName,menuId,categoryI
         /> */}
       {/* </form> */}
 
-      <div className="mt-1 bg-white rounded-lg p-5 drop-shadow-lg">
-        <div className="text-lg font-bold mb-6">Generate QR Code</div>
+      <div className="mt-1 rounded-lg bg-white p-5 drop-shadow-lg">
+        <div className="mb-6 text-lg font-bold">Generate QR Code</div>
 
-        <div className="flex justify-center mb-5" ref={qrRef}>
+        <div className="mb-5 flex justify-center" ref={qrRef}>
           {qrCode}
         </div>
 
@@ -113,7 +111,7 @@ export default function QrCodeGenerator({ logo,entityUniqueName,menuId,categoryI
                 viewBox="0 0 24 24"
                 strokeWidth={2.5}
                 stroke="currentColor"
-                className="w-4 h-4 text-blue-500"
+                className="h-4 w-4 text-blue-500"
               >
                 <path
                   strokeLinecap="round"
