@@ -3,6 +3,7 @@ import { useEntityContext } from "@/app/context/entityContext/entityContextStore
 import QrCodeGenerator from "./qrCode-Components/QrCodeGenerator";
 import { useEffect, useState } from "react";
 import { getMenuCategories } from "@/app/lib/get/getMenuCategories";
+import QrCodeNext from "./qrCode-Components/QrCodeNext";
 
 export default function ManageQrCodePage() {
   // const pageUrl;
@@ -22,7 +23,9 @@ export default function ManageQrCodePage() {
   return (
     <>
       <div className=" sm:h-fit min-h-screen sm:min-h-screen sm:w-full px-3 ">
-        <QrCodeGenerator logo={logo} entityUniqueName={entityUniqueName} menuId={menuId} categoryId={categoryId} />
+        {/* <QrCodeGenerator logo={logo} entityUniqueName={entityUniqueName} menuId={menuId} categoryId={categoryId} /> */}
+        <QrCodeNext logo={logo} entityUniqueName={entityUniqueName} menuId={menuId} categoryId={categoryId} />
+
         {/* <ManageQrCode /> */}
       </div>
     </>

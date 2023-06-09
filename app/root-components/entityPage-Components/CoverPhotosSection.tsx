@@ -7,7 +7,7 @@ export default function EntityPageCoverPhotosSection({ entityCoverPictures }) {
   );
   console.log("slides", slides);
   const slideChildren = slides.map((slide, index) => (
-    <div key={index} className=" h-auto max-w-fit">
+    <div key={index} className=" h-auto min-w-fit">
       <Image
       className="max-w-full h-auto"
         width={500}
