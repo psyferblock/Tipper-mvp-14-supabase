@@ -1,29 +1,31 @@
-"use client";
-
+import {
+  getClosingHours,
+  getOpeningHours,
+} from "@/app/lib/get/getOpeningClosingHours";
 import FacebookButton from "./ConnectWithUsButtons/FacebookButton";
 import InstagramButton from "./ConnectWithUsButtons/InstagramButton";
 import PhoneCallButton from "./ConnectWithUsButtons/PhoneCallButton";
 import TextUsWhatsappButton from "./ConnectWithUsButtons/TextUsWhatsappButton";
+import OpeningAndClosingHours from "./OpeningAndClosingHours";
 
 //remember to insert props here
-export default function EntityPageContainerWithEntityInfos({
+export default async function EntityPageContainerWithEntityInfos({
   entityInfos: entityInfos,
 }) {
-  console.log(
-    "entitiyInfos FROM entitypagecontainerwith entity infos",
-    entityInfos
-  );
+  const entityId = entityInfos.id;
+  console.log("entityId from the netitypagecontainer", entityId);
+
   return (
-    <div className=" bg-white rounded-lg mb-5 sm:mb-0 sm:pb-6 py-4 drop-shadow-xl px-3 sm:px-6 flex-none sm:w-[307px]">
-      <div className="font-semibold flex justify-between flex-col space-y-3 sm:space-y-4">
+    <div className=" mb-5 flex-none rounded-lg bg-white px-3 py-4 drop-shadow-xl sm:mb-0 sm:w-[307px] sm:px-6 sm:pb-6">
+      <div className="flex flex-col justify-between space-y-3 font-semibold sm:space-y-4">
         {/* ENTITY TAGS DIV */}
         <div>
           <div>Entity Tags</div>
-          <div className="flex flex-auto gap-2 sm:gap-2 sm:pb-3 pb-3 pt-2 sm:pt-2 overflow-auto">
-            {entityInfos.entity_tags?.map((tag,index) => (
+          <div className="flex flex-auto gap-2 overflow-auto pb-3 pt-2 sm:gap-2 sm:pb-3 sm:pt-2">
+            {entityInfos.entity_tags?.map((tag, index) => (
               <div
                 key={index}
-                className="w-fit flex px-2 bg-ruby rounded-lg mx-1 text-black text-xs  py-1 drop-shadow-sm"
+                className="mx-1 flex w-fit rounded-lg bg-ruby px-2 py-1 text-xs  text-black drop-shadow-sm"
               >
                 {tag}
               </div>
@@ -32,27 +34,34 @@ export default function EntityPageContainerWithEntityInfos({
         </div>
         {/* OPENING HOURS DIV */}
         <div>
-          <div className="sm:pb-0.5 -mt-3 sm:-mt-5">Opening Hours</div>
-          <div className="sm:px-1 divide-y">
+          {/* <div className="-mt-3 sm:-mt-5 sm:pb-0.5">Opening Hours</div>
+          <div className="divide-y sm:px-1">
             <div className="flex justify-between">
-              <div className="font-normal text-xs">Monday-Friday</div>
-              <div className="font-normal text-xs">8:00A.M-10:00P.M</div>
+              <div className="text-xs font-normal">Monday-Friday</div>
+              <div className="text-xs font-normal">
+                {openingHours?.monday_friday} - {closingHours?.monday_friday}
+              </div>
             </div>
             <div className="flex justify-between">
-              <div className="font-normal text-xs">Saturday-Sunday</div>
-              <div className="font-normal text-xs">8:00A.M-5:00P.M</div>
+              <div className="text-xs font-normal">Saturday</div>
+              <div className="text-xs font-normal">8:00A.M-5:00P.M</div>
             </div>
-          </div>
+            <div className="flex justify-between">
+              <div className="text-xs font-normal">Sunday</div>
+              <div className="text-xs font-normal">8:00A.M-5:00P.M</div>
+            </div>
+          </div> */}
+          <OpeningAndClosingHours entityId={entityId} />
         </div>
         {/* ADDRESS DIV */}
         <div>
           <div>Address</div>
           <div className="sm:px-1">
-            <div className="font-normal text-xs">
+            <div className="text-xs font-normal">
               {entityInfos.entity_address}
             </div>
             {/* GOOGLE MAPS */}
-            <div className="bg-gray-200 h-36 rounded-lg"></div>
+            <div className="h-36 rounded-lg bg-gray-200"></div>
           </div>
         </div>
 
@@ -60,7 +69,7 @@ export default function EntityPageContainerWithEntityInfos({
         <div>
           <div className="pb-0.5">Connect With Us</div>
 
-          <div className="sm:px-1 space-y-2 ">
+          <div className="space-y-2 sm:px-1 ">
             <div className="flex items-center space-x-2 text-sm font-normal">
               <div>Phone Number:</div>
               {/* PHONE BUTTON */}

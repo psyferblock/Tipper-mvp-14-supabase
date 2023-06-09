@@ -30,7 +30,7 @@ export default function QrCodeNext({
   // elemento que envuelve el QR
   const qrRef = useRef();
   const pageUrl = `entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}`;
-  const width=200
+  const width="400"
   const {entityName}=useEntityContext()
 
 

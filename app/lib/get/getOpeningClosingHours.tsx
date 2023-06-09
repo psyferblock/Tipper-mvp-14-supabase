@@ -1,7 +1,8 @@
 import { supabase } from "@/app/utils/supabase-browser";
+import { createServerClient } from "@/app/utils/supabase-server";
 
-export async function getOpeningHours(entityId) {
-  const { data, error } = await supabase
+export async function getOpeningHoursServer({supabaseServer:supabaseServer,entityId:entityId}) {
+  const { data, error } = await supabaseServer
     .from("opening_hours")
     .select()
     .eq("entity_id", entityId)
@@ -13,8 +14,8 @@ export async function getOpeningHours(entityId) {
     return data
 }
 
-export async function getClosingHours(entityId) {
-  const { data, error } = await supabase
+export async function getClosingHoursServer({supabaseServer:supabaseServer,entityId:entityId}) {
+  const { data, error } = await supabaseServer
     .from("closing_hours")
     .select()
     .eq("entity_id", entityId)
