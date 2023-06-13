@@ -1,13 +1,13 @@
 import { supabase } from "@/app/utils/supabase-browser";
 async function createEntity(
-  userId:string,
-  entityName:string,
-  entityUniqueName:string,
-  entityArea:string,
-  entityAddress:string,
-  entityEmailAddress:string,
-  entityPhoneNumber:number,
-  entityTypeId:number,
+  userId: string,
+  entityName: string,
+  entityUniqueName: string,
+  entityArea: string,
+  entityAddress: string,
+  entityEmailAddress: string,
+  entityPhoneNumber: number,
+  entityTypeId: number
 ) {
   const { data, error } = await supabase
     .from("entity")
@@ -21,7 +21,7 @@ async function createEntity(
       entity_phone_number: entityPhoneNumber,
       entity_type_id: entityTypeId,
       is_verified: false,
-      industry_id:5,
+      industry_id: 5,
     })
     .select()
     .single();

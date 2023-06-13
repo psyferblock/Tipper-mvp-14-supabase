@@ -62,7 +62,7 @@ export default async function EntityCard({ entity }) {
                 {entityAddress}
               </div>
             </div>
-            <div className="flex gap-4 mt-auto">
+            <div className="mt-auto flex gap-4">
               <button className="flex items-center gap-1 rounded-full border border-gray-300 px-3 py-1 transition-colors hover:bg-gray-50 focus:bg-gray-100 focus:outline-none focus-visible:border-gray-500 sm:text-lg">
                 <svg
                   stroke="currentColor"

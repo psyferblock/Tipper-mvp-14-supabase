@@ -6,13 +6,12 @@ import { deleteContactUsPicture } from "@/app/lib/update/deleteContactOrAboutUsP
 import Image from "next/image";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useManageEntityInfosContext } from "../Contexts/EntityInfoContext";
-import {v4 as uuidv4} from "uuid"
+import { v4 as uuidv4 } from "uuid";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
-
 
 export default function ManageContactUsPage(props) {
   const {
-       entityName,
+    entityName,
     logoObject,
     arrayOfPictureObjects,
     entityTags,
@@ -67,7 +66,7 @@ export default function ManageContactUsPage(props) {
     setEntityId,
     handleTags,
     removeTag,
-    changeInput
+    changeInput,
   } = useEntityContext();
 
   async function handleUploadImageButton(e: ChangeEvent<HTMLInputElement>) {
@@ -76,15 +75,16 @@ export default function ManageContactUsPage(props) {
     if (e.target.files) {
       file = e.target.files[0];
     }
-    const storageSchema="public"
-    const bucket="restaurant_images"
-    const uuid=uuidv4()
+    const storageSchema = "public";
+    const bucket = "restaurant_images";
+    const uuid = uuidv4();
     let pictureUrl = await uploadPicture({
       file,
       storageSchema: storageSchema,
       bucket: bucket,
       id: entityId,
-      uuid: uuid,});
+      uuid: uuid,
+    });
     //Setting the picture URL in context
     setContactUsPictureUrl(pictureUrl);
   }
@@ -94,7 +94,6 @@ export default function ManageContactUsPage(props) {
     setIsContactUsSectionPublic(boolean);
   }
 
-
   async function handleDeletePictureButton() {
     //Delete picture from DB
     // await deleteContactUsPicture(entityId);
@@ -103,10 +102,10 @@ export default function ManageContactUsPage(props) {
     setContactUsPictureUrl("");
   }
   return (
-    <div className="h-fit  bg-white rounded-lg p-3 sm:p-4 drop-shadow-lg space-y-4 pb-16">
-      <div className="sm:flex sm:justify-between items-center sm:space-x-6">
-        <div className="text-lg font-bold mb-1">Contact Us</div>
-        <div className="flex items-center pb-0.5 space-x-1 sm:py-0 py-1">
+    <div className="h-fit  space-y-4 rounded-lg bg-white p-3 pb-16 drop-shadow-lg sm:p-4">
+      <div className="items-center sm:flex sm:justify-between sm:space-x-6">
+        <div className="mb-1 text-lg font-bold">Contact Us</div>
+        <div className="flex items-center space-x-1 py-1 pb-0.5 sm:py-0">
           <div className="pt-0.5">
             <ToggleButton
               handleToggleButton={handleToggleButton}
@@ -119,7 +118,7 @@ export default function ManageContactUsPage(props) {
         </div>
       </div>
       <div>
-        <label htmlFor="about us" className="text-xs text-gray-600 font-medium">
+        <label htmlFor="about us" className="text-xs font-medium text-gray-600">
           Brief Description
         </label>
         {/* CONTACT US INPUT FIELD */}
@@ -127,7 +126,7 @@ export default function ManageContactUsPage(props) {
           wrap="soft"
           name="contact us"
           id="contact us"
-          className="wrap h-8 pt-4 px-4 sm:h-32 block w-full rounded-md border-gray-300 pb-24 sm:pl-4 sm:pr-12 sm:mt-1 focus:border-indigo-500 focus:ring-indigo-500 text-xs sm:text-sm"
+          className="wrap block h-8 w-full rounded-md border-gray-300 px-4 pb-24 pt-4 text-xs focus:border-indigo-500 focus:ring-indigo-500 sm:mt-1 sm:h-32 sm:pl-4 sm:pr-12 sm:text-sm"
           placeholder="Enter a description of products people can order by contacting you."
           value={contactUsDescription}
           onChange={(e) => setContactUsDescription(e.target.value)}
@@ -135,9 +134,9 @@ export default function ManageContactUsPage(props) {
       </div>
       <div>
         {/* UPLOAD PICTURE FIELD */}
-        <label className="text-xs text-gray-600 font-medium ">Image</label>
+        <label className="text-xs font-medium text-gray-600 ">Image</label>
 
-        <div className="relative bg-gray-100 sm:h-56 h-40 rounded-lg border-2 border-dashed border-gray-400 mt-1">
+        <div className="relative mt-1 h-40 rounded-lg border-2 border-dashed border-gray-400 bg-gray-100 sm:h-56">
           {contactUsPictureUrl ? (
             <>
               <Image
@@ -147,7 +146,7 @@ export default function ManageContactUsPage(props) {
               />
               <button
                 onClick={() => handleDeletePictureButton()}
-                className="bg-white rounded-lg h-fit absolute mr-3 mb-3 bottom-0 right-0 z-10"
+                className="absolute bottom-0 right-0 z-10 mb-3 mr-3 h-fit rounded-lg bg-white"
               >
                 {/* TRASH ICON */}
                 <svg
@@ -156,7 +155,7 @@ export default function ManageContactUsPage(props) {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6 z-10 text-blue-500 m-1"
+                  className="z-10 m-1 h-6 w-6 text-blue-500"
                 >
                   <path
                     strokeLinecap="round"
@@ -193,7 +192,7 @@ export default function ManageContactUsPage(props) {
                       id="contactUsPicture"
                       name="contactUsPicture"
                       type="file"
-                      multiple // to upload multile files at once 
+                      multiple // to upload multile files at once
                       className="sr-only"
                       onChange={(e) => {
                         handleUploadImageButton(e);

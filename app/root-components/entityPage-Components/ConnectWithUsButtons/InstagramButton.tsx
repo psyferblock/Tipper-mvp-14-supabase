@@ -6,7 +6,7 @@ export default function InstagramButton({ url }) {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 448 512"
-        className="w-6 h-6 text-[#c13584]"
+        className="h-6 w-6 text-[#c13584]"
       >
         <path
           fill="currentColor"

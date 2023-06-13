@@ -2,10 +2,8 @@ import { createServerClient } from "@/app/utils/supabase-server";
 import React from "react";
 import NavBar from "../root-components/NavBar";
 
-
-
-async function EntityLayout({ children }: {children:React.ReactNode}) {
-  const supabaseServer =  createServerClient();
+async function EntityLayout({ children }: { children: React.ReactNode }) {
+  const supabaseServer = createServerClient();
 
   const {
     data: { session },
@@ -13,14 +11,10 @@ async function EntityLayout({ children }: {children:React.ReactNode}) {
 
   const entityOwnerId = session?.user.id;
 
- 
-
-
   return (
     <>
-
-      <NavBar/>
-        <div>{children}</div>
+      <NavBar />
+      <div>{children}</div>
     </>
   );
 }

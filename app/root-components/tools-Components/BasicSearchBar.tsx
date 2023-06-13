@@ -2,7 +2,7 @@
 
 export default function BasicSearchBar(props) {
   return (
-    <div className="w-full flex rounded-lg border-gray-400">
+    <div className="flex w-full rounded-lg border-gray-400">
       <div className="pt-3">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -10,7 +10,7 @@ export default function BasicSearchBar(props) {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="absolute w-6 h-6 text-gray-400 ml-2"
+          className="absolute ml-2 h-6 w-6 text-gray-400"
         >
           <path
             strokeLinecap="round"
@@ -22,7 +22,7 @@ export default function BasicSearchBar(props) {
       <input
         type="text"
         placeholder={`${props.placeHolder}`}
-        className="pl-9 text-sm w-full border border-gray-400 h-12 rounded-md"
+        className="h-12 w-full rounded-md border border-gray-400 pl-9 text-sm"
       />
     </div>
   );

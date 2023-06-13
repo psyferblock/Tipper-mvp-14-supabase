@@ -14,12 +14,11 @@ export async function getEntityInfosServer(supabaseServerClient, entityId) {
   const { data, error } = await supabaseServerClient
     .from("entity")
     .select()
-    .eq("id", entityId)
-    // .single();
+    .eq("id", entityId);
+  // .single();
   if (error) throw error;
   // console.log("server side entity information data", data);
-  return data[0]
+  return data[0];
 }
 
-
-// NOTE: .single() method returns an object while NORMALLY it supabase will return an array 
+// NOTE: .single() method returns an object while NORMALLY it supabase will return an array

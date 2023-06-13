@@ -1,10 +1,7 @@
 "use client";
 
-
 import { createContext, useContext, useState } from "react";
 import { createBrowserClient } from "./utils/supabase-browser";
-
-
 
 // @ts-ignore
 const Context = createContext<SupabaseContext>();
@@ -26,10 +23,9 @@ export default function SupabaseProvider({
 }
 
 export const useSupabase = () => {
-  const context = useContext(Context)
-  if (!context){
-throw new Error("you have to have context in supabase to use this hook")
-
-  };
-return context
-}
+  const context = useContext(Context);
+  if (!context) {
+    throw new Error("you have to have context in supabase to use this hook");
+  }
+  return context;
+};

@@ -4,16 +4,14 @@ import HomePageSearchBar from "./HomePageSearchBar";
 import { useSupabase } from "../supabase-provider";
 import SignInSignOut from "./SignInSignOut";
 
-
 function NavBar() {
-
   return (
     <div className="">
-      <div className="bg-pearl text-ruby max-h-20  flex justify-between  ">
+      <div className="flex max-h-20 justify-between  bg-pearl text-ruby  ">
         <div className="w-20  ">
           <Link
             href="/"
-            className="py-4 sm:py-[18px] font-light sm:font-normal font-semibold hover:text-amethyst text-2xl sm:text-4xl"
+            className="py-4 text-2xl font-light font-semibold hover:text-amethyst sm:py-[18px] sm:text-4xl sm:font-normal"
           >
             Tipper
           </Link>
@@ -22,17 +20,16 @@ function NavBar() {
           <HomePageSearchBar />
         </div> */}
         <div className="  ">
-          <ul className=" flex jsutify-between text-sm pr-2 mr-2 ">
-            <li className="p-2 text-center items-center">
+          <ul className=" jsutify-between mr-2 flex pr-2 text-sm ">
+            <li className="items-center p-2 text-center">
               <Link href="#">About Us</Link>
             </li>
             <li className="p-2">
               <Link href="#">Contact Us</Link>
             </li>
-           <SignInSignOut/>
+            <SignInSignOut />
           </ul>
         </div>
-       
       </div>
       {/* <div className=" md:hidden">
         <HomePageSearchBar />

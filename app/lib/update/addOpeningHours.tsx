@@ -12,9 +12,10 @@ export default async function addOpeningHours({
       monday_friday: openingHoursMondayFriday,
       saturday: openingHoursSaturday,
       sunday: openingHoursSunday,
-    }).match({"entity_id":entityId})
+    })
+    .match({ entity_id: entityId });
 
   if (error) throw error;
   console.log("opening hours returned after adding them", data);
-  return data
+  return data;
 }

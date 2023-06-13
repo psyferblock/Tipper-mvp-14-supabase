@@ -2,7 +2,7 @@
 
 export const userContextState = {
   userId: "",
-  profileId:"",
+  profileId: "",
   firstName: "",
   lastName: "",
   dateOfBirth: "",
@@ -37,9 +37,9 @@ const userReducer = (userState, action) => {
       return { ...userState, uniqueUserName: payload };
     case "HAS_ENTITY":
       return { ...userState, hasEntity: payload };
-    
+
     case "ADD_PROFILE_ID":
-        return {...userState,profileId:payload}
+      return { ...userState, profileId: payload };
     default:
       throw new Error(`no cases to switch from ${type} `);
   }

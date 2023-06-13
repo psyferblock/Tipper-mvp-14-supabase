@@ -1,7 +1,9 @@
 "use client";
 import { useUsersContext } from "@/app/context/userContext/userContextStore";
 import uploadPictureToBucket from "@/app/lib/create/uploadPictureToBucket";
-import updateUserProfile, { updateProfilePictureUrl } from "@/app/lib/update/updateUserProfile";
+import updateUserProfile, {
+  updateProfilePictureUrl,
+} from "@/app/lib/update/updateUserProfile";
 import { useSupabase } from "@/app/supabase-provider";
 import Image from "next/image";
 import React, { useState, ChangeEvent } from "react";
@@ -44,7 +46,7 @@ function ProfileBasicInfoSection() {
   // managing state with context was truly a good day for me
   const handleUserInfo = async () => {
     const userUpdate = await updateUserProfile({
-      profileId:profileId,
+      profileId: profileId,
       firstName: firstName,
       lastName: lastName,
       dateOfBirth: dateOfBirth,
@@ -55,7 +57,10 @@ function ProfileBasicInfoSection() {
       // uniqueUserName: uniqueUserName,
       // hasEntity: hasEntity,
     });
-    await updateProfilePictureUrl({profilePictureUrl:profilePictureUrl,profileId:profileId})
+    await updateProfilePictureUrl({
+      profilePictureUrl: profilePictureUrl,
+      profileId: profileId,
+    });
 
     setEditing(false);
     console.log("updating profile", userUpdate);
@@ -124,18 +129,11 @@ function ProfileBasicInfoSection() {
         </button>
       </div>
       {/* THE DIV FOR THE PROFILE PIC AND ALL  */}
-      <div className="mx-auto w-1/2 sm:w-2/12 mt-3  ">
-        <div className="relative rounded-full aspect-1/1 w-32 h-32 ring-2 ring-ruby-tint overflow-hidden mx-auto bg-ruby-tint">
-          <Image
-            fill
-            alt={"profile Pic"}
-            src={
-              profilePictureUrl
-               
-            }
-          ></Image>
+      <div className="mx-auto mt-3 w-1/2 sm:w-2/12  ">
+        <div className="aspect-1/1 relative mx-auto h-32 w-32 overflow-hidden rounded-full bg-ruby-tint ring-2 ring-ruby-tint">
+          <Image fill alt={"profile Pic"} src={profilePictureUrl}></Image>
         </div>
-        <div className="text-blue-500 flex sm:flex justify-center sm:justify-center space-x-[3px] sm:space-x-[0.6px] text-xs sm:text-xs  ">
+        <div className="flex justify-center space-x-[3px] text-xs text-blue-500 sm:flex sm:justify-center sm:space-x-[0.6px] sm:text-xs  ">
           {/* <button disabled={!editing} >Change photo</button> */}
           <label
             htmlFor="profilePicture"
@@ -175,7 +173,7 @@ function ProfileBasicInfoSection() {
             upload picture
           </button>
         </div>
-        <div className="sm:w-5/12 sm:h-full space-y-3 sm:space-y-3">
+        <div className="space-y-3 sm:h-full sm:w-5/12 sm:space-y-3">
           {!editing ? (
             <ProfileInfoFromContext />
           ) : (
@@ -187,7 +185,7 @@ function ProfileBasicInfoSection() {
                   <div className="space-y-1 sm:space-y-1">
                     <label
                       htmlFor="first name"
-                      className="text-xs text-gray-600 font-medium pb-5"
+                      className="pb-5 text-xs font-medium text-gray-600"
                     >
                       First Name
                     </label>
@@ -197,7 +195,7 @@ function ProfileBasicInfoSection() {
                       id="first name"
                       value={firstName || ""}
                       onChange={(e) => setUserName(e.target.value)}
-                      className="h-12 block w-full rounded-md border-gray-300 pl-4 pr-12 mb-3 focus:border-indigo-500 focus:ring-indigo-500 text-xs sm:text-sm"
+                      className="mb-3 block h-12 w-full rounded-md border-gray-300 pl-4 pr-12 text-xs focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                       placeholder="Enter First Name"
                       disabled={!editing}
                     />
@@ -206,7 +204,7 @@ function ProfileBasicInfoSection() {
                   <div className="space-y-1 sm:space-y-1">
                     <label
                       htmlFor="last name"
-                      className="text-xs text-gray-600 font-medium pb-5"
+                      className="pb-5 text-xs font-medium text-gray-600"
                     >
                       Last Name
                     </label>
@@ -216,7 +214,7 @@ function ProfileBasicInfoSection() {
                       id="last name"
                       value={lastName || ""}
                       onChange={(e) => setUserLastName(e.target.value)}
-                      className="h-12 block w-full rounded-md border-gray-300 pl-4 pr-12 mb-3 focus:border-indigo-500 focus:ring-indigo-500 text-xs sm:text-sm"
+                      className="mb-3 block h-12 w-full rounded-md border-gray-300 pl-4 pr-12 text-xs focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                       placeholder="Enter Last Name"
                       disabled={!editing}
                     />
@@ -226,7 +224,7 @@ function ProfileBasicInfoSection() {
                 <div className="space-y-1 sm:space-y-1">
                   <label
                     htmlFor="names"
-                    className="text-xs text-gray-600 font-medium pb-3"
+                    className="pb-3 text-xs font-medium text-gray-600"
                   >
                     Date of birth
                   </label>
@@ -237,7 +235,7 @@ function ProfileBasicInfoSection() {
                     id="dateofbirth"
                     value={dateOfBirth || ""}
                     onChange={(e) => setDateOfBirth(e.target.value)}
-                    className="h-12 text-gray-600 block w-full rounded-md border-gray-300 pl-4 pr-12 mb-3 focus:border-indigo-500 focus:ring-indigo-500 text-xs sm:text-sm"
+                    className="mb-3 block h-12 w-full rounded-md border-gray-300 pl-4 pr-12 text-xs text-gray-600 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     placeholder="Enter Date of Birth"
                     disabled={!editing}
                   />
@@ -247,12 +245,12 @@ function ProfileBasicInfoSection() {
               <div className="sm:w-5/12">
                 <label
                   htmlFor="gender"
-                  className="text-xs text-gray-600 font-medium"
+                  className="text-xs font-medium text-gray-600"
                 >
                   Gender
                 </label>
                 <div className="sm:space-y-6">
-                  <div className="flex items-center flex-start space-x-9 py-2">
+                  <div className="flex-start flex items-center space-x-9 py-2">
                     <div>
                       <input
                         id="default-radio-1"
@@ -263,7 +261,7 @@ function ProfileBasicInfoSection() {
                           setGender(e.target.value);
                         }}
                         name="default-radio"
-                        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                        className="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-100 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
                         disabled={!editing}
                       />
                       <label
@@ -283,7 +281,7 @@ function ProfileBasicInfoSection() {
                           setGender(e.target.value);
                         }}
                         name="default-radio"
-                        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                        className="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-100 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
                         disabled={!editing}
                       />
                       <label
@@ -303,7 +301,7 @@ function ProfileBasicInfoSection() {
                           setGender(e.target.value);
                         }}
                         name="default-radio"
-                        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-600"
+                        className="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-100 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
                         disabled={!editing}
                       />
                       <label
@@ -319,7 +317,7 @@ function ProfileBasicInfoSection() {
                 <div className="space-y-1 sm:space-y-1">
                   <label
                     htmlFor="names"
-                    className="text-xs text-gray-600 font-medium"
+                    className="text-xs font-medium text-gray-600"
                   >
                     Contact Number
                   </label>
@@ -330,14 +328,14 @@ function ProfileBasicInfoSection() {
                     onChange={(e) => {
                       setContactNumber(e.target.value);
                     }}
-                    className="h-12 block w-full rounded-md border-gray-300 pl-4 pr-12  focus:border-indigo-500 focus:ring-indigo-500 text-xs sm:text-sm"
+                    className="block h-12 w-full rounded-md border-gray-300 pl-4 pr-12  text-xs focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     placeholder="Enter Number"
                     disabled={!editing}
                   />
                 </div>
               </div>
               <button
-                className="w-11/12 h-10 mt-8 hover:bg-ruby-tint hover:text-lg rounded-3xl bg-diamond text-ruby text-md m-3"
+                className="text-md m-3 mt-8 h-10 w-11/12 rounded-3xl bg-diamond text-ruby hover:bg-ruby-tint hover:text-lg"
                 onClick={handleUserInfo}
               >
                 submit

@@ -6,7 +6,7 @@ export default function TextUsWhatsappButton({ phoneNumber }) {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 448 512"
-        className="w-6 h-6 text-[#128c7e]"
+        className="h-6 w-6 text-[#128c7e]"
       >
         <path
           fill="currentColor"

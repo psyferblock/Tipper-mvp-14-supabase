@@ -95,7 +95,7 @@ export default function StickyBarSaveCancel(props) {
       entityId: entityId,
       entityLogoUrl: logoObject.media_url,
     });
- 
+
     console.log("entityId ,closingHoutsMondayFriday", entityId);
     console.log(
       "closingHoursMondayFriday",
@@ -151,15 +151,15 @@ export default function StickyBarSaveCancel(props) {
   }
 
   return (
-    <div className="bg-gray-500 opacity-95 h-14 fixed bottom-0 left-0 right-0 py-2 px-12 flex justify-end space-x-5">
+    <div className="fixed bottom-0 left-0 right-0 flex h-14 justify-end space-x-5 bg-gray-500 px-12 py-2 opacity-95">
       <button
-        className="w-28 h-10 rounded-3xl bg-white border hover:bg-gray-200 border-gray-600 text-black text-sm "
+        className="h-10 w-28 rounded-3xl border border-gray-600 bg-white text-sm text-black hover:bg-gray-200 "
         onClick={() => handleCancelButton()}
       >
         Cancel
       </button>
       <button
-        className="w-28 h-10 rounded-3xl bg-blue-600 border hover:bg-blue-700 border-gray-600 text-black text-sm "
+        className="h-10 w-28 rounded-3xl border border-gray-600 bg-blue-600 text-sm text-black hover:bg-blue-700 "
         onClick={() => handleSaveButton()}
       >
         Save

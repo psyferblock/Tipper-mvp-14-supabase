@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import {useEffect} from "react"
+import { useEffect } from "react";
 import { useSupabase } from "@/app/supabase-provider";
 
 // this component handles refreshing server data when the user logs in or out

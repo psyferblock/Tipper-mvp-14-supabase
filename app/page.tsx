@@ -14,14 +14,13 @@ import { createServerClient } from "./utils/supabase-server";
 export default async function TipperLandingPage() {
   const supabaseServer = createServerClient();
 
-
   return (
     <div>
       {/* <UserInfoContextProvider userInfos={userInformation}> */}
 
       <div>
         <MainPageNav />
-        <MainPageComponent/>
+        <MainPageComponent />
       </div>
 
       {/* </UserInfoContextProvider> */}

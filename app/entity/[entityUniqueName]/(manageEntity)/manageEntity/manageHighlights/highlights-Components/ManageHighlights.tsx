@@ -9,8 +9,7 @@ import EditHighlightModal from "./EditHighlightModal";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 
 export default function ManageHighlights({ listOfHighlights }) {
-
-  const {entityId}=useEntityContext()
+  const { entityId } = useEntityContext();
   //Add new highlight modal
   const [isAddHighlightModalOpen, setIsAddHighlightModalOpen] = useState(false);
   const [isEditHighlightModalOpen, setIsEditHighlightModalOpen] =
@@ -68,16 +67,16 @@ export default function ManageHighlights({ listOfHighlights }) {
 
   return (
     <>
-      <div className="bg-gray-300 sm:h-fit min-h-screen sm:min-h-screen sm:px-0 py-4 sm:py-0">
-        <div className="h-fit bg-white rounded-lg p-3 sm:p-4 drop-shadow-lg flex flex-col">
+      <div className="min-h-screen bg-gray-300 py-4 sm:h-fit sm:min-h-screen sm:px-0 sm:py-0">
+        <div className="flex h-fit flex-col rounded-lg bg-white p-3 drop-shadow-lg sm:p-4">
           {/* HIGHLIGHTS and ADD HIGHLIGHTS ROW */}
           <div className="flex pb-6">
-            <div className="hidden sm:block text-xl font-bold grow">
+            <div className="hidden grow text-xl font-bold sm:block">
               Highlights
             </div>
             <button
               onClick={handleAddHighlightButton}
-              className="text-blue-500 flex w-full justify-end items-center space-x-1 "
+              className="flex w-full items-center justify-end space-x-1 text-blue-500 "
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +84,7 @@ export default function ManageHighlights({ listOfHighlights }) {
                 viewBox="0 0 24 24"
                 strokeWidth={3}
                 stroke="currentColor"
-                className="w-4 h-4"
+                className="h-4 w-4"
               >
                 <path
                   strokeLinecap="round"
@@ -99,11 +98,11 @@ export default function ManageHighlights({ listOfHighlights }) {
 
           {/* DESKTOP HIGHLIGHTS COMPONENT */}
           <div className="sm:block">
-            <table className="table-fixed w-full">
+            <table className="w-full table-fixed">
               <thead>
                 <tr>
-                  <th className="pr-96 pb-4">Highlight</th>
-                  <th className=" pr-96 pb-4">Publish</th>
+                  <th className="pb-4 pr-96">Highlight</th>
+                  <th className=" pb-4 pr-96">Publish</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-300 text-gray-500">
@@ -111,7 +110,7 @@ export default function ManageHighlights({ listOfHighlights }) {
                   <tr key={index}>
                     <td>{highlight.highlight_name}</td>
                     <td className="flex items-center justify-between">
-                      <div className="flex items-center space-x-1 sm:space-x-2 pt-1 my-3 sm:my-3">
+                      <div className="my-3 flex items-center space-x-1 pt-1 sm:my-3 sm:space-x-2">
                         <ToggleButton
                           switchedOn={highlight.is_highlight_public}
                           handleToggleButton={(booleanProp) => {
@@ -124,7 +123,7 @@ export default function ManageHighlights({ listOfHighlights }) {
                           {highlight.is_highlight_public ? "Yes" : "No"}
                         </div>
                       </div>
-                      <div className="flex items-center space-x-1 sm:space-x-10 text-blue-600">
+                      <div className="flex items-center space-x-1 text-blue-600 sm:space-x-10">
                         <button
                           className="hidden sm:block"
                           onClick={() => {
@@ -156,7 +155,7 @@ export default function ManageHighlights({ listOfHighlights }) {
                             viewBox="0 0 24 24"
                             strokeWidth={1.5}
                             stroke="currentColor"
-                            className="w-6 h-6"
+                            className="h-6 w-6"
                           >
                             <path
                               strokeLinecap="round"
@@ -179,7 +178,7 @@ export default function ManageHighlights({ listOfHighlights }) {
                             viewBox="0 0 24 24"
                             strokeWidth={1.5}
                             stroke="currentColor"
-                            className="w-6 h-6 text-blue-500 m-1"
+                            className="m-1 h-6 w-6 text-blue-500"
                           >
                             <path
                               strokeLinecap="round"
@@ -197,29 +196,29 @@ export default function ManageHighlights({ listOfHighlights }) {
           </div>
 
           {/* MOBILE VERSION HIGHLIGHT TABLE */}
-          <div className="sm:hidden grid grid-cols-2 ">
+          <div className="grid grid-cols-2 sm:hidden ">
             <div>
-              <div className="font-bold pb-2">Highlight</div>
+              <div className="pb-2 font-bold">Highlight</div>
               <div className="divide-y">
-                <div className="text-gray-500 py-2">Events</div>
-                <div className="text-gray-500 py-2">Events</div>
-                <div className="text-gray-500 py-2">
-                  <div className="truncate ...">Our Customers ugadgub</div>
+                <div className="py-2 text-gray-500">Events</div>
+                <div className="py-2 text-gray-500">Events</div>
+                <div className="py-2 text-gray-500">
+                  <div className="... truncate">Our Customers ugadgub</div>
                 </div>
               </div>
             </div>
             <div className="grid overflow-x-auto pb-4">
               <div className="flex space-x-7">
-                <div className="font-bold mb-2">Publish</div>
+                <div className="mb-2 font-bold">Publish</div>
                 {/* <div className="font-bold mb-2">Edit/Remove</div> */}
               </div>
               <div className="divide-y">
                 <div className="flex items-center space-x-1 pb-1">
-                  <div className="flex items-center pt-2 space-x-2 w-20">
+                  <div className="flex w-20 items-center space-x-2 pt-2">
                     <ToggleButton />
                     <div className="pb-1 text-gray-500">Yes</div>
                   </div>
-                  <div className="flex items-center pt-1 space-x-4 text-blue-600">
+                  <div className="flex items-center space-x-4 pt-1 text-blue-600">
                     <button>Edit</button>
                     <button>Remove</button>
                   </div>

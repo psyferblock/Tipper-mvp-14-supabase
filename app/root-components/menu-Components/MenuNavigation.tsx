@@ -18,7 +18,7 @@ export default async function MenuNavigation(props) {
   console.log("publicMenuCategories", publicMenuCategories);
   return (
     <>
-      <div className="grid grid-rows-1 grid-flow-col pb-3 sm:pb-0  overflow-x-auto sm:flex sm:flex-col sm:overflow-hidden font-semibold sm:text-base  text-gray-400 sm:space-y-0">
+      <div className="grid grid-flow-col grid-rows-1 overflow-x-auto pb-3  font-semibold text-gray-400 sm:flex sm:flex-col sm:space-y-0 sm:overflow-hidden  sm:pb-0 sm:text-base">
         {publicMenuCategories.map((category, index) => (
           <div key={index}>
             <MenuCategoriesNavLink

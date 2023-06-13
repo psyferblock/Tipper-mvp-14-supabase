@@ -7,8 +7,9 @@ import { createServerClient } from "@/app/utils/supabase-server";
 export default async function HomePageListingOfEntitiesCards() {
   //Fetch from DB
   const supabaseServer = createServerClient();
-  let listOfEntities = await getAllEntitiesServer({supabaseServer:supabaseServer});
-  
+  let listOfEntities = await getAllEntitiesServer({
+    supabaseServer: supabaseServer,
+  });
 
   const industries = [
     {
@@ -31,15 +32,15 @@ export default async function HomePageListingOfEntitiesCards() {
 
   return (
     <>
-      {industries.map((industry,index) => (
+      {industries.map((industry, index) => (
         <div key={index}>
           {/* MOBILE VERSION WITH FLEX */}
-          <div className="sm:hidden flex items-center justify-between  pb-2 sm:pb-2">
-            <div className="font-bold text-lg sm:text-center">
+          <div className="flex items-center justify-between pb-2  sm:hidden sm:pb-2">
+            <div className="text-lg font-bold sm:text-center">
               {industry.name}
             </div>
             <Link
-              className="text-sm text-blue-500 justify-end flex items-center sm:space-x-1"
+              className="flex items-center justify-end text-sm text-blue-500 sm:space-x-1"
               href={`entitiesBySector`}
             >
               View All
@@ -49,7 +50,7 @@ export default async function HomePageListingOfEntitiesCards() {
                 viewBox="0 0 24 24"
                 strokeWidth={2.5}
                 stroke="currentColor"
-                className="w-5 h-5 text-blue-500 pt-0.5 "
+                className="h-5 w-5 pt-0.5 text-blue-500 "
               >
                 <path
                   strokeLinecap="round"
@@ -61,12 +62,12 @@ export default async function HomePageListingOfEntitiesCards() {
           </div>
 
           {/* DESKTOP VERSION WITHOUT FLEX */}
-          <div className="hidden sm:block pb-2">
-            <div className="font-bold text-lg sm:text-center">
+          <div className="hidden pb-2 sm:block">
+            <div className="text-lg font-bold sm:text-center">
               {industry.name}
             </div>
             <Link
-              className="text-sm text-blue-500 justify-end flex items-center sm:space-x-1"
+              className="flex items-center justify-end text-sm text-blue-500 sm:space-x-1"
               href={`entitiesBySector`}
             >
               View All
@@ -76,7 +77,7 @@ export default async function HomePageListingOfEntitiesCards() {
                 viewBox="0 0 24 24"
                 strokeWidth={2.5}
                 stroke="currentColor"
-                className="w-5 h-5 text-blue-500 pt-0.5 "
+                className="h-5 w-5 pt-0.5 text-blue-500 "
               >
                 <path
                   strokeLinecap="round"
@@ -87,12 +88,11 @@ export default async function HomePageListingOfEntitiesCards() {
             </Link>
           </div>
           <div className="h-auto">
-
-          <EntitiesCardsInScrollRowDirection
-            listOfEntities={listOfEntities}
-            industryId={industry.id}
+            <EntitiesCardsInScrollRowDirection
+              listOfEntities={listOfEntities}
+              industryId={industry.id}
             />
-            </div>
+          </div>
         </div>
       ))}
     </>

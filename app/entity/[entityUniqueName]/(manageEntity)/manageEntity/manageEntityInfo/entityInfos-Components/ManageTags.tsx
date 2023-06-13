@@ -10,8 +10,8 @@ export default function ManageTags() {
   const tagRef = useRef();
 
   return (
-    <div className="h-fit bg-white rounded-lg p-3 sm:p-4 drop-shadow-lg">
-      <div className="text-lg font-bold mb-2">Tags</div>
+    <div className="h-fit rounded-lg bg-white p-3 drop-shadow-lg sm:p-4">
+      <div className="mb-2 text-lg font-bold">Tags</div>
       <div className="text-xs">Add tags</div>
 
       {/* TAG INPUT FIELD */}
@@ -20,7 +20,7 @@ export default function ManageTags() {
           type="text"
           name="tags"
           id="price"
-          className="h-12 block w-full rounded-md border-gray-400 pl-7 pr-12 mt-2 mb-6 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+          className="mb-6 mt-2 block h-12 w-full rounded-md border-gray-400 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           placeholder="Seperate tags with spaces..."
           // value={tag}
           ref={tagRef}
@@ -31,8 +31,8 @@ export default function ManageTags() {
           onClick={() => handleTags(tagRef.current.value)}
           className={
             entityTags.length
-              ? "text-sm text-blue-600 mb-3 font-medium"
-              : "text-sm text-gray-600 mb-3 font-medium"
+              ? "mb-3 text-sm font-medium text-blue-600"
+              : "mb-3 text-sm font-medium text-gray-600"
           }
           disabled={!tagRef.current}
         >
@@ -40,11 +40,11 @@ export default function ManageTags() {
         </button>
       </div>
       {/* TAGS ROW */}
-      <div className=" grid grid-flow-col gap-3 pb-3 sm:pb-2 px-1 sm:px-2 sm:py-1 overflow-x-auto sm:space-x-3">
+      <div className=" grid grid-flow-col gap-3 overflow-x-auto px-1 pb-3 sm:space-x-3 sm:px-2 sm:py-1 sm:pb-2">
         {entityTags?.map((tag) => (
           <small
-            onClick={() =>removeTag(tag)}
-            className="px-2 py-1 w-fit flex items-center justify-between bg-gray-100 rounded-lg text-black text-xs  drop-shadow-md"
+            onClick={() => removeTag(tag)}
+            className="flex w-fit items-center justify-between rounded-lg bg-gray-100 px-2 py-1 text-xs text-black  drop-shadow-md"
             key={tag}
           >
             {tag}
@@ -55,7 +55,7 @@ export default function ManageTags() {
               viewBox="0 0 24 24"
               strokeWidth={2}
               stroke="currentColor"
-              className="w-4 h-4 text-gray-400"
+              className="h-4 w-4 text-gray-400"
             >
               <path
                 strokeLinecap="round"

@@ -10,27 +10,25 @@ import { getEntityMenu } from "@/app/lib/get/getEntityMenu";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 import { getMenuCategories } from "@/app/lib/get/getMenuCategories";
 
-
 export default function ManageMenuCategories() {
   // //Owner chooses between pdf and manually inputting items
   const [isPdf, setIsPdf] = useState(false);
-  const [menuId,setMenuId]=useState("")
-  const [menuCategories,setMenuCategories]=useState(null)
+  const [menuId, setMenuId] = useState("");
+  const [menuCategories, setMenuCategories] = useState(null);
 
-  const {entityId}= useEntityContext()
+  const { entityId } = useEntityContext();
 
-  useEffect(()=>{
-    const menuInfo = async () =>{
-      const menuFromEntity=await getEntityMenu(entityId)
-      let menuId=menuFromEntity.id
-      setMenuId(menuId)
-      const menuCategoriesData=await getMenuCategories({menuId:menuId})
-      setMenuCategories(menuCategoriesData)
-    }
-    menuInfo()
-  },[entityId])
+  useEffect(() => {
+    const menuInfo = async () => {
+      const menuFromEntity = await getEntityMenu(entityId);
+      let menuId = menuFromEntity.id;
+      setMenuId(menuId);
+      const menuCategoriesData = await getMenuCategories({ menuId: menuId });
+      setMenuCategories(menuCategoriesData);
+    };
+    menuInfo();
+  }, [entityId]);
 
-  
   //Edit Category Name Modal
   const [isEditCategoryNameModalOpen, setIsEditCategoryNameModalOpen] =
     useState(false);
@@ -86,20 +84,20 @@ export default function ManageMenuCategories() {
 
   return (
     <>
-      <div className="flex flex-col space-y-3 sm:space-y-2 w-full">
+      <div className="flex w-full flex-col space-y-3 sm:space-y-2">
         {/* MENU HEADER AND ADD CATEGORY BUTTON */}
         <div className="flex  items-center justify-end">
           {/* ADD CATEGORY BUTTON */}
           <button
             // onClick={handleAddCategoryButton}
-            className="hidden sm:block w-32 h-10 hover:bg-blue-600 text-xs rounded-3xl bg-blue-500 text-white -mt-2"
+            className="-mt-2 hidden h-10 w-32 rounded-3xl bg-blue-500 text-xs text-white hover:bg-blue-600 sm:block"
           >
             Add New Category
           </button>
         </div>
 
         {isPdf ? (
-          <div className="bg-gray-100  h-56 rounded-lg border-2 border-dashed border-gray-400 mt-1">
+          <div className="mt-1  h-56 rounded-lg border-2 border-dashed border-gray-400 bg-gray-100">
             <div className=" flex justify-center rounded-md px-6 pt-[52px] ">
               <div className="space-y-1 text-center">
                 <svg
@@ -142,7 +140,7 @@ export default function ManageMenuCategories() {
             {/* ADD CATEGORY FOR MOBILE */}
             <button
               onClick={handleAddCategoryButton}
-              className="sm:hidden w-fit text-blue-500 flex items-center justify-between space-x-1"
+              className="flex w-fit items-center justify-between space-x-1 text-blue-500 sm:hidden"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -150,7 +148,7 @@ export default function ManageMenuCategories() {
                 viewBox="0 0 24 24"
                 strokeWidth={3}
                 stroke="currentColor"
-                className="w-4 h-4"
+                className="h-4 w-4"
               >
                 <path
                   strokeLinecap="round"
@@ -162,22 +160,28 @@ export default function ManageMenuCategories() {
             </button>
             <div>
               {/* MENU CATEGORIES */}
-              <div >
-                {menuCategories?<div className="grid sm:grid-cols-4 gap-4">
-                {menuCategories.map((category,index) => (
-                  <div key={index}>
-                  <MenuCategoryCard
-                    categoryName={category.menu_category_name}
-                    categoryId={category.id}
-                    // firstMenuCategoryIdOfEntity={firstMenuCategoryIdOfEntity}
-                    isMenuCategoryPublic={category.category_public}
-                    openEditNameModal={handleEditCategoryNameButton}
-                    openDeleteMenuCategoryModal={handleDeleteCategoryButton}
-                    menuId={menuId}
-                  />
+              <div>
+                {menuCategories ? (
+                  <div className="grid gap-4 sm:grid-cols-4">
+                    {menuCategories.map((category, index) => (
+                      <div key={index}>
+                        <MenuCategoryCard
+                          categoryName={category.menu_category_name}
+                          categoryId={category.id}
+                          // firstMenuCategoryIdOfEntity={firstMenuCategoryIdOfEntity}
+                          isMenuCategoryPublic={category.category_public}
+                          openEditNameModal={handleEditCategoryNameButton}
+                          openDeleteMenuCategoryModal={
+                            handleDeleteCategoryButton
+                          }
+                          menuId={menuId}
+                        />
+                      </div>
+                    ))}
                   </div>
-                ))}
-                </div>: "here is where the categories will show up"}
+                ) : (
+                  "here is where the categories will show up"
+                )}
               </div>
             </div>
           </>
@@ -193,7 +197,7 @@ export default function ManageMenuCategories() {
         currentName={categoryNameInEditCategoryNameModal}
         categoryId={editNameCategoryId}
         entityId={entityId}
-      /> 
+      />
       <AddNewMenuCategoryModal
         open={isAddCategoryModalOpen}
         closeModal={closeAddCategoryModal}

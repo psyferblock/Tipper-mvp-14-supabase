@@ -23,8 +23,7 @@ export default function ManageCoverPhotos() {
     useEntityContext();
 
   async function handleUploadImageButton(e: ChangeEvent<HTMLInputElement>) {
-
-    let file 
+    let file;
     // handling the update to bucket
     if (e.target.files) {
       file = e.target.files[0];
@@ -32,13 +31,13 @@ export default function ManageCoverPhotos() {
     const uuid = uuidv4();
     const storageSchema = "public";
     const bucket = "restaurant_images";
-      const pictureUrl = await uploadPictureToBucket({
-        file,
-        storageSchema:storageSchema,
-        bucket:bucket,
-        id: entityId,
-        uuid,
-      });
+    const pictureUrl = await uploadPictureToBucket({
+      file,
+      storageSchema: storageSchema,
+      bucket: bucket,
+      id: entityId,
+      uuid,
+    });
     let newArray = arrayOfPictureObjects.concat({
       id: null,
       media_url: pictureUrl,
@@ -48,7 +47,10 @@ export default function ManageCoverPhotos() {
   }
   console.log("array of pics in manage cover photos:", arrayOfPictureObjects);
 
-  async function handleDeletePictureButton(deletedPicutreObject: { id: null; media_url: any; }) {
+  async function handleDeletePictureButton(deletedPicutreObject: {
+    id: null;
+    media_url: any;
+  }) {
     //Locating which picture should be deleted is based on the URL of the picture (could be done with
     // picture Id instead, but would need to upload photo to DB and get its ID which is an extra API
     // call for each picture upload)
@@ -59,21 +61,21 @@ export default function ManageCoverPhotos() {
     }
     //Remove the picture from the state variable array
     const newArray = arrayOfPictureObjects.filter(
-      (pictureObject: { media_url: any; }) =>
+      (pictureObject: { media_url: any }) =>
         pictureObject.media_url != deletedPicutreObject.media_url
     );
     setArrayOfPictureObjects(newArray);
   }
 
   return (
-    <div className="h-fit  bg-white rounded-lg p-3 sm:p-4 drop-shadow-lg">
+    <div className="h-fit  rounded-lg bg-white p-3 drop-shadow-lg sm:p-4">
       <div className="sm:flex">
-        <div className="text-lg font-bold grow">Announcement Banners</div>
+        <div className="grow text-lg font-bold">Announcement Banners</div>
         {/* DESKTOP BUTTON */}
 
         <label
           htmlFor="add slide"
-          className="hidden sm:cursor-pointer sm:flex text-blue-500 items-center space-x-1"
+          className="hidden items-center space-x-1 text-blue-500 sm:flex sm:cursor-pointer"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +83,7 @@ export default function ManageCoverPhotos() {
             viewBox="0 0 24 24"
             strokeWidth={3}
             stroke="currentColor"
-            className="w-4 h-4"
+            className="h-4 w-4"
           >
             <path
               strokeLinecap="round"
@@ -109,7 +111,7 @@ export default function ManageCoverPhotos() {
 
       <label
         htmlFor="add slide mobile"
-        className="sm:hidden w-fit cursor-pointer flex text-blue-500 items-center space-x-1"
+        className="flex w-fit cursor-pointer items-center space-x-1 text-blue-500 sm:hidden"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +119,7 @@ export default function ManageCoverPhotos() {
           viewBox="0 0 24 24"
           strokeWidth={3}
           stroke="currentColor"
-          className="w-4 h-4"
+          className="h-4 w-4"
         >
           <path
             strokeLinecap="round"
@@ -139,9 +141,9 @@ export default function ManageCoverPhotos() {
       {/* ///////////////////////////////////////////////////////////////// */}
 
       {/* UPLOAD PICTURE FIELD */}
-      <div className=" space-x-4 sm:space-x-4 grid grid-rows-1 grid-flow-col overflow-x-auto">
+      <div className=" grid grid-flow-col grid-rows-1 space-x-4 overflow-x-auto sm:space-x-4">
         {/* CONTAINER TO UPLOAD PICTURE */}
-        <div className="bg-gray-100 flex  sm:h-56 h-40 rounded-lg border-2 border-dashed border-gray-400 my-4">
+        <div className="my-4 flex  h-40 rounded-lg border-2 border-dashed border-gray-400 bg-gray-100 sm:h-56">
           {!arrayOfPictureObjects.length && (
             <div className=" mx-auto rounded-md  pt-[52px] ">
               <div className="space-y-1 text-center">
@@ -169,38 +171,43 @@ export default function ManageCoverPhotos() {
           )}
 
           {/* PICTURES UPLOADED SECTION */}
-          <div className="space-x-2 flex">
+          <div className="flex space-x-2">
             {arrayOfPictureObjects ? (
               <>
-                {arrayOfPictureObjects.map((pictureObject,key: Key | null | undefined) => (
-                  <div key={key} className="relative w-[268px] sm:w-[340px] bg-gray-100 flex justify-center sm:h-56 h-40 rounded-lg border-2 border-gray-400 ">
-                    <Image
-                      src={pictureObject.media_url}
-                      alt="cover photo"
-                      fill
-                    />
-                    <button
-                      onClick={() => handleDeletePictureButton(pictureObject)}
-                      className="bg-white rounded-lg h-fit absolute mr-3 mb-3 bottom-0 right-0 z-10"
+                {arrayOfPictureObjects.map(
+                  (pictureObject, key: Key | null | undefined) => (
+                    <div
+                      key={key}
+                      className="relative flex h-40 w-[268px] justify-center rounded-lg border-2 border-gray-400 bg-gray-100 sm:h-56 sm:w-[340px] "
                     >
-                      {/* TRASH ICON */}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-6 h-6 z-10 text-blue-500 m-1"
+                      <Image
+                        src={pictureObject.media_url}
+                        alt="cover photo"
+                        fill
+                      />
+                      <button
+                        onClick={() => handleDeletePictureButton(pictureObject)}
+                        className="absolute bottom-0 right-0 z-10 mb-3 mr-3 h-fit rounded-lg bg-white"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                ))}
+                        {/* TRASH ICON */}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="z-10 m-1 h-6 w-6 text-blue-500"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  )
+                )}
               </>
             ) : (
               <></>

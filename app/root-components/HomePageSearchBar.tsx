@@ -1,11 +1,11 @@
 export default function HomePageSearchBar() {
   return (
-    <div className="bg-white border border-black  sm:w-7/12 sm:mx-auto md:w-auto flex sm:py-0 sm:px-3 rounded-full overflow-hidden">
+    <div className="flex overflow-hidden rounded-full  border border-black bg-white sm:mx-auto sm:w-7/12 sm:px-3 sm:py-0 md:w-auto">
       <div className="m-2 border-r">
         <select
           id="sector"
           // autoComplete="country-name"
-          className="truncate text-center text-xs sm:text-sm h-full block w-1/3  border-0 bg-transparent sm:py-2 pr-5 sm:px-3 focus:border-0 focus:outline-none focus:ring-0 "
+          className="block h-full w-1/3 truncate border-0 bg-transparent pr-5  text-center text-xs focus:border-0 focus:outline-none focus:ring-0 sm:px-3 sm:py-2 sm:text-sm "
         >
           <option selected disabled hidden>
             Sectors
@@ -19,9 +19,9 @@ export default function HomePageSearchBar() {
       <input
         type="text"
         placeholder="Explore Entities"
-        className="pl-2 sm:pl-9 sm:text-sm sm:focus:ring-0 bg-transparent w-full border-0 sm:h-12"
+        className="w-full border-0 bg-transparent pl-2 sm:h-12 sm:pl-9 sm:text-sm sm:focus:ring-0"
       />
-      <button className="bg-blue-500 text-white px-3 sm:px-7 sm:-mr-3">
+      <button className="bg-blue-500 px-3 text-white sm:-mr-3 sm:px-7">
         Search
       </button>
     </div>

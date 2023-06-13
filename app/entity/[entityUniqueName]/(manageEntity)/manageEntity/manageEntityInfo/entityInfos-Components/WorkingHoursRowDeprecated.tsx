@@ -1,16 +1,16 @@
 export default function WorkingHoursRow(props) {
   const row = props.caption ? (
-    <div className="sm:flex items-center space-y-2 sm:space-y-0 sm:space-x-8">
+    <div className="items-center space-y-2 sm:flex sm:space-x-8 sm:space-y-0">
       {/* CHECKBOX AND DAY DIV */}
-      <div className="sm:w-44 flex items-center sm:mt-3">
-        <div className="flex sm:h-5 items-center">
+      <div className="flex items-center sm:mt-3 sm:w-44">
+        <div className="flex items-center sm:h-5">
           <input
             id="dayCheckBox"
             type="checkbox"
-            className="sm:h-4 mr-2 sm:mr-0 sm:w-4 border rounded border-gray-400 text-indigo-600 focus:ring-indigo-500"
+            className="mr-2 rounded border border-gray-400 text-indigo-600 focus:ring-indigo-500 sm:mr-0 sm:h-4 sm:w-4"
           />
         </div>
-        <div className="sm:ml-3 text-sm">
+        <div className="text-sm sm:ml-3">
           <label htmlFor="dayCheckBox" className="font-medium  text-gray-700">
             {props.day}
           </label>
@@ -22,7 +22,7 @@ export default function WorkingHoursRow(props) {
         <label htmlFor="clock" className="text-xs">
           {props.caption}
         </label>
-        <div className="w-12 sm:w-40 flex bg-white border border-gray-400 py-0 px-3 rounded-md overflow-hidden">
+        <div className="flex w-12 overflow-hidden rounded-md border border-gray-400 bg-white px-3 py-0 sm:w-40">
           <input type="time" id="clock" className="border-0 focus:ring-0" />
         </div>
       </div>
@@ -32,7 +32,7 @@ export default function WorkingHoursRow(props) {
         <label htmlFor="clock" className="text-xs">
           {props.caption}
         </label>
-        <div className="w-12 sm:w-40 flex bg-white border border-gray-400 py-0 px-3 rounded-md overflow-hidden">
+        <div className="flex w-12 overflow-hidden rounded-md border border-gray-400 bg-white px-3 py-0 sm:w-40">
           <input type="time" id="clock" className="border-0 focus:ring-0" />
         </div>
       </div>
@@ -40,60 +40,60 @@ export default function WorkingHoursRow(props) {
       {/* INPUT BAR FOR THE HOUR MOBILE SIZE*/}
       <div className="flex items-center sm:hidden">
         <div className="sm:flex sm:flex-col">
-          <div className="w-28 flex bg-white border border-gray-400 rounded-md overflow-hidden">
+          <div className="flex w-28 overflow-hidden rounded-md border border-gray-400 bg-white">
             <input
               type="time"
               id="clock"
-              className="border-0 -mx-3 focus:ring-0"
+              className="-mx-3 border-0 focus:ring-0"
             />
           </div>
         </div>
         <p className="mx-2">to</p>
         {/* SECOND TIME SETTING */}
         <div className="sm:flex sm:flex-col">
-          <div className="w-28 flex bg-white border border-gray-400 rounded-md overflow-hidden">
+          <div className="flex w-28 overflow-hidden rounded-md border border-gray-400 bg-white">
             <input
               type="time"
               id="clock"
-              className="border-0 -mx-3 focus:ring-0"
+              className="-mx-3 border-0 focus:ring-0"
             />
           </div>
         </div>
       </div>
     </div>
   ) : (
-    <div className="sm:flex items-center space-y-2 sm:space-y-0 sm:space-x-8">
+    <div className="items-center space-y-2 sm:flex sm:space-x-8 sm:space-y-0">
       {/* CHECKBOX AND DAY DIV */}
-      <div className="sm:w-44 flex items-center">
-        <div className="flex sm:h-5 items-center">
+      <div className="flex items-center sm:w-44">
+        <div className="flex items-center sm:h-5">
           <input
             id="dayCheckBox"
             type="checkbox"
-            className="sm:h-4 sm:mr-0 mr-2 sm:w-4 border rounded border-gray-400 text-indigo-600 focus:ring-indigo-500"
+            className="mr-2 rounded border border-gray-400 text-indigo-600 focus:ring-indigo-500 sm:mr-0 sm:h-4 sm:w-4"
           />
         </div>
-        <div className="sm:ml-3 text-sm">
+        <div className="text-sm sm:ml-3">
           <label htmlFor="dayCheckBox" className="font-medium  text-gray-700">
             {props.day}
           </label>
         </div>
       </div>
       {/* INPUT BAR FOR THE HOUR */}
-      <div className="hidden sm:flex flex-col">
+      <div className="hidden flex-col sm:flex">
         <label htmlFor="clock" className="text-xs">
           {props.caption}
         </label>
-        <div className="w-12 sm:w-40 flex bg-white border border-gray-400 py-0 px-3 rounded-md overflow-hidden">
+        <div className="flex w-12 overflow-hidden rounded-md border border-gray-400 bg-white px-3 py-0 sm:w-40">
           <input type="time" id="clock" className="border-0 focus:ring-0" />
         </div>
       </div>
       <p className="hidden sm:block sm:pl-5 sm:pr-5">to</p>
       {/* SECOND TIME SETTING */}
-      <div className="hidden sm:flex flex-col">
+      <div className="hidden flex-col sm:flex">
         <label htmlFor="clock" className="text-xs">
           {props.caption}
         </label>
-        <div className="w-12 sm:w-40 flex bg-white border border-gray-400 py-0 px-3 rounded-md overflow-hidden">
+        <div className="flex w-12 overflow-hidden rounded-md border border-gray-400 bg-white px-3 py-0 sm:w-40">
           <input type="time" id="clock" className="border-0 focus:ring-0" />
         </div>
       </div>
@@ -101,22 +101,22 @@ export default function WorkingHoursRow(props) {
       {/* INPUT BAR FOR THE HOUR MOBILE SIZE*/}
       <div className="flex items-center sm:hidden">
         <div className="sm:flex sm:flex-col">
-          <div className="w-28 flex bg-white border border-gray-400 rounded-md overflow-hidden">
+          <div className="flex w-28 overflow-hidden rounded-md border border-gray-400 bg-white">
             <input
               type="time"
               id="clock"
-              className="border-0 -mx-3 focus:ring-0 stroke-orange-600 s"
+              className="s -mx-3 border-0 stroke-orange-600 focus:ring-0"
             />
           </div>
         </div>
         <p className="mx-2">to</p>
         {/* SECOND TIME SETTING */}
         <div className="sm:flex sm:flex-col">
-          <div className="w-28 flex bg-white border border-gray-400 rounded-md overflow-hidden">
+          <div className="flex w-28 overflow-hidden rounded-md border border-gray-400 bg-white">
             <input
               type="time"
               id="clock"
-              className="border-0 -mx-3 focus:ring-0"
+              className="-mx-3 border-0 focus:ring-0"
             />
           </div>
         </div>

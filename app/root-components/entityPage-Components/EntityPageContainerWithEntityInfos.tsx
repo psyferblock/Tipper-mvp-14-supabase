@@ -34,23 +34,6 @@ export default async function EntityPageContainerWithEntityInfos({
         </div>
         {/* OPENING HOURS DIV */}
         <div>
-          {/* <div className="-mt-3 sm:-mt-5 sm:pb-0.5">Opening Hours</div>
-          <div className="divide-y sm:px-1">
-            <div className="flex justify-between">
-              <div className="text-xs font-normal">Monday-Friday</div>
-              <div className="text-xs font-normal">
-                {openingHours?.monday_friday} - {closingHours?.monday_friday}
-              </div>
-            </div>
-            <div className="flex justify-between">
-              <div className="text-xs font-normal">Saturday</div>
-              <div className="text-xs font-normal">8:00A.M-5:00P.M</div>
-            </div>
-            <div className="flex justify-between">
-              <div className="text-xs font-normal">Sunday</div>
-              <div className="text-xs font-normal">8:00A.M-5:00P.M</div>
-            </div>
-          </div> */}
           <OpeningAndClosingHours entityId={entityId} />
         </div>
         {/* ADDRESS DIV */}

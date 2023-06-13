@@ -11,7 +11,7 @@ export default function ManageEntityDesktopButton() {
   return (
     <button
       onClick={handleManageEntityButton}
-      className="sm:w-32 sm:h-9 h-fit rounded-3xl sm:border-2 sm:border-gray-500 text-blue-500 sm:text-gray-500 text-xs"
+      className="h-fit rounded-3xl text-xs text-blue-500 sm:h-9 sm:w-32 sm:border-2 sm:border-gray-500 sm:text-gray-500"
     >
       Manage Entity
     </button>

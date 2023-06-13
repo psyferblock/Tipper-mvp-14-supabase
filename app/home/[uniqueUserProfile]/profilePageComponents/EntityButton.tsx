@@ -50,9 +50,9 @@ const EntityButton = () => {
   //////////////  //////////////  //////////////  //////////////
   //// getting the category informat{ion
   useEffect(() => {
-    console.log('useState', )
+    console.log("useState");
     const getEntity = async () => {
-      const categoryInfo = await getMenuCategories({menuId:menuId});
+      const categoryInfo = await getMenuCategories({ menuId: menuId });
       console.log("categoryInfo", categoryInfo);
       const category1 = categoryInfo[0];
       console.log("category1", category1);
@@ -80,7 +80,6 @@ const EntityButton = () => {
             categoryId={categoryId}
           />
         )}
-
       </div>
     </div>
   );

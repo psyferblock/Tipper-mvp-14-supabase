@@ -76,10 +76,10 @@ const UploadPdfMenu = () => {
     console.log("pdfMenuFromStorage", pdfMenuFromStorage);
   };
   return (
-    <div className="p-2 m-2 border-2 flex flex-col justify-between ">
+    <div className="m-2 flex flex-col justify-between border-2 p-2 ">
       <div className="">
-        <div className=" p-2 m-2 flex justify-between">
-          <h1 className="text-lg text-bold">usePdf</h1>
+        <div className=" m-2 flex justify-between p-2">
+          <h1 className="text-bold text-lg">usePdf</h1>
           <ToggleButton
             handleToggleButton={handlePdfMenuTogglebutton}
             switchedOn={isPdfPublic}
@@ -95,7 +95,7 @@ const UploadPdfMenu = () => {
         </h1>
       </div>
       <div className="flex justify-between">
-        <div className="flex text-sm text-gray-600 align-middle justify-center">
+        <div className="flex justify-center align-middle text-sm text-gray-600">
           <label
             htmlFor="menuPdf"
             className="relative cursor-pointer rounded-md bg-gray-100 font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-400"
@@ -111,14 +111,14 @@ const UploadPdfMenu = () => {
           </label>
         </div>
         <button
-          className=" m-2 p-2 h-12 w-32 border-2 border-amethyst"
+          className=" m-2 h-12 w-32 border-2 border-amethyst p-2"
           onClick={() => uploadPdfToDatabase()}
         >
           {" "}
           save menu pdf
         </button>
       </div>
-      <div className="relative bg-gray-100 sm:h-56 h-auto rounded-lg border-2 border-dashed border-gray-400 mt-1">
+      <div className="relative mt-1 h-auto rounded-lg border-2 border-dashed border-gray-400 bg-gray-100 sm:h-56">
         {pdfMenu ? (
           <Image fill alt="menu pdf" src={pdfMenu} />
         ) : (

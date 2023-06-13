@@ -8,7 +8,6 @@ import { supabase } from "@/app/utils/supabase-browser";
 export default async function addBasicPictures(
   arrayOfPictureObjects,
   entityId
-
 ) {
   for (let i = 0; i < arrayOfPictureObjects.length; i++) {
     const { data, error } = await supabase

@@ -31,7 +31,7 @@ const entityWorkingHoursReducer = (state, action) => {
 
     case "ADD_CLOSING_HOURS_SUNDAY":
       return { ...state, closingHoursSunday: payload };
- 
+
     default:
       throw new Error(`no cases to switch from entity of ${type} `);
   }

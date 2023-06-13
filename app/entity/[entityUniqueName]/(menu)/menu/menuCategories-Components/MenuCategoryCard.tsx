@@ -32,7 +32,7 @@ export default function MenuCategoryCard(props) {
 
   return (
     <>
-      <div className="h-fit sm:h-[198px] w-full space-y-3 bg-white drop-shadow-lg rounded-md sm:divide-y py-5 px-3 sm:px-4 flex sm:flex-col hover:cursor-pointer">
+      <div className="flex h-fit w-full space-y-3 rounded-md bg-white px-3 py-5 drop-shadow-lg hover:cursor-pointer sm:h-[198px] sm:flex-col sm:divide-y sm:px-4">
         {/* UPPER PART OF CARD */}
         <Link
           href={`entity/${entityUniqueName}/manageEntity/manageMenuCategories/${categoryId}`}
@@ -46,23 +46,23 @@ export default function MenuCategoryCard(props) {
                 fill
               />
             </div> */}
-            <div className="hidden sm:block text-center font-semibold text-gray-700">
+            <div className="hidden text-center font-semibold text-gray-700 sm:block">
               {props.categoryName}
             </div>
           </div>
         </Link>
 
         {/* MOBILE VERSION */}
-        <div className="sm:hidden w-full flex justify-between">
-          <div className="sm:hidden ml-2 space-y-2">
+        <div className="flex w-full justify-between sm:hidden">
+          <div className="ml-2 space-y-2 sm:hidden">
             <Link
               href={`entity/${entityUniqueName}/manageEntity/manageMenuCategories/${categoryId}`}
             >
-              <div className="sm:hidden text-start mr-2 font-semibold text-gray-700">
+              <div className="mr-2 text-start font-semibold text-gray-700 sm:hidden">
                 {props.categoryName}
               </div>
             </Link>
-            <div className="text-sm flex text-start space-x-2 ">
+            <div className="flex space-x-2 text-start text-sm ">
               <ToggleButton
                 switchedOn={isCategoryPublic}
                 handleToggleButton={handleToggleButton}
@@ -74,7 +74,7 @@ export default function MenuCategoryCard(props) {
             onClick={() => {
               props.openEditNameModal(props.categoryId);
             }}
-            className="sm:hidden w-fit text-xs flex text-blue-500 pt-1"
+            className="flex w-fit pt-1 text-xs text-blue-500 sm:hidden"
           >
             Rename
           </button>
@@ -83,7 +83,7 @@ export default function MenuCategoryCard(props) {
               onClick={() => {
                 props.openDeleteMenuCategoryModal(props.categoryId);
               }}
-              className="bg-white rounded-lg sm:mb-1 h-fit"
+              className="h-fit rounded-lg bg-white sm:mb-1"
             >
               {/* TRASH ICON */}
               <svg
@@ -92,7 +92,7 @@ export default function MenuCategoryCard(props) {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-5 h-5 text-blue-500 m-1"
+                className="m-1 h-5 w-5 text-blue-500"
               >
                 <path
                   strokeLinecap="round"
@@ -105,7 +105,7 @@ export default function MenuCategoryCard(props) {
         </div>
 
         {/* LOWER PART OF CARD */}
-        <div className="hidden sm:flex text-xs items-center justify-between sm:pt-4">
+        <div className="hidden items-center justify-between text-xs sm:flex sm:pt-4">
           <div>
             <div className="flex space-x-1">
               <ToggleButton
@@ -116,12 +116,12 @@ export default function MenuCategoryCard(props) {
             </div>
           </div>
 
-          <div className="sm:flex sm:items-center space-x-1">
+          <div className="space-x-1 sm:flex sm:items-center">
             <button
               onClick={() => {
                 props.openEditNameModal(props.categoryId);
               }}
-              className="text-blue-500 pb-1 sm:pt-1"
+              className="pb-1 text-blue-500 sm:pt-1"
             >
               Rename
             </button>

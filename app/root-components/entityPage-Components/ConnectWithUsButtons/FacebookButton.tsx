@@ -6,7 +6,7 @@ export default function FacebookButton({ url }) {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 320 512"
-        className="w-5 h-5 text-[#1877f2]"
+        className="h-5 w-5 text-[#1877f2]"
       >
         <path
           fill="currentColor"

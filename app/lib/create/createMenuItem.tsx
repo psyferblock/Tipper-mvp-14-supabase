@@ -5,8 +5,8 @@ export default async function createMenuItem(
   itemName: string,
   itemDescription: string,
   itemPrice: string,
-  itemPictureUrl:string,
-  menuCategoryId:number,
+  itemPictureUrl: string,
+  menuCategoryId: number
 ) {
   const { data, error } = await supabase
     .from("menu_item")

@@ -7,9 +7,9 @@ export default async function updateIsMenuCategoryPublic(
   const { data, error } = await supabase
     .from("menu_category")
     .update({
-     category_public: isPublic,
+      category_public: isPublic,
     })
-    .match({"id":menuCategoryId})
+    .match({ id: menuCategoryId })
     .select()
     .single();
   if (error) throw error;

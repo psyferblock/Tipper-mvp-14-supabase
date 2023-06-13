@@ -49,16 +49,15 @@ function CarouselComponent({
           onClick={previous}
           className="rounded-full bg-white/80 p-1 text-gray-800 shadow hover:bg-white"
         >
-          <BsChevronCompactLeft size={40} />
+          <BsChevronCompactLeft size={20} />
         </button>
         <button
           onClick={next}
           className="rounded-full bg-white/80 p-1 text-gray-800 shadow hover:bg-white"
         >
-          <BsChevronCompactRight size={40} />
+          <BsChevronCompactRight size={20} />
         </button>
       </div>
-      {/* <LeftRightButtons current={current} slides={slides} /> */}
       {/* auto slide function  */}
       <div className="z-4 absolute bottom-4 left-0 right-0 pb-1 ">
         <div className="flex items-center justify-center gap-2">
@@ -66,6 +65,7 @@ function CarouselComponent({
             // here we are changing the color of the dots that are used to determine where we are on the slide
             // eslint-disable-next-line react/jsx-key
             <div
+              key={i}
               onClick={() => {
                 goToSlide(i);
               }}

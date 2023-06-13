@@ -34,7 +34,6 @@ const CreateUserContextInfoTools = (userInfos) => {
     hasEntity,
   } = state;
 
- 
   // user has entity
   const setHasEntity = useCallback((boolean) => {
     dispatch({
@@ -117,18 +116,17 @@ const CreateUserContextInfoTools = (userInfos) => {
     });
   }, []);
 
- 
   useEffect(() => {
     setContactNumber(userInfos?.phone_number);
-      setDateOfBirth(userInfos?.date_of_birth);
-      setGender(userInfos?.gender);
-      setProfilePicUrl(userInfos?.profile_picture_url);
-      setProfileId(userInfos?.id);
-      setUserId(userInfos?.user_id);
-      setUserLastName(userInfos?.last_name);
-      setUserName(userInfos?.first_name);
-      setEmailAddress(userInfos?.email_address);
-      setUniqueName(userInfos?.unique_user_name);
+    setDateOfBirth(userInfos?.date_of_birth);
+    setGender(userInfos?.gender);
+    setProfilePicUrl(userInfos?.profile_picture_url);
+    setProfileId(userInfos?.id);
+    setUserId(userInfos?.user_id);
+    setUserLastName(userInfos?.last_name);
+    setUserName(userInfos?.first_name);
+    setEmailAddress(userInfos?.email_address);
+    setUniqueName(userInfos?.unique_user_name);
     setHasEntity(userInfos?.has_entity);
     setProfileId(userInfos?.id);
   }, []);

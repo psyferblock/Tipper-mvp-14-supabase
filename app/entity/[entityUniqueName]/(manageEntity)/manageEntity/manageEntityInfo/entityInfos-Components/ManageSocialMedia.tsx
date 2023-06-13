@@ -38,19 +38,19 @@ export default function ManageSocialMedia() {
   }
 
   return (
-    <div className=" bg-white rounded-lg p-3 sm:p-4 drop-shadow-lg">
-      <div className="text-lg font-bold mb-1">Phone Number & Social Media</div>
+    <div className=" rounded-lg bg-white p-3 drop-shadow-lg sm:p-4">
+      <div className="mb-1 text-lg font-bold">Phone Number & Social Media</div>
       <div className="divide-y">
         {/* PHONE NUMBER ROW */}
-        <div className="sm:flex space-y-2 sm:space-y-0 items-center justify-start py-5">
-          <div className="sm:w-52 flex space-x-2">
+        <div className="items-center justify-start space-y-2 py-5 sm:flex sm:space-y-0">
+          <div className="flex space-x-2 sm:w-52">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-5 h-5"
+              className="h-5 w-5"
             >
               <path
                 strokeLinecap="round"
@@ -66,7 +66,7 @@ export default function ManageSocialMedia() {
               type="numeric"
               name="entityPhoneNumber"
               id="entityPhoneNumber"
-              className="h-12 block sm:w-3/4 rounded-md border-gray-400 pl-7 pr-12  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="block h-12 rounded-md border-gray-400 pl-7 pr-12 focus:border-indigo-500  focus:ring-indigo-500 sm:w-3/4 sm:text-sm"
               placeholder="03 456 789"
               value={entityPhoneNumber}
               onChange={(e) => changeInput(e.target.value)}
@@ -82,15 +82,15 @@ export default function ManageSocialMedia() {
           </div> */}
         </div>
         {/* EMAIL ADDRESS ROW */}
-        <div className="sm:flex space-y-2 sm:space-y-0 items-center justify-start py-5">
-          <div className=" sm:w-52 flex space-x-2">
+        <div className="items-center justify-start space-y-2 py-5 sm:flex sm:space-y-0">
+          <div className=" flex space-x-2 sm:w-52">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6"
+              className="h-6 w-6"
             >
               <path
                 strokeLinecap="round"
@@ -107,7 +107,7 @@ export default function ManageSocialMedia() {
               type="text"
               name="entityEmailAddress"
               id="entityEmailAddress"
-              className="h-12 block sm:w-3/4 rounded-md border-gray-400 pl-7 pr-12  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="block h-12 rounded-md border-gray-400 pl-7 pr-12 focus:border-indigo-500  focus:ring-indigo-500 sm:w-3/4 sm:text-sm"
               placeholder="Email Address"
               value={entityEmailAddress}
               onChange={(e) => changeInput(e.target.value)}
@@ -121,12 +121,12 @@ export default function ManageSocialMedia() {
           </div> */}
         </div>
         {/* INSTAGRAM ROW */}
-        <div className="sm:flex space-y-2 sm:space-y-0 items-center justify-start py-5">
-          <div className=" sm:w-52 flex space-x-2">
+        <div className="items-center justify-start space-y-2 py-5 sm:flex sm:space-y-0">
+          <div className=" flex space-x-2 sm:w-52">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 448 512"
-              className="w-6 h-6"
+              className="h-6 w-6"
             >
               <path
                 fill="currentColor"
@@ -142,29 +142,29 @@ export default function ManageSocialMedia() {
               type="text"
               name="instagramUrl"
               id="instagramUrl"
-              className="h-12 block sm:w-3/4 rounded-md border-gray-400 pl-7 pr-12  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="block h-12 rounded-md border-gray-400 pl-7 pr-12 focus:border-indigo-500  focus:ring-indigo-500 sm:w-3/4 sm:text-sm"
               placeholder="Link"
               value={instagramUrl}
               onChange={(e) => changeInput(e.target.value)}
             />
           </div>
-          <div className="flex space-x-2 sm:space-x-3 grow sm:px-9">
+          <div className="flex grow space-x-2 sm:space-x-3 sm:px-9">
             <div className="mt-0.5">
               <ToggleButton
                 handleToggleButton={handleInstagramToggleButton}
                 switchedOn={isInstagramUrlPublic}
               />
             </div>
-            <p className=" sm:text-sm text-gray-500">Show on your page</p>
+            <p className=" text-gray-500 sm:text-sm">Show on your page</p>
           </div>
         </div>
         {/* FACEBOOK ROW */}
-        <div className="sm:flex space-y-2 sm:space-y-0 items-center justify-start py-5">
-          <div className=" sm:w-52 flex space-x-2">
+        <div className="items-center justify-start space-y-2 py-5 sm:flex sm:space-y-0">
+          <div className=" flex space-x-2 sm:w-52">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 320 512"
-              className="w-6 h-6"
+              className="h-6 w-6"
             >
               <path
                 fill="currentColor"
@@ -180,29 +180,29 @@ export default function ManageSocialMedia() {
               type="text"
               name="facebookUrl"
               id="facebookUrl"
-              className="h-12 block sm:w-3/4 rounded-md border-gray-400 pl-7 pr-12  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="block h-12 rounded-md border-gray-400 pl-7 pr-12 focus:border-indigo-500  focus:ring-indigo-500 sm:w-3/4 sm:text-sm"
               placeholder="Link"
               value={facebookUrl}
               onChange={(e) => changeInput(e.target.value)}
             />
           </div>
-          <div className="flex space-x-2 sm:space-x-3 grow sm:px-9">
+          <div className="flex grow space-x-2 sm:space-x-3 sm:px-9">
             <div className="mt-0.5">
               <ToggleButton
                 handleToggleButton={handleFacebookToggleButton}
                 switchedOn={isFacebookUrlPublic}
               />
             </div>
-            <p className=" sm:text-sm text-gray-500">Show on your page</p>
+            <p className=" text-gray-500 sm:text-sm">Show on your page</p>
           </div>
         </div>
         {/* WHATSAPP ROW */}
-        <div className="sm:flex space-y-2 sm:space-y-0 items-center justify-start py-5">
-          <div className=" sm:w-52 flex space-x-2">
+        <div className="items-center justify-start space-y-2 py-5 sm:flex sm:space-y-0">
+          <div className=" flex space-x-2 sm:w-52">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 448 512"
-              className="w-6 h-6"
+              className="h-6 w-6"
             >
               <path
                 fill="currentColor"
@@ -218,20 +218,20 @@ export default function ManageSocialMedia() {
               type="numeric"
               name="whatsappNumber"
               id="whatsappNumber"
-              className="h-12 block sm:w-3/4 rounded-md border-gray-400 pl-7 pr-12  focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="block h-12 rounded-md border-gray-400 pl-7 pr-12 focus:border-indigo-500  focus:ring-indigo-500 sm:w-3/4 sm:text-sm"
               placeholder="Whatsapp Number"
               value={whatsappNumber}
               onChange={(e) => changeInput(e.target.value)}
             />
           </div>
-          <div className="flex space-x-2 sm:space-x-3 grow sm:px-9">
+          <div className="flex grow space-x-2 sm:space-x-3 sm:px-9">
             <div className="mt-0.5">
               <ToggleButton
                 handleToggleButton={handleWhatsappToggleButton}
                 switchedOn={isWhatsappNumberPublic}
               />
             </div>
-            <p className="sm:text-sm text-gray-500">Show on your page</p>
+            <p className="text-gray-500 sm:text-sm">Show on your page</p>
           </div>
         </div>
       </div>

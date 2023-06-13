@@ -1,8 +1,8 @@
 export default function ManageQrCode() {
   return (
     <>
-      <div className="mt-1 bg-white rounded-lg p-4 drop-shadow-lg">
-        <div className="text-lg font-bold mb-2">Generate QR Code</div>
+      <div className="mt-1 rounded-lg bg-white p-4 drop-shadow-lg">
+        <div className="mb-2 text-lg font-bold">Generate QR Code</div>
         <div className="space-y-1">
           <div className="text-center">
             {/* QR CODE */}
@@ -12,7 +12,7 @@ export default function ManageQrCode() {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-60 h-60 mx-auto"
+              className="mx-auto h-60 w-60"
             >
               <path
                 strokeLinecap="round"
@@ -27,7 +27,7 @@ export default function ManageQrCode() {
             </svg>
 
             {/* DOWNLOAD QR CODE TEXT AND ICON */}
-            <button className="text-blue-500 ml-2">
+            <button className="ml-2 text-blue-500">
               <div className="flex items-center space-x-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +35,7 @@ export default function ManageQrCode() {
                   viewBox="0 0 24 24"
                   strokeWidth={2.5}
                   stroke="currentColor"
-                  className="w-4 h-4 text-blue-500"
+                  className="h-4 w-4 text-blue-500"
                 >
                   <path
                     strokeLinecap="round"
@@ -49,7 +49,7 @@ export default function ManageQrCode() {
           </div>
           <div className="text-center">
             {/* SHARE QR CODE TEXT AND ICON */}
-            <button className="text-blue-500 ml-2">
+            <button className="ml-2 text-blue-500">
               <div className="flex items-center space-x-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,7 @@ export default function ManageQrCode() {
                   viewBox="0 0 24 24"
                   strokeWidth={2.5}
                   stroke="currentColor"
-                  className="w-4 h-4"
+                  className="h-4 w-4"
                 >
                   <path
                     strokeLinecap="round"

@@ -21,9 +21,9 @@ export default function ManageMenuItems({
   categoryName,
 }) {
   const searchParams = useSearchParams();
-  console.log('entityUniqueName', entityUniqueName)
+  console.log("entityUniqueName", entityUniqueName);
 
-  const {entityId}=useEntityContext()
+  const { entityId } = useEntityContext();
 
   //Add New Item Modal
   const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
@@ -84,8 +84,8 @@ export default function ManageMenuItems({
     <>
       {/* DESKTOP VERSION */}
       <div className=" block w-full sm:h-fit sm:min-h-screen">
-        <div className=" sm:flex flex-col space-y-3 w-full">
-          <div className="h-fit bg-white rounded-lg p-4 drop-shadow-lg flex flex-col">
+        <div className=" w-full flex-col space-y-3 sm:flex">
+          <div className="flex h-fit flex-col rounded-lg bg-white p-4 drop-shadow-lg">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 {/* CATEGORY NAME HEADER */}
@@ -99,7 +99,7 @@ export default function ManageMenuItems({
                     viewBox="0 0 24 24"
                     strokeWidth={2.5}
                     stroke="currentColor"
-                    className="w-6 h-6"
+                    className="h-6 w-6"
                   >
                     <path
                       strokeLinecap="round"
@@ -109,7 +109,7 @@ export default function ManageMenuItems({
                   </svg>
                   <Link
                     href={`entity/${entityUniqueName}/manageEntity/manageMenuCategories`}
-                    className="font-bold text-3xl"
+                    className="text-3xl font-bold"
                   >
                     {categoryName}
                   </Link>
@@ -118,14 +118,14 @@ export default function ManageMenuItems({
                 {/* DESKTOP */}
                 <button
                   onClick={handleAddItemButton}
-                  className=" hidden sm:block w-32 h-10 hover:bg-blue-600 text-xs rounded-3xl bg-blue-500 text-white -mt-2"
+                  className=" -mt-2 hidden h-10 w-32 rounded-3xl bg-blue-500 text-xs text-white hover:bg-blue-600 sm:block"
                 >
                   Add Item
                 </button>
                 {/* MOBILE */}
                 <button
                   onClick={handleAddItemButton}
-                  className="sm:hidden mt-1 text-sm text-blue-500 flex items-center justify-end space-x-1"
+                  className="mt-1 flex items-center justify-end space-x-1 text-sm text-blue-500 sm:hidden"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -133,7 +133,7 @@ export default function ManageMenuItems({
                     viewBox="0 0 24 24"
                     strokeWidth={3}
                     stroke="currentColor"
-                    className="w-4 h-4"
+                    className="h-4 w-4"
                   >
                     <path
                       strokeLinecap="round"
@@ -148,11 +148,11 @@ export default function ManageMenuItems({
               {/* SEARCH CATEGORY SEARCH BAR */}
               <BasicSearchBar placeHolder="Seach for an item" />
               <div id="one" className="flex pb-6">
-                <table id="two" className="table-fixed w-full">
+                <table id="two" className="w-full table-fixed">
                   <thead>
                     <tr>
-                      <th className="pr-96 pb-4">Item</th>
-                      <th className="pr-96 pb-4">Publish</th>
+                      <th className="pb-4 pr-96">Item</th>
+                      <th className="pb-4 pr-96">Publish</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-300 text-gray-500">
@@ -161,7 +161,7 @@ export default function ManageMenuItems({
                         <td>
                           <div className="my-3 flex items-center">
                             <td>
-                              <div className="relative w-10 h-10 mr-3 rounded-full ring-2 ring-white overflow-hidden">
+                              <div className="relative mr-3 h-10 w-10 overflow-hidden rounded-full ring-2 ring-white">
                                 <Image
                                   src={
                                     item.item_picture_url
@@ -176,8 +176,8 @@ export default function ManageMenuItems({
                             <td>{item.item_name}</td>
                           </div>
                         </td>
-                        <td className="flex items-center justify-between pt-0 sm:pt-1 my-3 sm:my-3">
-                          <div className="flex items-center space-x-1 sm:space-x-2 pt-2">
+                        <td className="my-3 flex items-center justify-between pt-0 sm:my-3 sm:pt-1">
+                          <div className="flex items-center space-x-1 pt-2 sm:space-x-2">
                             <ToggleButton
                               switchedOn={item.is_menu_item_public}
                               handleToggleButton={(booleanProp) => {
@@ -189,7 +189,7 @@ export default function ManageMenuItems({
                               {item.is_menu_item_public ? "Yes" : "No"}
                             </div>
                           </div>
-                          <div className="flex items-center space-x-1 sm:space-x-10 text-blue-600">
+                          <div className="flex items-center space-x-1 text-blue-600 sm:space-x-10">
                             <button
                               className="hidden sm:block"
                               onClick={() => {
@@ -209,7 +209,7 @@ export default function ManageMenuItems({
 
                             {/* EDIT ICON */}
                             <button
-                              className="sm:hidden pt-1"
+                              className="pt-1 sm:hidden"
                               onClick={() => {
                                 handleEditItemButton(item.id);
                               }}
@@ -220,7 +220,7 @@ export default function ManageMenuItems({
                                 viewBox="0 0 24 24"
                                 strokeWidth={1.5}
                                 stroke="currentColor"
-                                className="w-6 h-6"
+                                className="h-6 w-6"
                               >
                                 <path
                                   strokeLinecap="round"
@@ -232,7 +232,7 @@ export default function ManageMenuItems({
 
                             {/* TRASH ICON */}
                             <button
-                              className="sm:hidden pt-1"
+                              className="pt-1 sm:hidden"
                               onClick={() => {
                                 handleRemoveItemButton(item.id);
                               }}
@@ -243,7 +243,7 @@ export default function ManageMenuItems({
                                 viewBox="0 0 24 24"
                                 strokeWidth={1.5}
                                 stroke="currentColor"
-                                className="w-6 h-6 text-blue-500 m-1"
+                                className="m-1 h-6 w-6 text-blue-500"
                               >
                                 <path
                                   strokeLinecap="round"

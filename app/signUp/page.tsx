@@ -100,11 +100,11 @@ export default function SignUp() {
   };
 
   return (
-    <div className="bg-emerald w-auto h-full">
+    <div className="h-full w-auto bg-emerald">
       <div className="h-full p-0">
         <div className="flex flex-col">
           {/* LEFT PART OF SCREEN */}
-          <div className="w-1/3 mb-2 p-1">
+          <div className="mb-2 w-1/3 p-1">
             <button className="flex items-center " onClick={handleBackButton}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -112,7 +112,7 @@ export default function SignUp() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="h-6 w-6"
               >
                 <path
                   strokeLinecap="round"
@@ -125,10 +125,10 @@ export default function SignUp() {
           </div>
           {/* //////////////////////////////////////////////////////////////////////////////////// */}
           {/* RIGHT PART OF SCREEN */}
-          <div className=" grow p-2 h-auto ">
+          <div className=" h-auto grow p-2 ">
             <div className="mb-7 text-center sm:text-start">
               <div className="text-3xl font-bold">Sign Up</div>
-              <div className="italic text-sm font-light">
+              <div className="text-sm font-light italic">
                 A node closer to the network
               </div>
               <h1
@@ -151,12 +151,12 @@ export default function SignUp() {
                   {/* EMAIL ADDRESS  */}
                   <div>
                     <h1 className="ml-4 font-bold">Email Address *</h1>
-                    <div className="relative text-grey-500 m-3 mb-3">
+                    <div className="text-grey-500 relative m-3 mb-3">
                       <input
                         type="text"
                         name="EmailAddress"
                         id="EmailAddress"
-                        className="text-wrap border-ruby-tint focus:border-ruby-shade peer inline-block h-16 w-full rounded-lg border-2 border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:outline-none "
+                        className="text-wrap peer inline-block h-16 w-full rounded-lg border-2 border-ruby-tint border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:border-ruby-shade focus:outline-none "
                         placeholder=" email address"
                         required
                         onChange={(e) => setEmail(e.target.value)}
@@ -166,9 +166,7 @@ export default function SignUp() {
 
                       <label
                         htmlFor="Number"
-                        className=" text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 peer-valid:top-1 peer-valid:text-sm "
-
-                  
+                        className=" text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-valid:top-1 peer-valid:text-sm peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 "
                       >
                         Email Address
                       </label>
@@ -180,12 +178,12 @@ export default function SignUp() {
                   <div>
                     <h1 className="ml-4 font-bold">Enter Password *</h1>
 
-                    <div className="relative text-grey-500 m-3 ">
+                    <div className="text-grey-500 relative m-3 ">
                       <input
                         type={open === false ? "password" : "text"}
                         name="Password1"
                         id="Password1"
-                        className="text-wrap border-ruby-tint focus:border-ruby-shade peer inline-block h-16 w-full rounded-lg border-2 border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:outline-none "
+                        className="text-wrap peer inline-block h-16 w-full rounded-lg border-2 border-ruby-tint border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:border-ruby-shade focus:outline-none "
                         placeholder="Password"
                         required
                         onChange={(e) => {
@@ -197,12 +195,11 @@ export default function SignUp() {
 
                       <label
                         htmlFor="Password1"
-                        className=" text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 peer-valid:top-1 peer-valid:text-sm "
-
+                        className=" text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-valid:top-1 peer-valid:text-sm peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 "
                       >
                         Password
                       </label>
-                      <div className="text-2xl absolute top-4 right-5">
+                      <div className="absolute right-5 top-4 text-2xl">
                         {confirmOpen === false ? (
                           <AiFillEye onClick={toggle} />
                         ) : (
@@ -213,7 +210,7 @@ export default function SignUp() {
                     <h1
                       className={
                         passwordIsTooShortError
-                          ? " text-1xl border-ruby border-2 rounded-md px-3 mx-3 bg-ruby-tint font-medium text-ruby-shade "
+                          ? " text-1xl mx-3 rounded-md border-2 border-ruby bg-ruby-tint px-3 font-medium text-ruby-shade "
                           : "invisible"
                       }
                     >
@@ -226,12 +223,12 @@ export default function SignUp() {
                   <div>
                     <h1 className="ml-4 font-bold">Confirm Password *</h1>
 
-                    <div className="relative text-grey-500 m-3 mb-3">
+                    <div className="text-grey-500 relative m-3 mb-3">
                       <input
                         type={confirmOpen === false ? "password" : "text"}
                         name="Password2"
                         id="Password2"
-                        className="text-wrap border-ruby-tint focus:border-ruby-shade peer inline-block h-16 w-full rounded-lg border-2 border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:outline-none "
+                        className="text-wrap peer inline-block h-16 w-full rounded-lg border-2 border-ruby-tint border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:border-ruby-shade focus:outline-none "
                         placeholder="Confirm Password"
                         required
                         onChange={(e) => {
@@ -242,12 +239,11 @@ export default function SignUp() {
                       />
                       <label
                         htmlFor="Password2"
-                        className=" text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 peer-valid:top-1 peer-valid:text-sm "
-
+                        className=" text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-valid:top-1 peer-valid:text-sm peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 "
                       >
                         Confirm Password
                       </label>
-                      <div className="text-2xl absolute top-4 right-5">
+                      <div className="absolute right-5 top-4 text-2xl">
                         {confirmOpen === false ? (
                           <AiFillEye onClick={toggle2} />
                         ) : (
@@ -258,7 +254,7 @@ export default function SignUp() {
                     <h1
                       className={
                         passwordsDontMatchError
-                          ? " text-1xl border-ruby border-2 rounded-md px-3 mx-3 bg-ruby-tint font-medium text-ruby-shade "
+                          ? " text-1xl mx-3 rounded-md border-2 border-ruby bg-ruby-tint px-3 font-medium text-ruby-shade "
                           : "invisible"
                       }
                     >
@@ -271,7 +267,7 @@ export default function SignUp() {
                     <button
                       className={`${
                         submitButton ? " " : "disabled"
-                      } w-11/12  h-12 mt-10 hover:bg-pearl hover:text-lg rounded-3xl bg-diamond text-emerald text-sm`}
+                      } mt-10  h-12 w-11/12 rounded-3xl bg-diamond text-sm text-emerald hover:bg-pearl hover:text-lg`}
                       onClick={(e) => handleSubmit(e)}
                     >
                       {/* <Link

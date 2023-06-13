@@ -1,13 +1,12 @@
 import { supabase } from "@/app/utils/supabase-browser";
 
 export default async function updateMenuItem({
-  itemName:itemName,
-  itemDescription:itemDescription,
-  itemPrice:itemPrice,
-  itemPictureUrl:itemPictureUrl,
-  menuItemId:menuItemId
-}
-) {
+  itemName: itemName,
+  itemDescription: itemDescription,
+  itemPrice: itemPrice,
+  itemPictureUrl: itemPictureUrl,
+  menuItemId: menuItemId,
+}) {
   const { data, error } = await supabase
     .from("menu_item")
     .update({

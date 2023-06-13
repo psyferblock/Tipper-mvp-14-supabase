@@ -1,7 +1,9 @@
-"use client"
+"use client";
 
-import React from 'react'
-import entityWorkingHoursReducer, {  workingHoursState,} from "./openingHoursReducer";
+import React from "react";
+import entityWorkingHoursReducer, {
+  workingHoursState,
+} from "./openingHoursReducer";
 
 import {
   useReducer,
@@ -11,10 +13,11 @@ import {
   createContext,
 } from "react";
 
-
-
-function CreateWorkingHoursTools  (hoursInput) {
-  const [ hoursState,dispatch] = useReducer(entityWorkingHoursReducer, workingHoursState);
+function CreateWorkingHoursTools(hoursInput) {
+  const [hoursState, dispatch] = useReducer(
+    entityWorkingHoursReducer,
+    workingHoursState
+  );
 
   const {
     openingHoursMondayFriday,
@@ -23,9 +26,7 @@ function CreateWorkingHoursTools  (hoursInput) {
     closingHoursMondayFriday,
     closingHoursSaturday,
     closingHoursSunday,
-  } =hoursState
-
-
+  } = hoursState;
 
   const addMonFridayOpening = useCallback((input) => {
     dispatch({
@@ -65,7 +66,7 @@ function CreateWorkingHoursTools  (hoursInput) {
       payload: input,
     });
   }, []);
-  
+
   useEffect(() => {
     addMonFridayOpening(hoursInput.monTime);
     addSaturdayOpening(hoursInput.satTime);
@@ -74,9 +75,8 @@ function CreateWorkingHoursTools  (hoursInput) {
     addSaturdayClosing(hoursInput.satTimeClosing);
     addSundayClosing(hoursInput.sunTimeClosing);
   }, []);
-  
-  console.log('reducedState in context hours ', hoursState )
-  
+
+  console.log("reducedState in context hours ", hoursState);
 
   return {
     openingHoursMondayFriday,
@@ -92,15 +92,13 @@ function CreateWorkingHoursTools  (hoursInput) {
     addSaturdayClosing,
     addSundayClosing,
   };
-};
+}
 
 const ManageOpeningHoursContext = createContext<
   ReturnType<typeof CreateWorkingHoursTools>
 >({} as unknown as ReturnType<typeof CreateWorkingHoursTools>);
 
-
-
-export  function ManageOpeningHoursContextProvider({
+export function ManageOpeningHoursContextProvider({
   children,
   hoursInput,
 }: {
@@ -116,11 +114,11 @@ export  function ManageOpeningHoursContextProvider({
   );
 }
 
-// hours context hook 
+// hours context hook
 export function useManageOpeningHoursContext() {
-  const context= useContext(ManageOpeningHoursContext);
+  const context = useContext(ManageOpeningHoursContext);
   if (!context) {
     throw new Error("useUsersContext must be used within a FormProvider");
   }
-  return context 
+  return context;
 }

@@ -11,8 +11,8 @@ export async function getItemsOfCategory(categoryId: number) {
 }
 
 export async function getItemsOfCategoryServer({
-  supabaseServer:supabaseServer,
-  categoryId: categoryId
+  supabaseServer: supabaseServer,
+  categoryId: categoryId,
 }) {
   //Menu Items Reading from Database
   const { data, error } = await supabaseServer

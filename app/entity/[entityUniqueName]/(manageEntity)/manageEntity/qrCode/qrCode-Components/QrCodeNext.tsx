@@ -1,7 +1,7 @@
-"use client"
+"use client";
 import { useRef, forwardRef } from "react";
 import { useQRCode } from "next-qrcode";
-import { saveAs} from "file-saver"
+import { saveAs } from "file-saver";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 
 /**
@@ -21,18 +21,17 @@ const QRCode = forwardRef((props, ref) => {
 });
 
 export default function QrCodeNext({
-    logo,
-    entityUniqueName,
-    menuId,
-    categoryId,
-  }) {
+  logo,
+  entityUniqueName,
+  menuId,
+  categoryId,
+}) {
   // Esta es la variable que va a tener la referencia al
   // elemento que envuelve el QR
   const qrRef = useRef();
   const pageUrl = `entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}`;
-  const width="400"
-  const {entityName}=useEntityContext()
-
+  const width = "400";
+  const { entityName } = useEntityContext();
 
   // Para descargar, se va directamente al DOM y se obtiene el
   // elemento canvas (por eso se usa Canva para genera el QR)
@@ -53,26 +52,26 @@ export default function QrCodeNext({
         ref={qrRef} // Asi se manda la referencia al componente QR
         text={pageUrl}
         options={{
-            type: 'image/jpeg',
-            quality: 0.3,
-            level: 'M',
-            margin: 3,
-            scale: 4,
-            width: {width},
-            color: {
-              dark: '#010599FF',
-              light: '#FFBF60FF',
-            },
-          }}
-          logo={{
-            src: {logo},
-            options: {
-              width: parseInt(width) * 0.1,
+          type: "image/jpeg",
+          quality: 0.3,
+          level: "M",
+          margin: 3,
+          scale: 4,
+          width: { width },
+          color: {
+            dark: "#010599FF",
+            light: "#FFBF60FF",
+          },
+        }}
+        logo={{
+          src: { logo },
+          options: {
+            width: parseInt(width) * 0.1,
 
-              x: undefined,
-              y: undefined,
-            },
-          }}
+            x: undefined,
+            y: undefined,
+          },
+        }}
       />
 
       <button onClick={onDownload}>Download</button>

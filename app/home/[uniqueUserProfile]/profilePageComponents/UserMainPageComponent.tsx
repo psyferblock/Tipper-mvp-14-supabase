@@ -1,26 +1,23 @@
-
 import React, { useEffect, useState } from "react";
 import EntityButton from "./EntityButton";
 import ProfileBasicInfoSection from "./ProfileBasicInfoSection";
 
 function UserMainPageComponent() {
-
-
   return (
     <div>
       {" "}
-      <div className="bg-pearl w-screen h-full p-2">
+      <div className="h-full w-screen bg-pearl p-2">
         <div>
-          <h1 className="h1 text-3xl font-bold mb-4">Profile</h1>
-          <div className="bg-amethyst w-full aspect-4/3 rounded-lg p-4">
+          <h1 className="h1 mb-4 text-3xl font-bold">Profile</h1>
+          <div className="aspect-4/3 w-full rounded-lg bg-amethyst p-4">
             <h1 className="text-xl font-semibold">Create an Entity</h1>
-            <h1 className="text-md font-medium mt-2 text-slate-800">
+            <h1 className="text-md mt-2 font-medium text-slate-800">
               Get verified by us or your community for the entity you run in our
               society.
             </h1>
-            <EntityButton/>
+            <EntityButton />
           </div>
-          <div className=" relative p-3 m-2 bg-diamond aspect-4/3 ">
+          <div className=" relative m-2 aspect-4/3 bg-diamond p-3 ">
             <ProfileBasicInfoSection />
           </div>
         </div>

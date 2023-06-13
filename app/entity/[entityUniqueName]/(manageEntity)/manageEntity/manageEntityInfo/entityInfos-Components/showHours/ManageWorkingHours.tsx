@@ -5,9 +5,9 @@ import WorkingHoursRow from "./InputComponent";
 export default function ManageWorkingHours() {
   return (
     <>
-      <div className=" bg-white rounded-lg p-3 sm:p-5 drop-shadow-lg">
+      <div className=" rounded-lg bg-white p-3 drop-shadow-lg sm:p-5">
         <p className="text-lg font-bold ">Working Hours</p>
-        <p className="text-xs mb-4 sm:hidden">
+        <p className="mb-4 text-xs sm:hidden">
           Press the clock icon to set the hour
         </p>
         {/* DIV CONTAINING ROWS */}

@@ -2,7 +2,6 @@ import { useUsersContext } from "@/app/context/userContext/userContextStore";
 import React from "react";
 
 const ProfileInfoFromContext = () => {
-    
   const {
     profileId,
     firstName,
@@ -29,12 +28,12 @@ const ProfileInfoFromContext = () => {
   return (
     <div>
       {" "}
-      <div className="flex p-2 flex-col ">
+      <div className="flex flex-col p-2 ">
         <div>
           <span className="m-2">{firstName}</span>
           <span className="m-2">{lastName}</span>
         </div>
-        <div className="flex space-between m-2">
+        <div className="space-between m-2 flex">
           <span className="">birthday: {dateOfBirth}</span>
           <span className="">{gender}</span>
         </div>

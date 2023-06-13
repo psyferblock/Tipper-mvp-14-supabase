@@ -5,23 +5,18 @@ export default async function uploadPictureToBucket({
   storageSchema,
   bucket,
   id,
-  uuid
-}
-  
-) {
+  uuid,
+}) {
   const storageUrl =
     "https://zluncbhyhpxonqhigbhn.supabase.co/storage/v1/object";
 
   const { data, error } = await supabase.storage
     .from(bucket)
-    .upload(
-       id + "/" + uuid,
-      file as File
-    );
+    .upload(id + "/" + uuid, file as File);
   if (error) throw error;
   console.log("after picture is uploaded to bucket:", data);
 
   const pictureUrl = `${storageUrl}/${storageSchema}/${bucket}/${data.path}`;
-  console.log('pictureUrl', pictureUrl)
+  console.log("pictureUrl", pictureUrl);
   return pictureUrl;
 }

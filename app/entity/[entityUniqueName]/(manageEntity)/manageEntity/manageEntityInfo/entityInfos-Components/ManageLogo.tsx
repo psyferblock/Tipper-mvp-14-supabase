@@ -5,41 +5,40 @@ import uploadPictureToBucket from "@/app/lib/create/uploadPictureToBucket";
 import deleteBasicPictureWithId from "@/app/lib/delete/deleteBasicPictureWithId";
 import Image from "next/image";
 import { ChangeEvent, useState } from "react";
-import {v4 as uuidv4} from "uuid"
+import { v4 as uuidv4 } from "uuid";
 
 export default function ManageLogo() {
-  const { logoObject, setLogoObject } = useEntityContext()
+  const { logoObject, setLogoObject } = useEntityContext();
   // const logoObject ="/app/public/pizza-chef-logo.png"
-  const {entityId}=useEntityContext()
+  const { entityId } = useEntityContext();
 
   async function handleAddLogoButton(e: ChangeEvent<HTMLInputElement>) {
-    e.preventDefault()
+    e.preventDefault();
     let file;
 
     // const fileExt = file.name.split(".").pop();
     const uuid = uuidv4();
     const storageSchema = "public";
     const bucket = "logos";
-   
 
     if (e.target.files) {
       file = e.target.files[0];
     }
     const pictureUrl = await uploadPictureToBucket({
-      file:file,
-      storageSchema:storageSchema,
-      bucket:bucket,
-      id:entityId,
-      uuid:uuid
-    })
-    console.log('pictureUrl', pictureUrl)
+      file: file,
+      storageSchema: storageSchema,
+      bucket: bucket,
+      id: entityId,
+      uuid: uuid,
+    });
+    console.log("pictureUrl", pictureUrl);
 
     let newLogoObject = {
       id: null,
       media_url: pictureUrl,
       media_category: "logo_picture",
     };
-    setLogoObject(newLogoObject)
+    setLogoObject(newLogoObject);
   }
 
   // console.log("logo Object in manage logo page", logoObject);
@@ -52,21 +51,19 @@ export default function ManageLogo() {
     // If picture alrready exists in database, we delete it from database right away
     if (logoObject.id != null) {
       await deleteBasicPictureWithId(logoObject.id);
-
     }
     setLogoObject("");
-
   }
 
   return (
-    <div className="h-fit  bg-white rounded-lg p-3 sm:p-4 drop-shadow-lg">
+    <div className="h-fit  rounded-lg bg-white p-3 drop-shadow-lg sm:p-4">
       <div className="sm:flex">
-        <div className="text-lg font-bold grow">Logo</div>
+        <div className="grow text-lg font-bold">Logo</div>
 
         {/* DESKTOP BUTTON */}
         <label
           htmlFor="add logo"
-          className="hidden sm:cursor-pointer sm:flex text-blue-500 items-center space-x-1"
+          className="hidden items-center space-x-1 text-blue-500 sm:flex sm:cursor-pointer"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +71,7 @@ export default function ManageLogo() {
             viewBox="0 0 24 24"
             strokeWidth={3}
             stroke="currentColor"
-            className="w-4 h-4"
+            className="h-4 w-4"
           >
             <path
               strokeLinecap="round"
@@ -105,7 +102,7 @@ export default function ManageLogo() {
       {/* MOBILE BUTTON */}
       <label
         htmlFor="add logo mobile"
-        className="flex w-fit cursor-pointer sm:hidden text-blue-500 items-center space-x-1"
+        className="flex w-fit cursor-pointer items-center space-x-1 text-blue-500 sm:hidden"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -113,7 +110,7 @@ export default function ManageLogo() {
           viewBox="0 0 24 24"
           strokeWidth={3}
           stroke="currentColor"
-          className="w-4 h-4"
+          className="h-4 w-4"
         >
           <path
             strokeLinecap="round"
@@ -134,16 +131,16 @@ export default function ManageLogo() {
       </label>
       {/* //////////////////////////////////////////////////////////////////////// */}
       {/* UPLOAD PICTURE FIELD */}
-      <div className=" space-x-4 sm:space-x-4 grid grid-rows-1 grid-flow-col overflow-x-auto">
+      <div className=" grid grid-flow-col grid-rows-1 space-x-4 overflow-x-auto sm:space-x-4">
         {/* CONTAINER TO UPLOAD PICTURE */}
-        <div className="bg-gray-100 flex w-52 mx-auto sm:w-64 sm:mx-auto h-40 sm:h-56 rounded-lg border-2 border-dashed border-gray-400 my-4">
+        <div className="mx-auto my-4 flex h-40 w-52 rounded-lg border-2 border-dashed border-gray-400 bg-gray-100 sm:mx-auto sm:h-56 sm:w-64">
           {/* remember the logo object is an object brought from the database.  */}
           {logoObject ? (
-            <div className="relative bg-gray-100 w-full sm:w-full flex justify-center rounded-lg border-2 border-gray-400 ">
+            <div className="relative flex w-full justify-center rounded-lg border-2 border-gray-400 bg-gray-100 sm:w-full ">
               <Image src={logoObject.media_url} alt="cover photo" fill />
               <button
                 onClick={() => handleDeletePictureButton()}
-                className="bg-white rounded-lg h-fit absolute mr-3 mb-3 bottom-0 right-0 z-10"
+                className="absolute bottom-0 right-0 z-10 mb-3 mr-3 h-fit rounded-lg bg-white"
               >
                 {/* TRASH ICON */}
                 <svg
@@ -152,7 +149,7 @@ export default function ManageLogo() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6 z-10 text-blue-500 m-1"
+                  className="z-10 m-1 h-6 w-6 text-blue-500"
                 >
                   <path
                     strokeLinecap="round"

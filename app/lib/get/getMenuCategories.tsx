@@ -1,32 +1,31 @@
 import { supabase } from "@/app/utils/supabase-browser";
 
-export async function getMenuCategories({menuId:menuId}) {
+export async function getMenuCategories({ menuId: menuId }) {
   const { data, error } = await supabase
     .from("menu_category")
     .select()
-    .eq("menu_id",menuId)
-    .order("id", { ascending: true })
+    .eq("menu_id", menuId)
+    .order("id", { ascending: true });
 
-    // .single()
+  // .single()
 
   if (error) throw error;
-  console.log('data from getMenuCategories browser ', data )
+  console.log("data from getMenuCategories browser ", data);
 
-  return data
+  return data;
 }
 
 export async function getMenuCategoriesServer({
-  supabaseServer:supabaseServer,
-  menuId:menuId
-}
-) {
+  supabaseServer: supabaseServer,
+  menuId: menuId,
+}) {
   const { data, error } = await supabaseServer
     .from("menu_category")
     .select(`*,menu_item(*)`)
-    .eq("menu_id",menuId)
-    .order("id", { ascending: true })
-  
+    .eq("menu_id", menuId)
+    .order("id", { ascending: true });
+
   if (error) throw error;
-  console.log('data from getMenuCategories server ', data )
-  return data
+  console.log("data from getMenuCategories server ", data);
+  return data;
 }

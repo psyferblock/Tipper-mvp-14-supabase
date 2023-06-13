@@ -23,42 +23,39 @@ export default async function RootLayout({
     data: { session },
   } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details.
 
-  let userData
-if(session){
-  const myUserId = session?.user.id;
-  
-      const userInformation = await getMyUserInfoServer(supabaseServer, myUserId);
-      userData=userInformation
-      // console.log("userInformation from RootLayoutPage ", userInformation);
-    
-} 
+  let userData;
+  if (session) {
+    const myUserId = session?.user.id;
 
+    const userInformation = await getMyUserInfoServer(supabaseServer, myUserId);
+    userData = userInformation;
+    // console.log("userInformation from RootLayoutPage ", userInformation);
+  }
 
-    return (
-      <html lang="en">
-        {/*
+  return (
+    <html lang="en">
+      {/*
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
-        <head />
-        <body>
-          <SupabaseProvider session={session}>
-            <SupabaseListener serverAccessToken={session?.access_token} />
-            {session?.user.id ? (
-              <UserInfoContextProvider userInfos={userData}>
-                {/* <Navbar session={session} /> */}
-                <div className=" min-h-screen">
-                  {/* <AuthContextProvider> */}
-                  {children}
-                  {/* </AuthContextProvider> */}
-                </div>
-              </UserInfoContextProvider>
-            ) : (
-              <div className=" min-h-screen">{children}</div>
-            )}
-          </SupabaseProvider>
-        </body>
-      </html>
-    );
-
+      <head />
+      <body>
+        <SupabaseProvider session={session}>
+          <SupabaseListener serverAccessToken={session?.access_token} />
+          {session?.user.id ? (
+            <UserInfoContextProvider userInfos={userData}>
+              {/* <Navbar session={session} /> */}
+              <div className=" min-h-screen">
+                {/* <AuthContextProvider> */}
+                {children}
+                {/* </AuthContextProvider> */}
+              </div>
+            </UserInfoContextProvider>
+          ) : (
+            <div className=" min-h-screen">{children}</div>
+          )}
+        </SupabaseProvider>
+      </body>
+    </html>
+  );
 }

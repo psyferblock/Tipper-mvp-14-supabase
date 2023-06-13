@@ -19,7 +19,7 @@ import addClosingHours from "@/app/lib/update/addClosingHours";
 
 const EntityCreationPage = () => {
   const router = useRouter();
-  
+
   const { session } = useSupabase();
   // const userId = session?.user.id;
   const {
@@ -181,22 +181,22 @@ const EntityCreationPage = () => {
           isPublic: isPublic,
           menuId: firstMenuId,
         });
-        console.log('firstMenuId', firstMenuId)
-        const firstMenuCategoryId=firstMenuCategory.id
-        console.log('firstMenuCategoryId', firstMenuCategoryId)
+        console.log("firstMenuId", firstMenuId);
+        const firstMenuCategoryId = firstMenuCategory.id;
+        console.log("firstMenuCategoryId", firstMenuCategoryId);
         await addOpeningHours({
-          openingHoursMondayFriday:"8:00",
-          openingHoursSaturday:"9:00",
-          openingHoursSunday:"9:00",
-          entityId:entityId
-        })
+          openingHoursMondayFriday: "8:00",
+          openingHoursSaturday: "9:00",
+          openingHoursSunday: "9:00",
+          entityId: entityId,
+        });
         await addClosingHours({
-          closingHoursMondayFriday:"20:00",
-          closingHoursSaturday:"20:00",
-          closingHoursSunday:"20:00",
-          entityId:entityId
-        })
-        
+          closingHoursMondayFriday: "20:00",
+          closingHoursSaturday: "20:00",
+          closingHoursSunday: "20:00",
+          entityId: entityId,
+        });
+
         if (firstMenuCategoryId) {
           router.push(
             `/entity/${entityUniqueName}/menu/${firstMenuId}/category/${firstMenuCategoryId}`
@@ -216,7 +216,10 @@ const EntityCreationPage = () => {
         //   uniqueUserName: uniqueUserName,
         //   hasEntity: true,
         // });
-        await supabase.from('user_profile').update({has_entity:true}).match({"id":profileId})
+        await supabase
+          .from("user_profile")
+          .update({ has_entity: true })
+          .match({ id: profileId });
       } else {
         throw new Error("sorry something went wrong");
       }
@@ -230,7 +233,7 @@ const EntityCreationPage = () => {
 
   return (
     <>
-      <div className="bg-amethyst w-full max-h-full ">
+      <div className="max-h-full w-full bg-amethyst ">
         {/* LEFT SCREEN SETUP  */}
         {/* LEFT PART OF SCREEN */}
         <div className=" mb-0 p-3">
@@ -241,7 +244,7 @@ const EntityCreationPage = () => {
               viewBox="0 0 24 24"
               strokeWidth={2}
               stroke="currentColor"
-              className="w-5 h-5"
+              className="h-5 w-5"
             >
               <path
                 strokeLinecap="round"
@@ -255,7 +258,7 @@ const EntityCreationPage = () => {
         {/* where the entity is being created  */}
         <div className="p-4">
           <div>
-            <h1 className="font-medium text-xl">Create an Entity Here</h1>
+            <h1 className="text-xl font-medium">Create an Entity Here</h1>
             <h1 className="text-lg font-medium">Welcome to the network.</h1>
             <h2 className="text-sm">
               when your done well reach out to you within the next days. and
@@ -268,12 +271,12 @@ const EntityCreationPage = () => {
             <div>
               <h1 className="ml-4 font-bold">Entity Name *</h1>
 
-              <div className="relative text-grey-500 m-3 mb-3">
+              <div className="text-grey-500 relative m-3 mb-3">
                 <input
                   type="text"
                   name="entityName"
                   id="entityName"
-                  className="text-wrap border-ruby-tint focus:border-ruby-shade peer inline-block h-16 w-full rounded-lg border-2 border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:outline-none"
+                  className="text-wrap peer inline-block h-16 w-full rounded-lg border-2 border-ruby-tint border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:border-ruby-shade focus:outline-none"
                   placeholder="entityName"
                   value={entityName || ""}
                   required
@@ -282,7 +285,7 @@ const EntityCreationPage = () => {
 
                 <label
                   htmlFor="entityName"
-                  className="text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 peer-valid:top-1 peer-valid:text-sm
+                  className="text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-valid:top-1 peer-valid:text-sm peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600
                 
                 "
                 >
@@ -291,7 +294,7 @@ const EntityCreationPage = () => {
                 <h1
                   className={
                     entityNameIsNullError
-                      ? " text-1xl border-ruby border-2 rounded-md px-3 mx-3 bg-ruby-tint font-medium text-ruby-shade "
+                      ? " text-1xl mx-3 rounded-md border-2 border-ruby bg-ruby-tint px-3 font-medium text-ruby-shade "
                       : "invisible"
                   }
                 >
@@ -308,12 +311,12 @@ const EntityCreationPage = () => {
                 word.
               </h1>
 
-              <div className="relative text-grey-500 m-3 mb-3">
+              <div className="text-grey-500 relative m-3 mb-3">
                 <input
                   type="text"
                   name="entityArea"
                   id="entityArea"
-                  className="peer h-12 text-wrap placeholder-transparent border-2 border-ruby-tint border-opacity-60 shadow indent-2 inline-block align-middle w-full  rounded-lg focus:outline-none focus:border-ruby-shade
+                  className="text-wrap peer inline-block h-12 w-full rounded-lg border-2 border-ruby-tint border-opacity-60 indent-2 align-middle placeholder-transparent  shadow focus:border-ruby-shade focus:outline-none
                   "
                   placeholder="Enter Area"
                   // ref={entityAreaRef}
@@ -324,7 +327,7 @@ const EntityCreationPage = () => {
 
                 <label
                   htmlFor="BusinessName"
-                  className="text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 peer-valid:top-1 peer-valid:text-sm
+                  className="text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-valid:top-1 peer-valid:text-sm peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600
                 
                 "
                 >
@@ -333,7 +336,7 @@ const EntityCreationPage = () => {
                 <h1
                   className={
                     entityAreaIsNullError
-                      ? " text-1xl border-ruby border-2 rounded-md px-3 mx-3 bg-ruby-tint font-medium text-ruby-shade "
+                      ? " text-1xl mx-3 rounded-md border-2 border-ruby bg-ruby-tint px-3 font-medium text-ruby-shade "
                       : "invisible"
                   }
                 >
@@ -347,12 +350,12 @@ const EntityCreationPage = () => {
             <div>
               <h1 className="ml-4 font-bold">Contact Number *</h1>
 
-              <div className="relative text-grey-500 m-3 mb-3">
+              <div className="text-grey-500 relative m-3 mb-3">
                 <input
                   type="number"
                   name="entityPhoneNumber"
                   id="entityPhoneNumber"
-                  className="peer h-12 text-wrap placeholder-transparent border-2 border-ruby-tint border-opacity-60 shadow indent-2 inline-block align-middle w-full  rounded-lg focus:outline-none focus:border-ruby-shade
+                  className="text-wrap peer inline-block h-12 w-full rounded-lg border-2 border-ruby-tint border-opacity-60 indent-2 align-middle placeholder-transparent  shadow focus:border-ruby-shade focus:outline-none
                   "
                   placeholder="Contact Number"
                   // ref={entityPhoneNumberRef}
@@ -363,12 +366,12 @@ const EntityCreationPage = () => {
 
                 <label
                   htmlFor="entityPhoneNumber"
-                  className="absolute left-4 top-3 z-10  text-grey  text-lg 
+                  className="text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute  left-4  top-3 
                 
-                transition-all
-                peer-focus:top-1
+                z-10
+                text-lg
                
-                 peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4    peer-placeholder-shown:text-base peer-focus:text-sm peer-focus:text-gray-600 peer-valid:top-1 peer-valid:text-sm
+                 transition-all peer-placeholder-shown:text-base    peer-valid:top-1 peer-valid:text-sm peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600
                 
                 "
                 >
@@ -377,7 +380,7 @@ const EntityCreationPage = () => {
                 <h1
                   className={
                     entityPhoneNumberIsNullError
-                      ? " text-1xl border-ruby border-2 rounded-md px-3 mx-3 bg-ruby-tint font-medium text-ruby-shade "
+                      ? " text-1xl mx-3 rounded-md border-2 border-ruby bg-ruby-tint px-3 font-medium text-ruby-shade "
                       : "invisible"
                   }
                 >
@@ -391,12 +394,12 @@ const EntityCreationPage = () => {
             <div>
               <h1 className="ml-4 font-bold">Email Address *</h1>
 
-              <div className="relative text-grey-500 m-3 mb-3">
+              <div className="text-grey-500 relative m-3 mb-3">
                 <input
                   type="text"
                   name="entityEmailAddress"
                   id="entityEmailAddress"
-                  className="text-wrap border-ruby-tint focus:border-ruby-shade peer inline-block h-16 w-full rounded-lg border-2 border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:outline-none"
+                  className="text-wrap peer inline-block h-16 w-full rounded-lg border-2 border-ruby-tint border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:border-ruby-shade focus:outline-none"
                   placeholder="Enter emailAddress"
                   // ref={entityEmailAddressRef}
                   required
@@ -407,7 +410,7 @@ const EntityCreationPage = () => {
                 <label
                   htmlFor="entityEmailAddress"
                   className="
-text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 peer-valid:top-1 peer-valid:text-sm                
+text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-valid:top-1 peer-valid:text-sm peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600                
                 "
                 >
                   Email Address
@@ -415,7 +418,7 @@ text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 abso
                 <h1
                   className={
                     entityEmailAddressIsNullError
-                      ? " text-1xl border-ruby border-2 rounded-md px-3 mx-3 bg-ruby-tint font-medium text-ruby-shade "
+                      ? " text-1xl mx-3 rounded-md border-2 border-ruby bg-ruby-tint px-3 font-medium text-ruby-shade "
                       : "invisible"
                   }
                 >
@@ -429,12 +432,12 @@ text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 abso
             <div>
               <h1 className="ml-4 font-bold">Business Location *</h1>
 
-              <div className="relative text-grey-500 m-3 mb-3">
+              <div className="text-grey-500 relative m-3 mb-3">
                 <input
                   type="text"
                   name="entityAddress"
                   id="entityAddress"
-                  className="text-wrap border-ruby-tint focus:border-ruby-shade peer inline-block h-16 w-full rounded-lg border-2 border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:outline-none"
+                  className="text-wrap peer inline-block h-16 w-full rounded-lg border-2 border-ruby-tint border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:border-ruby-shade focus:outline-none"
                   placeholder="Enter Number"
                   // ref={entityAddressRef}
                   required
@@ -444,7 +447,7 @@ text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 abso
 
                 <label
                   htmlFor="entityAddress"
-                  className="text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 peer-valid:top-1 peer-valid:text-sm
+                  className="text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-valid:top-1 peer-valid:text-sm peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600
                 
                 "
                 >
@@ -453,7 +456,7 @@ text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 abso
                 <h1
                   className={
                     entityAddressIsNullError
-                      ? " text-1xl border-ruby border-2 rounded-md px-3 mx-3 bg-ruby-tint font-medium text-ruby-shade "
+                      ? " text-1xl mx-3 rounded-md border-2 border-ruby bg-ruby-tint px-3 font-medium text-ruby-shade "
                       : "invisible"
                   }
                 >
@@ -466,7 +469,7 @@ text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 abso
             <div className="space-y-1">
               <label
                 htmlFor="names"
-                className="text-xs text-gray-600 font-medium"
+                className="text-xs font-medium text-gray-600"
               >
                 Entity Type*
               </label>
@@ -475,7 +478,7 @@ text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 abso
                 defaultValue={"restaurant"}
                 name="entityType"
                 id="entityType"
-                className="h-12 block w-full rounded-md border-gray-300 pl-4 pr-12 mb-3 focus:border-indigo-500 focus:ring-indigo-500 text-xs sm:text-sm"
+                className="mb-3 block h-12 w-full rounded-md border-gray-300 pl-4 pr-12 text-xs focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 placeholder="Select a type"
                 onChange={(e) => {
                   const selectedType = e.target.value;
@@ -495,7 +498,7 @@ text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 abso
             {/* ENTING OF BUSINESS TYPE  */}
             {/* BUTTON  */}
             <button
-              className="w-11/12 h-10 mt-8 hover:bg-ruby-tint hover:text-lg rounded-xl bg-diamond text-amethyst text-md m-3"
+              className="text-md m-3 mt-8 h-10 w-11/12 rounded-xl bg-diamond text-amethyst hover:bg-ruby-tint hover:text-lg"
               onClick={handleCreateNowButton}
             >
               go for it

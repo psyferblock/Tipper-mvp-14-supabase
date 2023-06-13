@@ -3,14 +3,14 @@ import Link from "next/link";
 export default function PhoneCallButton({ phoneNumber }) {
   return (
     <Link href={`tel:+961${phoneNumber}`}>
-      <div className="font-medium text-xs flex items-center space-x-2">
+      <div className="flex items-center space-x-2 text-xs font-medium">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-4 h-4 ml-0.5"
+          className="ml-0.5 h-4 w-4"
         >
           <path
             strokeLinecap="round"

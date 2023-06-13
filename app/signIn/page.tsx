@@ -14,8 +14,6 @@ function SignInPage() {
   const [password, setPassword] = useState("");
   const [open, setOpen] = useState(false);
 
-
-
   const [signInFailedError, setSignInFailedError] = useState(false);
 
   const router = useRouter();
@@ -59,16 +57,16 @@ function SignInPage() {
           {/* SIGN IN FAILURE ERROR  */}
           {signInFailedError && (
             <div
-              className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+              className="relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700"
               role="alert"
             >
               <strong className="font-bold">Holy smokes!</strong>
               <span className="block sm:inline">
                 Something seriously bad happened.
               </span>
-              <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
+              <span className="absolute bottom-0 right-0 top-0 px-4 py-3">
                 <svg
-                  className="fill-current h-6 w-6 text-red-500"
+                  className="h-6 w-6 fill-current text-red-500"
                   role="button"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
@@ -82,7 +80,7 @@ function SignInPage() {
           {/* //////////////////////////////////////////////////////////////////////// */}
 
           {/* LEFT PART OF SCREEN */}
-          <div className="w-1/3  mb-10  ">
+          <div className="mb-10  w-1/3  ">
             <button onClick={handleBackButton} className="flex items-center ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +88,7 @@ function SignInPage() {
                 viewBox="0 0 24 24"
                 strokeWidth={2}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="h-6 w-6"
               >
                 <path
                   strokeLinecap="round"
@@ -98,13 +96,13 @@ function SignInPage() {
                   d="M15.75 19.5L8.25 12l7.5-7.5"
                 />
               </svg>
-              <div className="text-lg underline underline-offset-2 font-semibold ">
+              <div className="text-lg font-semibold underline underline-offset-2 ">
                 Back
               </div>
             </button>
             {signInFailedError && (
               <div
-                className="bg-amethyst border-1-6 border-amethyst-shade text-obsidian p-4"
+                className="border-1-6 border-amethyst-shade bg-amethyst p-4 text-obsidian"
                 role="alert"
               >
                 <p className="font-bold">Damn</p>
@@ -115,31 +113,31 @@ function SignInPage() {
           {/* //////////////// */}
 
           {/* right part of the screen  */}
-          <div className=" grow  h-fit">
+          <div className=" h-fit  grow">
             <div className="mb-9 text-center sm:text-start">
               <div className="text-3xl font-bold ">Sign In</div>
-              <div className="italic text-sm font-light">
+              <div className="text-sm font-light italic">
                 Welcome back to the network
               </div>
             </div>
             {/* INPUT FORMS  */}
             <div>
-              <div className="relative text-grey-500 m-3">
+              <div className="text-grey-500 relative m-3">
                 <input
                   type="text"
                   name="email"
                   id="email"
-                  className="text-wrap border-ruby-tint focus:border-ruby-shade peer inline-block h-16 w-full rounded-lg border-2 border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:outline-none "
+                  className="text-wrap peer inline-block h-16 w-full rounded-lg border-2 border-ruby-tint border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:border-ruby-shade focus:outline-none "
                   placeholder="email"
                   required
                   onChange={(e) => {
                     setEmail(e.target.value);
                   }}
-                  value={email||""}
+                  value={email || ""}
                 />
                 <label
                   htmlFor="email"
-                  className=" text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 peer-valid:top-1 peer-valid:text-sm "
+                  className=" text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-valid:top-1 peer-valid:text-sm peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 "
                 >
                   Email address
                 </label>
@@ -152,22 +150,22 @@ function SignInPage() {
                     type={open === false ? "password" : "text"}
                     name="Password"
                     id="Password"
-                    className="text-wrap border-ruby-tint focus:border-ruby-shade peer inline-block h-16 w-full rounded-lg border-2 border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:outline-none"
+                    className="text-wrap peer inline-block h-16 w-full rounded-lg border-2 border-ruby-tint border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:border-ruby-shade focus:outline-none"
                     placeholder=" email address "
                     required
                     onChange={(e) => {
                       setPassword(e.target.value);
                     }}
-                    value={password||""}
+                    value={password || ""}
                   />
 
                   <label
                     htmlFor="Password"
-                    className="text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 peer-valid:top-1 peer-valid:text-sm"
+                    className="text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-valid:top-1 peer-valid:text-sm peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600"
                   >
                     Password
                   </label>
-                  <div className="text-2xl absolute top-4 right-5">
+                  <div className="absolute right-5 top-4 text-2xl">
                     {open === false ? (
                       <AiFillEye onClick={toggle} />
                     ) : (
@@ -178,19 +176,19 @@ function SignInPage() {
               </div>
 
               <button
-                className="w-11/12 h-10 mt-8 hover:bg-ruby-tint hover:text-lg rounded-3xl bg-diamond text-ruby text-md m-3"
-                onClick={ handleSignInButton}
+                className="text-md m-3 mt-8 h-10 w-11/12 rounded-3xl bg-diamond text-ruby hover:bg-ruby-tint hover:text-lg"
+                onClick={handleSignInButton}
               >
                 Sign In
               </button>
-              <div className="flex items-center justify-center mt-3 space-x-1 flex-col">
+              <div className="mt-3 flex flex-col items-center justify-center space-x-1">
                 <div>
                   {" "}
                   Don<span>&#39;</span>t have an account?
                 </div>
                 <Link
                   href="signUp"
-                  className=" hover:text-ruby-shade font-semibold"
+                  className=" font-semibold hover:text-ruby-shade"
                 >
                   <span className="text-pearl">Sign Up Here</span>
                 </Link>

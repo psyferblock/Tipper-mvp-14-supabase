@@ -14,10 +14,10 @@ export default async function Navbar({ session }) {
   }
   return (
     <>
-      <div className="bg-gray-500 fixed w-full z-10 flex justify-between sm:justify-between sm:items-center h-16 sm:h-[78px] px-3 sm:px-12">
+      <div className="fixed z-10 flex h-16 w-full justify-between bg-gray-500 px-3 sm:h-[78px] sm:items-center sm:justify-between sm:px-12">
         <Link
           href="/"
-          className="py-4 sm:py-[18px] font-light sm:font-normal text-white hover:text-purple-400 text-2xl sm:text-4xl"
+          className="py-4 text-2xl font-light text-white hover:text-purple-400 sm:py-[18px] sm:text-4xl sm:font-normal"
         >
           Tipper
         </Link>
@@ -32,7 +32,7 @@ export default async function Navbar({ session }) {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6 text-white"
+                className="h-6 w-6 text-white"
               >
                 <path
                   strokeLinecap="round"
@@ -45,23 +45,23 @@ export default async function Navbar({ session }) {
             {/* DESKTOP VERSION */}
             <Link
               href={`manageUserProfile`}
-              className="hidden sm:flex items-center sm:space-x-2 text-xs text-white pr-9"
+              className="hidden items-center pr-9 text-xs text-white sm:flex sm:space-x-2"
             >
-              <div className="relative w-6 h-6 inline-block rounded-full sm:ring-2  overflow-hidden">
+              <div className="relative inline-block h-6 w-6 overflow-hidden rounded-full  sm:ring-2">
                 {profilePictureUrl ? (
                   <Image src={profilePictureUrl} alt="profile picture" fill />
                 ) : (
                   <Image src={DefaultProfilePicture} alt="" fill />
                 )}
               </div>
-              <div className="hover:text-sky-400 text-white text-sm sm:text-sm pt-1 sm:pt-0 font-light sm:font-normal">
+              <div className="pt-1 text-sm font-light text-white hover:text-sky-400 sm:pt-0 sm:text-sm sm:font-normal">
                 My account
               </div>
             </Link>
 
             {/* MOBILE VERSION */}
             <Link href={`manageUserProfile`} className="pt-2 sm:hidden">
-              <div className="relative w-6 h-6 inline-block rounded-full ring-2 overflow-hidden">
+              <div className="relative inline-block h-6 w-6 overflow-hidden rounded-full ring-2">
                 {profilePictureUrl ? (
                   <Image src={profilePictureUrl} alt="profile picture" fill />
                 ) : (
@@ -77,7 +77,7 @@ export default async function Navbar({ session }) {
             <NavBarSignOutButton />
           </div>
         ) : (
-          <div className="text-white text-sm sm:text-sm pt-1 sm:pt-0 font-light sm:font-normal flex items-center space-x-3 sm:space-x-5 ">
+          <div className="flex items-center space-x-3 pt-1 text-sm font-light text-white sm:space-x-5 sm:pt-0 sm:text-sm sm:font-normal ">
             <Link href="" className="hover:text-purple-400">
               About Us
             </Link>

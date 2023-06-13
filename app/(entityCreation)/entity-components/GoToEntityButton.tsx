@@ -16,16 +16,14 @@ function GoToEntityButton({
   menuId: menuId,
   categoryId: categoryId,
 }) {
- 
   return (
     <div>
-      <button className="border-spacing-4 w-32 h-12 bg-white rounded-md  border-white-2 text-center p-3 m-4 border-amethyst border-2 shadow-amethyst-shade shadow-md">
+      <button className="border-white-2 m-4 h-12 w-32 border-spacing-4  rounded-md border-2 border-amethyst bg-white p-3 text-center shadow-md shadow-amethyst-shade">
         <Link
           href={`entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}`}
         >
           go to entity
         </Link>
-       
       </button>
     </div>
   );

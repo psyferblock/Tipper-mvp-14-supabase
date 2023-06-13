@@ -35,16 +35,16 @@ async function layout({
     entityUniqueName
   );
   const entityId = entityInformation?.id;
-  console.log('entityId at manageEntity', entityId)
+  console.log("entityId at manageEntity", entityId);
 
   // menu stuff
   const menuInfo = await getEntityMenuServer(supabaseServer, entityId);
   const menuId = menuInfo.id;
-  
+
   console.log("menuId from layout/manageEntity", menuId);
   // categories stuff
-  const categories = await getMenuCategoriesServer({supabaseServer, menuId});
-  console.log("menu categories from  layout/manageEntity", categories );
+  const categories = await getMenuCategoriesServer({ supabaseServer, menuId });
+  console.log("menu categories from  layout/manageEntity", categories);
   const categoryId = categories.id;
 
   const userId = session?.user.id;
@@ -70,16 +70,16 @@ async function layout({
         coverPictures={arrayOfCoverPictureObjects}
         logoPictureObject={logoPictureObject}
       >
-        <div className="flex p-2 m-2 justify-between">
-      <EntityButton/>
+        <div className="m-2 flex justify-between p-2">
+          <EntityButton />
 
-          <div className="sm:hidden pr-3 flex items-center justify-between h-20 sm:mt-0 bg-gray-300 w-full  text-xl font-bold">
+          <div className="flex h-20 w-full items-center justify-between bg-gray-300 pr-3 text-xl font-bold  sm:mt-0 sm:hidden">
             {/* // this is the back tick that will take us to the entityUniqueName Page.  */}
             <Link
               href={`entity/${entityUniqueName}/menu/${menuId}
               /category/${categoryId}
               `}
-              className="flex -ml-2 mr-1 w-fit items-center font-bold text-2xl"
+              className="-ml-2 mr-1 flex w-fit items-center text-2xl font-bold"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +87,7 @@ async function layout({
                 viewBox="0 0 24 24"
                 strokeWidth={2.5}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="h-6 w-6"
               >
                 <path
                   strokeLinecap="round"

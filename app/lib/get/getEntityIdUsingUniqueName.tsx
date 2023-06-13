@@ -9,8 +9,8 @@ export async function getEntityIdUsingUniqueNameServer({
     .from("entity")
     .select("id")
     .eq("entity_unique_name", entityUniqueName)
-    .single()
+    .single();
   if (error) throw error;
-  console.log('data from getEntityIdUsingUniqueNameServer  ', data)
+  console.log("data from getEntityIdUsingUniqueNameServer  ", data);
   return data;
 }

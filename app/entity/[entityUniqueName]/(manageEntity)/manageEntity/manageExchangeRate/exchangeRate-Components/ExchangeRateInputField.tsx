@@ -24,8 +24,8 @@ export default function ExchangeRateInputField(exchangeRate) {
   };
   return (
     <>
-      <div className="flex py-4 items-center border border-gray-300 hover:border-indigo-500 rounded-lg h-12 pl-4 mb-4">
-        <div className="h-12 pt-3 text-gray-500 pr-4 border-r border-gray-300">
+      <div className="mb-4 flex h-12 items-center rounded-lg border border-gray-300 py-4 pl-4 hover:border-indigo-500">
+        <div className="h-12 border-r border-gray-300 pr-4 pt-3 text-gray-500">
           LBP
         </div>
         <input
@@ -34,7 +34,7 @@ export default function ExchangeRateInputField(exchangeRate) {
           ref={newRateRef}
           value={newExchangeRate}
           onChange={(e) => setNewExchangeRate(e.target.value)}
-          className="h-6 block w-3/5 border-0 pl-4 pr-12 my-0.5 py-0 focus:border-0 focus:ring-0 sm:text-sm"
+          className="my-0.5 block h-6 w-3/5 border-0 py-0 pl-4 pr-12 focus:border-0 focus:ring-0 sm:text-sm"
           placeholder="1506.00"
           disabled={!editing}
         />
@@ -42,14 +42,14 @@ export default function ExchangeRateInputField(exchangeRate) {
           {editing ? (
             <button
               onClick={() => handleApplyButton()}
-              className=" h-fit block text-blue-500 pb-4"
+              className=" block h-fit pb-4 text-blue-500"
             >
               Apply
             </button>
           ) : (
             <button
               onClick={() => handleEdit()}
-              className=" h-fit block text-blue-500 pb-4"
+              className=" block h-fit pb-4 text-blue-500"
             >
               Edit
             </button>
@@ -58,14 +58,14 @@ export default function ExchangeRateInputField(exchangeRate) {
       </div>
 
       {/* "EQUIVALENT" ICON FOR MOBILE SCREENS */}
-      <div className="sm:hidden pr-2">
+      <div className="pr-2 sm:hidden">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-7 h-7 my-3 mx-auto"
+          className="mx-auto my-3 h-7 w-7"
         >
           <path
             strokeLinecap="round"
@@ -82,7 +82,7 @@ export default function ExchangeRateInputField(exchangeRate) {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-10 h-10 pb-4"
+          className="h-10 w-10 pb-4"
         >
           <path
             strokeLinecap="round"
@@ -92,13 +92,13 @@ export default function ExchangeRateInputField(exchangeRate) {
         </svg>
       </div>
       {/* PRICE INPUT FIELD */}
-      <div className="flex py-4 items-center border border-gray-300 rounded-lg h-12 pl-4 mb-4">
-        <div className="h-12 pt-3 text-gray-500 pr-4 border-r border-gray-300">
+      <div className="mb-4 flex h-12 items-center rounded-lg border border-gray-300 py-4 pl-4">
+        <div className="h-12 border-r border-gray-300 pr-4 pt-3 text-gray-500">
           USD
         </div>
         <div
           id="price"
-          className="h-6 block w-60 text-gray-500 border-0 pl-4 pr-12 pt-0.5 focus:border-0 focus:ring-0 sm:text-sm"
+          className="block h-6 w-60 border-0 pl-4 pr-12 pt-0.5 text-gray-500 focus:border-0 focus:ring-0 sm:text-sm"
         >
           1.00
         </div>
@@ -106,14 +106,14 @@ export default function ExchangeRateInputField(exchangeRate) {
       {editing ? (
         <button
           onClick={() => handleApplyButton()}
-          className="hidden sm:block text-blue-500 hover:text-indigo-700 pb-4"
+          className="hidden pb-4 text-blue-500 hover:text-indigo-700 sm:block"
         >
           Apply
         </button>
       ) : (
         <button
           onClick={() => handleEdit()}
-          className="hidden sm:block text-blue-500 hover:text-indigo-700 pb-4"
+          className="hidden pb-4 text-blue-500 hover:text-indigo-700 sm:block"
         >
           Edit
         </button>
