@@ -30,12 +30,14 @@ const ProfileInfoFromContext = () => {
       {" "}
       <div className="flex flex-col p-2 ">
         <div>
-          <span className="m-2">{firstName}</span>
+          <span className="m-2 h-20 w-40 border-2  border-solid border-amethyst p-2">
+            {firstName}
+          </span>
           <span className="m-2">{lastName}</span>
         </div>
-        <div className="space-between m-2 flex">
-          <span className="">birthday: {dateOfBirth}</span>
-          <span className="">{gender}</span>
+        <div className="space-between m-2 flex ">
+          <span className="m-2">birthday: {dateOfBirth}</span>
+          <span className="m-2">{gender}</span>
         </div>
         <div>
           <span>{emailAddress}</span>

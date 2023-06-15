@@ -130,7 +130,7 @@ function ProfileBasicInfoSection() {
       </div>
       {/* THE DIV FOR THE PROFILE PIC AND ALL  */}
       <div className="mx-auto mt-3 w-1/2 sm:w-2/12  ">
-        <div className="aspect-1/1 relative mx-auto h-32 w-32 overflow-hidden rounded-full bg-ruby-tint ring-2 ring-ruby-tint">
+        <div className="relative mx-auto h-32 w-32 overflow-hidden rounded-full bg-ruby-tint ring-2 ring-ruby-tint">
           <Image fill alt={"profile Pic"} src={profilePictureUrl}></Image>
         </div>
         <div className="flex justify-center space-x-[3px] text-xs text-blue-500 sm:flex sm:justify-center sm:space-x-[0.6px] sm:text-xs  ">

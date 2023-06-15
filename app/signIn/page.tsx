@@ -39,10 +39,8 @@ function SignInPage() {
     //Check if sign in was successful
     if (error) {
       setSignInFailedError(true);
-      console.log("error when signing in", error);
     } else {
       setSignInFailedError(false);
-      console.log("data after sign in", data);
       router.push(`/`);
     }
   }

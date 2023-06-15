@@ -14,7 +14,10 @@ import { createServerClient } from "@/app/utils/supabase-server";
 async function userProfilePage({ params }) {
   return (
     <>
+    <div className="w-full">
+
       <UserMainPageComponent />
+    </div>
     </>
   );
 }

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/app/utils/supabase-browser";
 import createUserProfile from "../lib/create/createUserProfile";
 import { userContextState } from "../context/userContext/userContextReducer";
+import Input from "../root-components/Input";
 
 export default function SignUp() {
   const router = useRouter();
@@ -81,7 +82,7 @@ export default function SignUp() {
 
     let uniqueName = array[0] + uuidSample!;
 
-    await createUserProfile(userId, email, uniqueName);
+    // await createUserProfile(userId, email, uniqueName);
     setHasSignedUp(true);
     // }
   };
@@ -150,27 +151,7 @@ export default function SignUp() {
                 <>
                   {/* EMAIL ADDRESS  */}
                   <div>
-                    <h1 className="ml-4 font-bold">Email Address *</h1>
-                    <div className="text-grey-500 relative m-3 mb-3 max-w-md">
-                      <input
-                        type="text"
-                        name="EmailAddress"
-                        id="EmailAddress"
-                        className="text-wrap peer inline-block h-16 w-full rounded-lg border-2 border-ruby-tint border-opacity-60 indent-2 align-middle placeholder-transparent shadow focus:border-ruby-shade focus:outline-none "
-                        placeholder=" email address"
-                        required
-                        onChange={(e) => setEmail(e.target.value)}
-                        value={email || ""}
-                        // ref={emailRef}
-                      />
-
-                      <label
-                        htmlFor="Number"
-                        className=" text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 absolute left-4 top-5 z-10 text-lg transition-all peer-placeholder-shown:text-base peer-valid:top-1 peer-valid:text-sm peer-focus:top-1 peer-focus:text-sm peer-focus:text-gray-600 "
-                      >
-                        Email Address
-                      </label>
-                    </div>
+                   {/* <Input/> */}
                   </div>
                   {/* //////////////////////////////////////////////////////////////////////////////////// */}
 

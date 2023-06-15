@@ -2,11 +2,19 @@ import React from "react";
 import Link from "next/link";
 import HomePageSearchBar from "./HomePageSearchBar";
 import { createServerClient } from "../utils/supabase-server";
-import SignInSignOut from "./SignInSignOut";
+import SignInSignOut from "./ProfileIcon";
 import { getServerSession } from "next-auth";
+import NavListItems from "./NavListItems";
+import { useSupabase } from "../supabase-provider";
 
-function NavBar() {
-  const { session } = getServerSession();
+ async function NavBar() {
+  const supabaseServer = createServerClient();
+  const {
+    data: { session },
+  } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details.
+
+
+    const userAuthenticated = session ? session?.user.aud : "not authenticated";
 
   // const {
   //   data: { session },
@@ -19,7 +27,7 @@ function NavBar() {
         <div className="w-20  ">
           <Link
             href="/"
-            className="py-4 text-2xl font-light font-semibold hover:text-amethyst sm:py-[18px] sm:text-4xl sm:font-normal"
+            className="py-4 text-2xl  font-semibold hover:text-amethyst sm:py-[18px] sm:text-4xl sm:font-normal"
           >
             Tipper
           </Link>
@@ -28,16 +36,15 @@ function NavBar() {
           <HomePageSearchBar />
         </div> */}
         <div className="  ">
-          <ul className=" jsutify-between mr-2 flex pr-2 text-sm ">
-            <li className="items-center p-2 text-center">
-              <Link href="#">About Us</Link>
-            </li>
-            <li className="p-2">
-              <Link href="#">Contact Us</Link>
-            </li>
-            <SignInSignOut />
-          </ul>
-        </div>
+        
+        {userAuthenticated === "authenticated" ?(
+                  <NavListItems />)
+                  :(
+                    <li className="p-2">
+                    <Link href="signIn">Sign In</Link>
+                  </li>
+                  )
+        }        </div>
       </div>
       {/* <div className=" md:hidden">
         <HomePageSearchBar />

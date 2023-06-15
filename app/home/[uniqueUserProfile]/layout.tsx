@@ -11,7 +11,7 @@ export default async function UniqueUserProfileLayout({
 }) {
   return (
     <div>
-      <div className=" h-screen w-screen bg-slate-800">
+      <div className=" w-min bg-slate-800">
         <NavBar />
         <div>{children}</div>
       </div>

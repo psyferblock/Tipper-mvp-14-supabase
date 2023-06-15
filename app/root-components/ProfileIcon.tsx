@@ -10,7 +10,7 @@ import { useUsersContext } from "../context/userContext/userContextStore";
 import { getMyUserInfos } from "../lib/get/getMyUserInfo";
 import { useEffect, useState } from "react";
 
-function SignInSignOut() {
+function ProfileIcon() {
   const [userInfo, setUserInfo] = useState({});
   const { session, supabase } = useSupabase();
   const router = useRouter();
@@ -32,23 +32,16 @@ function SignInSignOut() {
   const firstName = userInfo?.first_name;
   const uniqueUserName = userInfo?.unique_user_name;
 
-  const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    // Redirect the user to the login page
-    router.push("/");
-  };
+ 
 
   const handleHomeButton = () => {
     router.push(`home/${uniqueUserName}`);
   };
 
   return (
-    <div>
-      {userAuthenticated === "authenticated" ? (
-        <ul className="flex flex-row">
-          <li className="">
-            <button onClick={handleHomeButton} className="flex flex-row">
-              <h1>{firstName || "sanfour"}</h1>
+    <div className="flex flex-row justify-evenly items-center">
+        
+              <h1 className="px-2">{firstName || "sanfour"}</h1>
               <div className="aspect-1/1 relative mx-auto h-10 w-10 overflow-hidden rounded-full bg-ruby-tint ring-2 ring-ruby-tint">
                 <Image
                   width={500}
@@ -57,19 +50,10 @@ function SignInSignOut() {
                   alt={"profile picture"}
                 />
               </div>
-            </button>
-          </li>
-          <li className="p-2">
-            <button onClick={(e) => handleSignOut()}>Sign out</button>
-          </li>
-        </ul>
-      ) : (
-        <li className="p-2">
-          <Link href="signIn">Sign In</Link>
-        </li>
-      )}
+         
+       
     </div>
   );
 }
 
-export default SignInSignOut;
+export default ProfileIcon;
