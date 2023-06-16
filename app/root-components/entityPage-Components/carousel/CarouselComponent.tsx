@@ -37,7 +37,7 @@ function CarouselComponent({
     <div className="relative h-full w-full overflow-hidden">
       {/* the translateX property moves the slide through css by 100 % so the current index will allow a move where 100% of the picture will slide. */}
       <div
-        className="flex h-full w-full object-center transition-transform duration-500 ease-out"
+        className=" flex h-full w-full object-center transition-transform duration-500 ease-out"
         style={{ transform: `translateX(-${current * 100}%)` }}
       >
         {slides}

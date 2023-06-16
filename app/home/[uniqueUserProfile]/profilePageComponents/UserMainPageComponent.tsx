@@ -6,7 +6,7 @@ function UserMainPageComponent() {
   return (
     <div>
       {" "}
-      <div className="h-full w-min bg-pearl p-2">
+      <div className="h-full w-full bg-pearl p-2">
         <div>
           <h1 className="h1 mb-4 text-3xl font-bold">Profile</h1>
           <div
@@ -20,7 +20,8 @@ function UserMainPageComponent() {
             </h1>
             <EntityButton />
           </div>
-          <div className=" relative m-2 aspect-4/3 bg-diamond  p-3 md:h-40 ">
+          <br className="h-2 bg-diamond"></br>
+          <div className=" m-2 aspect-4/3 bg-diamond  p-3 ">
             <ProfileBasicInfoSection />
           </div>
         </div>

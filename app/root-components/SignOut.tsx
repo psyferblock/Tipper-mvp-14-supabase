@@ -15,9 +15,9 @@ const SignOut = () => {
   };
   return (
     <div>
-        <li className="p-2">
+        
             <button onClick={(e) => handleSignOut()}>Sign out</button>
-          </li>
+          
         
     </div>
   )

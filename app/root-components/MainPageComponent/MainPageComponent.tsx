@@ -17,15 +17,15 @@ function MainPageComponent() {
     },
   ];
   const images = mainCoverImages.map((slide, index) => (
-    <div key={index} className="h-2/5 w-full">
-      <Image width={500} height={500} alt="cover-photo" src={slide.url} />
+    <div key={index} className="p-auto m-auto aspect-auto w-full object-top rounded-sm">
+      <Image width={1000} height={1000} alt="cover-photo" src={slide.url} />
       {JSON.stringify(slide.url)}
     </div>
   ));
   console.log("images", images);
   return (
     <div className="h-screen w-full bg-ruby-tint ">
-      <div className=" h-64 max-w-full p-2 ">
+      <div className=" md:h-4/12  h-2/5 w-full p-2  ">
         <CarouselComponent autoSlide={false} autoSlideInterval={3000}>
           {images}
         </CarouselComponent>

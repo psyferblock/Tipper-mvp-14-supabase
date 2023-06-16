@@ -1,56 +1,42 @@
 import React from "react";
 import Link from "next/link";
-import HomePageSearchBar from "./HomePageSearchBar";
 import { createServerClient } from "../utils/supabase-server";
-import SignInSignOut from "./ProfileIcon";
-import { getServerSession } from "next-auth";
 import NavListItems from "./NavListItems";
-import { useSupabase } from "../supabase-provider";
 
- async function NavBar() {
+async function MainPageNavBar() {
   const supabaseServer = createServerClient();
   const {
     data: { session },
   } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details.
 
+  const userAuthenticated = session ? session?.user.aud : "not authenticated";
 
-    const userAuthenticated = session ? session?.user.aud : "not authenticated";
-
-  // const {
-  //   data: { session },
-  // } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details.
-
-  //  console.log('session in main nav page ', session)
   return (
-    <div className="">
-      <div className="flex max-h-20 justify-between  bg-pearl text-ruby  ">
-        <div className="w-20  ">
-          <Link
-            href="/"
-            className="py-4 text-2xl  font-semibold hover:text-amethyst sm:py-[18px] sm:text-4xl sm:font-normal"
-          >
-            Tipper
-          </Link>
-        </div>
-        {/* <div className=" sm:hidden md:visible">
+    <>
+    <div className=" sticky top-0 flex h-20 w-screen items-center justify-between rounded-md bg-ruby-tint text-ruby  ">
+      <div className="w-20  ">
+        <Link
+          href="/"
+          className="p-2 text-2xl  font-semibold hover:text-amethyst sm:py-[18px] sm:text-4xl sm:font-normal"
+        >
+          Tipper
+        </Link>
+      </div>
+      {/* <div className=" sm:hidden md:visible">
           <HomePageSearchBar />
         </div> */}
-        <div className="  ">
-        
-        {userAuthenticated === "authenticated" ?(
-                  <NavListItems />)
-                  :(
-                    <li className="p-2">
-                    <Link href="signIn">Sign In</Link>
-                  </li>
-                  )
-        }        </div>
+      <div className="z-10">
+        {userAuthenticated === "authenticated" ? (
+          <NavListItems />
+        ) : (
+          <div className="p-2">
+            <Link href="signIn">Sign In</Link>
+          </div>
+        )}{" "}
       </div>
-      {/* <div className=" md:hidden">
-        <HomePageSearchBar />
-      </div> */}
     </div>
+    </>
   );
 }
 
-export default NavBar;
+export default MainPageNavBar;

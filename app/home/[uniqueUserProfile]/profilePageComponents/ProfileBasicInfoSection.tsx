@@ -115,12 +115,12 @@ function ProfileBasicInfoSection() {
   };
 
   return (
-    <div>
+    <div className="mx-auto mt-3 w-1/2 sm:w-7/12 bg-ruby-tint">
       {" "}
-      <div className="flex justify-between">
+      <div className="flex justify-between w-full ">
         <h1>Basic Info</h1>
         <button
-          className="bg-diamond text-amethyst"
+          className=" text-amethyst"
           onClick={() => {
             setEditing(!editing);
           }}
@@ -129,7 +129,7 @@ function ProfileBasicInfoSection() {
         </button>
       </div>
       {/* THE DIV FOR THE PROFILE PIC AND ALL  */}
-      <div className="mx-auto mt-3 w-1/2 sm:w-2/12  ">
+      <div className=" ">
         <div className="relative mx-auto h-32 w-32 overflow-hidden rounded-full bg-ruby-tint ring-2 ring-ruby-tint">
           <Image fill alt={"profile Pic"} src={profilePictureUrl}></Image>
         </div>

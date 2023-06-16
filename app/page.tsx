@@ -1,29 +1,22 @@
-import Image from "next/image";
-import EntityInfosContextProvider from "./context/entityContext/entityContextStore";
-import UserInfoContextProvider from "./context/userContext/userContextStore";
-import { getBasicPicturesServer } from "./lib/get/getBasicPictures";
-import { getMyEntityInfosServer } from "./lib/get/getMyEntityInfos";
-import { getMyUserInfos, getMyUserInfoServer } from "./lib/get/getMyUserInfo";
 import MainPageComponent from "./root-components/MainPageComponent/MainPageComponent";
-import MainPageNav from "./root-components/MainPageNav";
-import HomePageListingOfEntitiesCards from "./root-components/entityCards-Components/HomePageListingOfEntitiesCards";
-import CarouselComponent from "./root-components/entityPage-Components/carousel/CarouselComponent";
-import { useSupabase } from "./supabase-provider";
+
 import { createServerClient } from "./utils/supabase-server";
+import MainPageNavBar from "./root-components/MainPageNav";
+import NavBar from "./root-components/NavBar";
 
 export default async function TipperLandingPage() {
   const supabaseServer = createServerClient();
 
   return (
     <div>
-      {/* <UserInfoContextProvider userInfos={userInformation}> */}
-
       <div>
-        <MainPageNav />
+        <div className="sticky top-0">
+        <MainPageNavBar />
+
+        </div>
+
         <MainPageComponent />
       </div>
-
-      {/* </UserInfoContextProvider> */}
     </div>
   );
 }
