@@ -10,9 +10,8 @@ export default async function TipperLandingPage() {
   return (
     <div>
       <div>
-        <div className="sticky top-0">
-        <MainPageNavBar />
-
+        <div className="z-50 sticky top-0">
+          <MainPageNavBar />
         </div>
 
         <MainPageComponent />

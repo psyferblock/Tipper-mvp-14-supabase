@@ -29,7 +29,7 @@ async function MainPageNavBar() {
         {userAuthenticated === "authenticated" ? (
           <NavListItems />
         ) : (
-          <div className="p-2">
+          <div className="p-2 mr-4">
             <Link href="signIn">Sign In</Link>
           </div>
         )}{" "}

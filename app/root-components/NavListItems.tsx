@@ -27,7 +27,7 @@ function NavListItems() {
       {/* THE DIV WHEN IT IS A SMALL SCREEN */}
 
       <div className=" relative md:invisible  ">
-        <div className=" fixed right-2 -mt-10 w-auto border-2 border-black ">
+        <div className=" fixed right-2 -mt-12 w-auto border-2 border-black ">
           <Menu as="div" className=" relative  text-center  ">
             <div>
               <Menu.Button className=" items-right sticky bottom-0 inline-flex px-4 py-2 text-sm  font-bold text-amethyst hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
@@ -43,7 +43,7 @@ function NavListItems() {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items className=" mt-2 w-auto divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+              <Menu.Items className="mt-2 w-auto divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <div className="px-1 py-1 ">
                   <Menu.Item>
                     {({ active }) => (

@@ -12,9 +12,9 @@ async function EntityLayout({ children }: { children: React.ReactNode }) {
   const entityOwnerId = session?.user.id;
 
   return (
-    <>
+    < >
       <NavBar />
-      <div>{children}</div>
+      <div >{children}</div>
     </>
   );
 }

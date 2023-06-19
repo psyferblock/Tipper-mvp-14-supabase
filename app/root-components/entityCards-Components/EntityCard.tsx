@@ -34,7 +34,8 @@ export default async function EntityCard({ entity }) {
   return (
     <>
       <Link
-        href={`entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}`}
+        href={`entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}#menuTab`}
+        scroll={false}
       >
         <div
           id="app"

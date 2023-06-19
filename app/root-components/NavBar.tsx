@@ -12,7 +12,7 @@ async function NavBar() {
   const userAuthenticated = session ? session?.user.aud : "not authenticated";
 
   return (
-    <div className=" sticky top-0 flex h-20 w-screen items-center justify-between rounded-md bg-ruby-tint text-ruby  ">
+    <div className=" sticky top-0 z-10 mb-0 flex h-16 w-screen items-center justify-between rounded-md bg-ruby-tint text-ruby   ">
       <div className="w-20  ">
         <Link
           href="/"
