@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 
-export default function MenuCategoryCard(props) {
+const MenuCategoryCard = (props) => {
   const { entityUniqueName } = useEntityContext();
   const menuId = props.menuId;
 
@@ -130,4 +130,6 @@ export default function MenuCategoryCard(props) {
       </div>
     </>
   );
-}
+};
+
+export default MenuCategoryCard;

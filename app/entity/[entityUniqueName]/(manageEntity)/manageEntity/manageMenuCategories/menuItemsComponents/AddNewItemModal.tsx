@@ -5,7 +5,6 @@ import { Dialog, Transition } from "@headlessui/react";
 import createMenuItem from "@/app/lib/create/createMenuItem";
 import uploadPicture from "@/app/lib/create/uploadPictureToBucket";
 import Image from "next/image";
-import { useSupabase } from "@/app/supabase-provider";
 import { useRouter } from "next/navigation";
 import { v4 as uuidv4 } from "uuid";
 
@@ -27,7 +26,9 @@ export default function AddNewItemModal(props) {
   async function handlePublishButton(
     itemName: string,
     itemDescription: string,
-    itemPrice: string
+    itemPrice: string,
+    itemPictureUrl:string
+  
   ) {
     //when "Save" in modal is clicked:
     await createMenuItem(

@@ -2,9 +2,7 @@
 
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { useSupabase } from "@/app/supabase-provider";
 import { useRouter } from "next/navigation";
-import deleteMenuCategory from "@/app/lib/delete/deleteMenuCategory";
 import deleteMenuItem from "@/app/lib/delete/deleteMenuItem";
 
 export default function DeleteMenuItemModal(props) {

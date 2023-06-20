@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { useSupabase } from "@/app/supabase-provider";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 
-export default function EditMenuCategoryNameModal(props) {
+const EditMenuCategoryNameModal = (props) => {
   const [categoryName, setCategoryName] = useState();
   const { entityUniqueName } = useEntityContext();
   const categoryId = props.categoryId;
@@ -115,4 +115,6 @@ export default function EditMenuCategoryNameModal(props) {
       </Dialog>
     </Transition.Root>
   );
-}
+};
+
+export default EditMenuCategoryNameModal;

@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { useSupabase } from "@/app/supabase-provider";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 
-export default function AddNewMenuCategoryModal(props) {
+const AddNewMenuCategoryModal = (props) => {
   //State
   const [categoryName, setCategoryName] = useState<string | undefined>();
 
@@ -156,4 +156,5 @@ export default function AddNewMenuCategoryModal(props) {
       </Dialog>
     </Transition.Root>
   );
-}
+};
+export default AddNewMenuCategoryModal;

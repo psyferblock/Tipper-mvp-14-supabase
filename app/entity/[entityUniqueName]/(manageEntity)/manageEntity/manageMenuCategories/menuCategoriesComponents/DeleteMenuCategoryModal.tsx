@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import deleteMenuCategory from "@/app/lib/delete/deleteMenuCategory";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 
-export default function DeleteMenuCategoryModal(props) {
+const DeleteMenuCategoryModal = (props) => {
   //Apply "buttonRef" to field to decide which section is focused on when modal is opened
   const buttonRef = useRef(null);
 
@@ -100,4 +100,5 @@ export default function DeleteMenuCategoryModal(props) {
       </Dialog>
     </Transition.Root>
   );
-}
+};
+export default DeleteMenuCategoryModal;
