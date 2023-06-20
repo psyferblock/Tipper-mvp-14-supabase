@@ -51,7 +51,7 @@ export default function ManageMenuCategories() {
 
   function handleEditCategoryNameButton(categoryId) {
     setEditNameCategoryId(categoryId);
-    menuCategories.map((category) => {
+    menuCategories?.map((category) => {
       if (category.id == categoryId) {
         setCategoryNameInEditCategoryNameModal(category.menu_category_name);
       }
