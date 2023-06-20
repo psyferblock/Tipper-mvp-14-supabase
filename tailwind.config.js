@@ -8,9 +8,10 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // fontFamily: {
-      //   sans: ['var(--font-work)']
-      // },
+      fontFamily: {
+        myfont: ['workSans'],
+        sans: ['workSans', 'sans-serif'],
+      },
       colors:{
         ruby: "#ff5c5c",
         "ruby-tint":"#ffdede",
@@ -34,6 +35,7 @@ module.exports = {
   variants:{
     extend:{
       bacgroundColor:["active"],
+      fontFamily: ['hover', 'focus'],
 
     },
   },
