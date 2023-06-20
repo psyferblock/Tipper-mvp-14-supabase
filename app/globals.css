@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+.text {
+  font-family: var(--inter-font);
+}
 
 @keyframes shake {
     0% {

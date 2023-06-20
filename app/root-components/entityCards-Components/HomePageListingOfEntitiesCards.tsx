@@ -33,9 +33,9 @@ export default async function HomePageListingOfEntitiesCards() {
   return (
     <>
       {industries.map((industry, index) => (
-        <div key={index}>
+        <div key={index} className="py-3">
           {/* MOBILE VERSION WITH FLEX */}
-          <div className="flex items-center justify-between pb-2  sm:hidden sm:pb-2">
+          <div className="flex items-center justify-between pb-2  sm:hidden ">
             <div className="text-lg font-bold sm:text-center">
               {industry.name}
             </div>

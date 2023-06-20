@@ -7,12 +7,20 @@ import SupabaseListener from "./supabase-listener";
 import SupabaseProvider from "./supabase-provider";
 import UserInfoContextProvider from "@/app/context/userContext/userContextStore";
 import { getMyUserInfoServer } from "./lib/get/getMyUserInfo";
+import {Work_Sans} from '@next/font/google'
 
 export const metadata = {
   icons: {
     icon: "/icon.png",
   },
 };
+
+const workSans = Work_Sans({
+  subsets: ['latin'],
+  display: "fallback",
+  variable: '--Work_Sans-font',
+  
+})
 export default async function RootLayout({
   children,
 }: {
@@ -33,7 +41,7 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang="en">
+    <html lang="en" className={workSans.variable}>
       {/*
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head

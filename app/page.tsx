@@ -9,7 +9,7 @@ export default async function TipperLandingPage() {
 
   return (
     <div>
-      <div>
+      <div className="bg-ruby-tint">
         <div className="z-50 sticky top-0">
           <MainPageNavBar />
         </div>

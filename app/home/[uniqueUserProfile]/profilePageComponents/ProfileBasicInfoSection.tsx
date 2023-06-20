@@ -115,7 +115,7 @@ function ProfileBasicInfoSection() {
   };
 
   return (
-    <div className="mx-auto mt-3 w-1/2 sm:w-7/12 bg-ruby-tint">
+    <div className="mx-auto mt-3 w-8/10 sm:w-7/12 bg-ruby-tint">
       {" "}
       <div className="flex justify-between w-full ">
         <h1>Basic Info</h1>

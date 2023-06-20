@@ -13,11 +13,11 @@ async function MainPageNavBar() {
 
   return (
     <>
-    <div className=" sticky top-0 flex h-20 w-screen items-center justify-between rounded-md bg-ruby-tint text-ruby  ">
+    <div className="p-2 sticky top-0 flex h-20 w-screen items-center justify-between  bg-transparent text-ruby  ">
       <div className="w-20  ">
         <Link
           href="/"
-          className="p-2 text-2xl  font-semibold hover:text-amethyst sm:py-[18px] sm:text-4xl sm:font-normal"
+          className=" text-2xl  font-semibold hover:text-amethyst sm:py-[18px] sm:text-4xl sm:font-normal"
         >
           Tipper
         </Link>
@@ -29,7 +29,9 @@ async function MainPageNavBar() {
         {userAuthenticated === "authenticated" ? (
           <NavListItems />
         ) : (
-          <div className="p-2 mr-4">
+          <div className=" mr-4 flex justify-between space-x-2" >
+            <Link href="#">About Us</Link>
+            <Link href="#">Contact Us</Link>
             <Link href="signIn">Sign In</Link>
           </div>
         )}{" "}
