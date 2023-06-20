@@ -71,7 +71,7 @@ async function layout({
         logoPictureObject={logoPictureObject}
       >
         <div className="m-2 flex justify-between p-2">
-          <EntityButton />
+          {/* <EntityButton /> */}
 
           <div className="flex h-20 w-full items-center justify-between bg-gray-300 pr-3 text-xl font-bold  sm:mt-0 sm:hidden">
             {/* // this is the back tick that will take us to the entityUniqueName Page.  */}

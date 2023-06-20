@@ -100,8 +100,8 @@ export default function SignUp() {
   };
 
   return (
-    <div className="min-h-screen w-auto bg-emerald">
-      <div className="h-full p-0">
+    <div className="min-h-screen w-auto bg-emerald pt-12">
+      <div className="h-full ">
         <div className="flex flex-col sm:flex-row sm:pt-10">
           {/* LEFT PART OF SCREEN */}
           <div className="mb-2 w-1/3 p-1 ">
@@ -199,7 +199,7 @@ export default function SignUp() {
                       >
                         Password
                       </label>
-                      <div className="absolute right-5 top-4 text-2xl">
+                      <div className="absolute right-5 top-5 text-2xl">
                         {confirmOpen === false ? (
                           <AiFillEye onClick={toggle} />
                         ) : (
@@ -263,7 +263,7 @@ export default function SignUp() {
                   </div>
                   {/* //////////////////////////////////////////////////////////////////////////////////// */}
                   {/* BUTTON CLASS FOR FORM  */}
-                  <div className=" m-auto ">
+                  <div className=" flex items-center">
                     <button
                       className={`${
                         submitButton ? " " : "disabled"

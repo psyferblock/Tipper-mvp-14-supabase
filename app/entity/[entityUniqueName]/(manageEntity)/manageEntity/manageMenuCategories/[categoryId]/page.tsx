@@ -31,7 +31,7 @@ const menuCategoryPage = async ({
 
   return (
     <div>
-      <h1>manage categories and items page</h1>
+      <h1>Manage Categories </h1>
 
       <div className="align-middle">
         <ManageMenuItems

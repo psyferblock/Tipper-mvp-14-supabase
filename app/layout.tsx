@@ -7,9 +7,9 @@ import SupabaseListener from "./supabase-listener";
 import SupabaseProvider from "./supabase-provider";
 import UserInfoContextProvider from "@/app/context/userContext/userContextStore";
 import { getMyUserInfoServer } from "./lib/get/getMyUserInfo";
-import {Work_Sans} from '@next/font/google'
+import { Work_Sans } from "@next/font/google";
 import localFont from "@next/font/local";
-import {Inter} from "@next/font/google"
+import { Inter } from "@next/font/google";
 
 export const metadata = {
   icons: {
@@ -17,13 +17,11 @@ export const metadata = {
   },
 };
 
-
 const workSans = Work_Sans({
-  subsets: ['latin'],
+  subsets: ["latin"],
   display: "fallback",
-  variable: '--Work_Sans-font',
-  
-})
+  variable: "--Work_Sans-font",
+});
 export default async function RootLayout({
   children,
 }: {

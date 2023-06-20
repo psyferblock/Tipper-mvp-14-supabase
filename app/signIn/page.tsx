@@ -50,7 +50,7 @@ function SignInPage() {
   // }
   return (
     <div>
-      <div className="sh-fit min-h-screen  bg-ruby p-4">
+      <div className="sh-fit min-h-screen  bg-ruby p-4 pt-12">
         <div className="sm:flex ">
           {/* SIGN IN FAILURE ERROR  */}
           {signInFailedError && (
@@ -111,15 +111,17 @@ function SignInPage() {
           {/* //////////////// */}
 
           {/* right part of the screen  */}
-          <div className=" h-fit  grow">
-            <div className="mb-9 text-center sm:text-start">
+          <div className=" h-fit flex flex-col items-center grow ">
+            <div className="mb-9 text-center sm:text-start w-5/6">
               <div className="text-3xl font-bold ">Sign In</div>
               <div className="text-sm font-light italic">
                 Welcome back to the network
               </div>
             </div>
             {/* INPUT FORMS  */}
-            <div>
+            <div
+             className="w-5/6 items-center "
+            >
               <div className="text-grey-500 relative m-3">
                 <input
                   type="text"
@@ -163,7 +165,7 @@ function SignInPage() {
                   >
                     Password
                   </label>
-                  <div className="absolute right-5 top-4 text-2xl">
+                  <div className="absolute right-5 top-5 text-2xl">
                     {open === false ? (
                       <AiFillEye onClick={toggle} />
                     ) : (
@@ -172,13 +174,14 @@ function SignInPage() {
                   </div>
                 </div>
               </div>
-
-              <button
-                className="text-md m-3 mt-8 h-10 w-11/12 rounded-3xl bg-diamond text-ruby hover:bg-ruby-tint hover:text-lg"
-                onClick={handleSignInButton}
-              >
-                Sign In
-              </button>
+              <div className="flex items-center   indent-2 ">
+                <button
+                  className="text-md mx-auto m-3 mt-8 h-10 w-11/12 rounded-md bg-diamond text-ruby hover:bg-ruby-tint hover:text-lg"
+                  onClick={handleSignInButton}
+                >
+                  Sign In
+                </button>
+              </div>
               <div className="mt-3 flex flex-col items-center justify-center space-x-1">
                 <div>
                   {" "}

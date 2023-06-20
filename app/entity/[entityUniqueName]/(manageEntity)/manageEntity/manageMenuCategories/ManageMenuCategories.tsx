@@ -6,10 +6,10 @@ import { useEffect, useState } from "react";
 import { getEntityMenu } from "@/app/lib/get/getEntityMenu";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 import { getMenuCategories } from "@/app/lib/get/getMenuCategories";
-import AddNewMenuCategoryModal from "./menuCategories-Components/AddNewMenuCategoryModal";
-import DeleteMenuCategoryModal from "./menuCategories-Components/DeleteMenuCategoryModal";
-import MenuCategoryCard from "./menuCategories-Components/MenuCategoryCard";
-import EditMenuCategoryNameModal from "./menuCategories-Components/EditMenuCategoryNameModal";
+import AddNewMenuCategoryModal from "./menuCategoriesComponents/AddNewMenuCategoryModal";
+import DeleteMenuCategoryModal from "./menuCategoriesComponents/DeleteMenuCategoryModal";
+import MenuCategoryCard from "./menuCategoriesComponents/MenuCategoryCard";
+import EditMenuCategoryNameModal from "./menuCategoriesComponents/EditMenuCategoryNameModal";
 
 export default function ManageMenuCategories() {
   // //Owner chooses between pdf and manually inputting items

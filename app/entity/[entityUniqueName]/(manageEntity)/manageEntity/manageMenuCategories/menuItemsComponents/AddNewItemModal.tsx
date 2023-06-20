@@ -226,7 +226,8 @@ export default function AddNewItemModal(props) {
                               <Image
                                 src={itemPictureUrl}
                                 alt="Picture of About Us Section"
-                                fill
+                                fill 
+                                className="object-center"
                               />
                               <button
                                 onClick={handleDeletePictureButton}

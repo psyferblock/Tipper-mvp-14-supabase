@@ -19,23 +19,23 @@ function MainPageComponent() {
   const images = mainCoverImages.map((slide, index) => (
     <div
       key={index}
-      className="p-auto  m-auto aspect-auto w-full object-top"
+      className="p-auto  m-auto aspect-auto w-full object-top sm:object-center md:object-center"
     >
       <Image
         width={500}
         height={500}
         alt="cover-photo"
         src={slide.url}
-        className="p-auto rounded- m-auto aspect-auto w-full object-top"
+        className="p-auto m-auto aspect-auto w-full rounded-sm bg-white  object-top "
       />
       {JSON.stringify(slide.url)}
     </div>
   ));
   console.log("images", images);
   return (
-    <div className="h-screen w-full bg-ruby-tint p-2 ">
-      <div className=" md:h-4/12  h-2/5 w-full   ">
-        <CarouselComponent autoSlide={true} autoSlideInterval={3000}>
+    <div className="h-screen w-full bg-ruby-tint p-2 sm:px-12 ">
+      <div className=" md:h-4/12  h-2/5 w-full sm:object-center  ">
+        <CarouselComponent autoSlide={true} autoSlideInterval={5000}>
           {images}
         </CarouselComponent>
       </div>

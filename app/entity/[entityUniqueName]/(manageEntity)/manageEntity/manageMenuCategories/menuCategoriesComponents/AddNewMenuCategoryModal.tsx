@@ -30,7 +30,7 @@ export default function AddNewMenuCategoryModal(props) {
     props.closeModal();
 
     //refresh page by rerouting since we cant use router.refresh since calls to DB are in page.tsx (server component)
-    router.push(`${entityUniqueName}/manageEntity/manageMenuCategories`);
+    router.push(`entity/${entityUniqueName}/manageEntity/manageMenuCategories`);
   }
 
   async function handleSaveAsDraftButton() {
