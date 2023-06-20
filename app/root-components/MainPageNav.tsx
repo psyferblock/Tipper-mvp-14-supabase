@@ -2,6 +2,10 @@ import React from "react";
 import Link from "next/link";
 import { createServerClient } from "../utils/supabase-server";
 import NavListItems from "./NavListItems";
+import GoToAboutUsPage from "./GoTo-components/GoToAboutUsPage";
+import GoToTipperHomePage from "./GoTo-components/GoToTipperHomePage";
+import GoToContactUsPage from "./GoTo-components/GoToContactUsPage";
+import GoToSignInPage from "./GoTo-components/GoToSignInPage";
 
 async function MainPageNavBar() {
   const supabaseServer = createServerClient();
@@ -13,30 +17,25 @@ async function MainPageNavBar() {
 
   return (
     <>
-    <div className="p-2 sticky top-0 flex h-20 w-screen items-center justify-between  bg-transparent text-ruby  ">
-      <div className="w-20  ">
-        <Link
-          href="/"
-          className=" text-2xl  font-semibold hover:text-amethyst sm:py-[18px] sm:text-4xl sm:font-normal"
-        >
-          Tipper
-        </Link>
-      </div>
-      {/* <div className=" sm:hidden md:visible">
+      <div className="sticky top-0 flex h-20 w-screen items-center justify-between bg-transparent  p-2 text-ruby  ">
+        <div className="w-20  ">
+          <GoToTipperHomePage/>
+        </div>
+        {/* <div className=" sm:hidden md:visible">
           <HomePageSearchBar />
         </div> */}
-      <div className="z-10">
-        {userAuthenticated === "authenticated" ? (
-          <NavListItems />
-        ) : (
-          <div className=" mr-4 flex justify-between space-x-2" >
-            <Link href="#">About Us</Link>
-            <Link href="#">Contact Us</Link>
-            <Link href="signIn">Sign In</Link>
-          </div>
-        )}{" "}
+        <div className="z-10">
+          {userAuthenticated === "authenticated" ? (
+            <NavListItems />
+          ) : (
+            <div className=" mr-4 flex justify-between space-x-2">
+              <GoToAboutUsPage />
+              <GoToContactUsPage />
+              <GoToSignInPage />
+            </div>
+          )}{" "}
+        </div>
       </div>
-    </div>
     </>
   );
 }

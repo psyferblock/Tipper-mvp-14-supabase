@@ -16,10 +16,10 @@ export default async function HomePageListingOfEntitiesCards() {
       name: "Popular Entities",
       id: 0,
     },
-    {
-      name: "Service Industry",
-      id: 1,
-    },
+    // {
+    //   name: "Service Industry",
+    //   id: 1,
+    // },
     // {
     //   name: "Non-Profit",
     //   id: 2,
@@ -41,7 +41,7 @@ export default async function HomePageListingOfEntitiesCards() {
             </div>
             <Link
               className="flex items-center justify-end text-sm text-blue-500 sm:space-x-1"
-              href={`entitiesBySector`}
+              href={`entitiesBySector/${industries.id}`}
             >
               View All
               <svg

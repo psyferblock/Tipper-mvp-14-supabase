@@ -5,7 +5,9 @@ import ProfileIcon from "./ProfileIcon";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useRef, useState } from "react";
 import SignOut from "./SignOut";
-import Home from "./Home";
+import GoToAboutUsPage from "./GoTo-components/GoToAboutUsPage";
+import GoToUserProfilePage from "./GoTo-components/GoToUserProfilePage";
+import GoToContactUsPage from "./GoTo-components/GoToContactUsPage";
 // import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
 function NavListItems() {
@@ -52,7 +54,7 @@ function NavListItems() {
                           active ? "bg-violet-500 text-white" : "text-gray-900"
                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                       >
-                        <Home />
+                        <GoToUserProfilePage />
                       </div>
                     )}
                   </Menu.Item>
@@ -63,7 +65,7 @@ function NavListItems() {
                           active ? "bg-violet-500 text-white" : "text-gray-900"
                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                       >
-                        <Link href="#">About Us</Link>
+                        <GoToAboutUsPage />{" "}
                       </div>
                     )}
                   </Menu.Item>
@@ -74,7 +76,7 @@ function NavListItems() {
                           active ? "bg-violet-500 text-white" : "text-gray-900"
                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                       >
-                        <Link href="#">Contact Us</Link>
+                        <GoToContactUsPage />{" "}
                       </div>
                     )}
                   </Menu.Item>

@@ -2,13 +2,14 @@
 
 import BasicSearchBar from "@/app/root-components/tools-Components/BasicSearchBar";
 import { useEffect, useState } from "react";
-import EditMenuCategoryNameModal from "../../../(menu)/menu/menuCategories-Components/EditMenuCategoryNameModal";
-import AddNewMenuCategoryModal from "../../../(menu)/menu/menuCategories-Components/AddNewMenuCategoryModal";
-import DeleteMenuCategoryModal from "../../../(menu)/menu/menuCategories-Components/DeleteMenuCategoryModal";
-import MenuCategoryCard from "../../../(menu)/menu/menuCategories-Components/MenuCategoryCard";
+
 import { getEntityMenu } from "@/app/lib/get/getEntityMenu";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 import { getMenuCategories } from "@/app/lib/get/getMenuCategories";
+import AddNewMenuCategoryModal from "./menuCategories-Components/AddNewMenuCategoryModal";
+import DeleteMenuCategoryModal from "./menuCategories-Components/DeleteMenuCategoryModal";
+import MenuCategoryCard from "./menuCategories-Components/MenuCategoryCard";
+import EditMenuCategoryNameModal from "./menuCategories-Components/EditMenuCategoryNameModal";
 
 export default function ManageMenuCategories() {
   // //Owner chooses between pdf and manually inputting items

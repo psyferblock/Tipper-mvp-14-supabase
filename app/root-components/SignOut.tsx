@@ -1,6 +1,6 @@
-"use client"
-import React from 'react'
-import { useSupabase } from '../supabase-provider';
+"use client";
+import React from "react";
+import { useSupabase } from "../supabase-provider";
 
 import { useRouter } from "next/navigation";
 
@@ -15,12 +15,9 @@ const SignOut = () => {
   };
   return (
     <div>
-        
-            <button onClick={(e) => handleSignOut()}>Sign out</button>
-          
-        
+      <button onClick={(e) => handleSignOut()}>Sign out</button>
     </div>
-  )
-}
+  );
+};
 
-export default SignOut
+export default SignOut;

@@ -1,10 +1,10 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import { useSupabase } from '../supabase-provider';
-import { getMyUserInfos } from '../lib/get/getMyUserInfo';
+import { useSupabase } from '@/app/supabase-provider';
+import { getMyUserInfos } from '@/app/lib/get/getMyUserInfo';
 import { useRouter } from 'next/navigation';
 
-const Home = () => {
+const GoToUserProfilePage = () => {
     const [userInfo, setUserInfo] = useState({});
   const { session, supabase } = useSupabase();
   const router = useRouter();
@@ -32,4 +32,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default GoToUserProfilePage
