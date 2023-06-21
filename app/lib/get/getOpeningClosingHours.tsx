@@ -11,7 +11,7 @@ export async function getOpeningHoursServer({
     .eq("entity_id", entityId)
     .single();
   if (error) {
-    console.log("the error from getOpeningHours browser", error);
+    // console.log("the error from getOpeningHours browser", error);
   }
   console.log("the data from getOpeningHours browser", data);
   return data;
@@ -27,7 +27,7 @@ export async function getClosingHoursServer({
     .eq("entity_id", entityId)
     .single();
   if (error) {
-    console.log("the error from getOpeningHours browser", error);
+    // console.log("the error from getOpeningHours browser", error);
   }
   console.log("the data from getOpeningHours browser", data);
   return data;

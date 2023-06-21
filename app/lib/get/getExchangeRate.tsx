@@ -8,7 +8,7 @@ export async function getExchangeRate(entityId) {
     .eq("entity_id", entityId)
     .single();
   if (error) throw error;
-  console.log("ex rate:", data);
+  // console.log("ex rate:", data)
   const rate = data?.usd_lbp_rate;
   return rate;
 }
@@ -21,7 +21,7 @@ export async function getExchangeRateServer(supabaseServerClient, entityId) {
     .eq("entity_id", entityId)
     .single();
   if (error) throw error;
-  console.log("ex rate:", data);
+  // console.log("ex rate:", data);
   const rate = data?.usd_lbp_rate;
   return rate;
 }

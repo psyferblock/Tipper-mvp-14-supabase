@@ -8,6 +8,6 @@ export async function getUserFromEmailAddress(emailAddress) {
     .limit(1)
     .single();
   if (error) throw error;
-  console.log("user with the email address:", data);
+  // console.log("user with the email address:", data);
   return data;
 }

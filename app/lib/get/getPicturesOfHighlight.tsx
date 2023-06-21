@@ -6,7 +6,7 @@ export async function getPicturesOfHighlight(highlightId) {
     .select()
     .eq("entity_highlight_id", highlightId);
   if (error) throw error;
-  console.log("arrayOfUrls of highlight returned:", data);
+  // console.log("arrayOfUrls of highlight returned:", data);
   return data;
 }
 
@@ -19,6 +19,6 @@ export async function getPicturesOfHighlightServer(
     .select()
     .eq("entity_highlight_id", highlightId);
   if (error) throw error;
-  console.log("arrayOfUrls of highlight returned:", data);
+  // console.log("arrayOfUrls of highlight returned:", data);
   return data;
 }

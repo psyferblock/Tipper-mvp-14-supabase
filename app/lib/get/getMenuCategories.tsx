@@ -10,7 +10,7 @@ export async function getMenuCategories({ menuId: menuId }) {
   // .single()
 
   if (error) throw error;
-  console.log("data from getMenuCategories browser ", data);
+  // console.log("data from getMenuCategories browser ", data);
 
   return data;
 }
@@ -26,6 +26,6 @@ export async function getMenuCategoriesServer({
     .order("id", { ascending: true });
 
   if (error) throw error;
-  console.log("data from getMenuCategories server ", data);
+  // console.log("data from getMenuCategories server ", data);
   return data;
 }

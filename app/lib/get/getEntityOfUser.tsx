@@ -20,6 +20,6 @@ export async function getEntityOfUserServer(supabaseServerClient, userId) {
   // .limit(1)
   // .single();
   if (error) throw error;
-  console.log("data returned from getEntityOfUser", data);
+  // console.log("data returned from getEntityOfUser", data);
   return data[0];
 }

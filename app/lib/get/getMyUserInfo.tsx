@@ -7,7 +7,7 @@ export async function getMyUserInfos(userId) {
     .eq("user_id", userId);
   // .single()
   if (error) throw error;
-  console.log("user profile from getMyUserInfos", data);
+  // console.log("user profile from getMyUserInfos", data);
   return data[0];
 }
 
@@ -18,7 +18,7 @@ export async function getMyUserInfoServer(supabaseServer, userId) {
     .eq("user_id", userId);
   // .single()
   if (error) throw error;
-  console.log("user profile from getMyUserInfoServer", data);
+  // console.log("user profile from getMyUserInfoServer", data);
   return data[0];
 }
 

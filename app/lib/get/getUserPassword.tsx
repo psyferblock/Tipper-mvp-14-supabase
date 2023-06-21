@@ -7,6 +7,6 @@ export async function getUserPassword(supabaseServerClient, userId) {
   //     userId
   //   );
   if (error) throw error;
-  console.log("data from auth", data);
+  // console.log("data from auth", data);
   return data;
 }

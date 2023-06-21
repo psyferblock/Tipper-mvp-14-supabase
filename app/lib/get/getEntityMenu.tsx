@@ -7,7 +7,7 @@ export async function getEntityMenu(entityId: string) {
     .eq("entity_id", entityId);
 
   if (error) throw error;
-  console.log("data from getEntityMenu", data);
+  // console.log("data from getEntityMenu", data);
   return data[0];
 }
 export async function getEntityMenuServer(supabaseServer, entityId: string) {
@@ -17,6 +17,6 @@ export async function getEntityMenuServer(supabaseServer, entityId: string) {
     .eq("entity_id", entityId);
 
   if (error) throw error;
-  console.log("data from getEntityMenuServer ", data);
+  // console.log("data from getEntityMenuServer ", data);
   return data[0];
 }

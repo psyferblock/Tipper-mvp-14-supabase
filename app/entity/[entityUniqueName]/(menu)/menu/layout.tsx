@@ -34,7 +34,6 @@ export default async function MenuIdPageLayout({
     entityUniqueName
   );
   const entityId = entityInfos?.id;
-  // console.log('entityInfos from entityUniqueName layout ', entityInfos)
 
   ////getting pictures
   const allBasicPictures = await getBasicPicturesServer(
@@ -47,7 +46,6 @@ export default async function MenuIdPageLayout({
   const entityCoverPictures = allBasicPictures.filter(
     (pic) => pic.media_category == "cover_picture"
   );
-  console.log("entityCoverPictures", entityCoverPictures);
   const name = entityInfos?.entity_name;
   const entityTitle = name.split(" ");
 
@@ -61,14 +59,10 @@ export default async function MenuIdPageLayout({
 
   let userOwnsEntity;
   let entityOwnedId = entityInfos?.user_id;
-  console.log('entityOwnedId', entityOwnedId)
-  if (session) {
-    const ownerOfCurrentEntity = entityOwnedId;
-    console.log('ownerOfCurrentEntity', ownerOfCurrentEntity)
-    if (userId == ownerOfCurrentEntity) {
-      userOwnsEntity = true;
-      entityOwnedId = entityInfos.id;
-    }
+
+  if (userId == entityOwnedId) {
+    userOwnsEntity = true;
+    entityOwnedId = entityInfos.id;
   }
 
   return (
