@@ -73,7 +73,6 @@ const UploadPdfMenu = () => {
       pictureUrl: pdfMenu,
       menuId: menuId,
     });
-    console.log("pdfMenuFromStorage", pdfMenuFromStorage);
   };
   return (
     <div className="m-2 flex flex-col justify-between border-2 p-2 ">

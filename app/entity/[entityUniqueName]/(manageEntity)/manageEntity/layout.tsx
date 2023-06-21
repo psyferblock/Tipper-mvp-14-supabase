@@ -35,16 +35,13 @@ async function layout({
     entityUniqueName
   );
   const entityId = entityInformation?.id;
-  console.log("entityId at manageEntity", entityId);
 
   // menu stuff
   const menuInfo = await getEntityMenuServer(supabaseServer, entityId);
   const menuId = menuInfo.id;
 
-  console.log("menuId from layout/manageEntity", menuId);
   // categories stuff
   const categories = await getMenuCategoriesServer({ supabaseServer, menuId });
-  console.log("menu categories from  layout/manageEntity", categories);
   const categoryId = categories.id;
 
   const userId = session?.user.id;
@@ -61,7 +58,6 @@ async function layout({
     (pictureObject) => pictureObject.media_category == "logo_picture"
   );
   const logoPictureObject = arrayOfLogoPictureObject[0];
-  console.log("logoPictureObject::", logoPictureObject);
 
   return (
     <div>

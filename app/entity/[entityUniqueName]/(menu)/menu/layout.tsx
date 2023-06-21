@@ -60,10 +60,9 @@ export default async function MenuIdPageLayout({
   return (
     <>
       <div>
-        layout for entityUniqueName
-        <div className="m-2 flex items-center justify-between border-2 border-stone-500">
+        <div className="m-2 flex items-center justify-between ">
           <div className="flex">
-            <div className="aspect-1/1 relative mx-auto h-10 w-10 overflow-hidden rounded-full bg-ruby-tint ring-2 ring-ruby-tint">
+            <div className="aspect-1/1 relative mx-auto h-10 w-10 overflow-hidden rounded-full  ring-2 ring-ruby-tint">
               <Image
                 src={entityInfos?.entity_logo_url}
                 fill
@@ -83,7 +82,7 @@ export default async function MenuIdPageLayout({
             </button>
           )}
         </div>
-        <div className=" m-2 border-2 border-stone-500">
+        <div className=" m-2 ">
           {/* <CopyUrlShareWhatsappButtons /> */}
         </div>
       </div>

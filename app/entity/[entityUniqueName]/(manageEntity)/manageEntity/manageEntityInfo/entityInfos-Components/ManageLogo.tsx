@@ -31,7 +31,6 @@ export default function ManageLogo() {
       id: entityId,
       uuid: uuid,
     });
-    console.log("pictureUrl", pictureUrl);
 
     let newLogoObject = {
       id: null,

@@ -96,12 +96,6 @@ export default function StickyBarSaveCancel(props) {
       entityLogoUrl: logoObject.media_url,
     });
 
-    console.log("entityId ,closingHoutsMondayFriday", entityId);
-    console.log(
-      "closingHoursMondayFriday",
-      hoursContextState.closingHoursMondayFriday
-    );
-    console.log("we are before save new pictures await ");
     await saveNewPictures();
 
     //Refresh page every change is saved
@@ -124,12 +118,8 @@ export default function StickyBarSaveCancel(props) {
     );
 
     if (logoObject?.id == null) {
-      console.log("logoObject in if", logoObject);
       arrayOfNewPictureObjects.push(logoObject);
-      console.log(
-        "arrayOfNewPictureObjects after loggo adding",
-        arrayOfNewPictureObjects
-      );
+    
     }
 
     if (arrayOfNewPictureObjects.length > 0) {

@@ -1,7 +1,7 @@
 async function HomeLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <div>{children}</div>
+      <div className="bg-ruby-tint">{children}</div>
     </>
   );
 }

@@ -12,7 +12,6 @@ function CarouselComponent({
   autoSlide: autoSlide,
   autoSlideInterval: autoSlideInterval,
 }) {
-  console.log("slides from carousel component ", slides);
   const [current, setCurrent] = useState<number>(0);
   const previous = () => {
     setCurrent((current) => (current === 0 ? slides.length - 1 : current - 1));
@@ -37,7 +36,7 @@ function CarouselComponent({
     <div className="relative h-full w-full overflow-hidden rounded-lg ">
       {/* the translateX property moves the slide through css by 100 % so the current index will allow a move where 100% of the picture will slide. */}
       <div
-        className=" flex h-full w-full transition-transform duration-500 ease-out "
+        className=" max-w-lg  flex h-full w-full transition-transform duration-500 ease-out "
         style={{ transform: `translateX(-${current * 100}%)` }}
       >
         {slides}

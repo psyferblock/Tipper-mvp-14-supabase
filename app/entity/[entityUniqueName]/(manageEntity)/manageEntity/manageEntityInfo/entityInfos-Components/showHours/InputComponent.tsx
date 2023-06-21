@@ -28,8 +28,6 @@ export default function WorkingHoursRow(props) {
     } else {
       throw new Error("no days mate");
     }
-    console.log("openingHours", openingHours, props.day);
-    console.log("closingHours", closingHours);
   };
 
   return (

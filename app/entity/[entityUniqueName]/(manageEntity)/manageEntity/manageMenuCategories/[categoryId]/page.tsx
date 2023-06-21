@@ -18,7 +18,6 @@ const menuCategoryPage = async ({
   /// for the future we need to get the menuId from the entityContextProvider
   const supabaseServer = createServerClient();
 
-  console.log("params", params);
   const entityInfo = await getEntityUsingUniqueNameServer(
     supabaseServer,
     params.entityUniqueName

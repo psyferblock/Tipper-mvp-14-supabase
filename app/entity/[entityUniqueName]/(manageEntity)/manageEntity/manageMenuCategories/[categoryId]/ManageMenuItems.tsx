@@ -3,7 +3,6 @@
 import BasicSearchBar from "@/app/root-components/tools-Components/BasicSearchBar";
 import ToggleButton from "@/app/root-Components/tools-Components/ToggleButton";
 import { lazy, Suspense, useState } from "react";
-import ManageMenuItemsMobile from "../menuItemsComponents/ManageMenuItemsMobile";
 import Link from "next/link";
 import Image from "next/image";
 import AddNewItemModal from "../menuItemsComponents/AddNewItemModal";
@@ -21,7 +20,6 @@ export default function ManageMenuItems({
   categoryName,
 }) {
   const searchParams = useSearchParams();
-  console.log("entityUniqueName", entityUniqueName);
 
   const { entityId } = useEntityContext();
 

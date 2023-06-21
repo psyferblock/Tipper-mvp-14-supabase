@@ -133,11 +133,15 @@ export default function ManageAboutUsPage(props) {
         <div className="relative mt-1 h-40 rounded-lg border-2 border-dashed border-gray-400 bg-gray-100 sm:h-56">
           {aboutUsPictureUrl ? (
             <>
+                          <div className="aspect-1/1 relative mx-auto  overflow-hidden rounded-full bg-ruby-tint ring-2 ring-ruby-tint">
+
               <Image
                 src={aboutUsPictureUrl}
                 alt="Picture of About Us Section"
-                fill
+                width={500}
+                height={500}
               />
+              </div>
               <button
                 onClick={() => handleDeletePictureButton()}
                 className="absolute bottom-0 right-0 z-10 mb-3 mr-3 h-fit rounded-lg bg-white"

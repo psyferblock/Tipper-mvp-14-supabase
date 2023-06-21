@@ -15,7 +15,6 @@ const AddNewMenuCategoryModal = (props) => {
   const buttonRef = useRef(null);
   const { entityUniqueName } = useEntityContext();
   const menuId = props.menuId;
-  console.log("menuId from addnewmenucategorymodal", menuId);
 
   const router = useRouter();
 

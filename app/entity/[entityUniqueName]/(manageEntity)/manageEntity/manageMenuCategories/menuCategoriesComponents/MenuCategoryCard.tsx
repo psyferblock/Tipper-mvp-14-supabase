@@ -19,10 +19,7 @@ const MenuCategoryCard = (props) => {
   const isPublic = props.isMenuCategoryPublic;
 
   const [isCategoryPublic, setIsMenuCategoryPublic] = useState(isPublic);
-  console.log(
-    "isMenuCategoryPublic outside handle toggle button",
-    isCategoryPublic
-  );
+
 
   async function handleToggleButton(boolean) {
     setIsMenuCategoryPublic(boolean);

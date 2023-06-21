@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { v4 as uuidv4 } from "uuid";
 
 export default function AddNewItemModal(props) {
-  //State
+
   const [itemName, setItemName] = useState<string | undefined>();
   const [itemDescription, setItemDescription] = useState<string | undefined>();
   const [itemPrice, setItemPrice] = useState<number | undefined>();
@@ -18,10 +18,10 @@ export default function AddNewItemModal(props) {
   const buttonRef = useRef(null);
 
   const router = useRouter();
+  
 
   const entityId = props.entityId;
   const entityUniqueName = props.entityUniqueName;
-  console.log("entityUniqueName", entityUniqueName);
 
   async function handlePublishButton(
     itemName: string,
@@ -54,7 +54,8 @@ export default function AddNewItemModal(props) {
   async function handleSaveAsDraftButton(
     itemName: string,
     itemDescription: string,
-    itemPrice: string
+    itemPrice: string,
+    itemPictureUrl:string
   ) {
     //when "Save As draft" in modal is clicked:
     await createMenuItem(

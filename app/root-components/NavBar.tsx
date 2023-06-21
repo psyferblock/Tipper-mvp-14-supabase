@@ -2,6 +2,9 @@ import React from "react";
 import Link from "next/link";
 import { createServerClient } from "../utils/supabase-server";
 import NavListItems from "./NavListItems";
+import GoToAboutUsPage from "./GoTo-components/GoToAboutUsPage";
+import GoToContactUsPage from "./GoTo-components/GoToContactUsPage";
+import GoToSignInPage from "./GoTo-components/GoToSignInPage";
 
 async function NavBar() {
   const supabaseServer = createServerClient();
@@ -28,9 +31,11 @@ async function NavBar() {
         {userAuthenticated === "authenticated" ? (
           <NavListItems />
         ) : (
-          <div className="p-2">
-            <Link href="signIn">Sign In</Link>
-          </div>
+          <div className=" mr-4 flex justify-between space-x-2">
+          <GoToAboutUsPage />
+          <GoToContactUsPage />
+          <GoToSignInPage />
+        </div>
         )}{" "}
       </div>
     </div>
