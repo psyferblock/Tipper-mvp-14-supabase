@@ -7,7 +7,7 @@ export default function EntityPageContactUsSection({
   pictureUrl,
 }) {
   return (
-    <div className="items-center space-y-4 bg-white px-4 py-4 sm:flex sm:space-x-16 sm:space-y-0 sm:px-0 sm:py-12">
+    <div className="items-center space-y-4 bg-white py-4 sm:flex sm:space-x-16 sm:space-y-0 sm:px-0 sm:py-12">
       {/* PARAGRAPH */}
       <div className="space-y-2 text-center sm:ml-10 sm:w-7/12 sm:space-y-3 sm:text-start">
         <div className="mx-auto w-fit border-t-8 border-blue-500 pt-3 text-xl font-bold">

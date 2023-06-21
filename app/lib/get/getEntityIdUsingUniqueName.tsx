@@ -11,6 +11,6 @@ export async function getEntityIdUsingUniqueNameServer({
     .eq("entity_unique_name", entityUniqueName)
     .single();
   if (error) throw error;
-  console.log("data from getEntityIdUsingUniqueNameServer  ", data);
+  // console.log("data from getEntityIdUsingUniqueNameServer  ", data);
   return data;
 }

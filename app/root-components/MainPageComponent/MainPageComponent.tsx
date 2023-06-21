@@ -29,7 +29,7 @@ function MainPageComponent() {
     </div>
   ));
   return (
-    <div className="h-screen bg-ruby-white p-2 sm:px-12  ">
+    <div className="bg-ruby-white h-screen p-2 sm:px-12  ">
       <div className=" md:h-4/12  h-2/5 w-full  ">
         <CarouselComponent autoSlide={true} autoSlideInterval={5000}>
           {images}

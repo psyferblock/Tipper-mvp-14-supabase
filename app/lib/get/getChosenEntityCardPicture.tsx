@@ -12,6 +12,6 @@ export async function getChosenEntityCardPictureServer(
     .limit(1)
     .single();
   if (error) console.log(error);
-  console.log("data returned after fetching first cover photo", data);
+  // console.log("data returned after fetching first cover photo", data);
   return data;
 }

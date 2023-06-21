@@ -1,3 +1,4 @@
+import ManageEntityButton from "@/app/(entityCreation)/entity-components/ManageEntityButton";
 import { getBasicPicturesServer } from "@/app/lib/get/getBasicPictures";
 import { getEntityUsingUniqueNameServer } from "@/app/lib/get/getEntityUsingUniqueName";
 import EntityPageAboutUsSection from "@/app/root-components/entityPage-Components/AboutUsSection";
@@ -9,6 +10,7 @@ import EntityPageHighlightsSection from "@/app/root-components/entityPage-Compon
 import { createServerClient } from "@/app/utils/supabase-server";
 import Image from "next/image";
 import Link from "next/link";
+import { BsWordpress } from "react-icons/bs";
 
 export default async function MenuIdPageLayout({
   children,
@@ -46,12 +48,24 @@ export default async function MenuIdPageLayout({
     (pic) => pic.media_category == "cover_picture"
   );
   console.log("entityCoverPictures", entityCoverPictures);
+  const name = entityInfos?.entity_name;
+  const entityTitle = name.split(" ");
+
+  const capitaliseString = (title) => {
+    for (let i = 0; i < title.length; i++) {
+      title[i] = title[i][0].toUpperCase() + title[i].substr(1);
+    }
+    return title.join(" ");
+  };
+  const finalName = capitaliseString(entityTitle);
 
   let userOwnsEntity;
   let entityOwnedId = entityInfos?.user_id;
+  console.log('entityOwnedId', entityOwnedId)
   if (session) {
     const ownerOfCurrentEntity = entityOwnedId;
-    if (userId === ownerOfCurrentEntity) {
+    console.log('ownerOfCurrentEntity', ownerOfCurrentEntity)
+    if (userId == ownerOfCurrentEntity) {
       userOwnsEntity = true;
       entityOwnedId = entityInfos.id;
     }
@@ -61,29 +75,24 @@ export default async function MenuIdPageLayout({
     <>
       <div>
         <div className="m-2 flex items-center justify-between ">
-          <div className="flex">
-            <div className="aspect-1/1 relative mx-auto h-10 w-10 overflow-hidden rounded-full  ring-2 ring-ruby-tint">
+          <div className="flex ">
+            <div className="aspect-1/1 relative mx-auto aspect-auto h-12 w-12 overflow-hidden rounded-md  ring-2 ring-ruby-tint">
               <Image
                 src={entityInfos?.entity_logo_url}
                 fill
                 alt="entity_logo_url"
               />
             </div>
-            <div>{entityInfos?.entity_name}</div>
+            <div className="p-2 text-center text-lg ">{finalName}</div>
           </div>
-          {userOwnsEntity && (
-            <button className="m-2 h-12 w-32 rounded-md bg-amethyst">
-              <Link
-                href={`entity/${entityUniqueName}/manageEntity/manageEntityInfo`}
-                className=" "
-              >
-                Manage Entity
-              </Link>
-            </button>
-          )}
+          <div>
+            {userOwnsEntity && (
+              <ManageEntityButton entityUniqueName={entityUniqueName} />
+            )}
+          </div>
         </div>
         <div className=" m-2 ">
-          {/* <CopyUrlShareWhatsappButtons /> */}
+          <CopyUrlShareWhatsappButtons />
         </div>
       </div>
       {/* TOP OF THE PAGE CONTAINER */}

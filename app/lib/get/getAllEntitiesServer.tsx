@@ -13,7 +13,7 @@ export async function getAllEntitiesServer({ supabaseServer: supabaseServer }) {
     )
     .match({ is_verified: false });
   if (error) throw error;
-  console.log("data from getAllEntitiesServer", data);
+  // console.log("data from getAllEntitiesServer", data);
   return data;
 }
 

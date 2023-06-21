@@ -7,6 +7,6 @@ export async function getCategoryFromCategoryId(categoryId) {
     .eq("id", categoryId)
     .single();
   if (error) throw error;
-  console.log("data from getCategoryFromCategoryId ", data);
+  // console.log("data from getCategoryFromCategoryId ", data);
   return data;
 }
