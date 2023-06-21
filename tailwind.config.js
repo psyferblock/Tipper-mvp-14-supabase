@@ -24,7 +24,8 @@ module.exports = {
         "emerald-shade":"#003947",
         pearl:"#fff2e5",
         diamond:"#ffffff",
-        obsidian:"#151828"
+        obsidian:"#151828",
+        backGround:"f5f5f5"
 
       },
       aspectRatio: {

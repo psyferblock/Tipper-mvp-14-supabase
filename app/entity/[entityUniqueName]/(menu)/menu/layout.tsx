@@ -4,7 +4,7 @@ import { getEntityUsingUniqueNameServer } from "@/app/lib/get/getEntityUsingUniq
 import EntityPageAboutUsSection from "@/app/root-components/entityPage-Components/AboutUsSection";
 import EntityPageContactUsSection from "@/app/root-components/entityPage-Components/ContactUsSection";
 import CopyUrlShareWhatsappButtons from "@/app/root-components/entityPage-Components/CopyUrlShareWhatsappButtons";
-import EntityPageCoverPhotosSection from "@/app/root-components/entityPage-Components/CoverPhotosSection";
+import CoverPhotosSection from "@/app/root-components/entityPage-Components/CoverPhotosSection";
 import EntityPageContainerWithEntityInfos from "@/app/root-components/entityPage-Components/EntityPageContainerWithEntityInfos";
 import EntityPageHighlightsSection from "@/app/root-components/entityPage-Components/HighlightsSection";
 import { createServerClient } from "@/app/utils/supabase-server";
@@ -67,63 +67,64 @@ export default async function MenuIdPageLayout({
 
   return (
     <>
-      <div>
-        <div className="m-2 flex items-center justify-between ">
-          <div className="flex ">
-            <div className="aspect-1/1 relative mx-auto aspect-auto h-12 w-12 overflow-hidden rounded-md  ring-2 ring-ruby-tint">
-              <Image
-                src={entityInfos?.entity_logo_url}
-                fill
-                alt="entity_logo_url"
-              />
+      <div className="bg-black">
+        <div>
+          <div className="m-2 flex items-center justify-between ">
+            <div className="flex ">
+              <div className="aspect-1/1 relative mx-auto aspect-auto h-12 w-12 overflow-hidden rounded-md  ring-2 ring-ruby-tint">
+                <Image
+                  src={entityInfos?.entity_logo_url}
+                  fill
+                  alt="entity_logo_url"
+                />
+              </div>
+              <div className="p-2 align-text-bottom text-lg ">{finalName}</div>
             </div>
-            <div className="p-2 text-center text-lg ">{finalName}</div>
+            <div>
+              {userOwnsEntity && (
+                <ManageEntityButton entityUniqueName={entityUniqueName} />
+              )}
+            </div>
           </div>
-          <div>
-            {userOwnsEntity && (
-              <ManageEntityButton entityUniqueName={entityUniqueName} />
-            )}
+          <div className=" m-2 ">
+            <CopyUrlShareWhatsappButtons />
           </div>
         </div>
-        <div className=" m-2 ">
-          <CopyUrlShareWhatsappButtons />
-        </div>
-      </div>
-      {/* TOP OF THE PAGE CONTAINER */}
-      <div className="flex flex-col-reverse sm:mb-8 sm:flex sm:h-[496px] sm:flex-row sm:space-x-5">
-        <EntityPageContainerWithEntityInfos entityInfos={entityInfos} />
+        {/* TOP OF THE PAGE CONTAINER */}
+        <div className="flex flex-col-reverse sm:mb-8 sm:flex sm:h-[496px] sm:flex-row sm:space-x-5">
+          <EntityPageContainerWithEntityInfos entityInfos={entityInfos} />
 
-        {/* EVERYTHING ON THE RIGHT OF THE LEFT COLUMN */}
-        <div className="justify-between sm:flex sm:h-[496px] sm:w-1/4 sm:grow sm:flex-col">
-          {/*  COVER PHOTOS CONTAINER */}
-          <EntityPageCoverPhotosSection
-            entityCoverPictures={entityCoverPictures}
-          />
+          {/* EVERYTHING ON THE RIGHT OF THE LEFT COLUMN */}
+          <div className="justify-between sm:flex sm:h-[496px] sm:w-1/4 sm:grow sm:flex-col">
+            {/*  COVER PHOTOS CONTAINER */}
+            <CoverPhotosSection entityCoverPictures={entityCoverPictures} />
 
-          {/* HIGHLIGHTS CONTAINER */}
+            {/* HIGHLIGHTS CONTAINER */}
 
-          {/* <EntityPageHighlightsSection
+            {/* <EntityPageHighlightsSection
               entityHighlights={entityHighlights}
               userOwnsEntity={userOwnsEntity}
               entityOwnedId={entityOwnedId}
             /> */}
+          </div>
+          <div id="menuTab"></div>
         </div>
-      </div>
-      {children}
-      <div>
-        {isContactUsSectionPublic && (
-          <EntityPageContactUsSection
-            description={entityInfos.contact_us_description}
-            phoneNumber={entityInfos.entity_phone_number}
-            pictureUrl={entityInfos.contact_us_picture_url}
-          />
-        )}
+        {children}
+        <div>
+          {isContactUsSectionPublic && (
+            <EntityPageContactUsSection
+              description={entityInfos.contact_us_description}
+              phoneNumber={entityInfos.entity_phone_number}
+              pictureUrl={entityInfos.contact_us_picture_url}
+            />
+          )}
 
-        {/* ABOUT US SECTION */}
-        <EntityPageAboutUsSection
-          description={entityInfos.about_us_description}
-          pictureUrl={entityInfos.about_us_picture_url}
-        />
+          {/* ABOUT US SECTION */}
+          <EntityPageAboutUsSection
+            description={entityInfos.about_us_description}
+            pictureUrl={entityInfos.about_us_picture_url}
+          />
+        </div>
       </div>
     </>
   );

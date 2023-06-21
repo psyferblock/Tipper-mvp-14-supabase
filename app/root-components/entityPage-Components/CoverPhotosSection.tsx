@@ -1,9 +1,8 @@
 import Image from "next/image";
 import CarouselComponent from "./carousel/CarouselComponent";
 
-export default function EntityPageCoverPhotosSection({ entityCoverPictures }) {
-  console.log("entityCoverPictures", entityCoverPictures);
-  const slides = entityCoverPictures.map(
+export default function CoverPhotosSection({ coverPictures }) {
+  const slides = coverPictures.map(
     (pictureObject) => pictureObject.media_url
   );
   console.log("slides", slides);
