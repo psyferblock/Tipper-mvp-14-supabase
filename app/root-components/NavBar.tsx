@@ -5,6 +5,7 @@ import NavListItems from "./NavListItems";
 import GoToAboutUsPage from "./GoTo-components/GoToAboutUsPage";
 import GoToContactUsPage from "./GoTo-components/GoToContactUsPage";
 import GoToSignInPage from "./GoTo-components/GoToSignInPage";
+import GoToTipperHomePage from "./GoTo-components/GoToTipperHomePage";
 
 async function NavBar() {
   const supabaseServer = createServerClient();
@@ -16,14 +17,7 @@ async function NavBar() {
 
   return (
     <div className=" sticky top-0 z-10 mb-0 flex h-16 w-screen items-center justify-between rounded-md bg-ruby-tint text-ruby   ">
-      <div className="w-20  ">
-        <Link
-          href="/"
-          className="p-2 text-2xl  font-semibold hover:text-amethyst sm:py-[18px] sm:text-4xl sm:font-normal"
-        >
-          Tipper
-        </Link>
-      </div>
+      <GoToTipperHomePage/>
       {/* <div className=" sm:hidden md:visible">
           <HomePageSearchBar />
         </div> */}

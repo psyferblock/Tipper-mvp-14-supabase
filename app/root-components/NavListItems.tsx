@@ -4,7 +4,7 @@ import React from "react";
 import ProfileIcon from "./ProfileIcon";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useRef, useState } from "react";
-import SignOut from "./SignOut";
+import SignOut from "./GoTo-components/SignOut";
 import GoToAboutUsPage from "./GoTo-components/GoToAboutUsPage";
 import GoToUserProfilePage from "./GoTo-components/GoToUserProfilePage";
 import GoToContactUsPage from "./GoTo-components/GoToContactUsPage";
@@ -16,13 +16,9 @@ function NavListItems() {
       {/* THE DIV WHEN ITS NOT A SMALL SCREEN */}
 
       <div className=" invisible  md:visible  ">
-        <ul className=" mr-2 flex items-center justify-between pr-2 text-sm ">
-          <li className="items-center p-2 text-center">
-            <Link href="#">About Us</Link>
-          </li>
-          <li className="p-2">
-            <Link href="#">Contact Us</Link>
-          </li>
+        <ul className="mr-2 flex items-center justify-between space-x-2 pr-2 text-sm ">
+          <GoToAboutUsPage />
+          <GoToContactUsPage />
           <ProfileIcon />
         </ul>
       </div>

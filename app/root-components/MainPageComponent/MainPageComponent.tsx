@@ -17,7 +17,8 @@ function MainPageComponent() {
     },
   ];
   return (
-    <div className="bg-ruby-white h-screen p-2 sm:px-12  ">
+    <div className=" h-screen w-full p-2 sm:px-12  ">
+
       <CoverPhotosSection coverPictures={mainCoverImages}/>
       <HomePageListingOfEntitiesCards />
     </div>

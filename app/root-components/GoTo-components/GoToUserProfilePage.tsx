@@ -28,7 +28,7 @@ const GoToUserProfilePage = () => {
     router.push(`home/${uniqueUserName}`);
   };
   return (
-    <div><button className="" onClick={()=>handleHomeButton()} > Home </button></div>
+    <div><button className="text-lg" onClick={()=>handleHomeButton()} > Home </button></div>
   )
 }
 

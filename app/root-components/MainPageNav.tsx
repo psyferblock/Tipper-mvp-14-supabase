@@ -24,11 +24,11 @@ async function MainPageNavBar() {
         {/* <div className=" sm:hidden md:visible">
           <HomePageSearchBar />
         </div> */}
-        <div className="z-10">
+        <div className="z-10 ">
           {userAuthenticated === "authenticated" ? (
             <NavListItems />
           ) : (
-            <div className=" mr-4 flex justify-between space-x-2">
+            <div className=" mr-4 flex justify-between space-x-2 ">
               <GoToAboutUsPage />
               <GoToContactUsPage />
               <GoToSignInPage />

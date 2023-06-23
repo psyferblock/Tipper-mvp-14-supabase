@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useSupabase } from "../supabase-provider";
+import { useSupabase } from "../../supabase-provider";
 
 import { useRouter } from "next/navigation";
 
@@ -14,7 +14,7 @@ const SignOut = () => {
     router.push("/");
   };
   return (
-    <div>
+    <div className="text-base" >
       <button onClick={(e) => handleSignOut()}>Sign out</button>
     </div>
   );

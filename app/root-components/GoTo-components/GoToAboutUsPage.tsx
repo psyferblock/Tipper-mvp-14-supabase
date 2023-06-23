@@ -3,7 +3,7 @@ import React from 'react'
 
 function GoToAboutUsPage() {
   return (
-    <div> <Link href="#">About Us</Link></div>
+    <div className="text-base"> <Link href="#">About Us</Link></div>
   )
 }
 

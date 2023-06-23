@@ -13,6 +13,7 @@ export default async function TipperLandingPage() {
         <div className="z-50 sticky top-0">
           <MainPageNavBar />
         </div>
+        
 
         <MainPageComponent />
       </div>

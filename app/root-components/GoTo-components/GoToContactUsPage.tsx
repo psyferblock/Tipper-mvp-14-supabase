@@ -3,7 +3,7 @@ import React from 'react'
 
 function GoToContactUsPage() {
   return (
-    <div> <Link href="#">Contact Us</Link></div>
+    <div className="text-base"> <Link  href="#">Contact Us</Link></div>
   )
 }
 

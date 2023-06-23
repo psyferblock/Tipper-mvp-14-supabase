@@ -7,7 +7,7 @@ function GoToTipperHomePage() {
       {" "}
       <Link
         href="/"
-        className=" text-2xl  font-semibold hover:text-amethyst sm:py-[18px] sm:text-4xl sm:font-normal"
+        className=" text-2xl font-semibold hover:text-amethyst sm:py-[18px] sm:text-4xl sm:font-normal"
       >
         Tipper
       </Link>

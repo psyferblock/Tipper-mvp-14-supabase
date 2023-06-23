@@ -67,7 +67,7 @@ export default async function MenuIdPageLayout({
 
   return (
     <>
-      <div className="bg-black">
+      <div className="">
         <div>
           <div className="m-2 flex items-center justify-between ">
             <div className="flex ">
@@ -97,7 +97,10 @@ export default async function MenuIdPageLayout({
           {/* EVERYTHING ON THE RIGHT OF THE LEFT COLUMN */}
           <div className="justify-between sm:flex sm:h-[496px] sm:w-1/4 sm:grow sm:flex-col">
             {/*  COVER PHOTOS CONTAINER */}
+            <div className="rounded-sm">
+
             <CoverPhotosSection entityCoverPictures={entityCoverPictures} />
+            </div>
 
             {/* HIGHLIGHTS CONTAINER */}
 
