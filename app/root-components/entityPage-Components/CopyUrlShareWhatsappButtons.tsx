@@ -22,7 +22,7 @@ export default function CopyUrlShareWhatsappButtons() {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 448 512"
-          className="h-10 w-10 "
+          className="h-8 w-8 "
         >
           <path
             fill="currentColor"
@@ -43,7 +43,7 @@ export default function CopyUrlShareWhatsappButtons() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="h-10 w-10 ml-3"
+          className="h-8 w-8 ml-3"
         >
           <path
             strokeLinecap="round"

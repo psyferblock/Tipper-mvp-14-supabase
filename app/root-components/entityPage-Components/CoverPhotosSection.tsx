@@ -1,8 +1,8 @@
 import Image from "next/image";
 import CarouselComponent from "./carousel/CarouselComponent";
 
-export default function CoverPhotosSection({ coverPictures }) {
-  const slides = coverPictures.map((pictureObject) => pictureObject.media_url);
+export default function CoverPhotosSection( {entityCoverPictures} ) {
+  const slides = entityCoverPictures.map((pictureObject) => pictureObject.media_url);
   console.log("slides", slides);
   const slideChildren = slides.map((slide, index) => (
     <div key={index} className="h-full w-full ">
@@ -17,7 +17,7 @@ export default function CoverPhotosSection({ coverPictures }) {
     </div>
   ));
   return (
-    <div className="bg-ruby-white md:h-4/12 h-2/5 p-2   ">
+    <div className="bg-ruby-white md:h-4/12 h-2/5 p-2 ">
       <CarouselComponent autoSlide={false} autoSlideInterval={5000}>
         {slideChildren}
       </CarouselComponent>

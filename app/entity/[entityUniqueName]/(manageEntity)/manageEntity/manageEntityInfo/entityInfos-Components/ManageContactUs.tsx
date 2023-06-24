@@ -113,7 +113,7 @@ export default function ManageContactUsPage(props) {
             />
           </div>
           <div className="text-xs sm:mt-0">
-            Show "Contact Us" section on your entity's public page
+            Show "Contact Us" section on your Entity's public page
           </div>
         </div>
       </div>
@@ -126,7 +126,7 @@ export default function ManageContactUsPage(props) {
           wrap="soft"
           name="contact us"
           id="contact us"
-          className="wrap block h-8 w-full rounded-md border-gray-300 px-4 pb-24 pt-4 text-xs focus:border-indigo-500 focus:ring-indigo-500 sm:mt-1 sm:h-32 sm:pl-4 sm:pr-12 sm:text-sm"
+          className="wrap block h-20 w-full rounded-md border-2 border-gray-300 p-2 px-4 text-xs focus:border-indigo-500 focus:ring-indigo-500 sm:mt-1 sm:h-32 sm:pl-4 sm:pr-12 sm:text-sm"
           placeholder="Enter a description of products people can order by contacting you."
           value={contactUsDescription}
           onChange={(e) => setContactUsDescription(e.target.value)}
@@ -136,7 +136,7 @@ export default function ManageContactUsPage(props) {
         {/* UPLOAD PICTURE FIELD */}
         <label className="text-xs font-medium text-gray-600 ">Image</label>
 
-        <div className="relative mt-1 h-40 rounded-lg border-2 border-dashed border-gray-400 bg-gray-100 sm:h-56">
+        <div className="relative mt-1 h-auto rounded-lg border-2 border-dashed border-gray-400 bg-gray-100 sm:h-56">
           {contactUsPictureUrl ? (
             <>
               <Image
@@ -146,7 +146,7 @@ export default function ManageContactUsPage(props) {
               />
               <button
                 onClick={() => handleDeletePictureButton()}
-                className="absolute bottom-0 right-0 z-10 mb-3 mr-3 h-fit rounded-lg bg-white"
+                className="absolute bottom-0 right-0 z-10 mb-3 mr-3 h-fit rounded-lg bg-diamond"
               >
                 {/* TRASH ICON */}
                 <svg
@@ -155,7 +155,7 @@ export default function ManageContactUsPage(props) {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="z-10 m-1 h-6 w-6 text-blue-500"
+                  className="z-10 m-1 h-6 w-6 text-amethyst"
                 >
                   <path
                     strokeLinecap="round"
@@ -166,7 +166,7 @@ export default function ManageContactUsPage(props) {
               </button>
             </>
           ) : (
-            <div className=" flex justify-center rounded-md px-6 pt-7 ">
+            <div className=" flex justify-center rounded-md px-6 py-7 ">
               <div className="space-y-1 text-center">
                 <svg
                   className="mx-auto h-12 w-12 text-gray-400"
@@ -182,12 +182,12 @@ export default function ManageContactUsPage(props) {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <div className="flex text-sm text-gray-600">
+                <div className="flex justify-center text-sm text-gray-600">
                   <label
                     htmlFor="contactUsPicture"
-                    className="relative cursor-pointer rounded-md bg-gray-100 font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-400"
+                    className="relative cursor-pointer rounded-md bg-gray-100 font-medium text-amethyst-shade focus-within:outline-none focus-within:ring-2 focus-within:ring-amethyst focus-within:ring-offset-2 hover:text-amethyst-tint"
                   >
-                    <span className="">Upload a file</span>
+                    <span className="text-amethyst">Upload a file</span>
                     <input
                       id="contactUsPicture"
                       name="contactUsPicture"
@@ -199,7 +199,7 @@ export default function ManageContactUsPage(props) {
                       }}
                     />
                   </label>
-                  <div className="pl-1">or drag and drop</div>
+                  {/* <div className="pl-1">or drag and drop</div> */}
                 </div>
                 <div className="text-xs text-gray-500">
                   PNG, JPG, GIF up to 10MB

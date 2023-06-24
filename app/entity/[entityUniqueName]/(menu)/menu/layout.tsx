@@ -95,11 +95,10 @@ export default async function MenuIdPageLayout({
           <EntityPageContainerWithEntityInfos entityInfos={entityInfos} />
 
           {/* EVERYTHING ON THE RIGHT OF THE LEFT COLUMN */}
-          <div className="justify-between sm:flex sm:h-[496px] sm:w-1/4 sm:grow sm:flex-col">
+          <div className=" justify-between sm:flex sm:h-[496px] sm:w-1/4 sm:grow sm:flex-col">
             {/*  COVER PHOTOS CONTAINER */}
-            <div className="rounded-sm">
-
-            <CoverPhotosSection entityCoverPictures={entityCoverPictures} />
+            <div className="max-h-52 overflow-y-hidden rounded-sm ">
+              <CoverPhotosSection entityCoverPictures={entityCoverPictures} />
             </div>
 
             {/* HIGHLIGHTS CONTAINER */}

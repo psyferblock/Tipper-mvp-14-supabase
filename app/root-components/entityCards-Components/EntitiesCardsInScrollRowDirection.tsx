@@ -6,7 +6,7 @@ export default function EntityCardsInScrollRowDirection(props) {
     <>
       <div className="bg-white grid h-auto grid-flow-col grid-rows-1 gap-4 overflow-x-auto pb-2 sm:gap-3 sm:pb-5">
         {verifiedEntities.map((entity, index) => (
-          <div key={index}>
+          <div key={index} className="pr-2">
             {" "}
             <EntityCard entity={entity} />
           </div>

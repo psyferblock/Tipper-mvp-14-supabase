@@ -19,7 +19,7 @@ function MainPageComponent() {
   return (
     <div className=" h-screen w-full p-2 sm:px-12  ">
 
-      <CoverPhotosSection coverPictures={mainCoverImages}/>
+      <CoverPhotosSection entityCoverPictures={mainCoverImages}/>
       <HomePageListingOfEntitiesCards />
     </div>
   );

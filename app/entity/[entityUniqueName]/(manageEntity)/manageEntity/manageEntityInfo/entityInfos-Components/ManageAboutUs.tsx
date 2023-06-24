@@ -103,14 +103,14 @@ export default function ManageAboutUsPage(props) {
     <div className="h-fit  space-y-4 rounded-lg bg-white p-3 drop-shadow-lg sm:p-4">
       <div className="items-center sm:flex sm:space-x-6">
         <div className="mb-1 text-lg font-bold">About Us</div>
-        {/* <div className="flex items-center pb-0.5 space-x-1 sm:py-0 py-1">
+        <div className="flex items-center pb-0.5 space-x-1 sm:py-0 py-1">
           <ToggleButton 
          
           />
           <p className="text-xs sm:mt-0">
-            Show "About Us" section on your entity's public page
+            Show "About Us" section on your Entity's public page
           </p>
-        </div> */}
+        </div>
       </div>
       <div>
         <label htmlFor="about us" className="text-xs font-medium text-gray-600">
@@ -121,11 +121,12 @@ export default function ManageAboutUsPage(props) {
           wrap="soft"
           name="about us"
           id="about us"
-          className="wrap block h-8 w-full rounded-md border-gray-300 px-4 pb-24 pt-4 text-xs focus:border-indigo-500 focus:ring-indigo-500 sm:mt-1 sm:h-32 sm:pl-4 sm:pr-12 sm:text-sm"
+          className=" peer wrap block h-20 p-2 w-full  border-2 rounded-md border-gray-300 px-4 text-xs focus:border-amethyst focus:ring-amethyst sm:mt-1 sm:h-32 sm:pl-4 sm:pr-12 sm:text-sm"
           placeholder="Enter a description of your wonderful business and people operating it!"
           value={aboutUsDescription}
           onChange={(e) => setAboutUsDescription(e.target.value)}
         />
+        
       </div>
       <div>
         {/* UPLOAD PICTURE FIELD */}
@@ -140,7 +141,7 @@ export default function ManageAboutUsPage(props) {
               />
               <button
                 onClick={() => handleDeletePictureButton()}
-                className="absolute bottom-0 right-0 z-10 mb-3 mr-3 h-fit rounded-lg bg-white"
+                className="absolute bottom-0 right-0 z-10 mb-3 mr-3 h-fit rounded-lg bg-diamond"
               >
                 {/* TRASH ICON */}
                 <svg
@@ -149,7 +150,7 @@ export default function ManageAboutUsPage(props) {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="z-10 m-1 h-6 w-6 text-blue-500"
+                  className="z-10 m-1 h-6 w-6 text-amythyst"
                 >
                   <path
                     strokeLinecap="round"
@@ -160,7 +161,7 @@ export default function ManageAboutUsPage(props) {
               </button>
             </>
           ) : (
-            <div className=" flex justify-center rounded-md px-6 pt-7 ">
+            <div className=" flex justify-center rounded-md px-6 py-7 ">
               <div className="space-y-1 text-center">
                 <svg
                   className="mx-auto h-12 w-12 text-gray-400"
@@ -176,10 +177,10 @@ export default function ManageAboutUsPage(props) {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <div className="flex text-sm text-gray-600">
+                <div className="flex text-sm text-gray-600 justify-center">
                   <label
                     htmlFor="aboutUsPicture"
-                    className="relative cursor-pointer rounded-md bg-gray-100 font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-400"
+                    className="relative cursor-pointer rounded-md bg-gray-100 font-medium text-amethyst focus-within:outline-none focus-within:ring-2 focus-within:ring-aethyst focus-within:ring-offset-2 hover:text-amethyst-shade"
                   >
                     <span className="">Upload a file</span>
                     <input
@@ -192,7 +193,7 @@ export default function ManageAboutUsPage(props) {
                       }}
                     />
                   </label>
-                  <p className="pl-1">or drag and drop</p>
+                  {/* <p className="pl-1">or drag and drop</p> */}
                 </div>
                 <p className="text-xs text-gray-500">
                   PNG, JPG, GIF up to 10MB

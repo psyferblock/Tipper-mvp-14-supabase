@@ -40,7 +40,7 @@ export default async function HomePageListingOfEntitiesCards() {
               {industry.name}
             </div>
             <Link
-              className="flex items-center justify-end text-sm text-blue-500 sm:space-x-1"
+              className="flex items-center justify-end text-sm text-blue-500 sm:space-x-1 pr-2"
               href={`entitiesBySector/${industries.id}`}
             >
               View All
@@ -67,7 +67,7 @@ export default async function HomePageListingOfEntitiesCards() {
               {industry.name}
             </div>
             <Link
-              className="flex items-center justify-end text-sm text-blue-500 sm:space-x-1"
+              className="mr-2 flex items-center justify-end text-sm text-blue-500 sm:space-x-1 pr-2"
               href={`entitiesBySector`}
             >
               View All
@@ -87,7 +87,7 @@ export default async function HomePageListingOfEntitiesCards() {
               </svg>
             </Link>
           </div>
-          <div className="h-auto">
+          <div className="h-auto ">
             <EntitiesCardsInScrollRowDirection
               listOfEntities={listOfEntities}
               industryId={industry.id}

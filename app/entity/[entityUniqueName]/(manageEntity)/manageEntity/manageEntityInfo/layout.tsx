@@ -46,7 +46,6 @@ export default async function ManageEntityInfosLayout({
   return (
     <>
       <ManageOpeningHoursContextProvider hoursInput={hoursInput}>
-        we are at the entity info management layout
         {children}
       </ManageOpeningHoursContextProvider>
     </>
