@@ -16,8 +16,8 @@ async function NavBar() {
   const userAuthenticated = session ? session?.user.aud : "not authenticated";
 
   return (
-    <div className=" sticky top-0 z-10 mb-0 flex h-16 w-screen items-center justify-between rounded-md bg-ruby-tint text-ruby   ">
-      <GoToTipperHomePage/>
+    <div className=" sticky top-0 z-10 mb-0 flex h-16 w-screen items-center justify-between bg-transparent p-2 text-ruby   ">
+      <GoToTipperHomePage />
       {/* <div className=" sm:hidden md:visible">
           <HomePageSearchBar />
         </div> */}
@@ -25,11 +25,11 @@ async function NavBar() {
         {userAuthenticated === "authenticated" ? (
           <NavListItems />
         ) : (
-          <div className=" mr-4 flex justify-between space-x-2">
-          <GoToAboutUsPage />
-          <GoToContactUsPage />
-          <GoToSignInPage />
-        </div>
+          <div className=" mr-2 flex justify-between space-x-2">
+            <GoToAboutUsPage />
+            <GoToContactUsPage />
+            <GoToSignInPage />
+          </div>
         )}{" "}
       </div>
     </div>
