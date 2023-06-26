@@ -12,7 +12,7 @@ function GoToTipperHomePage() {
           width={500}
           height={500}
           alt="Logo"
-          className="aspectRatio-1/2 h-18"
+          className="w-24 h-14 object-fill"
         />
       </Link>
     </div>

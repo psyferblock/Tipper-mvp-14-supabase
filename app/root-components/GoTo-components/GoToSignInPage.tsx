@@ -3,7 +3,7 @@ import React from "react";
 
 function GoToSignInPage() {
   return (
-    <div className="text-base">
+    <div className="text-base ">
       {" "}
       <Link  href="signIn">Sign In</Link>
     </div>

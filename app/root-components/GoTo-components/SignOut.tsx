@@ -14,7 +14,7 @@ const SignOut = () => {
     router.push("/");
   };
   return (
-    <div className="text-base" >
+    <div className="text-base " >
       <button onClick={(e) => handleSignOut()}>Sign out</button>
     </div>
   );
