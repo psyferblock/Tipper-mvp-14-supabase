@@ -23,20 +23,16 @@ async function MenuCategoriesPage({
     supabaseServer: supabaseServer,
     categoryId: categoryId,
   });
-  // console.log("categoryItems", categoryItems);
   const publicMenuItems = categoryItems.filter(
     (item) => item.is_menu_item_public == true
   );
-  // console.log("publicMenuItems", publicMenuItems);
 
   const entityIdObject = await getEntityIdUsingUniqueNameServer({
     supabaseServer: supabaseServer,
     entityUniqueName: entityUniqueName,
   });
-  // console.log('entityIdObject', entityIdObject)
   const entityId = entityIdObject.id;
   const exchangeRate = await getExchangeRateServer(supabaseServer, entityId);
-  // console.log("exchangeRate", exchangeRate);
 
   return (
     <>

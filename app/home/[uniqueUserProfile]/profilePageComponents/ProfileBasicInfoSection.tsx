@@ -10,6 +10,7 @@ import React, { useState, ChangeEvent } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { supabase } from "@/app/utils/supabase-browser";
 import ProfileInfoFromContext from "./ProfileInfoFromContext";
+import { toUpper } from "@/app/helpers/toUpper";
 
 function ProfileBasicInfoSection() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -115,9 +116,9 @@ function ProfileBasicInfoSection() {
   };
 
   return (
-    <div className="rounded-2 p-2 mt-3 w-8/10 sm:w-7/12 bg-ruby-tint">
+    <div className="rounded-2 w-8/10 mt-3 bg-ruby-tint p-2 sm:w-7/12">
       {" "}
-      <div className="flex justify-between w-full ">
+      <div className="flex w-full justify-between ">
         <h1>Basic Info</h1>
         <button
           className=" text-amethyst"
@@ -194,7 +195,7 @@ function ProfileBasicInfoSection() {
                       type="text"
                       id="first name"
                       value={firstName || ""}
-                      onChange={(e) => setUserName(e.target.value)}
+                      onChange={(e) => setUserName(toUpper(e.target.value))}
                       className="mb-3 block h-12 w-full rounded-md border-gray-300 pl-4 pr-12 text-xs focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                       placeholder="Enter First Name"
                       disabled={!editing}
@@ -213,7 +214,7 @@ function ProfileBasicInfoSection() {
                       type="text"
                       id="last name"
                       value={lastName || ""}
-                      onChange={(e) => setUserLastName(e.target.value)}
+                      onChange={(e) => setUserLastName(toUpper(e.target.value))}
                       className="mb-3 block h-12 w-full rounded-md border-gray-300 pl-4 pr-12 text-xs focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                       placeholder="Enter Last Name"
                       disabled={!editing}

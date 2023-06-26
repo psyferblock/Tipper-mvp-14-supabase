@@ -3,7 +3,6 @@ import UpvoteAndDownvote from "./UpvoteAndDownvote";
 
 export default function MenuItemCard({ menuItem, exchangeRate }) {
   const itemPictureUrl = menuItem?.item_picture_url;
-  console.log("exchangeRate", exchangeRate);
   const itemPrice = (exchangeRate * menuItem.item_price).toLocaleString();
 const upVotes=12
 const downVotes=5
