@@ -15,6 +15,7 @@ export default async function updateEntityInfos({
   isContactUsSectionPublic: isContactUsSectionPublic,
   contactUsDescription: contactUsDescription,
   contactUsPictureUrl: contactUsPictureUrl,
+  isAboutUsPublic:isAboutUsPublic,
   // entityArea: entityArea,
   // entityAddress: entityAddress,
   entityId: entityId,
@@ -41,6 +42,7 @@ export default async function updateEntityInfos({
       is_contact_us_public: isContactUsSectionPublic,
       contact_us_description: contactUsDescription,
       contact_us_picture_url: contactUsPictureUrl,
+      is_about_us_public:isAboutUsPublic,
       // entity_area: entityArea,
       // entity_address: entityAddress,
     })

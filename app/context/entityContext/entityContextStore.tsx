@@ -45,7 +45,7 @@ function CreateManageEntityInfosTools(
     industryId,
     entityTypeId,
     locationId,
-    // isContactUsPublic,
+    isAboutUsPublic,
     isVerified,
     isInstagramUrlPublic,
     isFacebookUrlPublic,
@@ -84,6 +84,7 @@ function CreateManageEntityInfosTools(
     setEntityName(entityInfos?.entity_name);
     setEntityId(entityInfos?.id);
     setEntityMenuInfo(entityInfos?.entity_menu_id);
+    setIsAboutUsPublic(entityInfos?.is_about_us_public);
   }, []);
   console.log("reduced state in context ", entityState);
 
@@ -340,6 +341,13 @@ function CreateManageEntityInfosTools(
     });
   }, []);
 
+  const setIsAboutUsPublic = useCallback((isPublic: bool) => {
+    dispatch({
+      type: "IS_ABOUT_US_SECTION_PUBLIC",
+      payload: isPublic,
+    });
+  },[]);
+
   return {
     entityName,
     logoObject,
@@ -362,7 +370,7 @@ function CreateManageEntityInfosTools(
     industryId,
     entityTypeId,
     locationId,
-    // isContactUsPublic,
+    isAboutUsPublic,
     isVerified,
     entityUniqueName,
     entityArea,
@@ -383,6 +391,7 @@ function CreateManageEntityInfosTools(
     setIsWhatsappNumberPublic,
     setAboutUsDescription,
     setAboutUsPictureUrl,
+    setIsAboutUsPublic,
     setIsContactUsSectionPublic,
     setContactUsDescription,
     setContactUsPictureUrl,

@@ -37,7 +37,7 @@ export default function StickyBarSaveCancel(props) {
     industryId,
     entityTypeId,
     locationId,
-    isContactUsPublic,
+    isAboutUsPublic,
     isVerified,
     entityUniqueName,
     entityArea,
@@ -90,6 +90,7 @@ export default function StickyBarSaveCancel(props) {
       isContactUsSectionPublic: isContactUsSectionPublic,
       contactUsDescription: contactUsDescription,
       contactUsPictureUrl: contactUsPictureUrl,
+      isAboutUsPublic:isAboutUsPublic,
       // entityArea: entityArea,
       // entityAddress: entityAddress,
       entityId: entityId,
@@ -100,7 +101,7 @@ export default function StickyBarSaveCancel(props) {
 
     //Refresh page every change is saved
     //Im not doing router.refresh because i want to refresh the data fetched and the data fetched is in layout page
-    router.push(`entity/${entityUniqueName}/manageEntity/Menu`);
+    router.push(`entity/${entityUniqueName}/manageEntity/manageEntityInfo`);
   }
 
   //Function that removes the objects that were added but then user pressed on "Cancel" instead of "Save"

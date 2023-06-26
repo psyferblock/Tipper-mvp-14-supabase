@@ -13,6 +13,7 @@ export const entityContextState = {
   whatsappNumber: "",
   aboutUsDescription: "",
   aboutUsPictureUrl: "",
+  isAboutUsPublic:false,
   isContactUsSectionPublic: false,
   contactUsDescription: "",
   contactUsPictureUrl: "",
@@ -63,7 +64,9 @@ const entityInfoReducer = (entityState, action) => {
       return { ...entityState, aboutUsDescription: payload }; // aboutUsDescription: "",
     case "ABOUT_US_PICTURE_URL":
       return { ...entityState, aboutUsPictureUrl: payload }; // aboutUsPictureUrl: "",
-    case "IS_CONTACT_US_SECTION_PUBLIC":
+    case "IS_ABOUT_US_SECTION_PUBLIC":
+    return {...entityState,isAboutUsPublic:payload}; // isAboutUs public
+      case "IS_CONTACT_US_SECTION_PUBLIC":
       return { ...entityState, isContactUsSectionPublic: payload }; // isContactUsSectionPublic: false,
     case "CONTACT_US_DESCRIPTION":
       return { ...entityState, contactUsDescription: payload }; // contactUsDescription: "",

@@ -13,62 +13,13 @@ import { v4 as uuidv4 } from "uuid";
 
 export default function ManageAboutUsPage(props) {
   const {
-    entityName,
-    logoObject,
-    arrayOfPictureObjects,
-    entityTags,
-    entityPhoneNumber,
-    entityEmailAddress,
-    instagramUrl,
-    isInstagramUrlPublic,
-    facebookUrl,
-    isFacebookUrlPublic,
-    whatsappNumber,
-    isWhatsappNumberPublic,
     aboutUsDescription,
     aboutUsPictureUrl,
-    isContactUsSectionPublic,
-    contactUsDescription,
-    contactUsPictureUrl,
-    entityOwnerId,
-    industryId,
-    entityTypeId,
-    locationId,
-    isContactUsPublic,
-    isVerified,
-    entityUniqueName,
-    entityArea,
-    entityAddress,
+    isAboutUsPublic,
     entityId,
-    setEntityName,
-    setLogoObject,
-    setArrayOfPictureObjects,
-    setEntityTags,
-    setPhoneNumber,
-    setEmailAddress,
-    setInstagramUrl,
-    setIsInstagramUrlPublic,
-    setFacebookUrl,
-    setIsFacebookUrlPublic,
-    setWhatsappNumber,
-    setIsWhatsappNumberPublic,
     setAboutUsDescription,
     setAboutUsPictureUrl,
-    setIsContactUsSectionPublic,
-    setContactUsDescription,
-    setContactUsPictureUrl,
-    setEntityOwnerId,
-    setIsVerified,
-    setIndustryId,
-    setEntityTypeId,
-    setLocationId,
-    setEntityArea,
-    setEntityUniqueName,
-    setEntityAddress,
-    setEntityId,
-    handleTags,
-    removeTag,
-    changeInput,
+    setIsAboutUsPublic,
   } = useEntityContext();
 
   async function handleUploadImageButton(e: ChangeEvent<HTMLInputElement>) {
@@ -98,14 +49,18 @@ export default function ManageAboutUsPage(props) {
     //Delete picture from state
     setAboutUsPictureUrl("");
   }
+  function handleToggleButton() {
+    setIsAboutUsPublic(!isAboutUsPublic);
+  }
 
   return (
     <div className="h-fit  space-y-4 rounded-lg bg-white p-3 drop-shadow-lg sm:p-4">
       <div className="items-center sm:flex sm:space-x-6">
         <div className="mb-1 text-lg font-bold">About Us</div>
-        <div className="flex items-center pb-0.5 space-x-1 sm:py-0 py-1">
+        <div className="flex items-center space-x-1 py-1 pb-0.5 sm:py-0">
           <ToggleButton 
-         
+          handleToggleButton={()=>handleToggleButton()}
+          switchedOn={isAboutUsPublic}
           />
           <p className="text-xs sm:mt-0">
             Show "About Us" section on your Entity's public page
@@ -121,12 +76,11 @@ export default function ManageAboutUsPage(props) {
           wrap="soft"
           name="about us"
           id="about us"
-          className=" peer wrap block h-20 p-2 w-full  border-2 rounded-md border-gray-300 px-4 text-xs focus:border-amethyst focus:ring-amethyst sm:mt-1 sm:h-32 sm:pl-4 sm:pr-12 sm:text-sm"
+          className=" wrap peer block h-20 w-full rounded-md  border-2 border-gray-300 p-2 px-4 text-xs focus:border-amethyst focus:ring-amethyst sm:mt-1 sm:h-32 sm:pl-4 sm:pr-12 sm:text-sm"
           placeholder="Enter a description of your wonderful business and people operating it!"
           value={aboutUsDescription}
           onChange={(e) => setAboutUsDescription(e.target.value)}
         />
-        
       </div>
       <div>
         {/* UPLOAD PICTURE FIELD */}
@@ -150,7 +104,7 @@ export default function ManageAboutUsPage(props) {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="z-10 m-1 h-6 w-6 text-amythyst"
+                  className="text-amythyst z-10 m-1 h-6 w-6"
                 >
                   <path
                     strokeLinecap="round"
@@ -177,10 +131,10 @@ export default function ManageAboutUsPage(props) {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <div className="flex text-sm text-gray-600 justify-center">
+                <div className="flex justify-center text-sm text-gray-600">
                   <label
                     htmlFor="aboutUsPicture"
-                    className="relative cursor-pointer rounded-md bg-gray-100 font-medium text-amethyst focus-within:outline-none focus-within:ring-2 focus-within:ring-aethyst focus-within:ring-offset-2 hover:text-amethyst-shade"
+                    className="focus-within:ring-aethyst relative cursor-pointer rounded-md bg-gray-100 font-medium text-amethyst focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 hover:text-amethyst-shade"
                   >
                     <span className="">Upload a file</span>
                     <input

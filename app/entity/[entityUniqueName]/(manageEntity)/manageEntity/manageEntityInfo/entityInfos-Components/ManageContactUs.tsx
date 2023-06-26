@@ -8,65 +8,17 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { useManageEntityInfosContext } from "../Contexts/EntityInfoContext";
 import { v4 as uuidv4 } from "uuid";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
+import uploadPictureToBucket from "@/app/lib/create/uploadPictureToBucket";
 
 export default function ManageContactUsPage(props) {
   const {
-    entityName,
-    logoObject,
-    arrayOfPictureObjects,
-    entityTags,
-    entityPhoneNumber,
-    entityEmailAddress,
-    instagramUrl,
-    isInstagramUrlPublic,
-    facebookUrl,
-    isFacebookUrlPublic,
-    whatsappNumber,
-    isWhatsappNumberPublic,
-    aboutUsDescription,
-    aboutUsPictureUrl,
     isContactUsSectionPublic,
     contactUsDescription,
     contactUsPictureUrl,
-    entityOwnerId,
-    industryId,
-    entityTypeId,
-    locationId,
-    // isContactUsPublic,
-    isVerified,
-    entityUniqueName,
-    entityArea,
-    entityAddress,
     entityId,
-    setEntityName,
-    setLogoObject,
-    setArrayOfPictureObjects,
-    setEntityTags,
-    setPhoneNumber,
-    setEmailAddress,
-    setInstagramUrl,
-    setIsInstagramUrlPublic,
-    setFacebookUrl,
-    setIsFacebookUrlPublic,
-    setWhatsappNumber,
-    setIsWhatsappNumberPublic,
-    setAboutUsDescription,
-    setAboutUsPictureUrl,
     setIsContactUsSectionPublic,
     setContactUsDescription,
     setContactUsPictureUrl,
-    setEntityOwnerId,
-    setIsVerified,
-    setIndustryId,
-    setEntityTypeId,
-    setLocationId,
-    setEntityArea,
-    setEntityUniqueName,
-    setEntityAddress,
-    setEntityId,
-    handleTags,
-    removeTag,
-    changeInput,
   } = useEntityContext();
 
   async function handleUploadImageButton(e: ChangeEvent<HTMLInputElement>) {
@@ -78,7 +30,7 @@ export default function ManageContactUsPage(props) {
     const storageSchema = "public";
     const bucket = "restaurant_images";
     const uuid = uuidv4();
-    let pictureUrl = await uploadPicture({
+    let pictureUrl = await uploadPictureToBucket({
       file,
       storageSchema: storageSchema,
       bucket: bucket,
@@ -90,8 +42,8 @@ export default function ManageContactUsPage(props) {
   }
 
   // Changing the state in context of isContactUsSectionPublic to the opposite boolean value of current state
-  function handleToggleButton(boolean) {
-    setIsContactUsSectionPublic(boolean);
+  function handleToggleButton() {
+    setIsContactUsSectionPublic(!isContactUsSectionPublic);
   }
 
   async function handleDeletePictureButton() {
@@ -108,7 +60,7 @@ export default function ManageContactUsPage(props) {
         <div className="flex items-center space-x-1 py-1 pb-0.5 sm:py-0">
           <div className="pt-0.5">
             <ToggleButton
-              handleToggleButton={handleToggleButton}
+              handleToggleButton={()=>handleToggleButton()}
               switchedOn={isContactUsSectionPublic}
             />
           </div>
