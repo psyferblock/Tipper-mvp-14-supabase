@@ -17,7 +17,7 @@ const GoToUserProfilePage = () => {
       setUserInfo(data);
     };
     userData();
-  }, []);
+  }, [userId]);
 
   const firstName = userInfo?.first_name;
   const uniqueUserName = userInfo?.unique_user_name;

@@ -27,7 +27,7 @@ function ProfileIcon() {
       setUserInfo(data);
     };
     userData();
-  }, []);
+  }, [userId]);
 
   const firstName = userInfo?.first_name;
   function capitalizeFirstLetter(str) {
