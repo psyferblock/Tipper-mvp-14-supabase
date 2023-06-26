@@ -88,12 +88,12 @@ export default function ManageContactUsPage(props) {
         {/* UPLOAD PICTURE FIELD */}
         <label className="text-xs font-medium text-gray-600 ">Image</label>
 
-        <div className="relative mt-1 h-auto rounded-lg border-2 border-dashed border-gray-400 bg-gray-100 sm:h-56">
+        <div className="relative mt-1 h-40 rounded-lg border-2 border-dashed border-gray-400 bg-gray-100 sm:h-56">
           {contactUsPictureUrl ? (
             <>
               <Image
                 src={contactUsPictureUrl}
-                alt="Picture of About Us Section"
+                alt="Picture of contact Us Section"
                 fill
               />
               <button

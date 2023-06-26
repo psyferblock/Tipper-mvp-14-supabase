@@ -12,7 +12,7 @@ export default async function ManageMenuCategoriesPage({
   const supabaseServer = createServerClient();
 
   return (
-    <div>
+    <div className="" >
       
       <UploadPdfMenu />
       <ManageMenuCategories />

@@ -14,9 +14,9 @@ export default async function uploadPictureToBucket({
     .from(bucket)
     .upload(id + "/" + uuid, file as File);
   if (error) throw error;
-  console.log("after picture is uploaded to bucket:", data);
+  // console.log("after picture is uploaded to bucket:", data);
 
   const pictureUrl = `${storageUrl}/${storageSchema}/${bucket}/${data.path}`;
-  console.log("pictureUrl", pictureUrl);
+  // console.log("pictureUrl", pictureUrl);
   return pictureUrl;
 }
