@@ -32,7 +32,7 @@ export default function ManageContactUsPage(props) {
     industryId,
     entityTypeId,
     locationId,
-    isContactUsPublic,
+    // isContactUsPublic,
     isVerified,
     entityUniqueName,
     entityArea,

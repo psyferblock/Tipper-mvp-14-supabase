@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -7,13 +8,15 @@ function GoToTipperHomePage() {
     <div className="h-12">
       {" "}
       <Link href="/" passHref>
-        <Image
-          src="https://zluncbhyhpxonqhigbhn.supabase.co/storage/v1/object/public/tipper/websiteItems/Primary/Tipper_Logos_Primary_Ruby.png"
-          width={500}
-          height={500}
-          alt="Logo"
-          className="w-24 h-14 object-fill"
-        />
+        <div>
+          <Image
+            src="https://zluncbhyhpxonqhigbhn.supabase.co/storage/v1/object/public/tipper/websiteItems/Primary/Tipper_Logos_Primary_Ruby.png"
+            width={500}
+            height={500}
+            alt="Logo"
+            className="h-14 w-24 object-fill"
+          />
+        </div>
       </Link>
     </div>
   );

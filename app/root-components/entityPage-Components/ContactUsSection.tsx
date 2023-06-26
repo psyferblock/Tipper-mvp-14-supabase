@@ -6,6 +6,7 @@ export default function EntityPageContactUsSection({
   phoneNumber,
   pictureUrl,
 }) {
+  console.log("pictureUrl", pictureUrl);
   return (
     <div className="items-center space-y-4 bg-white py-4 sm:flex sm:space-x-16 sm:space-y-0 sm:px-0 sm:py-12">
       {/* PARAGRAPH */}

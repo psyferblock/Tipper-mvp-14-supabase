@@ -17,6 +17,7 @@ export default function CopyUrlShareWhatsappButtons() {
       <Link
         href="whatsapp://send?text=This is WhatsApp sharing example using link"
         className="flex items-center text-lg space-x-1 text-[#128c7e] hover:text-green-500"
+        passHref
       >
         {/* WHATSAPP LOGO */}
         <svg
