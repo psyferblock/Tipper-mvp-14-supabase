@@ -3,13 +3,12 @@
 import BasicSearchBar from "@/app/root-components/tools-Components/BasicSearchBar";
 import ToggleButton from "@/app/root-Components/tools-Components/ToggleButton";
 import { lazy, Suspense, useState } from "react";
-import ManageMenuItemsMobile from "../menuItems-Components/ManageMenuItemsMobile";
 import Link from "next/link";
 import Image from "next/image";
-import AddNewItemModal from "../menuItems-Components/AddNewItemModal";
-import EditItemModal from "../menuItems-Components/EditItemModal";
+import AddNewItemModal from "../menuItemsComponents/AddNewItemModal";
+import EditItemModal from "../menuItemsComponents/EditItemModal";
 import { useSearchParams } from "next/navigation";
-import DeleteMenuItemModal from "../menuItems-Components/DeleteMenuItemModal";
+import DeleteMenuItemModal from "../menuItemsComponents/DeleteMenuItemModal";
 import { useSupabase } from "@/app/supabase-provider";
 import updateIsMenuItemPublic from "@/app/lib/update/updateIsMenuItemPublic";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
