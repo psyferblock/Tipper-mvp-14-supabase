@@ -17,9 +17,8 @@ async function NavBar() {
 
   return (
     <div className=" sticky top-0 z-10 mb-0 flex h-16 w-screen items-center justify-between bg-transparent  text-ruby   ">
-      <div className="">
-
-      <GoToTipperHomePage />
+      <div className="w-30">
+        <GoToTipperHomePage />
       </div>
       {/* <div className=" sm:hidden md:visible">
           <HomePageSearchBar />

@@ -41,7 +41,7 @@ export default async function HomePageListingOfEntitiesCards() {
             </div>
             <Link
               className="flex items-center justify-end text-sm text-blue-500 sm:space-x-1 pr-2"
-              href={`entitiesBySector/${industries.id}`}
+              href={`entitiesBySector/${industries?.id}`}
             >
               View All
               <svg

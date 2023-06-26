@@ -18,6 +18,7 @@ export default async function Navbar({ session }) {
         <Link
           href="/"
           className="py-4 text-2xl font-light text-white hover:text-purple-400 sm:py-[18px] sm:text-4xl sm:font-normal"
+          passHref
         >
           Tipper
         </Link>

@@ -100,10 +100,3 @@ export default async function EntityCard({ entity }) {
   );
 }
 
-// entity_unique_name: 'smurfvillage-78-692-4',
-// entity_name: 'smurf village',
-// industry_id: 5,
-// entity_type_id: 4,
-// entity_address: 'the smurfin world',
-// entity_logo_url: 'https://zluncbhyhpxonqhigbhn.supabase.co/storage/v1/object/public/logos/885c9273-1869-4466-b67e-935f51d06ad0/833eeb7b-aeda-4791-b08d-708dd3f557cf',
-// entity_menu_id: [ [Object] ]

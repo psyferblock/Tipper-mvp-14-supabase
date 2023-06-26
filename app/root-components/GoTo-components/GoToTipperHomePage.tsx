@@ -6,7 +6,7 @@ function GoToTipperHomePage() {
   return (
     <div className="h-12">
       {" "}
-      <Link href="/">
+      <Link href="/" passHref>
         <Image
           src="https://zluncbhyhpxonqhigbhn.supabase.co/storage/v1/object/public/tipper/websiteItems/Primary/Tipper_Logos_Primary_Ruby.png"
           width={500}
