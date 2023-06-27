@@ -4,6 +4,7 @@ import QrCodeGenerator from "./qrCode-Components/QrCodeGenerator";
 import { useEffect, useState } from "react";
 import { getMenuCategories } from "@/app/lib/get/getMenuCategories";
 import QrCodeNext from "./qrCode-Components/QrCodeNext";
+import ManageQrCode from "./qrCode-Components/ManageQrCode";
 
 export default function ManageQrCodePage() {
   // const pageUrl;
@@ -20,10 +21,10 @@ export default function ManageQrCodePage() {
     getCategory();
   }, [menuId]);
   const logo = logoObject.media_url;
-  console.log('logo', logo)
+  // console.log('logo', logo)
   return (
-    < div className="flex w-screen h-2/3 items-center justify-center">
-      <div className=" min-h-screen  m-16 sm:h-fit sm:min-h-screen sm:w-full ">
+    < div className="flex w-screen h-2/3 items-center justify-center p-auto">
+      <div className=" min-h-screen mt-auto m-auto  sm:h-fit sm:min-h-screen sm:w-full ">
         {/* <QrCodeGenerator logo={logo} entityUniqueName={entityUniqueName} menuId={menuId} categoryId={categoryId} /> */}
         <QrCodeNext
           logo={logo}

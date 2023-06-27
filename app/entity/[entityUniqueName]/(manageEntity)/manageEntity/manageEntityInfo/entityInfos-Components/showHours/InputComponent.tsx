@@ -48,7 +48,7 @@ export default function WorkingHoursRow(props) {
 
       {/* INPUT BAR FOR THE HOUR MOBILE SIZE */}
 
-      <div className="flex items-center sm:hidden">
+      <div className="flex items-center ">
         <div className="flex flex-col">
           <div className="flex w-32 overflow-hidden rounded-md border border-gray-400 bg-white">
             <input
@@ -76,10 +76,10 @@ export default function WorkingHoursRow(props) {
       </div>
 
       <button
-        className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+        className="rounded hover:bg-amethyst-tint px-4 py-1 font-bold text-white bg-amethyst"
         onClick={() => handleHours(openingState, closingState)}
       >
-        Button
+        Save 
       </button>
     </div>
   );

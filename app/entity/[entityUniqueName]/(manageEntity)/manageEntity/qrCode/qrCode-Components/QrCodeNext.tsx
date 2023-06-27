@@ -28,8 +28,9 @@ export default function QrCodeNext({
 }) {
   // Esta es la variable que va a tener la referencia al
   // elemento que envuelve el QR
+  const url =process.env.TIPPER_URL
   const qrRef = useRef();
-  const pageUrl = `entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}`;
+  const pageUrl = `${url}/entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}`;
   const width = 400;
   const { entityName } = useEntityContext();
   const light = "#FFBF60FF";
@@ -49,7 +50,7 @@ export default function QrCodeNext({
   };
 
   return (
-    <div className="h-full w-full ">
+    <div className=" m-auto ">
       <QRCode
         ref={qrRef}
         text={pageUrl}
