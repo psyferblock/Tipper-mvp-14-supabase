@@ -2,7 +2,7 @@
 
 export default function BasicSearchBar(props) {
   return (
-    <div className="flex w-full rounded-lg border-gray-400 mx-2">
+    <div className="flex w-full rounded-lg border-gray-400 ">
       <div className="pt-3">
         <svg
           xmlns="http://www.w3.org/2000/svg"

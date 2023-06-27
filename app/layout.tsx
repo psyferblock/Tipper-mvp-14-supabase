@@ -46,7 +46,7 @@ export default async function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body className="bg-backGround">
+      <body className="bg-backGround ">
         <SupabaseProvider session={session}>
           <SupabaseListener serverAccessToken={session?.access_token} />
           {session?.user.id ? (
@@ -59,7 +59,7 @@ export default async function RootLayout({
               </div>
             </UserInfoContextProvider>
           ) : (
-            <div className=" min-h-screen">{children}</div>
+            <div className=" min-h-screen ">{children}</div>
           )}
         </SupabaseProvider>
       </body>

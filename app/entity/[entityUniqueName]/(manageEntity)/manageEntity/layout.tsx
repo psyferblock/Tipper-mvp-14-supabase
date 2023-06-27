@@ -13,6 +13,8 @@ import { getMenuCategoriesServer } from "@/app/lib/get/getMenuCategories";
 import { getBasicPicturesServer } from "@/app/lib/get/getBasicPictures";
 import EntityInfosContextProvider from "@/app/context/entityContext/entityContextStore";
 import EntityButton from "@/app/home/[uniqueUserProfile]/profilePageComponents/EntityButton";
+import CategoriesNavLink from "../manageEntity-components/CategoriesNavLink";
+import { managementCategories } from "../manageEntity-components/ManagementCategories";
 
 async function layout({
   children,
@@ -66,7 +68,7 @@ async function layout({
         coverPictures={arrayOfCoverPictureObjects}
         logoPictureObject={logoPictureObject}
       >
-        <div className="m-2 flex justify-between ">
+        <div className="m-2 flex justify-between  ">
           {/* <EntityButton /> */}
 
           <div className="flex h-20 w-full items-center justify-between bg-gray-300 px-2  text-xl font-bold  sm:mt-0 sm:hidden">
@@ -100,11 +102,56 @@ async function layout({
                 entityUserName={entityUniqueName}
               />
             </div>
+            <div className="h-20 sm:h-0"></div>
+            </div>
+      {/* //////////////////////////////////////////////////////////////////// */}
+         
+        <div>
+          <Link
+            href={`entity/${entityUniqueName}/manageEntity/manageEntityInfo`}
+            className="hidden w-fit items-center pb-4 pt-6 text-2xl font-bold sm:flex"
+            passHref
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2.5}
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 19.5L8.25 12l7.5-7.5"
+              />
+            </svg>
+            <div>Manage Entity</div>
+          </Link>
+
+          <div className="flex">
+            {/* LEFT MENU */}
+            <div className="hidden h-fit sm:block sm:w-80 sm:flex-none">
+              <div className="mr-4 flex flex-col rounded-lg bg-white py-6 drop-shadow-lg">
+                {managementCategories.map((category, index) => (
+                  <ul key={index}>
+                    <CategoriesNavLink
+                      entityUniqueName={params.entityUniqueName}
+                      categoryRoute={category.route}
+                    >
+                      {category.name}
+                    </CategoriesNavLink>
+                  </ul>
+                ))}
+              </div>
+            </div>
+            <div className="max-w-screen-lg grow sm:w-screen border-2 border-grey shadow-sm  rounded-sm">{children}</div>
           </div>
         </div>
-        <div>{children}</div>
+        </div>
       </EntityInfosContextProvider>
     </div>
+    
   );
 }
 

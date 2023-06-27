@@ -85,13 +85,13 @@ export default function ManageMenuCategories() {
 
   return (
     <>
-      <div className="flex w-full flex-col space-y-3 sm:space-y-2">
+      <div className="flex w-full flex-col space-y-3 sm:space-y-2 p-2">
         {/* MENU HEADER AND ADD CATEGORY BUTTON */}
         <div className="flex  items-center justify-end">
           {/* ADD CATEGORY BUTTON */}
           <button
             // onClick={handleAddCategoryButton}
-            className="-mt-2 hidden h-10 w-32 rounded-3xl bg-blue-500 text-xs text-white hover:bg-blue-600 sm:block"
+            className=" hidden h-10 w-32 rounded-3xl bg-blue-500 text-xs text-white hover:bg-blue-600 sm:block"
           >
             Add New Category
           </button>

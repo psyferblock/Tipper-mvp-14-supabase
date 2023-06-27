@@ -30,8 +30,10 @@ export default function QrCodeNext({
   // elemento que envuelve el QR
   const qrRef = useRef();
   const pageUrl = `entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}`;
-  const width = "400";
+  const width = 400;
   const { entityName } = useEntityContext();
+  const light = "#FFBF60FF";
+  const dark = "#010599FF";
 
   // Para descargar, se va directamente al DOM y se obtiene el
   // elemento canvas (por eso se usa Canva para genera el QR)
@@ -47,9 +49,9 @@ export default function QrCodeNext({
   };
 
   return (
-    <div className="App">
+    <div className="h-full w-full ">
       <QRCode
-        ref={qrRef} // Asi se manda la referencia al componente QR
+        ref={qrRef}
         text={pageUrl}
         options={{
           type: "image/jpeg",
@@ -59,8 +61,8 @@ export default function QrCodeNext({
           scale: 4,
           width: { width },
           color: {
-            dark: "#010599FF",
-            light: "#FFBF60FF",
+            dark: `${dark}` ,
+            light: `${light}`,
           },
         }}
         logo={{
@@ -74,7 +76,12 @@ export default function QrCodeNext({
         }}
       />
 
-      <button onClick={onDownload}>Download</button>
+      <button
+        onClick={onDownload}
+        className="center bg-tint m-2 text-ruby hover:text-ruby-tint"
+      >
+        Download
+      </button>
     </div>
   );
 }

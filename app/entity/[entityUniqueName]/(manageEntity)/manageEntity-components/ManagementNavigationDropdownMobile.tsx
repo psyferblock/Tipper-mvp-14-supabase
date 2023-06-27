@@ -15,7 +15,7 @@ export default function ManagementNavigationDropdownMobile() {
   const currentSegment = useSelectedLayoutSegment();
 
   const { entityUniqueName } = useEntityContext();
-  console.log("entityUniqueName from the navigation menu ", params);
+  // console.log("entityUniqueName from the navigation menu ", params);
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
