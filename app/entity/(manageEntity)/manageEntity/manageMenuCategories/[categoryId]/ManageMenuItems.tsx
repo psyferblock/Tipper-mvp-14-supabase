@@ -91,6 +91,7 @@ export default function ManageMenuItems({
                 <Link
                   href={`/entity/${entityUniqueName}/manageEntity/manageMenuCategories`}
                   className="flex items-center space-x-2"
+                  passHref
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

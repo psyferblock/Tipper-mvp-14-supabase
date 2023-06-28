@@ -113,7 +113,7 @@ export default function ManageContactUsPage(props) {
             />
           </div>
           <div className="text-xs sm:mt-0">
-            Show "Contact Us" section on your entity's public page
+            Show `&quot;`Contact Us `&quot;` section on your entity`&apos;`s public page
           </div>
         </div>
       </div>

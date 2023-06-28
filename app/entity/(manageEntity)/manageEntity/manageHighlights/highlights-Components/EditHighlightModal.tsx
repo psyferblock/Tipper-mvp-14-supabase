@@ -271,8 +271,8 @@ export default function EditHighlightModal(props) {
                         <div className="flex space-x-2">
                           {arrayOfPictureObjects ? (
                             <>
-                              {arrayOfPictureObjects.map((pictureObject) => (
-                                <div className="relative flex h-72 w-44 justify-center rounded-md border-2 border-dashed border-gray-400 bg-gray-100 pt-[52px] sm:px-6 ">
+                              {arrayOfPictureObjects.map((pictureObject,index) => (
+                                <div key={index} className="relative flex h-72 w-44 justify-center rounded-md border-2 border-dashed border-gray-400 bg-gray-100 pt-[52px] sm:px-6 ">
                                   <Image
                                     src={pictureObject.media_url}
                                     alt="highlight picture"

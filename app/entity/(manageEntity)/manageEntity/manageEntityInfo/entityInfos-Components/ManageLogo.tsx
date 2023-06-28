@@ -178,7 +178,7 @@ export default function ManageLogo() {
                 </svg>
                 <div className="flex text-sm text-gray-600">
                   <div className="pl-1">
-                    Click on "Add Slide" on the top right to add a slide
+                    Click on `&quot;`Add Slide`&quot;` on the top right to add a slide
                   </div>
                 </div>
               </div>

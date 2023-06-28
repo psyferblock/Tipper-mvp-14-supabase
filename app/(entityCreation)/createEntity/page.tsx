@@ -56,7 +56,7 @@ const EntityCreationPage = () => {
 
   /////////    /////////     /////////
 
-  console.log("entityTypeId", entityTypeId);
+  // console.log("entityTypeId", entityTypeId);
 
   //Error states
   const [entityNameIsNullError, setEntityNameIsNullError] = useState(false);
@@ -91,7 +91,7 @@ const EntityCreationPage = () => {
     };
 
     getTypes();
-  }, []);
+  }, [session]);
 
   // SETTING THE UNIQUE NAME AND THE ARRAY TAGS
   useEffect(() => {
@@ -117,7 +117,7 @@ const EntityCreationPage = () => {
     // return entityTypeId;
     let eTypeId = listOfEntityTypes.find(isTypeObject);
     setEntityTypeId(eTypeId?.id);
-  }, [entityType]);
+  }, [entityType,listOfEntityTypes]);
   console.log("listOfEntityTypes", listOfEntityTypes);
   console.log("eTypeId", entityTypeId);
 
@@ -237,7 +237,7 @@ const EntityCreationPage = () => {
         {/* LEFT SCREEN SETUP  */}
         {/* LEFT PART OF SCREEN */}
         <div className=" mb-0 p-3">
-          <Link href={`/home`} className="flex items-center ">
+          <Link href={`/home`} className="flex items-center " passHref>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

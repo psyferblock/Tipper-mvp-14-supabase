@@ -11,11 +11,12 @@ import { useEntityContext } from "@/app/context/entityContext/entityContextStore
  * de react-to-print (esta en sus ejemplos).
  */
 const QRCode = forwardRef((props, ref) => {
+  displayName="QRCode"
   const { Canvas } = useQRCode();
 
   return (
     <div ref={ref}>
-      <Canvas {...props} />
+      <Canvas text={""} {...props} />
     </div>
   );
 });

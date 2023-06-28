@@ -1,44 +1,4 @@
-Failed to compile.
 
-./app/(entityCreation)/createEntity/page.tsx
-109:6  Warning: React Hook useEffect has a missing dependency: 'userId'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
-120:6  Warning: React Hook useEffect has a missing dependency: 'listOfEntityTypes'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
-240:11  Warning: passHref is missing. See https://nextjs.org/docs/messages/link-passhref  @next/next/link-passhref
-
-./app/context/entityContext/entityContextStore.tsx
-88:6  Warning: React Hook useEffect has missing dependencies: 'coverPictures', 'entityInfos?.about_us_description', 'entityInfos?.about_us_picture_url', 'entityInfos?.contact_us_description', 'entityInfos?.contact_us_picture_url', 'entityInfos?.entity_address', 'entityInfos?.entity_area', 'entityInfos?.entity_email', 'entityInfos?.entity_menu_id', 'entityInfos?.entity_name', 'entityInfos?.entity_phone_number', 'entityInfos?.entity_tags', 'entityInfos?.entity_type_id', 'entityInfos?.entity_unique_name', 'entityInfos?.facebook_link', 'entityInfos?.id', 'entityInfos?.industry_id', 'entityInfos?.instagram_link', 'entityInfos?.is_about_us_public', 'entityInfos?.is_contact_us_public', 'entityInfos?.is_facebook_url_public', 'entityInfos?.is_instagram_url_public', 'entityInfos?.is_verified', 'entityInfos?.is_whatsapp_number_public', 'entityInfos?.location_id', 'entityInfos?.user_id', 'entityInfos?.whatsapp_phone_number', 'logoPictureObject', 'setAboutUsDescription', 'setAboutUsPictureUrl', 'setArrayOfPictureObjects', 'setContactUsDescription', 'setContactUsPictureUrl', 'setEmailAddress', 'setEntityAddress', 'setEntityArea', 'setEntityId', 'setEntityMenuInfo', 'setEntityName', 'setEntityOwnerId', 'setEntityTags', 'setEntityTypeId', 'setEntityUniqueName', 'setFacebookUrl', 'setIndustryId', 'setInstagramUrl', 'setIsAboutUsPublic', 'setIsContactUsSectionPublic', 'setIsFacebookUrlPublic', 'setIsInstagramUrlPublic', 'setIsVerified', 'setIsWhatsappNumberPublic', 'setLocationId', 'setLogoObject', 'setPhoneNumber', and 'setWhatsappNumber'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
-
-./app/context/openingHoursContext/openingClosingStore.tsx
-77:6  Warning: React Hook useEffect has missing dependencies: 'addMonFridayClosing', 'addMonFridayOpening', 'addSaturdayClosing', 'addSaturdayOpening', 'addSundayClosing', 'addSundayOpening', 'hoursInput.monTime', 'hoursInput.monTimeClosing', 'hoursInput.satTime', 'hoursInput.satTimeClosing', 'hoursInput.sunTime', and 'hoursInput.sunTimeClosing'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
-
-./app/context/userContext/userContextStore.tsx
-132:6  Warning: React Hook useEffect has missing dependencies: 'setContactNumber', 'setDateOfBirth', 'setEmailAddress', 'setGender', 'setHasEntity', 'setProfileId', 'setProfilePicUrl', 'setUniqueName', 'setUserId', 'setUserLastName', 'setUserName', 'userInfos?.date_of_birth', 'userInfos?.email_address', 'userInfos?.first_name', 'userInfos?.gender', 'userInfos?.has_entity', 'userInfos?.id', 'userInfos?.last_name', 'userInfos?.phone_number', 'userInfos?.profile_picture_url', 'userInfos?.unique_user_name', and 'userInfos?.user_id'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
-
-./app/entity/(manageEntity)/manageEntity/layout.tsx
-78:13  Warning: passHref is missing. See https://nextjs.org/docs/messages/link-passhref  @next/next/link-passhref
-
-./app/entity/(manageEntity)/manageEntity/manageEntityInfo/entityInfos-Components/ManageContactUs.tsx
-116:18  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
-116:29  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
-116:53  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
-
-./app/entity/(manageEntity)/manageEntity/manageEntityInfo/entityInfos-Components/ManageCoverPhotos.tsx
-105:76  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
-166:30  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
-166:40  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
-
-./app/entity/(manageEntity)/manageEntity/manageEntityInfo/entityInfos-Components/ManageLogo.tsx
-181:30  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
-181:40  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
-
-./app/entity/(manageEntity)/manageEntity/manageHighlights/highlights-Components/AddNewHighlightModal.tsx
-224:33  Error: Missing "key" prop for element in iterator  react/jsx-key
-
-./app/entity/(manageEntity)/manageEntity/manageHighlights/highlights-Components/EditHighlightModal.tsx
-275:33  Error: Missing "key" prop for element in iterator  react/jsx-key
-
-./app/entity/(manageEntity)/manageEntity/manageMenuCategories/[categoryId]/ManageMenuItems.tsx
-91:17  Warning: passHref is missing. See https://nextjs.org/docs/messages/link-passhref  @next/next/link-passhref
 
 ./app/entity/(manageEntity)/manageEntity/qrCode/qrCode-Components/QrCodeNext.tsx
 13:16  Error: Component definition is missing display name  react/display-name

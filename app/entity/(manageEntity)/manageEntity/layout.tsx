@@ -80,6 +80,7 @@ async function layout({
               /category/${categoryId}
               `}
               className="-ml-2 mr-1 flex w-fit items-center text-2xl font-bold"
+              passHref
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

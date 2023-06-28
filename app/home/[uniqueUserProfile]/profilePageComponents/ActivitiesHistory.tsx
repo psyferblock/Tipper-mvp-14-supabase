@@ -7,27 +7,27 @@ export default function ActivitiesHistory() {
       <div className="space-y-2 divide-y">
         <div className="justify-between space-y-1 pt-2 sm:flex">
           <div className="text-xs">
-            You just created a new menu category, "Discounts" for your entity
-            "Meshmosh"
+            You just created a new menu category, `&quot;`Discounts`&quot;` for your entity
+            `&quot;`Meshmosh`&quot;`
           </div>
           <div className="text-xs text-gray-500">10-06-2023</div>
         </div>
         <div className="justify-between  space-y-1 pt-2 sm:flex">
           <div className="text-xs">
             You added a link to you Instagram page on your entity's page
-            "Meshomosh"
+            `&quot;`Meshomosh`&quot;`
           </div>
           <div className="text-xs text-gray-500">10-06-2023</div>
         </div>
         <div className="justify-between space-y-1 pt-2 sm:flex">
           <div className="text-xs">
-            You added a new highlight reel on your entity's page "Meshmosh"
+            You added a new highlight reel on your entity's page `&quot;`Meshmosh`&quot;`
           </div>
           <div className="text-xs text-gray-500">10-03-2023</div>
         </div>
         <div className="justify-between space-y-1 pt-2 sm:flex">
           <div className="text-xs">
-            You published your entity "Meshmosh" on Tipper
+            You published your entity `&quot;`Meshmosh`&quot;` on Tipper
           </div>
           <div className="text-xs text-gray-500">22-01-2023</div>
         </div>

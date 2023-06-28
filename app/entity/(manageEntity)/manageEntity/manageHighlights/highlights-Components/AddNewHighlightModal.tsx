@@ -220,8 +220,8 @@ export default function AddNewHighlightModal(props) {
                         <div className="flex space-x-2">
                           {arrayOfPictureUrls ? (
                             <>
-                              {arrayOfPictureUrls.map((pictureUrl) => (
-                                <div className="relative flex h-72 w-44 justify-center rounded-md  border-2 border-dashed border-gray-400 bg-gray-100 pt-[52px] sm:h-72 sm:w-44 sm:px-6 ">
+                              {arrayOfPictureUrls.map((pictureUrl,index) => (
+                                <div key={index} className="relative flex h-72 w-44 justify-center rounded-md  border-2 border-dashed border-gray-400 bg-gray-100 pt-[52px] sm:h-72 sm:w-44 sm:px-6 ">
                                   <Image
                                     src={pictureUrl}
                                     alt="highlight picture"
