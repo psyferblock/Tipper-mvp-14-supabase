@@ -65,7 +65,7 @@ export default function ManageContactUsPage(props) {
             />
           </div>
           <div className="text-xs sm:mt-0">
-            Show "Contact Us" section on your Entity's public page
+            Show `&quot;`Contact Us`&quot;` section on your Entity`&apos;`s public page
           </div>
         </div>
       </div>
@@ -78,7 +78,7 @@ export default function ManageContactUsPage(props) {
           wrap="soft"
           name="contact us"
           id="contact us"
-          className="wrap block h-20 w-full rounded-md border-2 border-gray-300 p-2 px-4 text-xs focus:border-indigo-500 focus:ring-indigo-500 sm:mt-1 sm:h-32 sm:pl-4 sm:pr-12 sm:text-sm"
+          className="wrap block h-20 w-full rounded-md border-2 border-gray-300 p-2 px-4 text-xs focus:border-amethyst focus:ring-amethyst sm:mt-1 sm:h-32 sm:pl-4 sm:pr-12 sm:text-sm"
           placeholder="Enter a description of products people can order by contacting you."
           value={contactUsDescription}
           onChange={(e) => setContactUsDescription(e.target.value)}

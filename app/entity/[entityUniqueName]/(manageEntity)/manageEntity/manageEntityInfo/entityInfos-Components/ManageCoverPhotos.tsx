@@ -101,7 +101,7 @@ export default function ManageCoverPhotos() {
       </div>
       {/* "Caption Goes here" */}
       <div className="text-xs">
-        These pictures will appear as a slideshow at the top of your entity's
+        These pictures will appear as a slideshow at the top of your entity`&apos;`s
         page. (Supported formats: PNG, JPG, GIF, JPEG)
       </div>
 
@@ -162,7 +162,7 @@ export default function ManageCoverPhotos() {
                 </svg>
                 <div className="flex text-sm text-gray-600">
                   <div className="pl-1">
-                    Click on "Add Slide" on the top right to add a slide
+                    Click on `&quot;`Add Slide`&quot;` on the top right to add a slide
                   </div>
                 </div>
               </div>
@@ -195,7 +195,7 @@ export default function ManageCoverPhotos() {
                           viewBox="0 0 24 24"
                           strokeWidth={1.5}
                           stroke="currentColor"
-                          className="z-10 m-1 h-6 w-6 text-blue-500"
+                          className="z-10 m-1 h-6 w-6 text-amethyst"
                         >
                           <path
                             strokeLinecap="round"

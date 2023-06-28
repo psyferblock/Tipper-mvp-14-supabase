@@ -148,7 +148,7 @@ export default function ManageLogo() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="z-10 m-1 h-6 w-6 text-blue-500"
+                  className="z-10 m-1 h-6 w-6 text-amethyst"
                 >
                   <path
                     strokeLinecap="round"
@@ -177,7 +177,7 @@ export default function ManageLogo() {
                 </svg>
                 <div className="flex text-sm text-gray-600">
                   <div className="pl-1">
-                    Click on "Add Slide" on the top right to add a slide
+                    Click on `&quot;`Add Slide`&quot;` on the top right to add a slide
                   </div>
                 </div>
               </div>

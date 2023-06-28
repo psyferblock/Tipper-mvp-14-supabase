@@ -15,10 +15,11 @@ const QRCode = forwardRef((props, ref) => {
 
   return (
     <div ref={ref}>
-      <Canvas {...props} />
+      <Canvas text={""} {...props} />
     </div>
   );
 });
+QRCode.displayName = "QRCode";
 
 export default function QrCodeNext({
   logo,
@@ -28,7 +29,7 @@ export default function QrCodeNext({
 }) {
   // Esta es la variable que va a tener la referencia al
   // elemento que envuelve el QR
-  const url =process.env.TIPPER_URL
+  const url = process.env.TIPPER_URL;
   const qrRef = useRef();
   const pageUrl = `${url}/entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}`;
   const width = 400;
@@ -50,7 +51,7 @@ export default function QrCodeNext({
   };
 
   return (
-    <div className=" m-auto flex flex-col justify-center items-center ">
+    <div className=" m-auto flex flex-col items-center justify-center ">
       <QRCode
         ref={qrRef}
         text={pageUrl}
@@ -62,7 +63,7 @@ export default function QrCodeNext({
           scale: 4,
           width: { width },
           color: {
-            dark: `${dark}` ,
+            dark: `${dark}`,
             light: `${light}`,
           },
         }}

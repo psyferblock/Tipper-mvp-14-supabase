@@ -63,7 +63,7 @@ export default function ManageAboutUsPage(props) {
           switchedOn={isAboutUsPublic}
           />
           <p className="text-xs sm:mt-0">
-            Show "About Us" section on your Entity's public page
+            Show `&quot;`About Us`&quot;` section on your Entity`&apos;`s public page
           </p>
         </div>
       </div>

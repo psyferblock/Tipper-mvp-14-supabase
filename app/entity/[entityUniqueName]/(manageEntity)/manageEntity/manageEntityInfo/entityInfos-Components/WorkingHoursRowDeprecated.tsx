@@ -7,7 +7,7 @@ export default function WorkingHoursRow(props) {
           <input
             id="dayCheckBox"
             type="checkbox"
-            className="mr-2 rounded border border-gray-400 text-indigo-600 focus:ring-indigo-500 sm:mr-0 sm:h-4 sm:w-4"
+            className="mr-2 rounded border border-gray-400 text-amethyst-shade focus:ring-amethyst sm:mr-0 sm:h-4 sm:w-4"
           />
         </div>
         <div className="text-sm sm:ml-3">
@@ -69,7 +69,7 @@ export default function WorkingHoursRow(props) {
           <input
             id="dayCheckBox"
             type="checkbox"
-            className="mr-2 rounded border border-gray-400 text-indigo-600 focus:ring-indigo-500 sm:mr-0 sm:h-4 sm:w-4"
+            className="mr-2 rounded border border-gray-400 text-amethyst-shade focus:ring-amethyst sm:mr-0 sm:h-4 sm:w-4"
           />
         </div>
         <div className="text-sm sm:ml-3">

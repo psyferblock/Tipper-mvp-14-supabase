@@ -28,7 +28,7 @@ export default function ManageTags() {
         />
 
         <button
-          onClick={() => handleTags(tagRef.current.value)}
+          onClick={() => handleTags(tagRef.current?.value)}
           className={
             entityTags.length
               ? "mb-3 text-sm font-medium text-amethyst"

@@ -91,7 +91,7 @@ const EntityCreationPage = () => {
     };
 
     getTypes();
-  }, [session]);
+  }, []);
 
   // SETTING THE UNIQUE NAME AND THE ARRAY TAGS
   useEffect(() => {
