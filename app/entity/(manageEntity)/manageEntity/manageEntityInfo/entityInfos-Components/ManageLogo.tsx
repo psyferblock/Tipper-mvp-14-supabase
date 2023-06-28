@@ -63,7 +63,7 @@ export default function ManageLogo() {
         {/* DESKTOP BUTTON */}
         <label
           htmlFor="add logo"
-          className="hidden items-center space-x-1 text-blue-500 sm:flex sm:cursor-pointer"
+          className="hidden items-center space-x-1 text-amethyst sm:flex sm:cursor-pointer"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +102,7 @@ export default function ManageLogo() {
       {/* MOBILE BUTTON */}
       <label
         htmlFor="add logo mobile"
-        className="flex w-fit cursor-pointer items-center space-x-1 text-blue-500 sm:hidden"
+        className="flex w-fit cursor-pointer items-center space-x-1 text-amethyst sm:hidden"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -149,7 +149,7 @@ export default function ManageLogo() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="z-10 m-1 h-6 w-6 text-blue-500"
+                  className="z-10 m-1 h-6 w-6 text-amethyst"
                 >
                   <path
                     strokeLinecap="round"
@@ -178,7 +178,8 @@ export default function ManageLogo() {
                 </svg>
                 <div className="flex text-sm text-gray-600">
                   <div className="pl-1">
-                    Click on `&quot;`Add Slide`&quot;` on the top right to add a slide
+                    Click on `&quot;`Add Slide`&quot;` on the top right to add a
+                    slide
                   </div>
                 </div>
               </div>

@@ -75,7 +75,7 @@ export default function ManageCoverPhotos() {
 
         <label
           htmlFor="add slide"
-          className="hidden items-center space-x-1 text-blue-500 sm:flex sm:cursor-pointer"
+          className="hidden items-center space-x-1 text-amethyst sm:flex sm:cursor-pointer"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -196,7 +196,7 @@ export default function ManageCoverPhotos() {
                           viewBox="0 0 24 24"
                           strokeWidth={1.5}
                           stroke="currentColor"
-                          className="z-10 m-1 h-6 w-6 text-blue-500"
+                          className="z-10 m-1 h-6 w-6 text-amethyst"
                         >
                           <path
                             strokeLinecap="round"

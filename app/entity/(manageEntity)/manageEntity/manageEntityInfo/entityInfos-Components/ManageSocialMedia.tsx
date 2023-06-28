@@ -66,7 +66,7 @@ export default function ManageSocialMedia() {
               type="numeric"
               name="entityPhoneNumber"
               id="entityPhoneNumber"
-              className="block h-12 rounded-md border-gray-400 pl-7 pr-12 focus:border-indigo-500  focus:ring-indigo-500 sm:w-3/4 sm:text-sm"
+              className="block h-12 rounded-md border-gray-400 pl-7 pr-12 focus:border-amethyst focus:ring-amethyst sm:w-3/4 sm:text-sm"
               placeholder="03 456 789"
               value={entityPhoneNumber}
               onChange={(e) => changeInput(e.target.value)}
@@ -107,7 +107,7 @@ export default function ManageSocialMedia() {
               type="text"
               name="entityEmailAddress"
               id="entityEmailAddress"
-              className="block h-12 rounded-md border-gray-400 pl-7 pr-12 focus:border-indigo-500  focus:ring-indigo-500 sm:w-3/4 sm:text-sm"
+              className="block h-12 rounded-md border-gray-400 pl-7 pr-12 focus:border-amethyst  focus:ring-amethyst sm:w-3/4 sm:text-sm"
               placeholder="Email Address"
               value={entityEmailAddress}
               onChange={(e) => changeInput(e.target.value)}
@@ -142,7 +142,7 @@ export default function ManageSocialMedia() {
               type="text"
               name="instagramUrl"
               id="instagramUrl"
-              className="block h-12 rounded-md border-gray-400 pl-7 pr-12 focus:border-indigo-500  focus:ring-indigo-500 sm:w-3/4 sm:text-sm"
+              className="block h-12 rounded-md border-gray-400 pl-7 pr-12 focus:border-amethyst  focus:ring-amethyst sm:w-3/4 sm:text-sm"
               placeholder="Link"
               value={instagramUrl}
               onChange={(e) => changeInput(e.target.value)}
@@ -180,7 +180,7 @@ export default function ManageSocialMedia() {
               type="text"
               name="facebookUrl"
               id="facebookUrl"
-              className="block h-12 rounded-md border-gray-400 pl-7 pr-12 focus:border-indigo-500  focus:ring-indigo-500 sm:w-3/4 sm:text-sm"
+              className="block h-12 rounded-md border-gray-400 pl-7 pr-12 focus:border-amethyst  focus:ring-amethyst sm:w-3/4 sm:text-sm"
               placeholder="Link"
               value={facebookUrl}
               onChange={(e) => changeInput(e.target.value)}
@@ -218,7 +218,7 @@ export default function ManageSocialMedia() {
               type="numeric"
               name="whatsappNumber"
               id="whatsappNumber"
-              className="block h-12 rounded-md border-gray-400 pl-7 pr-12 focus:border-indigo-500  focus:ring-indigo-500 sm:w-3/4 sm:text-sm"
+              className="block h-12 rounded-md border-gray-400 pl-7 pr-12 focus:border-amethyst  focus:ring-amethyst sm:w-3/4 sm:text-sm"
               placeholder="Whatsapp Number"
               value={whatsappNumber}
               onChange={(e) => changeInput(e.target.value)}
