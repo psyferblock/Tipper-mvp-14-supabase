@@ -40,7 +40,7 @@ export default function EntityPageHighlightsSection(props) {
                 viewBox="0 0 24 24"
                 strokeWidth={3}
                 stroke="currentColor"
-                className="mx-auto h-5 w-5 text-blue-500 sm:h-7 sm:w-10"
+                className="mx-auto h-5 w-5 text-amethyst sm:h-7 sm:w-10"
               >
                 <path
                   strokeLinecap="round"
@@ -48,7 +48,7 @@ export default function EntityPageHighlightsSection(props) {
                   d="M12 4.5v15m7.5-7.5h-15"
                 />
               </svg>
-              <div className="pb-5 text-xs text-blue-500">Add Highlight</div>
+              <div className="pb-5 text-xs text-amethyst">Add Highlight</div>
             </button>
           </>
         )}
