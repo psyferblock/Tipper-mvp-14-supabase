@@ -190,6 +190,7 @@ function SignInPage() {
                 <Link
                   href="signUp"
                   className=" font-semibold hover:text-ruby-shade"
+                  passHref
                 >
                   <span className="text-pearl">Sign Up Here</span>
                 </Link>

@@ -13,7 +13,7 @@ const nextConfig = {
           { key: "Access-Control-Allow-Credentials", value: "true" },
           {
             key: "Access-Control-Allow-Origin",
-            value: "https://localhost:3000",
+            value: "www.tippernetwork.com",
           },
           {
             key: "Access-Control-Allow-Methods",
@@ -35,7 +35,7 @@ const nextConfig = {
         hostname: "**",
         // hostname: "zluncbhyhpxonqhigbhn.supabase.co",
         // port: "",
-        // pathname: "/storage/v1/object/public/**",
+        // pathname: "/storage/v1/object//**",
       },
     ],
   },

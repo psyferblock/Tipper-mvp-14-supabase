@@ -33,45 +33,9 @@ export default function StickyBarSaveCancel(props) {
     isContactUsSectionPublic,
     contactUsDescription,
     contactUsPictureUrl,
-    entityOwnerId,
-    industryId,
-    entityTypeId,
-    locationId,
-    isContactUsPublic,
-    isVerified,
-    entityUniqueName,
-    entityArea,
-    entityAddress,
     entityId,
-    setEntityName,
-    setLogoObject,
     setArrayOfPictureObjects,
-    setEntityTags,
-    setPhoneNumber,
-    setEmailAddress,
-    setInstagramUrl,
-    setIsInstagramUrlPublic,
-    setFacebookUrl,
-    setIsFacebookUrlPublic,
-    setWhatsappNumber,
-    setIsWhatsappNumberPublic,
-    setAboutUsDescription,
-    setAboutUsPictureUrl,
-    setIsContactUsSectionPublic,
-    setContactUsDescription,
-    setContactUsPictureUrl,
-    setEntityOwnerId,
-    setIsVerified,
-    setIndustryId,
-    setEntityTypeId,
-    setLocationId,
-    setEntityArea,
-    setEntityUniqueName,
-    setEntityAddress,
-    setEntityId,
-    handleTags,
-    removeTag,
-    changeInput,
+    
   } = useEntityContext();
 
   async function handleSaveButton() {
@@ -159,7 +123,7 @@ export default function StickyBarSaveCancel(props) {
         Cancel
       </button>
       <button
-        className="h-10 w-28 rounded-3xl border border-gray-600 bg-blue-600 text-sm text-black hover:bg-blue-700 "
+        className="h-10 w-28 rounded-3xl border border-gray-600 bg-amethyst text-sm text-black hover:bg-amethyst-shade "
         onClick={() => handleSaveButton()}
       >
         Save

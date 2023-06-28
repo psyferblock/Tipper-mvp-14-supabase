@@ -45,7 +45,6 @@ export default function ManageCoverPhotos() {
     });
     setArrayOfPictureObjects(newArray);
   }
-  console.log("array of pics in manage cover photos:", arrayOfPictureObjects);
 
   async function handleDeletePictureButton(deletedPicutreObject: {
     id: null;

@@ -121,7 +121,7 @@ export default function ManageAboutUsPage(props) {
           wrap="soft"
           name="about us"
           id="about us"
-          className="wrap block h-8 w-full rounded-md border-gray-300 px-4 pb-24 pt-4 text-xs focus:border-indigo-500 focus:ring-indigo-500 sm:mt-1 sm:h-32 sm:pl-4 sm:pr-12 sm:text-sm"
+          className="wrap block h-8 w-full rounded-md border-gray-300 px-4 pb-24 pt-4 text-xs focus:border-amethyst focus:ring-amethyst sm:mt-1 sm:h-32 sm:pl-4 sm:pr-12 sm:text-sm"
           placeholder="Enter a description of your wonderful business and people operating it!"
           value={aboutUsDescription}
           onChange={(e) => setAboutUsDescription(e.target.value)}
@@ -153,7 +153,7 @@ export default function ManageAboutUsPage(props) {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="z-10 m-1 h-6 w-6 text-blue-500"
+                  className="z-10 m-1 h-6 w-6 text-amethyst"
                 >
                   <path
                     strokeLinecap="round"
@@ -183,7 +183,7 @@ export default function ManageAboutUsPage(props) {
                 <div className="flex text-sm text-gray-600">
                   <label
                     htmlFor="aboutUsPicture"
-                    className="relative cursor-pointer rounded-md bg-gray-100 font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-400"
+                    className="relative cursor-pointer rounded-md bg-gray-100 font-medium text-amethyst-shade focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-amethyst"
                   >
                     <span className="">Upload a file</span>
                     <input

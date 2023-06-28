@@ -20,7 +20,7 @@ export default function ManageTags() {
           type="text"
           name="tags"
           id="price"
-          className="mb-6 mt-2 block h-12 w-full rounded-md border-gray-400 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+          className="mb-6 mt-2 block h-12 w-full rounded-md border-gray-400 pl-7 pr-12 focus:border-amethyst focus:ring-amethyst sm:text-sm"
           placeholder="Seperate tags with spaces..."
           // value={tag}
           ref={tagRef}
@@ -31,7 +31,7 @@ export default function ManageTags() {
           onClick={() => handleTags(tagRef.current.value)}
           className={
             entityTags.length
-              ? "mb-3 text-sm font-medium text-blue-600"
+              ? "mb-3 text-sm font-medium text-amethyst-shade"
               : "mb-3 text-sm font-medium text-gray-600"
           }
           disabled={!tagRef.current}
