@@ -2,9 +2,9 @@
 import { useManageOpeningHoursContext } from "@/app/context/openingHoursContext/openingClosingStore";
 import { useState } from "react";
 
-export default function WorkingHoursRow(props) {
-  const [openingState, setOpeningState] = useState();
-  const [closingState, setClosingState] = useState();
+export default function WorkingHoursRow(props:any) {
+  const [openingState, setOpeningState] = useState<any|null>(null);
+  const [closingState, setClosingState] = useState<any|null>(null);
 
   const {
     addMonFridayOpening,
@@ -15,7 +15,7 @@ export default function WorkingHoursRow(props) {
     addSundayClosing,
   } = useManageOpeningHoursContext();
 
-  const handleHours = (openingHours, closingHours) => {
+  const handleHours = (openingHours:any, closingHours:any) => {
     if (props.day == "Monday-Friday") {
       addMonFridayOpening(openingHours);
       addMonFridayClosing(closingHours);

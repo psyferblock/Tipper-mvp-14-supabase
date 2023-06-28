@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 import { useManageOpeningHoursContext } from "@/app/context/openingHoursContext/openingClosingStore";
 
-export default function StickyBarSaveCancel(props) {
+export default function StickyBarSaveCancel(props:any) {
   const router = useRouter();
 
   const hoursContextState = useManageOpeningHoursContext();
@@ -75,7 +75,7 @@ export default function StickyBarSaveCancel(props) {
   //Function that removes the objects that were added but then user pressed on "Cancel" instead of "Save"
   function handleCancelButton() {
     const newArray = arrayOfPictureObjects.filter(
-      (pictureObject) => pictureObject.id != null
+      (pictureObject:any) => pictureObject.id != null
     );
     setArrayOfPictureObjects(newArray);
   }
@@ -83,7 +83,7 @@ export default function StickyBarSaveCancel(props) {
   //Function to add new pictures to the DB
   async function saveNewPictures() {
     let arrayOfNewPictureObjects = arrayOfPictureObjects.filter(
-      (pictureObject) => pictureObject.id == null
+      (pictureObject:any) => pictureObject.id == null
     );
 
     if (logoObject?.id == null) {

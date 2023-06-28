@@ -38,7 +38,7 @@ const EntityCreationPage = () => {
   } = useUsersContext();
 
   const [entityName, setEntityName] = useState("");
-  const [entityPhoneNumber, setEntityPhoneNumber] = useState(0);
+  const [entityPhoneNumber, setEntityPhoneNumber] = useState<any>(0);
   const [entityEmailAddress, setEntityEmailAddress] = useState("");
   const [entityArea, setEntityArea] = useState("");
   const [entityAddress, setEntityAddress] = useState("");
@@ -48,7 +48,7 @@ const EntityCreationPage = () => {
   /////////    /////////     /////////
 
   // handling the types of entities that exist
-  const [listOfEntityTypes, setListOfEntityTypes] = useState([]);
+  const [listOfEntityTypes, setListOfEntityTypes] = useState<any>([]);
   const [entityType, setEntityType] = useState("restaurant");
   const [entityUniqueName, setEntityUniqueName] = useState("");
   const [entityTypeId, setEntityTypeId] = useState(0);
@@ -111,7 +111,7 @@ const EntityCreationPage = () => {
   //Finding the entity type's id
 
   useEffect(() => {
-    const isTypeObject = (type) => {
+    const isTypeObject = (type:any) => {
       return type.entity_type_name === entityType;
     };
     // return entityTypeId;
@@ -169,9 +169,9 @@ const EntityCreationPage = () => {
           entityId: entityId,
           menuName: menuName,
         });
-        console.log("firstMenu", firstMenu);
+        // console.log("firstMenu", firstMenu);
         const firstMenuId = firstMenu?.id;
-        console.log("firstMenuId", firstMenuId);
+        // console.log("firstMenuId", firstMenuId);
 
         let isPublic = true;
         let categoryName = "main";
@@ -180,9 +180,9 @@ const EntityCreationPage = () => {
           isPublic: isPublic,
           menuId: firstMenuId,
         });
-        console.log("firstMenuId", firstMenuId);
+        // console.log("firstMenuId", firstMenuId);
         const firstMenuCategoryId = firstMenuCategory.id;
-        console.log("firstMenuCategoryId", firstMenuCategoryId);
+        // console.log("firstMenuCategoryId", firstMenuCategoryId);
         await addOpeningHours({
           openingHoursMondayFriday: "8:00",
           openingHoursSaturday: "9:00",
@@ -484,7 +484,7 @@ text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 abso
                   setEntityType(selectedType);
                 }}
               >
-                {listOfEntityTypes.map((entityTypeObject) => (
+                {listOfEntityTypes.map((entityTypeObject:any) => (
                   <option
                     key={entityTypeObject.id}
                     value={entityTypeObject.entity_type_name}

@@ -174,7 +174,7 @@ export default function ManageCoverPhotos() {
             {arrayOfPictureObjects ? (
               <>
                 {arrayOfPictureObjects.map(
-                  (pictureObject, key: Key | null | undefined) => (
+                  (pictureObject:any, key: Key | null | undefined) => (
                     <div
                       key={key}
                       className="relative flex h-40 w-[268px] justify-center rounded-lg border-2 border-gray-400 bg-gray-100 sm:h-56 sm:w-[340px] "

@@ -2,7 +2,7 @@
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 import uploadPictureToBucket from "@/app/lib/create/uploadPictureToBucket";
 import { addMenuPdf } from "@/app/lib/update/addMenuPdf";
-import ToggleButton from "@/app/root-Components/tools-Components/ToggleButton";
+import ToggleButton from "@/app/root-components/tools-Components/ToggleButton";
 import Image from "next/image";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
@@ -79,7 +79,7 @@ const UploadPdfMenu = () => {
   return (
     <div className="m-2 flex flex-col justify-between border-2 p-2 ">
       <div className="">
-        <div className=" flex justify-between my-2">
+        <div className=" my-2 flex justify-between">
           <h1 className="text-bold text-lg">Pdf Menu Public</h1>
           <ToggleButton
             handleToggleButton={handlePdfMenuTogglebutton}
@@ -90,7 +90,7 @@ const UploadPdfMenu = () => {
         <h1 className="mb-2"> Upload Menu Pdf</h1>
       </div>
       <div className="flex h-auto justify-between">
-        <div className="flex h-fit space-x-2 overflow-hidden text-sm text-gray-600 w-3/5 mb-2 wrap">
+        <div className="wrap mb-2 flex h-fit w-3/5 space-x-2 overflow-hidden text-sm text-gray-600">
           <label
             htmlFor="menuPdf"
             className="relative cursor-pointer rounded-md bg-gray-100 font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-400"

@@ -1,16 +1,14 @@
 "use client";
 
-import ToggleButton from "@/app/root-Components/tools-Components/ToggleButton";
+import ToggleButton from "@/app/root-components/tools-Components/ToggleButton";
 import uploadPicture from "@/app/lib/create/uploadPictureToBucket";
-import { deleteContactUsPicture } from "@/app/lib/update/deleteContactOrAboutUsPicture";
 import Image from "next/image";
 import { ChangeEvent, useEffect, useState } from "react";
-import { useManageEntityInfosContext } from "../Contexts/EntityInfoContext";
 import { v4 as uuidv4 } from "uuid";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 import uploadPictureToBucket from "@/app/lib/create/uploadPictureToBucket";
 
-export default function ManageContactUsPage(props) {
+export default function ManageContactUsPage(props:any) {
   const {
     isContactUsSectionPublic,
     contactUsDescription,
@@ -60,12 +58,13 @@ export default function ManageContactUsPage(props) {
         <div className="flex items-center space-x-1 py-1 pb-0.5 sm:py-0">
           <div className="pt-0.5">
             <ToggleButton
-              handleToggleButton={()=>handleToggleButton()}
+              handleToggleButton={() => handleToggleButton()}
               switchedOn={isContactUsSectionPublic}
             />
           </div>
           <div className="text-xs sm:mt-0">
-            Show `&quot;`Contact Us`&quot;` section on your Entity`&apos;`s public page
+            Show `&quot;`Contact Us`&quot;` section on your Entity`&apos;`s
+            public page
           </div>
         </div>
       </div>

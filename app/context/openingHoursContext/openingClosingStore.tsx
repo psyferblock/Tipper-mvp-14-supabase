@@ -13,7 +13,7 @@ import {
   createContext,
 } from "react";
 
-function CreateWorkingHoursTools(hoursInput) {
+function CreateWorkingHoursTools(hoursInput:any) {
   const [hoursState, dispatch] = useReducer(
     entityWorkingHoursReducer,
     workingHoursState
@@ -28,39 +28,39 @@ function CreateWorkingHoursTools(hoursInput) {
     closingHoursSunday,
   } = hoursState;
 
-  const addMonFridayOpening = useCallback((input) => {
+  const addMonFridayOpening = useCallback((input:any) => {
     dispatch({
       type: "ADD_OPENING_HOURS_MONDAY_FRIDAY",
       payload: input,
     });
   }, []);
 
-  const addSaturdayOpening = useCallback((input) => {
+  const addSaturdayOpening = useCallback((input:any) => {
     dispatch({
       type: "ADD_OPENING_HOURS_SATURDAY",
       payload: input,
     });
   }, []);
-  const addSundayOpening = useCallback((input) => {
+  const addSundayOpening = useCallback((input:any) => {
     dispatch({
       type: "ADD_OPENING_HOURS_SUNDAY",
       payload: input,
     });
   }, []);
-  const addMonFridayClosing = useCallback((input) => {
+  const addMonFridayClosing = useCallback((input:any) => {
     dispatch({
       type: "ADD_CLOSING_HOURS_MONDAY_FRIDAY",
       payload: input,
     });
   }, []);
-  const addSaturdayClosing = useCallback((input) => {
+  const addSaturdayClosing = useCallback((input:any) => {
     dispatch({
       type: "ADD_CLOSING_HOURS_SATURDAY",
       payload: input,
     });
   }, []);
 
-  const addSundayClosing = useCallback((input) => {
+  const addSundayClosing = useCallback((input:any) => {
     dispatch({
       type: "ADD_CLOSING_HOURS_SUNDAY",
       payload: input,
@@ -76,7 +76,7 @@ function CreateWorkingHoursTools(hoursInput) {
     addSundayClosing(hoursInput.sunTimeClosing);
   }, []);
 
-  console.log("reducedState in context hours ", hoursState);
+  // console.log("reducedState in context hours ", hoursState);
 
   return {
     openingHoursMondayFriday,

@@ -71,6 +71,7 @@ export default function EntityPageContainerWithEntityInfos({ entityInfos }) {
                 {entityInfos.is_whatsapp_number_public && (
                   <TextUsWhatsappButton
                     phoneNumber={entityInfos.whatsapp_phone_number}
+                    off={false}
                   />
                 )}
               </div>

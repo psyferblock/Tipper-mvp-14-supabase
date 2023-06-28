@@ -1,6 +1,6 @@
 "use client";
 
-import ToggleButton from "@/app/root-Components/tools-Components/ToggleButton";
+import ToggleButton from "@/app/root-components/tools-Components/ToggleButton";
 import { useSupabase } from "@/app/supabase-provider";
 
 import updateIsMenuCategoryPublic from "@/app/lib/update/updateIsMenuCategoryPublic";
@@ -19,7 +19,6 @@ const MenuCategoryCard = (props) => {
   const isPublic = props.isMenuCategoryPublic;
 
   const [isCategoryPublic, setIsMenuCategoryPublic] = useState(isPublic);
-
 
   async function handleToggleButton(boolean) {
     setIsMenuCategoryPublic(boolean);

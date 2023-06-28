@@ -10,7 +10,7 @@ export const workingHoursState = {
   closingHoursSunday: "",
 };
 
-const entityWorkingHoursReducer = (state, action) => {
+const entityWorkingHoursReducer = (state:any, action:any) => {
   const { type, payload } = action;
 
   switch (type) {

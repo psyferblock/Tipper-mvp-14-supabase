@@ -86,10 +86,10 @@ function CreateManageEntityInfosTools(
     setEntityMenuInfo(entityInfos?.entity_menu_id);
     setIsAboutUsPublic(entityInfos?.is_about_us_public);
   }, []);
-  console.log("reduced state in context ", entityState);
+  // console.log("reduced state in context ", entityState);
 
   //set entityMenuId
-  const setEntityMenuInfo = useCallback((array) => {
+  const setEntityMenuInfo = useCallback((array:string[]) => {
     dispatch({
       type: "ENTITY_MENU_INFO",
       payload: array,
@@ -112,7 +112,7 @@ function CreateManageEntityInfosTools(
   /**
    * Setter function for arrayOfObjectPictures state variable
    */
-  const setLogoObject = useCallback((newObject: string) => {
+  const setLogoObject = useCallback((newObject: any) => {
     dispatch({
       type: "LOGO_OBJECT",
       payload: newObject,
@@ -122,7 +122,7 @@ function CreateManageEntityInfosTools(
   /**
    * Setter function for arrayOfObjectPictures state variable
    */
-  const setArrayOfPictureObjects = useCallback((newArray) => {
+  const setArrayOfPictureObjects = useCallback((newArray:string[]) => {
     dispatch({
       type: "ARRAY_OF_PICTURE_OBJECTS",
       payload: newArray,
@@ -317,16 +317,16 @@ function CreateManageEntityInfosTools(
       payload: entityAddress,
     });
   }, []);
-  const changeInput = useCallback((e) => {
+  const changeInput = useCallback((e:any) => {
     dispatch({
       type: "CHANGE_INPUT",
       payload: { name: e.target.value, value: e.target.value },
     });
   }, []);
 
-  const handleTags = useCallback((tagRef) => {
+  const handleTags = useCallback((tagRef:any) => {
     const tags = tagRef.split(" ");
-    tags.forEach((tag) => {
+    tags.forEach((tag:any) => {
       dispatch({
         type: "ADD_TAG",
         payload: tag,
@@ -334,14 +334,14 @@ function CreateManageEntityInfosTools(
     });
   }, []);
 
-  const removeTag = useCallback((tag) => {
+  const removeTag = useCallback((tag:string) => {
     dispatch({
       type: "REMOVE_TAG",
       payload: tag,
     });
   }, []);
 
-  const setIsAboutUsPublic = useCallback((isPublic: bool) => {
+  const setIsAboutUsPublic = useCallback((isPublic:boolean) => {
     dispatch({
       type: "IS_ABOUT_US_SECTION_PUBLIC",
       payload: isPublic,

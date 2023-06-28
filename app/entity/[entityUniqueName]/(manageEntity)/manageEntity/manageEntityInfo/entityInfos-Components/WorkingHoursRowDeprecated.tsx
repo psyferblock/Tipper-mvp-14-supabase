@@ -1,4 +1,4 @@
-export default function WorkingHoursRow(props) {
+export default function WorkingHoursRow(props:any) {
   const row = props.caption ? (
     <div className="items-center space-y-2 sm:flex sm:space-x-8 sm:space-y-0">
       {/* CHECKBOX AND DAY DIV */}

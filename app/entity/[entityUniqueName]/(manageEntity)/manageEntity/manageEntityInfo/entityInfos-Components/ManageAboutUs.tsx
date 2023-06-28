@@ -4,14 +4,14 @@ import { useEntityContext } from "@/app/context/entityContext/entityContextStore
 import uploadPictureToBucket from "@/app/lib/create/uploadPictureToBucket";
 // import ToggleButton from "@/app/root-Components/tools-Components/ToggleButton";
 import uploadPicture from "@/app/lib/create/uploadPictureToBucket";
-import ToggleButton from "@/app/root-Components/tools-Components/ToggleButton";
+import ToggleButton from "@/app/root-components/tools-Components/ToggleButton";
 // import { deleteBasicPictureWithUrl } from "@/app/lib/delete/deleteBasicPictureWithId";
 // import { deleteAboutUsPicture } from "@/app/lib/update/deleteContactOrAboutUsPicture";
 import Image from "next/image";
 import { ChangeEvent } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-export default function ManageAboutUsPage(props) {
+export default function ManageAboutUsPage(props: any) {
   const {
     aboutUsDescription,
     aboutUsPictureUrl,
@@ -58,12 +58,13 @@ export default function ManageAboutUsPage(props) {
       <div className="items-center sm:flex sm:space-x-6">
         <div className="mb-1 text-lg font-bold">About Us</div>
         <div className="flex items-center space-x-1 py-1 pb-0.5 sm:py-0">
-          <ToggleButton 
-          handleToggleButton={()=>handleToggleButton()}
-          switchedOn={isAboutUsPublic}
+          <ToggleButton
+            handleToggleButton={() => handleToggleButton()}
+            switchedOn={isAboutUsPublic}
           />
           <p className="text-xs sm:mt-0">
-            Show `&quot;`About Us`&quot;` section on your Entity`&apos;`s public page
+            Show `&quot;`About Us`&quot;` section on your Entity`&apos;`s public
+            page
           </p>
         </div>
       </div>
