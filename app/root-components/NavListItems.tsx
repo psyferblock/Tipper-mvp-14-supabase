@@ -47,7 +47,7 @@ function NavListItems() {
                     {({ active }) => (
                       <div
                         className={`${
-                          active ? "bg-violet-500 text-white" : "text-gray-900"
+                          active ? "bg-amethyst text-white" : "text-gray-900"
                         } group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-grey-300`}
                       >
                         <GoToUserProfilePage />
@@ -58,7 +58,7 @@ function NavListItems() {
                     {({ active }) => (
                       <div
                         className={`${
-                          active ? "bg-violet-500 text-white" : "text-gray-900"
+                          active ? "bg-amethyst text-white" : "text-gray-900"
                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                       >
                         <GoToAboutUsPage />{" "}
@@ -69,7 +69,7 @@ function NavListItems() {
                     {({ active }) => (
                       <div
                         className={`${
-                          active ? "bg-violet-500 text-white" : "text-gray-900"
+                          active ? "bg-amethyst text-white" : "text-gray-900"
                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                       >
                         <GoToContactUsPage />{" "}
@@ -80,7 +80,7 @@ function NavListItems() {
                     {({ active }) => (
                       <div
                         className={`${
-                          active ? "bg-violet-500 text-white" : "text-gray-900"
+                          active ? "bg-amethyst text-white" : "text-gray-900"
                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                       >
                         <SignOut />

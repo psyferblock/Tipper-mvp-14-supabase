@@ -42,7 +42,7 @@ function ProfileIcon() {
 
   return (
     <div className="flex flex-row items-center justify-evenly text-x-2">
-      <h1 className="text-base text-ruby px-2">{firstName || "Sanfour"}</h1>
+      <h1 className="text-base font-serif text-ruby px-2">{firstName || "Sanfour"}</h1>
       <div className="aspect-1/1 relative mx-auto h-10 w-10 overflow-hidden rounded-full bg-ruby-tint ring-2 ring-ruby-tint">
         <Image
           width={500}

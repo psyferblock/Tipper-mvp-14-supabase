@@ -21,7 +21,7 @@ export default function HomePageSearchBar() {
         placeholder="Explore Entities"
         className="w-full border-0 bg-transparent pl-2 sm:h-12 sm:pl-9 sm:text-sm sm:focus:ring-0"
       />
-      <button className="bg-blue-500 px-3 text-white sm:-mr-3 sm:px-7">
+      <button className="bg-amethyst px-3 text-white sm:-mr-3 sm:px-7">
         Search
       </button>
     </div>

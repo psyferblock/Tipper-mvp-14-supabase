@@ -1,11 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import LeftRightButtons from "./LeftRightButtons";
-// import { ChevronLeft, ChevronRight } from "react-feather";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
-import { RxDotFilled } from "react-icons/rx";
-import Image from "next/image";
 
 function CarouselComponent({
   children: slides,
@@ -56,7 +52,7 @@ function CarouselComponent({
         </button>
       </div>
       {/* auto slide function  */}
-      <div className="z-4 absolute bottom-4 left-0 right-0 pb-1 ">
+      <div className="z-4 absolute bottom-4 left-0 right-0 pb-1  ">
         <div className="flex items-center justify-center gap-2">
           {slides.map((_, i) => (
             // here we are changing the color of the dots that are used to determine where we are on the slide

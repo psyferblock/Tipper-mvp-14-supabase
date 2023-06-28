@@ -118,8 +118,7 @@ const EntityCreationPage = () => {
     let eTypeId = listOfEntityTypes.find(isTypeObject);
     setEntityTypeId(eTypeId?.id);
   }, [entityType,listOfEntityTypes]);
-  console.log("listOfEntityTypes", listOfEntityTypes);
-  console.log("eTypeId", entityTypeId);
+  
 
   ///////////// //////////// /////////// //////////////
 
