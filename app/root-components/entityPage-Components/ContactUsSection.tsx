@@ -16,11 +16,11 @@ export default function EntityPageContactUsSection({
         </div>
         <div className="pr-8 ">{description}</div>
         <button className="h-10 w-40 rounded-3xl bg-blue-500 text-sm text-white ">
-          <Link href={`tel:+961${phoneNumber}`}>Contact Us</Link>
+          {/* <Link href={`tel:+961${phoneNumber}`}>Contact Us</Link> */}
         </button>
       </div>
       {/* IMAGE */}
-      <div className="relative mx-auto h-32 w-full sm:h-[320px] sm:w-[598px] sm:bg-gray-400 ">
+      <div className="relative mx-auto aspect-video w-full sm:h-[320px] sm:w-[598px] sm:bg-gray-400 ">
         {pictureUrl ? (
           <Image src={pictureUrl} alt="Contact Us Picture" fill />
         ) : (

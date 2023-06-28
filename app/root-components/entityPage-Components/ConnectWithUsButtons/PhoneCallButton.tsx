@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function PhoneCallButton({ phoneNumber }) {
   return (
-    <Link href={`tel:+961${phoneNumber}`}>
+    <Link href={`tel:+961${phoneNumber}`} passHref>
       <div className="flex items-center space-x-2 text-xs font-medium">
         <svg
           xmlns="http://www.w3.org/2000/svg"

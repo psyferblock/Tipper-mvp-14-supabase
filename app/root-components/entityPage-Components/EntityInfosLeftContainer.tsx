@@ -13,8 +13,8 @@ export default function EntityPageContainerWithEntityInfos({ entityInfos }) {
         <div>
           <div>Entity Tags</div>
           <div className="grid grid-flow-col grid-rows-2 gap-2 overflow-auto pb-3 pt-2 sm:gap-2 sm:pb-3 sm:pt-2">
-            {entityInfos.entity_tags?.map((tag) => (
-              <div className="mr-3  flex w-fit rounded-xl bg-gray-200 px-4 py-1 text-xs text-black drop-shadow-sm">
+            {entityInfos.entity_tags?.map((tag,index) => (
+              <div key={index} className="mr-3  flex w-fit rounded-xl bg-gray-200 px-4 py-1 text-xs text-black drop-shadow-sm">
                 {tag}
               </div>
             ))}

@@ -42,6 +42,7 @@ export default async function HomePageListingOfEntitiesCards() {
             <Link
               className="flex items-center justify-end text-sm text-blue-500 sm:space-x-1 pr-2"
               href={`entitiesBySector/${industries?.id}`}
+              passHref
             >
               View All
               <svg
@@ -69,6 +70,7 @@ export default async function HomePageListingOfEntitiesCards() {
             <Link
               className="mr-2 flex items-center justify-end text-sm text-blue-500 sm:space-x-1 pr-2"
               href={`entitiesBySector`}
+              passHref
             >
               View All
               <svg

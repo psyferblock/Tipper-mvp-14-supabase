@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function TextUsWhatsappButton({ phoneNumber }) {
   return (
-    <Link href={`https://wa.me/961${phoneNumber}`}>
+    <Link href={`https://wa.me/961${phoneNumber}`} passHref>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 448 512"

@@ -14,14 +14,14 @@ export default function ActivitiesHistory() {
         </div>
         <div className="justify-between  space-y-1 pt-2 sm:flex">
           <div className="text-xs">
-            You added a link to you Instagram page on your entity's page
+            You added a link to you Instagram page on your entity`&apos;`s page
             `&quot;`Meshomosh`&quot;`
           </div>
           <div className="text-xs text-gray-500">10-06-2023</div>
         </div>
         <div className="justify-between space-y-1 pt-2 sm:flex">
           <div className="text-xs">
-            You added a new highlight reel on your entity's page `&quot;`Meshmosh`&quot;`
+            You added a new highlight reel on your entity`&apos;`s page `&quot;`Meshmosh`&quot;`
           </div>
           <div className="text-xs text-gray-500">10-03-2023</div>
         </div>

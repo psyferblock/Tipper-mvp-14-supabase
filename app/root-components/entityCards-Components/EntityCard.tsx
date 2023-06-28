@@ -36,10 +36,11 @@ export default async function EntityCard({ entity }) {
       <Link
         href={`entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}#menuTab`}
         scroll={false}
+        passHref
       >
         <div
           id="app"
-          className="bg-ruby-tint w-full   text-grey-darkest flex h-32 max-w-md rounded  shadow-md"
+          className="bg-ruby-tint w-full   text-grey-darkest flex h-32 max-w-md rounded-sm  shadow-md"
         >
           <Image
             className="  h-11/12 left-0 top-0 w-1/2 rounded-l-sm p-1"
