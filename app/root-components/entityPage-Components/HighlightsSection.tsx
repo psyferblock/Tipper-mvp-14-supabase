@@ -17,10 +17,12 @@ export default function EntityPageHighlightsSection(props) {
   return (
     <div className="flex sm:space-x-3">
       <div className="grid h-fit grid-flow-col grid-rows-1 gap-2 overflow-x-auto rounded-lg py-2 text-xs sm:gap-6 sm:drop-shadow-lg">
-        {entityHighlights.map((highlight) => (
-          <button className="h-[68px] w-[68px] truncate rounded-full bg-white font-semibold drop-shadow-lg sm:h-[116px] sm:w-[116px] sm:drop-shadow-none ">
-            {highlight.highlight_name}
-          </button>
+        {entityHighlights.map((highlight, index) => (
+          <div key={index}>
+            <button className="h-[68px] w-[68px] truncate rounded-full bg-white font-semibold drop-shadow-lg sm:h-[116px] sm:w-[116px] sm:drop-shadow-none ">
+              {highlight.highlight_name}
+            </button>
+          </div>
         ))}
       </div>
 
