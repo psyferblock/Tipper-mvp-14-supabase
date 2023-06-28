@@ -33,6 +33,7 @@ const MenuCategoryCard = (props) => {
         {/* UPPER PART OF CARD */}
         <Link
           href={`entity/${entityUniqueName}/manageEntity/manageMenuCategories/${categoryId}`}
+          passHref
         >
           <div className="sm:space-y-2">
             {/* <div className="h-20 w-20 rounded-full mx-auto overflow-hidden">
@@ -54,6 +55,7 @@ const MenuCategoryCard = (props) => {
           <div className="ml-2 space-y-2 sm:hidden">
             <Link
               href={`entity/${entityUniqueName}/manageEntity/manageMenuCategories/${categoryId}`}
+              passHref
             >
               <div className="mr-2 text-start font-semibold text-gray-700 sm:hidden">
                 {props.categoryName}
@@ -71,7 +73,7 @@ const MenuCategoryCard = (props) => {
             onClick={() => {
               props.openEditNameModal(props.categoryId);
             }}
-            className="flex w-fit pt-1 text-xs text-blue-500 sm:hidden"
+            className="flex w-fit pt-1 text-xs text-amethyst sm:hidden"
           >
             Rename
           </button>
@@ -89,7 +91,7 @@ const MenuCategoryCard = (props) => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="m-1 h-5 w-5 text-blue-500"
+                className="m-1 h-5 w-5 text-amethyst"
               >
                 <path
                   strokeLinecap="round"
@@ -118,7 +120,7 @@ const MenuCategoryCard = (props) => {
               onClick={() => {
                 props.openEditNameModal(props.categoryId);
               }}
-              className="pb-1 text-blue-500 sm:pt-1"
+              className="pb-1 text-amethyst sm:pt-1"
             >
               Rename
             </button>

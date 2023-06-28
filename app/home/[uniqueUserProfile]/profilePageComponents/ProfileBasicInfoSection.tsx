@@ -134,13 +134,13 @@ function ProfileBasicInfoSection() {
         <div className="relative mx-auto h-32 w-32 overflow-hidden rounded-full bg-ruby-tint ring-2 ring-ruby-tint">
           <Image fill alt={"profile Pic"} src={profilePictureUrl}></Image>
         </div>
-        <div className="flex justify-center space-x-[3px] text-xs text-blue-500 sm:flex sm:justify-center sm:space-x-[0.6px] sm:text-xs  ">
+        <div className="flex justify-center space-x-[3px] text-xs text-amethyst sm:flex sm:justify-center sm:space-x-[0.6px] sm:text-xs  ">
           {/* <button disabled={!editing} >Change photo</button> */}
           <label
             htmlFor="profilePicture"
             className={
               editing
-                ? "relative cursor-pointer rounded-md bg-gray-100 font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-400"
+                ? "relative cursor-pointer rounded-md bg-gray-100 font-medium text-amethyst-shade-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-amethyst focus-within:ring-offset-2 hover:text-amethyst-tint"
                 : "text-gray-500"
             }
           >
@@ -196,7 +196,7 @@ function ProfileBasicInfoSection() {
                       id="first name"
                       value={firstName || ""}
                       onChange={(e) => setUserName(toUpper(e.target.value))}
-                      className="mb-3 block h-12 w-full rounded-md border-gray-300 pl-4 pr-12 text-xs focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      className="mb-3 block h-12 w-full rounded-md border-gray-300 pl-4 pr-12 text-xs focus:border-amethyst focus:ring-amethyst sm:text-sm"
                       placeholder="Enter First Name"
                       disabled={!editing}
                     />
@@ -215,7 +215,7 @@ function ProfileBasicInfoSection() {
                       id="last name"
                       value={lastName || ""}
                       onChange={(e) => setUserLastName(toUpper(e.target.value))}
-                      className="mb-3 block h-12 w-full rounded-md border-gray-300 pl-4 pr-12 text-xs focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      className="mb-3 block h-12 w-full rounded-md border-gray-300 pl-4 pr-12 text-xs focus:border-amethyst focus:ring-amethyst sm:text-sm"
                       placeholder="Enter Last Name"
                       disabled={!editing}
                     />
@@ -236,7 +236,7 @@ function ProfileBasicInfoSection() {
                     id="dateofbirth"
                     value={dateOfBirth || ""}
                     onChange={(e) => setDateOfBirth(e.target.value)}
-                    className="mb-3 block h-12 w-full rounded-md border-gray-300 pl-4 pr-12 text-xs text-gray-600 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    className="mb-3 block h-12 w-full rounded-md border-gray-300 pl-4 pr-12 text-xs text-gray-600 focus:border-amethyst focus:ring-amethyst sm:text-sm"
                     placeholder="Enter Date of Birth"
                     disabled={!editing}
                   />
@@ -262,7 +262,7 @@ function ProfileBasicInfoSection() {
                           setGender(e.target.value);
                         }}
                         name="default-radio"
-                        className="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-100 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
+                        className="h-4 w-4 border-gray-300 bg-gray-100 text-amethyst-shade focus:ring-2 focus:ring-amethyst dark:border-gray-600 dark:bg-gray-100 dark:ring-offset-gray-800 dark:focus:ring-amethyst-shade"
                         disabled={!editing}
                       />
                       <label
@@ -282,7 +282,7 @@ function ProfileBasicInfoSection() {
                           setGender(e.target.value);
                         }}
                         name="default-radio"
-                        className="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-100 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
+                        className="h-4 w-4 border-gray-300 bg-gray-100 text-amethyst-shade focus:ring-2 focus:ring-amethyst dark:border-gray-600 dark:bg-gray-100 dark:ring-offset-gray-800 dark:focus:ring-amethyst-shade"
                         disabled={!editing}
                       />
                       <label
@@ -302,7 +302,7 @@ function ProfileBasicInfoSection() {
                           setGender(e.target.value);
                         }}
                         name="default-radio"
-                        className="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-100 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
+                        className="h-4 w-4 border-gray-300 bg-gray-100 text-amethyst-shade focus:ring-2 focus:ring-amethyst dark:border-gray-600 dark:bg-gray-100 dark:ring-offset-gray-800 dark:focus:ring-amethyst-shade"
                         disabled={!editing}
                       />
                       <label
@@ -329,14 +329,14 @@ function ProfileBasicInfoSection() {
                     onChange={(e) => {
                       setContactNumber(e.target.value);
                     }}
-                    className="block h-12 w-full rounded-md border-gray-300 pl-4 pr-12  text-xs focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    className="block h-12 w-full rounded-md border-gray-300 pl-4 pr-12  text-xs focus:border-amethyst focus:ring-amethyst sm:text-sm"
                     placeholder="Enter Number"
                     disabled={!editing}
                   />
                 </div>
               </div>
               <button
-                className="text-md m-3 mt-8 h-10 w-11/12 rounded-3xl bg-diamond text-ruby hover:bg-ruby-tint hover:text-lg"
+                className="text-md m-3 mt-8 h-10 w-11/12 rounded-3xl bg-diamond text-ruby hover:bg-ruby-tint hover:text-lg "
                 onClick={handleUserInfo}
               >
                 submit

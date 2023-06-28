@@ -91,7 +91,7 @@ export default function ManageMenuCategories() {
           {/* ADD CATEGORY BUTTON */}
           <button
             // onClick={handleAddCategoryButton}
-            className=" hidden h-10 w-32 rounded-3xl bg-blue-500 text-xs text-white hover:bg-blue-600 sm:block"
+            className=" hidden h-10 w-32 rounded-3xl bg-amethyst text-xs text-white hover:bg-amethyst sm:block"
           >
             Add New Category
           </button>
@@ -118,7 +118,7 @@ export default function ManageMenuCategories() {
                 <div className="flex text-sm text-gray-600">
                   <label
                     htmlFor="file-upload"
-                    className="relative cursor-pointer rounded-md bg-gray-100 font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-400"
+                    className="relative cursor-pointer rounded-md bg-gray-100 font-medium text-amethyst focus-within:outline-none focus-within:ring-2 focus-within:ring-amethyst focus-within:ring-offset-2 hover:text-indigo-400"
                   >
                     <span className="">Upload a file</span>
                     <input
@@ -141,7 +141,7 @@ export default function ManageMenuCategories() {
             {/* ADD CATEGORY FOR MOBILE */}
             <button
               onClick={handleAddCategoryButton}
-              className="flex w-fit items-center justify-between space-x-1 text-blue-500 sm:hidden"
+              className="flex w-fit items-center justify-between space-x-1 text-amethyst sm:hidden"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -19,7 +19,7 @@ export default function ToggleButton(props) {
       <Switch
         checked={enabled}
         onChange={() => handleSwitch()}
-        className={`${enabled ? "bg-blue-500" : "bg-gray-400"}
+        className={`${enabled ? "bg-amethyst" : "bg-gray-400"}
           relative inline-flex h-[19px] w-[35px] shrink-0 cursor-pointer rounded-full border-2
           border-transparent transition-colors duration-200 ease-in-out
           focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}

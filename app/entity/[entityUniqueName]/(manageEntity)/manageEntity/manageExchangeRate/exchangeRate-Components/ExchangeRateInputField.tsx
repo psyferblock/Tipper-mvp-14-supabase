@@ -24,7 +24,7 @@ export default function ExchangeRateInputField(exchangeRate) {
   };
   return (
     <>
-      <div className="mb-4 flex h-12 items-center rounded-lg border border-gray-300 py-4 pl-4 hover:border-indigo-500">
+      <div className="mb-4 flex h-12 items-center rounded-lg border border-gray-300 py-4 pl-4 hover:border-amethyst">
         <div className="h-12 border-r border-gray-300 pr-4 pt-3 text-gray-500">
           LBP
         </div>
@@ -42,14 +42,14 @@ export default function ExchangeRateInputField(exchangeRate) {
           {editing ? (
             <button
               onClick={() => handleApplyButton()}
-              className=" block h-fit pb-4 text-blue-500"
+              className=" block h-fit pb-4 text-amethyst"
             >
               Apply
             </button>
           ) : (
             <button
               onClick={() => handleEdit()}
-              className=" block h-fit pb-4 text-blue-500"
+              className=" block h-fit pb-4 text-amethyst"
             >
               Edit
             </button>
@@ -106,14 +106,14 @@ export default function ExchangeRateInputField(exchangeRate) {
       {editing ? (
         <button
           onClick={() => handleApplyButton()}
-          className="hidden pb-4 text-blue-500 hover:text-indigo-700 sm:block"
+          className="hidden pb-4 text-amethyst hover:text-amethyst-shade sm:block"
         >
           Apply
         </button>
       ) : (
         <button
           onClick={() => handleEdit()}
-          className="hidden pb-4 text-blue-500 hover:text-indigo-700 sm:block"
+          className="hidden pb-4 text-amethyst hover:text-amethyst-shade sm:block"
         >
           Edit
         </button>

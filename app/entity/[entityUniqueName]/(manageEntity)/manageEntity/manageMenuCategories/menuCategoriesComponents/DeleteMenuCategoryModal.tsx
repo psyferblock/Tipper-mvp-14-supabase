@@ -79,14 +79,14 @@ const DeleteMenuCategoryModal = (props) => {
                   <div className="space-x-3 sm:space-x-3">
                     <button
                       type="button"
-                      className="mt-3 inline-flex justify-center rounded-3xl border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-3 sm:mt-0 sm:w-auto sm:text-sm"
+                      className="mt-3 inline-flex justify-center rounded-3xl border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-amethyst focus:ring-offset-2 sm:ml-3 sm:mt-0 sm:w-auto sm:text-sm"
                       onClick={props.closeModal}
                     >
                       Cancel
                     </button>
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-3xl border border-transparent bg-blue-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
+                      className="inline-flex justify-center rounded-3xl border border-transparent bg-amethyst px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-amethyst-shade focus:outline-none focus:ring-2 focus:ring-amethyst focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
                       onClick={() => handleDeleteButton()}
                     >
                       Delete

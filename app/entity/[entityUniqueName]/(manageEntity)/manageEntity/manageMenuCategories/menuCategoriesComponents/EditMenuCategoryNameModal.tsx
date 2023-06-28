@@ -81,7 +81,7 @@ const EditMenuCategoryNameModal = (props) => {
                       <input
                         type="text"
                         id="price"
-                        className="mb-3 mt-1 block h-12 w-full rounded-md border-gray-300 pl-3 focus:border-indigo-500 focus:ring-indigo-500 sm:pl-7 sm:pr-12 sm:text-sm"
+                        className="mb-3 mt-1 block h-12 w-full rounded-md border-gray-300 pl-3 focus:border-amethyst focus:ring-amethyst sm:pl-7 sm:pr-12 sm:text-sm"
                         placeholder="Type new name for category"
                         ref={buttonRef}
                         value={categoryName}
@@ -95,14 +95,14 @@ const EditMenuCategoryNameModal = (props) => {
                 <div className="flex justify-end bg-gray-50 px-4 py-3 sm:px-6">
                   <button
                     type="button"
-                    className="mr-5 inline-flex justify-center rounded-3xl border border-gray-300 bg-white px-8 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-3 sm:mr-2 sm:mt-0 sm:w-auto sm:text-sm"
+                    className="mr-5 inline-flex justify-center rounded-3xl border border-gray-300 bg-white px-8 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-amethyst focus:ring-offset-2 sm:ml-3 sm:mr-2 sm:mt-0 sm:w-auto sm:text-sm"
                     onClick={props.closeModal}
                   >
                     Cancel
                   </button>
                   <button
                     type="button"
-                    className="inline-flex justify-center rounded-3xl border border-transparent bg-blue-500 px-9 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
+                    className="inline-flex justify-center rounded-3xl border border-transparent bg-amethyst px-9 py-2 text-base font-medium text-white shadow-sm hover:bg-amethyst-shade focus:outline-none focus:ring-2 focus:ring-amethyst focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
                     onClick={() => handleSaveButton()}
                   >
                     Save

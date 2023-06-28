@@ -150,7 +150,7 @@ export default function StickyBarSaveCancel(props) {
         Cancel
       </button>
       <button
-        className="h-10 w-28 rounded-3xl border border-gray-600 bg-amethyst text-sm text-black hover:bg-amethyst-shade "
+        className="h-10 w-28 rounded-3xl border border-gray-600 bg-amethyst text-sm text-black hover:bg-amethyst-tint "
         onClick={() => handleSaveButton()}
       >
         Save

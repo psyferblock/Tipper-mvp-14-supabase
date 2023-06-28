@@ -116,14 +116,14 @@ export default function ManageMenuItems({
                 {/* DESKTOP */}
                 <button
                   onClick={handleAddItemButton}
-                  className=" -mt-2 hidden h-10 w-32 rounded-3xl bg-blue-500 text-xs text-white hover:bg-blue-600 sm:block"
+                  className=" -mt-2 hidden h-10 w-32 rounded-3xl bg-amethyst text-xs text-white hover:bg-amethyst sm:block"
                 >
                   Add Item
                 </button>
                 {/* MOBILE */}
                 <button
                   onClick={handleAddItemButton}
-                  className="mt-1 flex items-center justify-end space-x-1 text-sm text-blue-500 sm:hidden"
+                  className="mt-1 flex items-center justify-end space-x-1 text-sm text-amethyst sm:hidden"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -187,7 +187,7 @@ export default function ManageMenuItems({
                               {item.is_menu_item_public ? "Yes" : "No"}
                             </div>
                           </div>
-                          <div className="flex items-center space-x-1 text-blue-600 sm:space-x-10">
+                          <div className="flex items-center space-x-1 text-amethyst sm:space-x-10">
                             <button
                               className="hidden sm:block"
                               onClick={() => {
@@ -241,7 +241,7 @@ export default function ManageMenuItems({
                                 viewBox="0 0 24 24"
                                 strokeWidth={1.5}
                                 stroke="currentColor"
-                                className="m-1 h-6 w-6 text-blue-500"
+                                className="m-1 h-6 w-6 text-amethyst"
                               >
                                 <path
                                   strokeLinecap="round"

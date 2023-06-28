@@ -74,7 +74,7 @@ export default function ManageCoverPhotos() {
 
         <label
           htmlFor="add slide"
-          className="hidden items-center space-x-1 text-blue-500 sm:flex sm:cursor-pointer"
+          className="hidden items-center space-x-1 text-amethyst sm:flex sm:cursor-pointer"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -110,7 +110,7 @@ export default function ManageCoverPhotos() {
 
       <label
         htmlFor="add slide mobile"
-        className="flex w-fit cursor-pointer items-center space-x-1 text-blue-500 sm:hidden"
+        className="flex w-fit cursor-pointer items-center space-x-1 text-amethyst sm:hidden"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

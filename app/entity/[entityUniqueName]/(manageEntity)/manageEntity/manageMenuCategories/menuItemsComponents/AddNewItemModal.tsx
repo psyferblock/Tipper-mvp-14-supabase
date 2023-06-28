@@ -9,7 +9,6 @@ import { useRouter } from "next/navigation";
 import { v4 as uuidv4 } from "uuid";
 
 export default function AddNewItemModal(props) {
-
   const [itemName, setItemName] = useState<string | undefined>();
   const [itemDescription, setItemDescription] = useState<string | undefined>();
   const [itemPrice, setItemPrice] = useState<number | undefined>();
@@ -18,7 +17,6 @@ export default function AddNewItemModal(props) {
   const buttonRef = useRef(null);
 
   const router = useRouter();
-  
 
   const entityId = props.entityId;
   const entityUniqueName = props.entityUniqueName;
@@ -27,8 +25,7 @@ export default function AddNewItemModal(props) {
     itemName: string,
     itemDescription: string,
     itemPrice: string,
-    itemPictureUrl:string
-  
+    itemPictureUrl: string
   ) {
     //when "Save" in modal is clicked:
     await createMenuItem(
@@ -55,7 +52,7 @@ export default function AddNewItemModal(props) {
     itemName: string,
     itemDescription: string,
     itemPrice: string,
-    itemPictureUrl:string
+    itemPictureUrl: string
   ) {
     //when "Save As draft" in modal is clicked:
     await createMenuItem(
@@ -176,7 +173,7 @@ export default function AddNewItemModal(props) {
                       <input
                         type="text"
                         id="item name"
-                        className="mb-4 mt-1 block h-12 w-full rounded-md border-gray-300 pl-4 pr-4 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="mb-4 mt-1 block h-12 w-full rounded-md border-gray-300 pl-4 pr-4 focus:border-amethyst focus:ring-amethyst sm:text-sm"
                         placeholder="Item name"
                         ref={buttonRef}
                         onChange={(e) => {
@@ -192,7 +189,7 @@ export default function AddNewItemModal(props) {
                       <input
                         type="text"
                         id="item description"
-                        className="mb-4 mt-1 block h-12 w-full rounded-md border-gray-300  pl-4 pr-4 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="mb-4 mt-1 block h-12 w-full rounded-md border-gray-300  pl-4 pr-4 focus:border-amethyst focus:ring-amethyst sm:text-sm"
                         placeholder="Description"
                         onChange={(e) => {
                           setItemDescription(e.target.value);
@@ -204,7 +201,7 @@ export default function AddNewItemModal(props) {
                         <div className="text-gray-400">150</div>
                       </div>
                       {/* PRICE INPUT FIELD */}
-                      <div className="mb-4 flex h-12 items-center rounded-lg border border-gray-300 py-4 pl-4 hover:border-2 hover:border-indigo-500">
+                      <div className="mb-4 flex h-12 items-center rounded-lg border border-gray-300 py-4 pl-4 hover:border-2 hover:border-amethyst">
                         <div className="h-12 border-r border-gray-300 pr-4 pt-3 text-gray-500">
                           USD
                         </div>
@@ -228,7 +225,7 @@ export default function AddNewItemModal(props) {
                               <Image
                                 src={itemPictureUrl}
                                 alt="Picture of About Us Section"
-                                fill 
+                                fill
                                 className="object-center"
                               />
                               <button
@@ -242,7 +239,7 @@ export default function AddNewItemModal(props) {
                                   viewBox="0 0 24 24"
                                   strokeWidth={1.5}
                                   stroke="currentColor"
-                                  className="z-10 m-1 h-6 w-6 text-blue-500"
+                                  className="z-10 m-1 h-6 w-6 text-amethyst"
                                 >
                                   <path
                                     strokeLinecap="round"
@@ -271,7 +268,7 @@ export default function AddNewItemModal(props) {
                               <div className=" text-xs text-gray-600">
                                 <label
                                   htmlFor="file-upload"
-                                  className="relative cursor-pointer rounded-md bg-gray-100 font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-400"
+                                  className="relative cursor-pointer rounded-md bg-gray-100 font-medium text-amethyst focus-within:outline-none focus-within:ring-2 focus-within:ring-amethyst focus-within:ring-offset-2 hover:text-amethyst-tint"
                                 >
                                   <span className="underline">
                                     Upload an image
@@ -305,12 +302,14 @@ export default function AddNewItemModal(props) {
                   <div className="space-x-3 sm:space-x-3">
                     <button
                       type="button"
-                      className="mt-3 inline-flex justify-center rounded-3xl border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-3 sm:mt-0 sm:w-auto sm:text-sm"
+                      className="mt-3 inline-flex justify-center rounded-3xl border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-amethyst focus:ring-offset-2 sm:ml-3 sm:mt-0 sm:w-auto sm:text-sm"
                       onClick={() => {
                         handleSaveAsDraftButton(
                           itemName,
                           itemDescription,
-                          itemPrice
+                          itemPrice,
+                          itemPictureUrl
+
                         );
                       }}
                     >
@@ -318,12 +317,13 @@ export default function AddNewItemModal(props) {
                     </button>
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-3xl border border-transparent bg-blue-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
+                      className="inline-flex justify-center rounded-3xl border border-transparent bg-amethyst px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-amethyst-shade focus:outline-none focus:ring-2 focus:ring-amethyst focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
                       onClick={() => {
                         handlePublishButton(
                           itemName,
                           itemDescription,
-                          itemPrice
+                          itemPrice,
+                          itemPictureUrl
                         );
                       }}
                     >

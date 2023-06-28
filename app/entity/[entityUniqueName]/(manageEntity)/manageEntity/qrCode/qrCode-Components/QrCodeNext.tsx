@@ -33,7 +33,7 @@ export default function QrCodeNext({
   const pageUrl = `${url}/entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}`;
   const width = 400;
   const { entityName } = useEntityContext();
-  const light = "#FFBF60FF";
+  const light = "#ece3ff";
   const dark = "#010599FF";
 
   // Para descargar, se va directamente al DOM y se obtiene el
@@ -50,7 +50,7 @@ export default function QrCodeNext({
   };
 
   return (
-    <div className=" m-auto ">
+    <div className=" m-auto flex flex-col justify-center items-center ">
       <QRCode
         ref={qrRef}
         text={pageUrl}

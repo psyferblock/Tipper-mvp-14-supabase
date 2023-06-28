@@ -62,7 +62,7 @@ export default function ManageLogo() {
         {/* DESKTOP BUTTON */}
         <label
           htmlFor="add logo"
-          className="hidden items-center space-x-1 text-blue-500 sm:flex sm:cursor-pointer"
+          className="hidden items-center space-x-1 text-amethyst sm:flex sm:cursor-pointer"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +101,7 @@ export default function ManageLogo() {
       {/* MOBILE BUTTON */}
       <label
         htmlFor="add logo mobile"
-        className="flex w-fit cursor-pointer items-center space-x-1 text-blue-500 sm:hidden"
+        className="flex w-fit cursor-pointer items-center space-x-1 text-amethyst sm:hidden"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

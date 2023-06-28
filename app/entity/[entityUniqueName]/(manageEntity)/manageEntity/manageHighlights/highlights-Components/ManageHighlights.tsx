@@ -76,7 +76,7 @@ export default function ManageHighlights({ listOfHighlights }) {
             </div>
             <button
               onClick={handleAddHighlightButton}
-              className="flex w-full items-center justify-end space-x-1 text-blue-500 "
+              className="flex w-full items-center justify-end space-x-1 text-amethyst "
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -123,7 +123,7 @@ export default function ManageHighlights({ listOfHighlights }) {
                           {highlight.is_highlight_public ? "Yes" : "No"}
                         </div>
                       </div>
-                      <div className="flex items-center space-x-1 text-blue-600 sm:space-x-10">
+                      <div className="flex items-center space-x-1 text-amethyst sm:space-x-10">
                         <button
                           className="hidden sm:block"
                           onClick={() => {
@@ -178,7 +178,7 @@ export default function ManageHighlights({ listOfHighlights }) {
                             viewBox="0 0 24 24"
                             strokeWidth={1.5}
                             stroke="currentColor"
-                            className="m-1 h-6 w-6 text-blue-500"
+                            className="m-1 h-6 w-6 text-amethyst"
                           >
                             <path
                               strokeLinecap="round"
@@ -218,7 +218,7 @@ export default function ManageHighlights({ listOfHighlights }) {
                     <ToggleButton />
                     <div className="pb-1 text-gray-500">Yes</div>
                   </div>
-                  <div className="flex items-center space-x-4 pt-1 text-blue-600">
+                  <div className="flex items-center space-x-4 pt-1 text-amethyst">
                     <button>Edit</button>
                     <button>Remove</button>
                   </div>

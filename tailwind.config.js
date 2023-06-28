@@ -1,6 +1,5 @@
 // /** @type {import('tailwindcss').Config} */
 module.exports = {
-  // purge:[],
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
@@ -26,6 +25,7 @@ module.exports = {
         diamond: "#ffffff",
         obsidian: "#151828",
         backGround: "f5f5f5",
+        
       },
       aspectRatio: {
         "4/3": "4 / 3",

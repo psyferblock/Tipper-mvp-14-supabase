@@ -23,7 +23,7 @@ async function NavBar() {
       {/* <div className=" sm:hidden md:visible">
           <HomePageSearchBar />
         </div> */}
-      <div className="z-10">
+      <div className="-mx-2">
         {userAuthenticated === "authenticated" ? (
           <NavListItems />
         ) : (

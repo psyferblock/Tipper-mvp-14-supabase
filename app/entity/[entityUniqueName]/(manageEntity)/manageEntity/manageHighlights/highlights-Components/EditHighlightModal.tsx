@@ -93,7 +93,7 @@ export default function EditHighlightModal(props) {
     });
     setArrayOfPictureObjects(newArray);
   }
-  console.log("array of pics:", arrayOfPictureObjects);
+  // console.log("array of pics:", arrayOfPictureObjects);
 
   async function handleDeletePictureButton(deletedPicutreObject) {
     //Locating which picture should be deleted is based on the URL of the picture (could be done with
@@ -197,7 +197,7 @@ export default function EditHighlightModal(props) {
                         type="text"
                         name="highlight name"
                         id="highlight name"
-                        className="mb-6 mt-2 block h-14 w-full rounded-md border-gray-300  focus:border-indigo-500 focus:ring-indigo-500 sm:h-12 sm:pl-4 sm:text-sm"
+                        className="mb-6 mt-2 block h-14 w-full rounded-md border-gray-300  focus:border-amethyst focus:ring-amethyst sm:h-12 sm:pl-4 sm:text-sm"
                         placeholder="Type highlight name"
                         ref={buttonRef}
                         value={highlightName}
@@ -207,7 +207,7 @@ export default function EditHighlightModal(props) {
                       <div className="flex justify-end sm:mb-3">
                         <label
                           htmlFor="add slide"
-                          className=" flex cursor-pointer items-center space-x-1 text-blue-500"
+                          className=" flex cursor-pointer items-center space-x-1 text-amethyst"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -271,8 +271,8 @@ export default function EditHighlightModal(props) {
                         <div className="flex space-x-2">
                           {arrayOfPictureObjects ? (
                             <>
-                              {arrayOfPictureObjects.map((pictureObject) => (
-                                <div className="relative flex h-72 w-44 justify-center rounded-md border-2 border-dashed border-gray-400 bg-gray-100 pt-[52px] sm:px-6 ">
+                              {arrayOfPictureObjects.map((pictureObject,index) => (
+                                <div key={index} className="relative flex h-72 w-44 justify-center rounded-md border-2 border-dashed border-gray-400 bg-gray-100 pt-[52px] sm:px-6 ">
                                   <Image
                                     src={pictureObject.media_url}
                                     alt="highlight picture"
@@ -291,7 +291,7 @@ export default function EditHighlightModal(props) {
                                       viewBox="0 0 24 24"
                                       strokeWidth={1.5}
                                       stroke="currentColor"
-                                      className="z-10 m-1 h-6 w-6 text-blue-500"
+                                      className="z-10 m-1 h-6 w-6 text-amethyst"
                                     >
                                       <path
                                         strokeLinecap="round"
@@ -314,14 +314,14 @@ export default function EditHighlightModal(props) {
                 <div className="flex flex-row-reverse bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                   <button
                     type="button"
-                    className="ml-3 inline-flex w-full justify-center rounded-3xl border border-transparent bg-blue-500 px-7 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:px-11 sm:py-2 sm:text-sm"
+                    className="ml-3 inline-flex w-full justify-center rounded-3xl border border-transparent bg-amethyst px-7 py-2 text-base font-medium text-white shadow-sm hover:bg-amethyst focus:outline-none focus:ring-2 focus:ring-amethyst focus:ring-offset-2 sm:ml-3 sm:w-auto sm:px-11 sm:py-2 sm:text-sm"
                     onClick={() => handleSaveButton()}
                   >
                     Save
                   </button>
                   <button
                     type="button"
-                    className=" inline-flex w-full justify-center rounded-3xl border border-gray-300 bg-white px-8 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-3 sm:mt-0 sm:w-auto sm:py-2 sm:text-sm"
+                    className=" inline-flex w-full justify-center rounded-3xl border border-gray-300 bg-white px-8 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-amethyst focus:ring-offset-2 sm:ml-3 sm:mt-0 sm:w-auto sm:py-2 sm:text-sm"
                     onClick={() => handleCancelButton()}
                   >
                     Cancel

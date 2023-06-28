@@ -20,8 +20,8 @@ export default function CategoriesNavLink({
       href={`entity/${entityUniqueName}/manageEntity/${categoryRoute}`}
       className={
         isActive
-          ? "flex justify-start px-6 py-2 text-blue-600 sm:bg-gray-100 "
-          : "flex justify-start px-6 py-2 text-black hover:bg-gray-100 sm:hover:text-blue-600 sm:focus:bg-gray-100 sm:focus:text-blue-600"
+          ? "flex justify-start px-4 py-2 text-amethyst font-medium sm:bg-gray-100 "
+          : "flex justify-start px-4 py-2 text-black hover:bg-gray-100 sm:hover:text-amethyst-shade sm:focus:bg-gray-100 sm:focus:text-amethyst"
       }
     >
       {children}

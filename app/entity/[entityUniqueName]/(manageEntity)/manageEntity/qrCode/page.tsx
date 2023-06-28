@@ -23,8 +23,8 @@ export default function ManageQrCodePage() {
   const logo = logoObject.media_url;
   // console.log('logo', logo)
   return (
-    < div className="flex w-screen h-2/3 items-center justify-center p-auto">
-      <div className=" min-h-screen mt-auto m-auto  sm:h-fit sm:min-h-screen sm:w-full ">
+    <div className="p-auto   ">
+      <div className="  flex pt-20 w-screen items-center justify-center align-middle sm:h-fit sm:min-h-screen sm:w-full ">
         {/* <QrCodeGenerator logo={logo} entityUniqueName={entityUniqueName} menuId={menuId} categoryId={categoryId} /> */}
         <QrCodeNext
           logo={logo}

@@ -19,7 +19,7 @@ export default function ManagementNavigationDropdownMobile() {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="inline-flex w-full justify-center rounded-md  bg-transparent px-4 py-2 text-sm font-medium text-blue-500 ">
+        <Menu.Button className="inline-flex w-full justify-end rounded-md  bg-transparent  py-2  f text-base text-amethyst  ">
           Options
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +60,7 @@ export default function ManagementNavigationDropdownMobile() {
                       className={
                         isActive
                           ? "flex justify-start bg-gray-100 px-6 py-2 text-sm text-amethyst "
-                          : "flex justify-start px-6 py-2 text-sm text-black hover:bg-gray-100 hover:text-blue-600 focus:bg-gray-100 focus:text-blue-600"
+                          : "flex justify-start px-6 py-2 text-sm text-black hover:bg-gray-100 hover:text-amethyst-shade focus:bg-gray-100 focus:text-amethyst-shade"
                       }
                     >
                       {categoryObject.name}

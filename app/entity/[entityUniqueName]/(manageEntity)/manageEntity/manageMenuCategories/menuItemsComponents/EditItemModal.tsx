@@ -153,7 +153,7 @@ export default function EditItemModal(props) {
                       <input
                         type="text"
                         id="item name"
-                        className="mb-4 mt-1 block h-12 w-full rounded-md border-gray-300 pl-4 pr-4 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="mb-4 mt-1 block h-12 w-full rounded-md border-gray-300 pl-4 pr-4 focus:border-amethyst focus:ring-amethyst sm:text-sm"
                         placeholder="Item name"
                         ref={buttonRef}
                         value={itemName}
@@ -170,7 +170,7 @@ export default function EditItemModal(props) {
                       <input
                         type="text"
                         id="item description"
-                        className="mb-4 mt-1 block h-12 w-full rounded-md border-gray-300 pl-4 pr-4 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="mb-4 mt-1 block h-12 w-full rounded-md border-gray-300 pl-4 pr-4 focus:border-amethyst focus:ring-amethyst sm:text-sm"
                         placeholder="Description"
                         value={itemDescription}
                         onChange={(e) => {
@@ -183,7 +183,7 @@ export default function EditItemModal(props) {
                         <div className="text-gray-400">150</div>
                       </div>
                       {/* PRICE INPUT FIELD */}
-                      <div className="mb-4 flex h-12 items-center rounded-lg border border-gray-300 py-4 pl-4 hover:border-2 hover:border-indigo-500">
+                      <div className="mb-4 flex h-12 items-center rounded-lg border border-gray-300 py-4 pl-4 hover:border-2 hover:border-amethyst">
                         <div className="h-12 border-r border-gray-300 pr-4 pt-3 text-gray-500">
                           USD
                         </div>
@@ -250,7 +250,7 @@ export default function EditItemModal(props) {
                               <div className=" text-xs text-gray-600">
                                 <label
                                   htmlFor="editPicture"
-                                  className="relative cursor-pointer rounded-md bg-gray-100 font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-400"
+                                  className="relative cursor-pointer rounded-md bg-gray-100 font-medium text-amethysts-shadefocus-within:outline-none focus-within:ring-2 focus-within:ring-amethyst focus-within:ring-offset-2 hover:text-amethyst-tint"
                                 >
                                   <span className="underline">
                                     Upload an image
@@ -280,14 +280,14 @@ export default function EditItemModal(props) {
                 <div className="flex items-center justify-end bg-gray-50 px-4 py-2 sm:px-6 sm:py-3">
                   <button
                     type="button"
-                    className="mr-3 inline-flex w-full justify-center rounded-3xl border border-gray-300 bg-white px-7 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-3 sm:mt-0 sm:w-auto sm:text-sm"
+                    className="mr-3 inline-flex w-full justify-center rounded-3xl border border-gray-300 bg-white px-7 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-amethyst focus:ring-offset-2 sm:ml-3 sm:mt-0 sm:w-auto sm:text-sm"
                     onClick={props.closeModal}
                   >
                     Cancel
                   </button>
                   <button
                     type="button"
-                    className="inline-flex w-full justify-center rounded-3xl border border-transparent bg-blue-500 px-9 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
+                    className="inline-flex w-full justify-center rounded-3xl border border-transparent bg-amethyst px-9 py-2 text-base font-medium text-white shadow-sm hover:bg-amethyst-shade focus:outline-none focus:ring-2 focus:ring-amethyst focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
                     onClick={() => {
                       handleSaveButton();
                     }}
