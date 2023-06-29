@@ -1,11 +1,12 @@
 import Image from "next/image";
 import CarouselComponent from "./carousel/CarouselComponent";
 
-export default function CoverPhotosSection( {entityCoverPictures} ) {
-  const slides = entityCoverPictures.map((pictureObject) => pictureObject.media_url);
+export default function CoverPhotosSection({ entityCoverPictures }) {
+  const slides = entityCoverPictures.map(
+    (pictureObject) => pictureObject.media_url
+  );
   console.log("slides", slides);
   const slideChildren = slides.map((slide, index) => (
-    
     <div key={index} className="h-full w-full ">
       <Image
         className="w-full object-center "
@@ -14,12 +15,12 @@ export default function CoverPhotosSection( {entityCoverPictures} ) {
         alt="cover-photo"
         src={slide}
       />
-      <div className="overflow-hidden mt-32">{JSON.stringify(slide)}</div>
+      <div className="mt-32">{JSON.stringify(slide)}</div>
     </div>
   ));
-  console.log('slideChildren', slideChildren)
+  console.log("slideChildren", slideChildren);
   return (
-    <div className="bg-ruby-white md:h-4/12 h-2/5 p-2 ">
+    <div className="h-2/5 rounded-sm bg-ruby-tint md:h-4/6 ">
       <CarouselComponent autoSlide={false} autoSlideInterval={5000}>
         {slideChildren}
       </CarouselComponent>

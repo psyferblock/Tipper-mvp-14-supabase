@@ -16,8 +16,8 @@ async function NavBar() {
   const userAuthenticated = session ? session?.user.aud : "not authenticated";
 
   return (
-    <div className=" sticky top-0 z-10 mb-0 flex h-16 w-screen items-center justify-between bg-transparent  text-ruby   ">
-      <div className="w-30">
+    <div className=" sticky top-0 z-10  flex h-16 w-screen items-center justify-between bg-transparent  pr-2  text-ruby ">
+      <div className="w-30 ">
         <GoToTipperHomePage />
       </div>
       {/* <div className=" sm:hidden md:visible">

@@ -19,6 +19,18 @@ export default async function MenuIdPageLayout({
   children: React.ReactNode;
   params: { entityUniqueName: string };
 }) {
+  const entityHighlights = [
+    {
+      highlight_name: "this week",
+    },
+    {
+      highlight_name: "valentines day",
+    },
+    {
+      highlight_name: "happy hour",
+    },
+  ];
+
   const entityUniqueName = params.entityUniqueName;
 
   const supabaseServer = createServerClient();
@@ -67,9 +79,9 @@ export default async function MenuIdPageLayout({
 
   return (
     <>
-      <div className="">
+      <div className="m-2">
         <div>
-          <div className="m-2 flex items-center justify-between ">
+          <div className=" flex items-center justify-between py-2 ">
             <div className="flex ">
               <div className="aspect-1/1 relative mx-auto aspect-auto h-12 w-12 overflow-hidden rounded-md  ring-2 ring-ruby-tint">
                 <Image
@@ -86,28 +98,26 @@ export default async function MenuIdPageLayout({
               )}
             </div>
           </div>
-          <div className=" m-2 ">
+          <div className="mb-2 ">
             <CopyUrlShareWhatsappButtons />
           </div>
         </div>
         {/* TOP OF THE PAGE CONTAINER */}
-        <div className="flex flex-col-reverse sm:mb-8 sm:flex sm:h-[496px] sm:flex-row sm:space-x-5">
+        <div className="flex h-full flex-col-reverse sm:mb-8 sm:flex sm:h-[496px] sm:flex-row sm:space-x-5">
           <EntityPageContainerWithEntityInfos entityInfos={entityInfos} />
 
           {/* EVERYTHING ON THE RIGHT OF THE LEFT COLUMN */}
-          <div className=" justify-between sm:flex sm:h-[496px] sm:w-1/4 sm:grow sm:flex-col">
+          <div className="  h-screen -mb-[350px] sm:mb-0 justify-between sm:flex sm:h-[496px] sm:w-1/4 sm:grow sm:flex-col ">
             {/*  COVER PHOTOS CONTAINER */}
-            <div className="max-h-52 overflow-y-hidden rounded-sm ">
               <CoverPhotosSection entityCoverPictures={entityCoverPictures} />
-            </div>
 
             {/* HIGHLIGHTS CONTAINER */}
 
-            {/* <EntityPageHighlightsSection
+            <EntityPageHighlightsSection
               entityHighlights={entityHighlights}
               userOwnsEntity={userOwnsEntity}
               entityOwnedId={entityOwnedId}
-            /> */}
+            />
           </div>
           <div id="menuTab"></div>
         </div>
