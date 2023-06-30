@@ -15,7 +15,7 @@ export const metadata = {
     icon: "/icon.png",
   },
 };
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -47,7 +47,9 @@ export default async function RootLayout({
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
-      <Head >{children}</Head>
+      <Head>
+        <title>Tipper</title>
+      </Head>
       <body className="bg-backGround text-obsidian">
         <SupabaseProvider session={session}>
           <SupabaseListener serverAccessToken={session?.access_token} />

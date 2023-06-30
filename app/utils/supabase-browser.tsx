@@ -13,4 +13,4 @@ export const supabase =  createClientComponentClient(
 
 );
 
-export const createBrowserClient = async () => await  createClientComponentClient();
+export const createBrowserClient =  () =>   createClientComponentClient();
