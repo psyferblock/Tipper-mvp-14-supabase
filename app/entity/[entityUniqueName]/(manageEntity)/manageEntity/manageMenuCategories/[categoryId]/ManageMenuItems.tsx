@@ -106,12 +106,15 @@ export default function ManageMenuItems({
                       d="M15.75 19.5L8.25 12l7.5-7.5"
                     />
                   </svg>
-                  <Link
-                    href={`entity/${entityUniqueName}/manageEntity/manageMenuCategories`}
+                  {/* <Link
+                    href={`/entity/${entityUniqueName}/manageEntity/manageMenuCategories`}
                     className="text-3xl font-bold"
-                  >
+                  > */}
+                  <div>
+
                     {categoryName}
-                  </Link>
+                  </div>
+                  {/* </Link> */}
                 </Link>
                 {/* ADD Menu Item BUTTON */}
                 {/* DESKTOP */}

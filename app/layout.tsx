@@ -14,6 +14,7 @@ export const metadata = {
     icon: "/icon.png",
   },
 };
+export const dynamic = 'force-dynamic'
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -28,7 +29,7 @@ export default async function RootLayout({
   const supabaseServer = createServerClient();
   const {
     data: { session },
-  } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details.
+  } = await supabaseServer.auth?.getSession(); /// its here where we get the session from supabase. and its details.
 
   let userData;
   if (session) {

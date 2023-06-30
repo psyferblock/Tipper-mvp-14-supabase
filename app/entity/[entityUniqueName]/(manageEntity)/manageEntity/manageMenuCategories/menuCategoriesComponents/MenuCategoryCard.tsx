@@ -31,7 +31,7 @@ const MenuCategoryCard = (props) => {
       <div className="flex h-fit w-full space-y-3 rounded-md bg-white px-3 py-5 drop-shadow-lg hover:cursor-pointer sm:h-[198px] sm:flex-col sm:divide-y sm:px-4">
         {/* UPPER PART OF CARD */}
         <Link
-          href={`entity/${entityUniqueName}/manageEntity/manageMenuCategories/${categoryId}`}
+          href={`/entity/${entityUniqueName}/manageEntity/manageMenuCategories/${categoryId}`}
           passHref
         >
           <div className="sm:space-y-2">
@@ -53,7 +53,7 @@ const MenuCategoryCard = (props) => {
         <div className="flex w-full justify-between sm:hidden">
           <div className="ml-2 space-y-2 sm:hidden">
             <Link
-              href={`entity/${entityUniqueName}/manageEntity/manageMenuCategories/${categoryId}`}
+              href={`/entity/${entityUniqueName}/manageEntity/manageMenuCategories/${categoryId}`}
               passHref
             >
               <div className="mr-2 text-start font-semibold text-gray-700 sm:hidden">

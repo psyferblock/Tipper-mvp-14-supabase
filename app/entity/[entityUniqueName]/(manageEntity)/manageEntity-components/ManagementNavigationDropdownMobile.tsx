@@ -56,7 +56,7 @@ export default function ManagementNavigationDropdownMobile() {
                   const isActive = categoryObject.route == currentSegment;
                   return (
                     <Link
-                      href={`entity/${entityUniqueName}/manageEntity/${categoryObject.route}`}
+                      href={`/entity/${entityUniqueName}/manageEntity/${categoryObject.route}`}
                       className={
                         isActive
                           ? "flex justify-start bg-gray-100 px-6 py-2 text-sm text-amethyst "

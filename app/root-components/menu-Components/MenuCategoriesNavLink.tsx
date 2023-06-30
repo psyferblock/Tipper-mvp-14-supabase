@@ -18,7 +18,7 @@ export default function MenuCategoriesNavLink({
   const isActive = `${categoryId}` == segment;
   return (
     <Link
-      href={`entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}`}
+      href={`/entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}`}
       className={
         isActive
           ? "h-fit w-max border-b-2 border-transparent border-b-blue-500 px-2 text-blue-500 sm:flex sm:w-screen sm:justify-start sm:border-b-0 sm:border-l-4 sm:border-transparent sm:border-l-blue-600 sm:px-0 sm:py-2 sm:pl-5 sm:text-blue-600"

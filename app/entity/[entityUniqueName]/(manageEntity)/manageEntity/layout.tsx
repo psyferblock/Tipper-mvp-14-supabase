@@ -73,7 +73,7 @@ async function layout({
           <div className="flex h-20 w-full items-center justify-between bg-gray-300 px-2  text-xl font-bold  sm:mt-0 sm:hidden">
             {/* // this is the back tick that will take us to the entityUniqueName Page.  */}
             <Link
-              href={`entity/${entityUniqueName}/menu/${menuId}
+              href={`/entity/${entityUniqueName}/menu/${menuId}
               /category/${categoryId}
               `}
               className="-ml-2 mr-1 flex w-fit items-center text-2xl font-bold"

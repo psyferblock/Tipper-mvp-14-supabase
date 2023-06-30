@@ -5,7 +5,7 @@ function GoToSignInPage() {
   return (
     <div className="text-base ">
       {" "}
-      <Link  href="signIn">Sign In</Link>
+      <Link  href="/signIn">Sign In</Link>
     </div>
   );
 }

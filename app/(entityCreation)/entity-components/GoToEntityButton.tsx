@@ -20,7 +20,7 @@ function GoToEntityButton({
     <div>
       <button className="border-white-2 m-4 h-12 w-32 border-spacing-4  rounded-md border-2 border-amethyst bg-white p-3 text-center shadow-md shadow-amethyst-shade">
         <Link
-          href={`entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}`}
+          href={`/entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}`}
         >
           go to entity
         </Link>
