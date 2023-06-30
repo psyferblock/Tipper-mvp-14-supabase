@@ -6,9 +6,8 @@ import ManageTags from "./entityInfos-Components/ManageTags";
 import ManageWorkingHours from "./entityInfos-Components/showHours/ManageWorkingHours";
 import StickyBarSaveCancel from "./entityInfos-Components/StickyBarSaveCancel";
 import ManageLogo from "./entityInfos-Components/ManageLogo";
-import BrowserTestingComponent from "@/app/BrowserTestingComponent";
 
-export default function ManageEntityInfosPage({ params }) {
+export default function ManageEntityInfosPage({ params }:{params:any}) {
   return (
     <>
       <div className="flex w-full flex-col pb-10">

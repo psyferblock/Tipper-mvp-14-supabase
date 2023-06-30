@@ -19,7 +19,7 @@ export default async function ManageEntityInfosLayout({
   // Fetching from DB
   const supabaseServer = createServerClient();
 
-  const entityInfo = await getEntityUsingUniqueNameServer(
+  const entityInfo = await getEntityUsingUniqueNameServer (
     supabaseServer,
     params.entityUniqueName
   );
