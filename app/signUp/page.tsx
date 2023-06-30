@@ -84,6 +84,7 @@ export default function SignUp() {
     await createUserProfile(userId, email, uniqueName);
     setHasSignedUp(true);
     // }
+    
   };
 
   // handle toggle

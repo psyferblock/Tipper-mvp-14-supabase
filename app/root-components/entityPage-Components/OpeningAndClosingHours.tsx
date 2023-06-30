@@ -51,7 +51,7 @@ async function OpeningAndClosingHours({ entityId }) {
   return (
     <div>
       <div className="-mt-3 sm:-mt-5 sm:pb-0.5">Opening Hours</div>
-      <div className="divide-y sm:px-1">
+      <div className="divide-y sm:px-1 pr-2 ">
         <div className="flex justify-between">
           <div className="text-xs font-normal">Monday-Friday</div>
           <div className="text-xs font-normal">
@@ -64,7 +64,7 @@ async function OpeningAndClosingHours({ entityId }) {
             {openingSat} - {closingSat}
           </div>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between ">
           <div className="text-xs font-normal">Sunday</div>
           <div className="text-xs font-normal">
             {openingSun} - {closingSun}
