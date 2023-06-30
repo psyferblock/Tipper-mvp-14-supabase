@@ -11,13 +11,13 @@ async function OpeningAndClosingHours({ entityId }) {
     supabaseServer: supabaseServer,
     entityId: entityId,
   });
-  console.log("openingHours", openingHours);
+  // console.log("openingHours", openingHours);
   const closingHours = await getClosingHoursServer({
     supabaseServer: supabaseServer,
     entityId: entityId,
   });
-  console.log("closingHours", closingHours);
-  console.log("entityId", entityId);
+  // console.log("closingHours", closingHours);
+  // console.log("entityId", entityId);
 
   function formatTime(timeString) {
     const [hourString, minute] = timeString.split(":");

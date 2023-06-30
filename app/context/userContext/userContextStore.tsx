@@ -130,7 +130,7 @@ const CreateUserContextInfoTools = (userInfos) => {
     setHasEntity(userInfos?.has_entity);
     setProfileId(userInfos?.id);
   }, []);
-  console.log("reduced state in user context ", state);
+  // console.log("reduced state in user context ", state);
 
   return {
     profileId,
