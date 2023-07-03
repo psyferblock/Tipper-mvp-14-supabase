@@ -12,7 +12,7 @@ export default async function EntityPageMenuSectionLayout({
   params: { entityUniqueName: string };
 }) {
   //Fetching from DB
-  const supabaseServer = createServerClient();
+  const supabaseServer =await  createServerClient();
   const entityUniqueName = params.entityUniqueName;
   const entityInfos = await getEntityUsingUniqueNameServer(
     supabaseServer,

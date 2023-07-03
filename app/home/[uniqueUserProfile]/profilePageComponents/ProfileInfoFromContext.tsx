@@ -1,3 +1,4 @@
+"use client"
 import { useUsersContext } from "@/app/context/userContext/userContextStore";
 import React from "react";
 

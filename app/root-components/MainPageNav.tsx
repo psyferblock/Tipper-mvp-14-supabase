@@ -8,11 +8,13 @@ import GoToContactUsPage from "./GoTo-components/GoToContactUsPage";
 import GoToSignInPage from "./GoTo-components/GoToSignInPage";
 
 async function MainPageNavBar() {
-  const supabaseServer = createServerClient();
-  const {
-    data: { session },
-  } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details.
-
+  const supabaseServer = await createServerClient();
+  // const {
+  //   data: { session },
+  // } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details.
+  const {data} = await supabaseServer.auth?.getSession()
+  const session=data?.session
+   console.log('session', session)
   const userAuthenticated = session ? session?.user.aud : "not authenticated";
 
   return (

@@ -17,7 +17,7 @@ export default async function ManageEntityInfosLayout({
   params: { entityUniqueName: number };
 }) {
   // Fetching from DB
-  const supabaseServer = createServerClient();
+  const supabaseServer = await createServerClient();
   console.log("supabaseServer", supabaseServer);
 
   const entityInfo = await getEntityUsingUniqueNameServer(

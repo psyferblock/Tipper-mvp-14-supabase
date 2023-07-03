@@ -9,7 +9,7 @@ export default async function ManageMenuCategoriesPage({
   params: { entityUniqueName: string };
 }) {
   //Fetching from DB
-  const supabaseServer = createServerClient();
+  // const supabaseServer = await createServerClient();
 
   return (
     <div className="" >

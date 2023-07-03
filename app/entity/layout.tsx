@@ -3,13 +3,13 @@ import React from "react";
 import NavBar from "../root-components/NavBar";
 
 async function EntityLayout({ children }: { children: React.ReactNode }) {
-  const supabaseServer = createServerClient();
+  const supabaseServer = await createServerClient();
 
   const {
     data: { session },
   } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details.
 
-  const entityOwnerId = session?.user.id;
+  // const entityOwnerId = session?.user.id;
 
   return (
     < >

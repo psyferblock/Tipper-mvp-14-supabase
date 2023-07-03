@@ -8,7 +8,7 @@ import GoToSignInPage from "./GoTo-components/GoToSignInPage";
 import GoToTipperHomePage from "./GoTo-components/GoToTipperHomePage";
 
 async function NavBar() {
-  const supabaseServer = createServerClient();
+  const supabaseServer = await createServerClient();
   const {
     data: { session },
   } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details.

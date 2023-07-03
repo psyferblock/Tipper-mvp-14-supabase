@@ -29,7 +29,7 @@ export default function QrCodeNext({
 }) {
   // Esta es la variable que va a tener la referencia al
   // elemento que envuelve el QR
-  const url = process.env.TIPPER_URL;
+  const url = location.origin;
   const qrRef = useRef();
   const pageUrl = `${url}/entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}`;
   const width = 400;

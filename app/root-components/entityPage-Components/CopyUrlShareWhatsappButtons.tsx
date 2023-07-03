@@ -5,10 +5,9 @@ import React from "react";
 
 export default function CopyUrlShareWhatsappButtons() {
   const pathName = usePathname();
-  const fullPath="localhost:3000"+pathName
+  const fullPath=location.origin+pathName
   const copy = async () => {
     await navigator.clipboard.writeText(fullPath);
-    console.log("localhost:3000"+ pathName)
     alert('Text copied');
 
   }

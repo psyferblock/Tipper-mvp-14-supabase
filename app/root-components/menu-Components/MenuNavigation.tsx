@@ -4,7 +4,7 @@ import MenuCategoriesNavLink from "./MenuCategoriesNavLink";
 
 export default async function MenuNavigation(props) {
   //Fetching from DB
-  const supabaseServer = createServerClient();
+  const supabaseServer =await  createServerClient();
   const menuId = props.menuId;
   const entityUniqueName = props.entityUniqueName;
 

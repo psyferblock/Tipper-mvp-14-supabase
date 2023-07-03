@@ -33,13 +33,13 @@ export default async function MenuIdPageLayout({
 
   const entityUniqueName = params.entityUniqueName;
 
-  const supabaseServer = createServerClient();
+  const supabaseServer = await createServerClient();
 
   // getting session
   const {
     data: { session },
   } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details.
-
+console.log('sessionat menu id layout ', session  )
   //Fetching from DB
   const entityInfos = await getEntityUsingUniqueNameServer(
     supabaseServer,

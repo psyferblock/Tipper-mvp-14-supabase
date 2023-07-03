@@ -24,7 +24,7 @@ async function layout({
   params: any;
 }) {
   const entityUniqueName = params.entityUniqueName;
-  const supabaseServer = createServerClient();
+  const supabaseServer = await createServerClient();
 
   // getting session
   const {

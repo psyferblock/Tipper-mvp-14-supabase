@@ -18,7 +18,7 @@ async function MenuCategoriesPage({
   const menuId = params.menuId;
   const categoryId = params.categoryId;
 
-  const supabaseServer = createServerClient();
+  const supabaseServer = await createServerClient();
   const categoryItems = await getItemsOfCategoryServer({
     supabaseServer: supabaseServer,
     categoryId: categoryId,

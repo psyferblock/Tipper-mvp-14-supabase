@@ -7,7 +7,7 @@ import Link from "next/link";
 import { getBasicPictures } from "@/app/lib/get/getBasicPictures";
 
 export default async function EntityCard({ entity }) {
-  const supabaseServer = createServerClient();
+  const supabaseServer = await createServerClient();
 
   // console.log('props', entity)
   const entityUniqueName = entity.entity_unique_name;

@@ -6,7 +6,7 @@ import { createServerClient } from "@/app/utils/supabase-server";
 import React from "react";
 
 async function OpeningAndClosingHours({ entityId }) {
-  const supabaseServer = createServerClient();
+  const supabaseServer =await createServerClient();
   const openingHours = await getOpeningHoursServer({
     supabaseServer: supabaseServer,
     entityId: entityId,

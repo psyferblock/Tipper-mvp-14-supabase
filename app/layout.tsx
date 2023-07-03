@@ -1,3 +1,4 @@
+import {  cookies } from "next/headers";
 import { createServerClient } from "./utils/supabase-server";
 
 import "./globals.css";
@@ -9,11 +10,16 @@ import UserInfoContextProvider from "@/app/context/userContext/userContextStore"
 import { getMyUserInfoServer } from "./lib/get/getMyUserInfo";
 import { Work_Sans } from "next/font/google";
 import Head from "next/head";
+import { middleware } from "./middleware";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import {  } from "@supabase/auth-helpers-nextjs";
 
 export const metadata = {
   icons: {
     icon: "/icon.png",
   },
+  title:"Tipper",
+  description:"Network your society"
 };
 export const dynamic = "force-dynamic";
 
@@ -27,18 +33,22 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const supabaseServer = createServerClient();
-  const {
-    data: { session },
-  } = await supabaseServer.auth?.getSession(); /// its here where we get the session from supabase. and its details.
+  const supabaseServer = await  createServerComponentClient({cookies});
 
+  // const {
+//     data:{session}
+//   } =  supabaseServer.auth?.getSession(); /// its here where we get the session from supabase. and its details.
+ const {data:{session}} = await supabaseServer.auth?.getSession()
+//  const session=data?.session
+  // console.log('session', session)
+  
   let userData;
   if (session) {
     const myUserId = session?.user.id;
-
     const userInformation = await getMyUserInfoServer(supabaseServer, myUserId);
     userData = userInformation;
-    // console.log("userInformation from RootLayoutPage ", userInformation);
+  
+  //  userData=session.user
   }
 
   return (
@@ -47,12 +57,10 @@ export default async function RootLayout({
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
-      <Head>
-        <title>Tipper</title>
-      </Head>
+   
       <body className="bg-backGround text-obsidian">
         <SupabaseProvider session={session}>
-          <SupabaseListener serverAccessToken={session?.access_token} />
+          {/* <SupabaseListener serverAccessToken={session?.access_token} /> */}
           {session?.user.id ? (
             <UserInfoContextProvider userInfos={userData}>
               {/* <Navbar session={session} /> */}

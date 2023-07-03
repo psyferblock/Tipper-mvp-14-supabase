@@ -12,7 +12,7 @@ async function ManageEntityExhangeRate({
   const entityUniqueName = params.entityUniqueName; ///// THIS IS WRONG. I DONT KNOW WHY IT IS TAKING uniqueUserName when the param is uniqueEntityName
 
   // const exchangeRate=15
-  const supabaseServer = createServerClient();
+  const supabaseServer = await createServerClient();
 
   const entityInfo = await getEntityUsingUniqueNameServer(
     supabaseServer,
