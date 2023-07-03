@@ -107,7 +107,7 @@ async function layout({
 
           <div className="hidden sm:visible">
             <Link
-              href={`entity/${entityUniqueName}/manageEntity/manageEntityInfo`}
+              href={`/entity/${entityUniqueName}/manageEntity/manageEntityInfo`}
               className="hidden w-fit items-center pb-4 pt-6 text-2xl font-bold sm:flex"
               passHref
             >
