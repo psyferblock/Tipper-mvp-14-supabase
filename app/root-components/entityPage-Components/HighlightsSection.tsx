@@ -48,7 +48,7 @@ export default function EntityPageHighlightsSection(props) {
                   d="M12 4.5v15m7.5-7.5h-15"
                 />
               </svg>
-              <div className="flex flex-col pb-5 text-xs text-amethyst sm:pb-2">
+              <div className="flex flex-col pb-2 text-xs text-amethyst sm:pb-2">
                 <span>Add</span> <span>Highlight</span>
               </div>
             </button>
