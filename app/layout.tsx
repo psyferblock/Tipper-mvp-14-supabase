@@ -52,13 +52,13 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang="en" className={workSans.className}>
+    <html lang="en" >
       {/*
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
    
-      <body className="bg-backGround text-obsidian">
+      <body className={`bg-backGround text-obsidian ${workSans.className}`}>
         <SupabaseProvider session={session}>
           {/* <SupabaseListener serverAccessToken={session?.access_token} /> */}
           {session?.user.id ? (

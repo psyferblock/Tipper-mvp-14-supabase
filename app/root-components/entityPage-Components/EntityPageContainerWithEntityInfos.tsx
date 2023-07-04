@@ -16,7 +16,7 @@ export default async function EntityPageContainerWithEntityInfos({
   console.log("entityId from the netitypagecontainer", entityId);
 
   return (
-    <div className=" mb-5 flex-none rounded-lg bg-white py-4 drop-shadow-xl sm:mb-0 sm:w-[307px] sm:px-6 sm:pb-6">
+    <div className=" mb-5 flex-none rounded-lg bg-white py-4 drop-shadow-xl sm:mb-0 sm:w-[307px] sm:px-2 sm:pb-6">
       <div className="flex flex-col justify-between space-y-3 font-semibold sm:space-y-4">
         {/* ENTITY TAGS DIV */}
         <div>

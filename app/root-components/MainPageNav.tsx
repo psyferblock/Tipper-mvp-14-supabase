@@ -12,14 +12,14 @@ async function MainPageNavBar() {
   // const {
   //   data: { session },
   // } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details.
-  const {data} = await supabaseServer.auth?.getSession()
-  const session=data?.session
-   console.log('session', session)
+  const { data } = await supabaseServer.auth?.getSession();
+  const session = data?.session;
+  console.log("session", session);
   const userAuthenticated = session ? session?.user.aud : "not authenticated";
 
   return (
     <>
-      <div className="sticky top-0 flex h-20 w-screen items-center justify-between bg-transparent  p-2 text-ruby sm:px-12 ">
+      <div className="sticky top-0 flex h-20 w-full items-center justify-between bg-transparent  p-2 text-ruby sm:px-3 ">
         <div className="w-30">
           <GoToTipperHomePage />
         </div>
@@ -30,7 +30,7 @@ async function MainPageNavBar() {
           {userAuthenticated === "authenticated" ? (
             <NavListItems />
           ) : (
-            <div className=" mr-4 flex justify-between space-x-2 ">
+            <div className=" mr-2 flex justify-between space-x-2 ">
               <GoToAboutUsPage />
               <GoToContactUsPage />
               <GoToSignInPage />
