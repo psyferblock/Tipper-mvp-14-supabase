@@ -41,6 +41,7 @@ function SignInPage() {
       setSignInFailedError(true);
     } else {
       setSignInFailedError(false);
+      router.refresh()
       router.push(`/`);
     }
   }

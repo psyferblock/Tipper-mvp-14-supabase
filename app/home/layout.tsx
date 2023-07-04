@@ -1,9 +1,9 @@
-import NavBar from "../root-components/NavBar";
+import MainPageNavBar from "../root-components/MainPageNav";
 
 async function HomeLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <NavBar />
+      <MainPageNavBar />
 
       <div className="p-2">{children}</div>
     </>
