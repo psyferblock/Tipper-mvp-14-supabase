@@ -8,6 +8,8 @@ import SignOut from "./GoTo-components/SignOut";
 import GoToAboutUsPage from "./GoTo-components/GoToAboutUsPage";
 import GoToUserProfilePage from "./GoTo-components/GoToUserProfilePage";
 import GoToContactUsPage from "./GoTo-components/GoToContactUsPage";
+import NavBarSignOutButton from "./tools-Components/NavBarSignOutButton";
+import LgScreenProfileIcon from "./LgScreenProfileIcon";
 // import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
 function NavListItems() {
@@ -19,7 +21,10 @@ function NavListItems() {
         <ul className="mr-2 flex items-center justify-between space-x-2 pr-2 text-sm ">
           <GoToAboutUsPage />
           <GoToContactUsPage />
-          <ProfileIcon />
+          <NavBarSignOutButton/>
+         
+          <LgScreenProfileIcon/>
+            
         </ul>
       </div>
       {/* THE DIV WHEN IT IS A SMALL SCREEN */}

@@ -10,7 +10,7 @@ import { useUsersContext } from "../context/userContext/userContextStore";
 import { getMyUserInfos } from "../lib/get/getMyUserInfo";
 import { useEffect, useState } from "react";
 
-function ProfileIcon() {
+function LgScreenProfileIcon() {
   const [userInfo, setUserInfo] = useState({});
   const { session, supabase } = useSupabase();
   const router = useRouter();
@@ -37,12 +37,17 @@ function ProfileIcon() {
   const uniqueUserName = userInfo?.unique_user_name;
 
   const handleHomeButton = () => {
-    router.push(`home/${uniqueUserName}`);
+    router.push(`/home/${uniqueUserName}`);
   };
 
   return (
-    <div className="flex flex-row items-center justify-evenly text-x-2" >
-      <h1 className="text-base font-serif text-ruby px-2">{firstName || "Sanfour"}</h1>
+    <button
+      onClick={() => handleHomeButton()}
+      className="text-x-2 flex flex-row items-center justify-evenly"
+    >
+      <h1 className="px-2 font-serif text-base text-ruby">
+        {firstName || "Sanfour"}
+      </h1>
       <div className="aspect-1/1 relative mx-auto h-10 w-10 overflow-hidden rounded-full bg-ruby-tint ring-2 ring-ruby-tint">
         <Image
           width={500}
@@ -51,8 +56,8 @@ function ProfileIcon() {
           alt={"profile picture"}
         />
       </div>
-    </div>
+    </button>
   );
 }
 
-export default ProfileIcon;
+export default LgScreenProfileIcon;

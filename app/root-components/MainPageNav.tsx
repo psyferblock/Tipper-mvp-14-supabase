@@ -9,17 +9,14 @@ import GoToSignInPage from "./GoTo-components/GoToSignInPage";
 
 async function MainPageNavBar() {
   const supabaseServer = await createServerClient();
-  // const {
-  //   data: { session },
-  // } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details.
+
   const { data } = await supabaseServer.auth?.getSession();
   const session = data?.session;
-  console.log("session", session);
   const userAuthenticated = session ? session?.user.aud : "not authenticated";
 
   return (
     <>
-      <div className="z-100 sticky top-0 flex h-20 w-full items-center justify-between bg-transparent  p-2 text-ruby sm:px-3 ">
+      <div className=" sticky top-0 z-10 flex h-16 w-full items-center justify-between bg-transparent  p-2 text-ruby sm:px-3 ">
         <div className="w-30">
           <GoToTipperHomePage />
         </div>
