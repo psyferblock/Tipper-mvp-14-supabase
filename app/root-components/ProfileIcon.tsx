@@ -30,15 +30,7 @@ function ProfileIcon() {
   }, [userId]);
 
   const firstName = userInfo?.first_name;
-  function capitalizeFirstLetter(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
-  // const capitalName = capitalizeFirstLetter(firstName);
-  const uniqueUserName = userInfo?.unique_user_name;
 
-  const handleHomeButton = () => {
-    router.push(`home/${uniqueUserName}`);
-  };
 
   return (
     <div className="flex flex-row items-center justify-evenly text-x-2" >
