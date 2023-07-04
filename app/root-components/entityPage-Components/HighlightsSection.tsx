@@ -32,7 +32,7 @@ export default function EntityPageHighlightsSection(props) {
             {/* ADD HIGHLIGHT BUTTON IF USER IS ENTITY OWNER */}
             <button
               onClick={handleAddHighlightButton}
-              className="wrap my-2 mr-2 h-20 w-20 items-center truncate rounded-full bg-white font-semibold drop-shadow-lg sm:my-0 sm:h-[116px] sm:w-[116px] sm:py-10 sm:pb-3"
+              className="wrap mr-2 h-20 w-20 items-center truncate rounded-full bg-white font-semibold drop-shadow-lg sm:my-0 sm:h-[116px] sm:w-[116px] sm:py-10 sm:pb-3"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
