@@ -20,7 +20,7 @@ export default function CoverPhotosSection({ entityCoverPictures }) {
   ));
   // console.log("slideChildren", slideChildren);
   return (
-    <div className="h-2/5 rounded-sm bg-ruby-tint md:h-4/6 ">
+    <div className="h-2/6 rounded-sm bg-ruby-tint md:h-4/6 ">
       <CarouselComponent autoSlide={false} autoSlideInterval={5000}>
         {slideChildren}
       </CarouselComponent>

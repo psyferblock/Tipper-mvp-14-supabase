@@ -2,7 +2,6 @@
 import { useAuthContext } from "@/app/context/Store";
 import { useRouter } from "next/navigation";
 
-
 export default function EntityPageHighlightsSection(props) {
   const userOwnsEntity = props.userOwnsEntity;
   const entityOwnedId = props.entityOwnedId;
@@ -16,7 +15,7 @@ export default function EntityPageHighlightsSection(props) {
     router.push(`/entity/${entityOwnedId}/manageEntity/highlights`);
   };
   return (
-    <div className="flex sm:space-x-3">
+    <div className="flex justify-between items-center sm:space-x-3">
       <div className="grid h-fit grid-flow-col grid-rows-1 gap-2 overflow-x-auto rounded-lg py-2 text-sm  sm:gap-6 sm:drop-shadow-lg">
         {entityHighlights.map((highlight, index) => (
           <div key={index}>
@@ -27,13 +26,13 @@ export default function EntityPageHighlightsSection(props) {
         ))}
       </div>
 
-      <div className="h-fit sm:py-2">
+      <div className="relative h-fit sm:py-2">
         {userOwnsEntity && (
           <>
             {/* ADD HIGHLIGHT BUTTON IF USER IS ENTITY OWNER */}
             <button
               onClick={handleAddHighlightButton}
-              className="my-2 h-[68px] w-[68px] rounded-full bg-white font-semibold sm:my-0 sm:h-[116px] sm:w-[116px] sm:py-10 sm:pb-3"
+              className="wrap my-2 h-12 w-12 mr-2 items-center   rounded-full bg-white font-semibold sm:my-0 sm:h-[116px] sm:w-[116px] sm:py-10 sm:pb-3"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

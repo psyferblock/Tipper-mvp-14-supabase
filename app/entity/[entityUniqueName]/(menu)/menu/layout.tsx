@@ -39,7 +39,7 @@ export default async function MenuIdPageLayout({
   const {
     data: { session },
   } = await supabaseServer.auth.getSession(); /// its here where we get the session from supabase. and its details.
-console.log('sessionat menu id layout ', session  )
+  console.log("sessionat menu id layout ", session);
   //Fetching from DB
   const entityInfos = await getEntityUsingUniqueNameServer(
     supabaseServer,
@@ -79,7 +79,7 @@ console.log('sessionat menu id layout ', session  )
 
   return (
     <>
-      <div className="m-2">
+      <div className="mx-2">
         <div>
           <div className=" flex items-center justify-between py-2 ">
             <div className="flex ">
@@ -107,9 +107,9 @@ console.log('sessionat menu id layout ', session  )
           <EntityPageContainerWithEntityInfos entityInfos={entityInfos} />
 
           {/* EVERYTHING ON THE RIGHT OF THE LEFT COLUMN */}
-          <div className="  h-screen -mb-[350px] sm:mb-0 justify-between sm:flex sm:h-[496px] sm:w-1/4 sm:grow sm:flex-col ">
+          <div className="  -mb-[400px] h-screen justify-between sm:mb-0 sm:flex sm:h-[496px] sm:w-1/4 sm:grow sm:flex-col ">
             {/*  COVER PHOTOS CONTAINER */}
-              <CoverPhotosSection entityCoverPictures={entityCoverPictures} />
+            <CoverPhotosSection entityCoverPictures={entityCoverPictures} />
 
             {/* HIGHLIGHTS CONTAINER */}
 
@@ -119,7 +119,6 @@ console.log('sessionat menu id layout ', session  )
               entityOwnedId={entityOwnedId}
             />
           </div>
-          <div id="menuTab"></div>
         </div>
         {children}
         <div>
