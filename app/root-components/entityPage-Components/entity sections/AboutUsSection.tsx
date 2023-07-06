@@ -6,17 +6,25 @@ export default function EntityPageAboutUsSection({ description, pictureUrl }) {
       {/* IMAGE */}
       <div className="relative mx-auto mt-3 aspect-video w-full rounded-md sm:mt-0 sm:h-[320px] sm:w-[598px] sm:bg-gray-400">
         {pictureUrl ? (
-          <Image src={pictureUrl} alt="About Us Picture" className="rounded-md" fill />
+          <Image
+            src={pictureUrl}
+            alt="About Us Picture"
+            className="rounded-md"
+            fill
+          />
         ) : (
           <div className="sm:mt-10 sm:text-center">Picture Not Available</div>
         )}
       </div>
       {/* PARAGRAPH */}
-      <div className=" flex flex-col space-y-2 items-center ">
+      <div className=" space-y-2 object-center text-center sm:w-7/12 sm:space-y-3 sm:text-start">
+      <div className="  flex flex-col items-center space-y-2 ">
         <div className=" w-fit border-t-8 border-amethyst pt-3 text-xl font-bold ">
           About Us
         </div>
         <div className="">{description}</div>
+      </div>
+
       </div>
     </div>
   );

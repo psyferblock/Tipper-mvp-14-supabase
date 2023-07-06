@@ -12,7 +12,7 @@ import React, { useEffect, useState } from "react";
 const EntityButton = () => {
   const [entityState, setEntityState] = useState({});
   const [menuState, setMenuState] = useState({});
-  const [categoryState, setCategoryState] = useState([]);
+  const [categoryState, setCategoryState] = useState({});
 
   const { userId, hasEntity } = useUsersContext();
   
@@ -30,7 +30,7 @@ const EntityButton = () => {
 
   const entityUniqueName = entityState?.entity_unique_name;
   const entityId = entityState?.id;
-  console.log("entityId", entityId);
+  // console.log("entityId", entityId);
 
   //////////////  //////////////  //////////////  //////////////
   // getting the menu information
@@ -49,12 +49,10 @@ const EntityButton = () => {
   //////////////  //////////////  //////////////  //////////////
   //// getting the category informat{ion
   useEffect(() => {
-    console.log("useState");
+    // console.log("useState");
     const getEntity = async () => {
       const categoryInfo = await getMenuCategories({ menuId: menuId });
-      console.log("categoryInfo", categoryInfo);
       const category1 = categoryInfo[0];
-      console.log("category1", category1);
       if (category1) {
         setCategoryState(category1);
       }
