@@ -56,40 +56,10 @@ function CreateManageEntityInfosTools(
     entityMenuInfo,
   } = entityState;
 
-  useEffect(() => {
-    setLogoObject(logoPictureObject);
-    setArrayOfPictureObjects(coverPictures);
-    setEntityTags(entityInfos?.entity_tags);
-    setPhoneNumber(entityInfos?.entity_phone_number);
-    setEmailAddress(entityInfos?.entity_email);
-    setInstagramUrl(entityInfos?.instagram_link);
-    setIsInstagramUrlPublic(entityInfos?.is_instagram_url_public);
-    setFacebookUrl(entityInfos?.facebook_link);
-    setIsFacebookUrlPublic(entityInfos?.is_facebook_url_public);
-    setWhatsappNumber(entityInfos?.whatsapp_phone_number);
-    setIsWhatsappNumberPublic(entityInfos?.is_whatsapp_number_public);
-    setAboutUsDescription(entityInfos?.about_us_description);
-    setAboutUsPictureUrl(entityInfos?.about_us_picture_url);
-    setIsContactUsSectionPublic(entityInfos?.is_contact_us_public);
-    setContactUsDescription(entityInfos?.contact_us_description);
-    setContactUsPictureUrl(entityInfos?.contact_us_picture_url);
-    setEntityOwnerId(entityInfos?.user_id);
-    setIsVerified(entityInfos?.is_verified);
-    setIndustryId(entityInfos?.industry_id);
-    setEntityTypeId(entityInfos?.entity_type_id);
-    setLocationId(entityInfos?.location_id);
-    setEntityArea(entityInfos?.entity_area);
-    setEntityUniqueName(entityInfos?.entity_unique_name);
-    setEntityAddress(entityInfos?.entity_address);
-    setEntityName(entityInfos?.entity_name);
-    setEntityId(entityInfos?.id);
-    setEntityMenuInfo(entityInfos?.entity_menu_id);
-    setIsAboutUsPublic(entityInfos?.is_about_us_public);
-  }, []);
   // console.log("reduced state in context ", entityState);
 
   //set entityMenuId
-  const setEntityMenuInfo = useCallback((array:string[]) => {
+  const setEntityMenuInfo = useCallback((array: string[]) => {
     dispatch({
       type: "ENTITY_MENU_INFO",
       payload: array,
@@ -122,7 +92,7 @@ function CreateManageEntityInfosTools(
   /**
    * Setter function for arrayOfObjectPictures state variable
    */
-  const setArrayOfPictureObjects = useCallback((newArray:string[]) => {
+  const setArrayOfPictureObjects = useCallback((newArray: string[]) => {
     dispatch({
       type: "ARRAY_OF_PICTURE_OBJECTS",
       payload: newArray,
@@ -317,16 +287,16 @@ function CreateManageEntityInfosTools(
       payload: entityAddress,
     });
   }, []);
-  const changeInput = useCallback((e:any) => {
+  const changeInput = useCallback((e: any) => {
     dispatch({
       type: "CHANGE_INPUT",
       payload: { name: e.target.value, value: e.target.value },
     });
   }, []);
 
-  const handleTags = useCallback((tagRef:any) => {
+  const handleTags = useCallback((tagRef: any) => {
     const tags = tagRef.split(" ");
-    tags.forEach((tag:any) => {
+    tags.forEach((tag: any) => {
       dispatch({
         type: "ADD_TAG",
         payload: tag,
@@ -334,19 +304,51 @@ function CreateManageEntityInfosTools(
     });
   }, []);
 
-  const removeTag = useCallback((tag:string) => {
+  const removeTag = useCallback((tag: string) => {
     dispatch({
       type: "REMOVE_TAG",
       payload: tag,
     });
   }, []);
 
-  const setIsAboutUsPublic = useCallback((isPublic:boolean) => {
+  const setIsAboutUsPublic = useCallback((isPublic: boolean) => {
     dispatch({
       type: "IS_ABOUT_US_SECTION_PUBLIC",
       payload: isPublic,
     });
-  },[]);
+  }, []);
+
+  useEffect(() => {
+    setLogoObject(logoPictureObject);
+    setArrayOfPictureObjects(coverPictures);
+    setEntityTags(entityInfos?.entity_tags);
+    setPhoneNumber(entityInfos?.entity_phone_number);
+    setEmailAddress(entityInfos?.entity_email);
+    setInstagramUrl(entityInfos?.instagram_link);
+    setIsInstagramUrlPublic(entityInfos?.is_instagram_url_public);
+    setFacebookUrl(entityInfos?.facebook_link);
+    setIsFacebookUrlPublic(entityInfos?.is_facebook_url_public);
+    setWhatsappNumber(entityInfos?.whatsapp_phone_number);
+    setIsWhatsappNumberPublic(entityInfos?.is_whatsapp_number_public);
+    setAboutUsDescription(entityInfos?.about_us_description);
+    setAboutUsPictureUrl(entityInfos?.about_us_picture_url);
+    setIsContactUsSectionPublic(entityInfos?.is_contact_us_public);
+    setContactUsDescription(entityInfos?.contact_us_description);
+    setContactUsPictureUrl(entityInfos?.contact_us_picture_url);
+    setEntityOwnerId(entityInfos?.user_id);
+    setIsVerified(entityInfos?.is_verified);
+    setIndustryId(entityInfos?.industry_id);
+    setEntityTypeId(entityInfos?.entity_type_id);
+    setLocationId(entityInfos?.location_id);
+    setEntityArea(entityInfos?.entity_area);
+    setEntityUniqueName(entityInfos?.entity_unique_name);
+    setEntityAddress(entityInfos?.entity_address);
+    setEntityName(entityInfos?.entity_name);
+    setEntityId(entityInfos?.id);
+    setEntityMenuInfo(entityInfos?.entity_menu_id);
+    setIsAboutUsPublic(entityInfos?.is_about_us_public);
+  }, []);
+
 
   return {
     entityName,
@@ -409,6 +411,7 @@ function CreateManageEntityInfosTools(
     changeInput,
     setEntityMenuInfo,
   };
+
 }
 
 /**
@@ -451,7 +454,10 @@ export default function EntityInfosContextProvider({
 
 // CREATE THE HOOK SO YO UCAN USE CONTEXT DIRECTLY ANYWHERE YOU WANT
 export function useEntityContext() {
+
   const context = useContext(ManageEntityInfosContext);
+  console.log("entityContextState", entityContextState);
+
   if (!context) {
     throw new Error(`something seems to be wrong with ${context}`);
   }

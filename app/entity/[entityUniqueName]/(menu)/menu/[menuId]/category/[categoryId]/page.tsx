@@ -36,7 +36,7 @@ async function MenuCategoriesPage({
 
   return (
     <>
-      <div className="grid h-4/6 gap-3 overflow-y-auto sm:mx-3 sm:grid sm:h-96 sm:grid-cols-3 sm:gap-5 sm:overflow-y-auto sm:pb-5 md:grid-cols-4 ">
+      <div className="grid h-4/6 gap-3 overflow-y-auto sm:mx-3 sm:grid sm:h-96 sm:grid-cols-3 sm:gap-5 sm:overflow-y-auto sm:pb-5 md:grid-cols-4 overflow-y-scroll scrollbar ">
 
         {publicMenuItems.map((item, index) => (
           <div key={index}>

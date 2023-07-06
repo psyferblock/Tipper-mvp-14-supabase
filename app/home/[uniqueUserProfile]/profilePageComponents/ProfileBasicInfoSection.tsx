@@ -79,7 +79,6 @@ function ProfileBasicInfoSection() {
   const fileUploadHandler = async (file: File) => {
     try {
       const newName = file.name.replace(" ", "");
-      console.log("selectedFile at file upload handler", selectedFile);
 
       setUploading(true);
 
@@ -105,7 +104,6 @@ function ProfileBasicInfoSection() {
         setProfilePicUrl(pictureUrl);
         setUploading(false);
       } else {
-        console.log("didnt recieve url ", pictureUrl);
       }
     } catch (error) {
       if (error instanceof Error) {
@@ -132,7 +130,7 @@ function ProfileBasicInfoSection() {
       {/* THE DIV FOR THE PROFILE PIC AND ALL  */}
       <div className=" ">
         <div className="relative mx-auto h-32 w-32 overflow-hidden rounded-full bg-ruby-tint ring-2 ring-ruby-tint">
-          <Image fill alt={"profile Pic"} src={profilePictureUrl}></Image>
+          <Image width={500} height={500} alt={"profile Pic"} src={profilePictureUrl}/>
         </div>
         <div className="flex justify-center space-x-[3px] text-xs text-amethyst sm:flex sm:justify-center sm:space-x-[0.6px] sm:text-xs  ">
           {/* <button disabled={!editing} >Change photo</button> */}

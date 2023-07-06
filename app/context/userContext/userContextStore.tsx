@@ -169,7 +169,7 @@ export default function UserInfoContextProvider({
   children: React.ReactNode;
   userInfos: any;
 }) {
-console.log('userState in user context ', userContextState)
+// console.log('userState in user context ', userContextState)
 
   return (
     <ManageUserInfoContext.Provider

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CarouselComponent from "./carousel/CarouselComponent";
+import CarouselComponent from "../carousel/CarouselComponent";
 
 export default function CoverPhotosSection({ entityCoverPictures }) {
   const slides = entityCoverPictures.map(

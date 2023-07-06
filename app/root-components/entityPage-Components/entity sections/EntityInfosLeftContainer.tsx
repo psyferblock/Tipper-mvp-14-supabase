@@ -1,9 +1,9 @@
 "use client";
 
-import FacebookButton from "./ConnectWithUsButtons/FacebookButton";
-import InstagramButton from "./ConnectWithUsButtons/InstagramButton";
-import PhoneCallButton from "./ConnectWithUsButtons/PhoneCallButton";
-import TextUsWhatsappButton from "./ConnectWithUsButtons/TextUsWhatsappButton";
+import FacebookButton from "../ConnectWithUsButtons/FacebookButton";
+import InstagramButton from "../ConnectWithUsButtons/InstagramButton";
+import PhoneCallButton from "../ConnectWithUsButtons/PhoneCallButton";
+import TextUsWhatsappButton from "../ConnectWithUsButtons/TextUsWhatsappButton";
 
 export default function EntityPageContainerWithEntityInfos({ entityInfos }) {
   return (

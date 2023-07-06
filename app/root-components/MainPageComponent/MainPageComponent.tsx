@@ -2,7 +2,7 @@ import React from "react";
 
 import HomePageListingOfEntitiesCards from "../entityCards-Components/HomePageListingOfEntitiesCards";
 import Image from "next/image";
-import CoverPhotosSection from "../entityPage-Components/CoverPhotosSection";
+import CoverPhotosSection from "../entityPage-Components/entity sections/CoverPhotosSection";
 
 function MainPageComponent() {
   const mainCoverImages = [
@@ -21,7 +21,7 @@ function MainPageComponent() {
   ];
   return (
     <div className=" h-screen w-full p-2 sm:px-12  ">
-        <CoverPhotosSection entityCoverPictures={mainCoverImages} />
+      <CoverPhotosSection entityCoverPictures={mainCoverImages} />
       <HomePageListingOfEntitiesCards />
     </div>
   );

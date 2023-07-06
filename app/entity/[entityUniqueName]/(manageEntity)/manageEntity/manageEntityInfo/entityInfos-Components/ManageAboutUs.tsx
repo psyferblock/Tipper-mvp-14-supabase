@@ -2,11 +2,7 @@
 
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 import uploadPictureToBucket from "@/app/lib/create/uploadPictureToBucket";
-// import ToggleButton from "@/app/root-Components/tools-Components/ToggleButton";
-import uploadPicture from "@/app/lib/create/uploadPictureToBucket";
 import ToggleButton from "@/app/root-components/tools-Components/ToggleButton";
-// import { deleteBasicPictureWithUrl } from "@/app/lib/delete/deleteBasicPictureWithId";
-// import { deleteAboutUsPicture } from "@/app/lib/update/deleteContactOrAboutUsPicture";
 import Image from "next/image";
 import { ChangeEvent } from "react";
 import { v4 as uuidv4 } from "uuid";
@@ -41,6 +37,9 @@ export default function ManageAboutUsPage(props: any) {
     //Setting the picture URL in context
     setAboutUsPictureUrl(pictureUrl);
   }
+  function handleToggleButton() {
+    setIsAboutUsPublic(!isAboutUsPublic);
+  }
 
   async function handleDeletePictureButton() {
     //Delete picture from DB
@@ -48,9 +47,6 @@ export default function ManageAboutUsPage(props: any) {
 
     //Delete picture from state
     setAboutUsPictureUrl("");
-  }
-  function handleToggleButton() {
-    setIsAboutUsPublic(!isAboutUsPublic);
   }
 
   return (
@@ -137,7 +133,7 @@ export default function ManageAboutUsPage(props: any) {
                     htmlFor="aboutUsPicture"
                     className="focus-within:ring-aethyst relative cursor-pointer rounded-md bg-gray-100 font-medium text-amethyst focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 hover:text-amethyst-shade"
                   >
-                    <span className="">Upload a file</span>
+                    <span className="text-amethyst">Upload a file</span>
                     <input
                       id="aboutUsPicture"
                       name="aboutUsPicture"

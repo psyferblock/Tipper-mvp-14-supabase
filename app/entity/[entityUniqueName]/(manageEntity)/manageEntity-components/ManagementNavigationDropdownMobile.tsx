@@ -19,7 +19,7 @@ export default function ManagementNavigationDropdownMobile() {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="inline-flex w-full justify-end rounded-md  bg-transparent  py-2  f text-base text-amethyst  ">
+        <Menu.Button className="f inline-flex w-full justify-end  rounded-md  bg-transparent  py-2 text-base text-amethyst  ">
           Options
           <svg
             xmlns="http://www.w3.org/2000/svg"

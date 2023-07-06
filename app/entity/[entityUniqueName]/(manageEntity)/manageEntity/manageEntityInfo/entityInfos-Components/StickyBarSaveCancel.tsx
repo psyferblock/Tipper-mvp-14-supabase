@@ -9,8 +9,9 @@ import { supabase } from "@/app/utils/supabase-browser";
 import { useRouter } from "next/navigation";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 import { useManageOpeningHoursContext } from "@/app/context/openingHoursContext/openingClosingStore";
+import GoToEntityButton from "@/app/(entityCreation)/entity-components/GoToEntityButton";
 
-export default function StickyBarSaveCancel(props:any) {
+export default function StickyBarSaveCancel(props: any) {
   const router = useRouter();
 
   const hoursContextState = useManageOpeningHoursContext();
@@ -33,13 +34,11 @@ export default function StickyBarSaveCancel(props:any) {
     isContactUsSectionPublic,
     contactUsDescription,
     contactUsPictureUrl,
-  
+
     isAboutUsPublic,
     entityUniqueName,
     entityId,
     setArrayOfPictureObjects,
-
-
   } = useEntityContext();
 
   async function handleSaveButton() {
@@ -58,7 +57,7 @@ export default function StickyBarSaveCancel(props:any) {
       isContactUsSectionPublic: isContactUsSectionPublic,
       contactUsDescription: contactUsDescription,
       contactUsPictureUrl: contactUsPictureUrl,
-      isAboutUsPublic:isAboutUsPublic,
+      isAboutUsPublic: isAboutUsPublic,
       // entityArea: entityArea,
       // entityAddress: entityAddress,
       entityId: entityId,
@@ -69,13 +68,13 @@ export default function StickyBarSaveCancel(props:any) {
 
     //Refresh page every change is saved
     //Im not doing router.refresh because i want to refresh the data fetched and the data fetched is in layout page
-    router.push(`entity/${entityUniqueName}/manageEntity/manageEntityInfo`);
+    router.push(`/entity/${entityUniqueName}/manageEntity/manageEntityInfo`);
   }
 
   //Function that removes the objects that were added but then user pressed on "Cancel" instead of "Save"
   function handleCancelButton() {
     const newArray = arrayOfPictureObjects.filter(
-      (pictureObject:any) => pictureObject.id != null
+      (pictureObject: any) => pictureObject.id != null
     );
     setArrayOfPictureObjects(newArray);
   }
@@ -83,12 +82,11 @@ export default function StickyBarSaveCancel(props:any) {
   //Function to add new pictures to the DB
   async function saveNewPictures() {
     let arrayOfNewPictureObjects = arrayOfPictureObjects.filter(
-      (pictureObject:any) => pictureObject.id == null
+      (pictureObject: any) => pictureObject.id == null
     );
 
     if (logoObject?.id == null) {
       arrayOfNewPictureObjects.push(logoObject);
-    
     }
 
     if (arrayOfNewPictureObjects.length > 0) {
@@ -110,15 +108,16 @@ export default function StickyBarSaveCancel(props:any) {
   }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 flex h-14 justify-end space-x-5 bg-ruby-tint px-12 py-2 opacity-95">
+    <div className="fixed mb-2 bottom-0 left-0 right-0 flex h-20 justify-between space-x-5 bg-ruby-tint px-12 py-2 opacity-95">
+      <GoToEntityButton />
       <button
-        className="h-10 w-28 rounded-3xl border border-gray-600 bg-diamond text-sm text-black hover:bg-pearl "
+        className="border-white-2 m-4 h-12 w-32 border-spacing-4  rounded-md border-2 border-amethyst bg-white p-3 text-center shadow-md shadow-amethyst-shade"
         onClick={() => handleCancelButton()}
       >
         Cancel
       </button>
       <button
-        className="h-10 w-28 rounded-3xl border border-gray-600 bg-amethyst text-sm text-black hover:bg-amethyst-tint "
+        className="border-white-2 m-4 h-12 w-32 border-spacing-4  rounded-md border-2 border-amethyst bg-white p-3 text-center shadow-md shadow-amethyst-shade"
         onClick={() => handleSaveButton()}
       >
         Save

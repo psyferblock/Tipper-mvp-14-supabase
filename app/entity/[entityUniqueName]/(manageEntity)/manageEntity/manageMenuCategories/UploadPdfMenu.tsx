@@ -77,23 +77,23 @@ const UploadPdfMenu = () => {
     setPdfMenu("");
   }
   return (
-    <div className="m-2 flex flex-col justify-between border-2 p-2 ">
+    <div className="m-2  h-auto flex flex-col justify-between border-2 p-2 ">
       <div className="">
         <div className=" my-2 flex justify-between">
           <h1 className="text-bold text-lg">Pdf Menu Public</h1>
           <ToggleButton
             handleToggleButton={handlePdfMenuTogglebutton}
-            switchedOn={isPdfPublic}
+            switchedOn={!isPdfPublic}
           />
         </div>
 
         <h1 className="mb-2"> Upload Menu Pdf</h1>
       </div>
-      <div className="flex h-auto justify-between">
+      <div className="flex h-auto w-auto justify-between">
         <div className="wrap mb-2 flex h-fit w-3/5 space-x-2 overflow-hidden text-sm text-gray-600">
           <label
             htmlFor="menuPdf"
-            className="relative cursor-pointer rounded-md bg-gray-100 font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-400"
+            className="relative cursor-pointer rounded-md bg-gray-100 font-medium text-amethyst-shade focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-400"
           >
             <input
               id="menuPdf"
@@ -112,14 +112,14 @@ const UploadPdfMenu = () => {
           Save pdf
         </button>
       </div>
-      <div className="relative mt-1 h-auto rounded-lg border-2 border-dashed border-gray-400 bg-gray-100 sm:h-56">
+      <div className="relative mt-1 h-auto w-auto rounded-lg border-2 border-dashed border-gray-400 bg-gray-100 ">
         {pdfMenu ? (
           <>
             <Image
               width={500}
               height={500}
               alt="menu pdf"
-              className="aspectRatio-2/1 min-h-min"
+              className="h-fit min-h-min"
               src={pdfMenu}
             />
             <button

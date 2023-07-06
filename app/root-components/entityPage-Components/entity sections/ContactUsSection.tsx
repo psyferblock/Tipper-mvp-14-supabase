@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import PhoneCallButton from "./ConnectWithUsButtons/PhoneCallButton";
-import TextUsWhatsappButton from "./ConnectWithUsButtons/TextUsWhatsappButton";
+import PhoneCallButton from "../ConnectWithUsButtons/PhoneCallButton";
+import TextUsWhatsappButton from "../ConnectWithUsButtons/TextUsWhatsappButton";
 
 export default function EntityPageContactUsSection({
   description,

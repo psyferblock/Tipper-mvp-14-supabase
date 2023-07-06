@@ -2,18 +2,18 @@ import {
   getClosingHours,
   getOpeningHours,
 } from "@/app/lib/get/getOpeningClosingHours";
-import FacebookButton from "./ConnectWithUsButtons/FacebookButton";
-import InstagramButton from "./ConnectWithUsButtons/InstagramButton";
-import PhoneCallButton from "./ConnectWithUsButtons/PhoneCallButton";
-import TextUsWhatsappButton from "./ConnectWithUsButtons/TextUsWhatsappButton";
-import OpeningAndClosingHours from "./OpeningAndClosingHours";
+import FacebookButton from "../ConnectWithUsButtons/FacebookButton";
+import InstagramButton from "../ConnectWithUsButtons/InstagramButton";
+import PhoneCallButton from "../ConnectWithUsButtons/PhoneCallButton";
+import TextUsWhatsappButton from "../ConnectWithUsButtons/TextUsWhatsappButton";
+import OpeningAndClosingHours from "../OpeningAndClosingHours";
 
 //remember to insert props here
 export default async function EntityPageContainerWithEntityInfos({
   entityInfos: entityInfos,
 }) {
   const entityId = entityInfos.id;
-  console.log("entityId from the netitypagecontainer", entityId);
+  // console.log("entityId from the netitypagecontainer", entityId);
 
   return (
     <div className=" mb-5 flex-none rounded-lg bg-white py-4 drop-shadow-xl sm:mb-0 sm:w-[307px] sm:px-2 sm:pb-6">

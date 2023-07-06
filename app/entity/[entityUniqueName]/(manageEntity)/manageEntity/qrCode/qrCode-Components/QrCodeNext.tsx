@@ -31,7 +31,7 @@ export default function QrCodeNext({
   // elemento que envuelve el QR
   const url = location.origin;
   const qrRef = useRef();
-  const pageUrl = `${url}/entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}`;
+  const pageUrl = `${url}/entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}#menuTab`;
   const width = 400;
   const { entityName } = useEntityContext();
   const light = "#ece3ff";
