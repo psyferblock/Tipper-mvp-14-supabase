@@ -182,7 +182,7 @@ export default function UserInfoContextProvider({
 // CREATE THE HOOK SO YO UCAN USE CONTEXT DIRECTLY ANYWHERE YOU WANT
 export function useUsersContext() {
   const context = useContext(ManageUserInfoContext);
-console.log('userState in user context ', context)
+// console.log('userState in user context ', context)
 
   if (!context) {
     throw new Error("useUsersContext must be used within a FormProvider");

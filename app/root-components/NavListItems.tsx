@@ -21,7 +21,7 @@ function NavListItems() {
         <ul className="mr-2 flex items-center justify-between space-x-2 pr-2 text-sm ">
           <GoToAboutUsPage />
           <GoToContactUsPage />
-          <NavBarSignOutButton/>
+          <SignOut/>
          
           <LgScreenProfileIcon/>
             

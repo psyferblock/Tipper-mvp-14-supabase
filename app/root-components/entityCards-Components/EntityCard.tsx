@@ -63,10 +63,10 @@ export default async function EntityCard({ entity }) {
                 {entityAddress}
               </div>
             </div>
-            <UpvoteAndDownvote
+            {/* <UpvoteAndDownvote
               totalUpVotes={upVotes}
               totalDownVotes={downVotes}
-            />
+            /> */}
           </div>
         </div>
       </Link>
