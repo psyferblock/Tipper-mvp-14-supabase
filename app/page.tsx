@@ -10,7 +10,7 @@ export default async function TipperLandingPage() {
   return (
     <div>
       <div className="bg-backGround   ">
-        <div className="z-50 sticky top-0">
+        <div className="z-50 sticky top-0 ">
           <MainPageNavBar />
         </div>
         
