@@ -30,10 +30,10 @@ const ProfileInfoFromContext = () => {
   const firstN = firstName ? firstName : "First";
   const lastN = lastName ? lastName : "Last";
   return (
-    <div className="w-3/4 place-content-center sm:w-fit">
-      <div className="mt-4  content-center overflow-hidden rounded-lg border bg-ruby-tint p-2 shadow-lg">
+    <div className="w-3/4  sm:w-fit">
+      <div className="mt-4 content-center overflow-hidden rounded-lg border bg-ruby-tint p-2 px-4 shadow-lg">
         {/* USER PROFILE SECTION*/}
-        <div className="PY-3">
+        <div className="py-3 ">
           <h3 className="text-lg font-medium leading-6 text-gray-900">
             User Profile
           </h3>
@@ -42,7 +42,7 @@ const ProfileInfoFromContext = () => {
           </p>
         </div>
         {/* INFORMATION SECTION */}
-        <div className="border-t border-gray-200 px-4 py-5 sm:p-0">
+        <div className="border-t border-gray-200  py-5 sm:p-0">
           <dl className="">
             {/* NAME SECTION */}
             <div className="py-3 ">

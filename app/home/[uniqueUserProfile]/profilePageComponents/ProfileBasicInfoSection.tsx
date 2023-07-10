@@ -182,7 +182,7 @@ function ProfileBasicInfoSection() {
           </button>
         </div>
         {/*  */}
-        <div className="place-content-center space-y-3 sm:h-full sm:w-5/12 sm:space-y-3">
+        <div className=" space-y-3 sm:h-full sm:w-5/12 sm:space-y-3">
           {!editing ? (
             <ProfileInfoFromContext />
           ) : (
