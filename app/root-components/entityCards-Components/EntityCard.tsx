@@ -33,8 +33,8 @@ export default async function EntityCard({ entity }) {
   return (
     <>
       <Link
-        href={`/entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}`}
-        scroll={false}
+        href={`/entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}#entityTop`}
+        // scroll={true}
         passHref
       >
         <div

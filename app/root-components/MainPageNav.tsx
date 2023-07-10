@@ -16,7 +16,7 @@ async function MainPageNavBar() {
 
   return (
     <>
-      <div className=" sticky top-0 z-10 flex h-16 w-full items-center justify-between bg-transparent  p-2 text-ruby sm:px-3 ">
+      <div className=" sticky top-0 z-10 flex h-16 w-full items-center justify-between bg-transparent  text-ruby sm:px-3 ">
         <div className="w-30">
           <GoToTipperHomePage />
         </div>

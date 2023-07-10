@@ -13,8 +13,10 @@ async function EntityLayout({ children }: { children: React.ReactNode }) {
 
   return (
     < >
+    <div id="entityTop" className="">
       <MainPageNavBar />
       <div >{children}</div>
+      </div>
     </>
   );
 }
