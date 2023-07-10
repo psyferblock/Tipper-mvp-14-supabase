@@ -65,7 +65,7 @@ export default function SignUpPage() {
       email: email,
       password: password,
       options: {
-        emailRedirectTo: process.env.TIPPER_URL,
+        emailRedirectTo: "",
       },
     });
     const emailIsTaken = createdUser?.user.identities?.length === 0;

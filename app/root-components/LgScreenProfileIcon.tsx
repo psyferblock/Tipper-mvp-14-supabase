@@ -37,7 +37,11 @@ function LgScreenProfileIcon() {
   const uniqueUserName = userInfo?.unique_user_name;
 
   const handleHomeButton = () => {
-    router.push(`/home/${uniqueUserName}`);
+    if (uniqueUserName) {
+      router.push(`/home/${uniqueUserName}`);
+    } else {
+      router.push("/")
+    }
   };
 
   return (
@@ -46,13 +50,13 @@ function LgScreenProfileIcon() {
       className="text-x-2 flex flex-row items-center justify-evenly"
     >
       <h1 className="px-2 font-serif text-base text-ruby">
-        {firstName || "Sanfour"}
+        {firstName || "Guest"}
       </h1>
       <div className="aspect-1/1 relative mx-auto h-10 w-10 overflow-hidden rounded-full bg-ruby-tint ring-2 ring-ruby-tint">
         <Image
           width={500}
           height={500}
-          src={profilePictureUrl}
+          src={profilePictureUrl||"https://zluncbhyhpxonqhigbhn.supabase.co/storage/v1/object/public/tipper/websiteItems/basic%20pics/guest.png"}
           alt={"profile picture"}
         />
       </div>

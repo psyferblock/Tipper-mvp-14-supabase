@@ -18,6 +18,7 @@ function ProfileBasicInfoSection() {
   const [editing, setEditing] = useState(false);
 
   const { session } = useSupabase();
+  console.log('session', session)
   const userId = session?.user.id;
 
   const {
@@ -64,14 +65,14 @@ function ProfileBasicInfoSection() {
     });
 
     setEditing(false);
-    console.log("updating profile", userUpdate);
+    // console.log("updating profile", userUpdate);
   };
 
   const fileSelectHandler = (e: ChangeEvent<HTMLInputElement>) => {
     let file;
     if (e.target.files) {
       file = e.target.files[0];
-      console.log("selectedFile", file);
+      // console.log("selectedFile", file);
       setSelectedFile(file);
     }
   };
@@ -115,7 +116,7 @@ function ProfileBasicInfoSection() {
 
   return (
     <div className="rounded-2 w-8/10 mt-3 bg-ruby-tint p-2 sm:w-7/12">
-      {" "}
+      {/* BASIC INFO AND THE EDIT BUTTON AT THE TOP  */}
       <div className="flex w-full justify-between ">
         <h1>Basic Info</h1>
         <button
@@ -129,11 +130,12 @@ function ProfileBasicInfoSection() {
       </div>
       {/* THE DIV FOR THE PROFILE PIC AND ALL  */}
       <div className=" ">
+        {/* THE IMAGE  */}
         <div className="relative mx-auto h-32 w-32 overflow-hidden rounded-full bg-ruby-tint ring-2 ring-ruby-tint">
-          <Image width={500} height={500} alt={"profile Pic"} src={profilePictureUrl}/>
+          <Image width={500} height={500} alt={"profile Pic"} src={profilePictureUrl||"https://zluncbhyhpxonqhigbhn.supabase.co/storage/v1/object/public/tipper/websiteItems/basic%20pics/guest.png"}/>
         </div>
+        {/* DIV FOR UPLOADING THE PROFILE IMAGE */}
         <div className="flex justify-center space-x-[3px] text-xs text-amethyst sm:flex sm:justify-center sm:space-x-[0.6px] sm:text-xs  ">
-          {/* <button disabled={!editing} >Change photo</button> */}
           <label
             htmlFor="profilePicture"
             className={
@@ -172,12 +174,16 @@ function ProfileBasicInfoSection() {
             upload picture
           </button>
         </div>
+        {/*  */}
         <div className="space-y-3 sm:h-full sm:w-5/12 sm:space-y-3">
           {!editing ? (
             <ProfileInfoFromContext />
           ) : (
+            
             <div>
+              {/* USER INFORMATION */}
               <div>
+                {/* USER NAME  */}
                 <div>
                   {/* FIRST NAME */}
 
@@ -192,7 +198,7 @@ function ProfileBasicInfoSection() {
                     <input
                       type="text"
                       id="first name"
-                      value={firstName || ""}
+                      value={firstName}
                       onChange={(e) => setUserName(toUpper(e.target.value))}
                       className="mb-3 block h-12 w-full rounded-md border-gray-300 pl-4 pr-12 text-xs focus:border-amethyst focus:ring-amethyst sm:text-sm"
                       placeholder="Enter First Name"
@@ -211,7 +217,7 @@ function ProfileBasicInfoSection() {
                     <input
                       type="text"
                       id="last name"
-                      value={lastName || ""}
+                      value={lastName }
                       onChange={(e) => setUserLastName(toUpper(e.target.value))}
                       className="mb-3 block h-12 w-full rounded-md border-gray-300 pl-4 pr-12 text-xs focus:border-amethyst focus:ring-amethyst sm:text-sm"
                       placeholder="Enter Last Name"
@@ -232,7 +238,7 @@ function ProfileBasicInfoSection() {
                     type="date"
                     name="dateofbirth"
                     id="dateofbirth"
-                    value={dateOfBirth || ""}
+                    value={dateOfBirth || "Date Of Birth"}
                     onChange={(e) => setDateOfBirth(e.target.value)}
                     className="mb-3 block h-12 w-full rounded-md border-gray-300 pl-4 pr-12 text-xs text-gray-600 focus:border-amethyst focus:ring-amethyst sm:text-sm"
                     placeholder="Enter Date of Birth"
