@@ -65,7 +65,7 @@ export default function SignUpPage() {
       email: email,
       password: password,
       options: {
-        emailRedirectTo: "",
+        emailRedirectTo: "www.tippernetwork.com",
       },
     });
     const emailIsTaken = createdUser?.user.identities?.length === 0;

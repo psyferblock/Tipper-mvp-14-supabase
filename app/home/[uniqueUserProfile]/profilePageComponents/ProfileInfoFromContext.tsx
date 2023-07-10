@@ -30,9 +30,10 @@ const ProfileInfoFromContext = () => {
   const firstN = firstName ? firstName : "First";
   const lastN = lastName ? lastName : "Last";
   return (
-    <div className="w-3/4">
-      <div className="m-2 overflow-hidden rounded-lg border bg-ruby-tint shadow">
-        <div className="px-4 py-5 sm:px-6">
+    <div className="w-3/4 place-content-center sm:w-fit">
+      <div className="mt-4  content-center overflow-hidden rounded-lg border bg-ruby-tint p-2 shadow-lg">
+        {/* USER PROFILE SECTION*/}
+        <div className="PY-3">
           <h3 className="text-lg font-medium leading-6 text-gray-900">
             User Profile
           </h3>
@@ -40,15 +41,18 @@ const ProfileInfoFromContext = () => {
             This is some information about the user.
           </p>
         </div>
+        {/* INFORMATION SECTION */}
         <div className="border-t border-gray-200 px-4 py-5 sm:p-0">
-          <dl className="sm:divide-y sm:divide-gray-200">
-            <div className="py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5">
+          <dl className="">
+            {/* NAME SECTION */}
+            <div className="py-3 ">
               <dt className="text-sm font-medium text-gray-500">Full name</dt>
               <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                 {firstN + " " + lastN}{" "}
               </dd>
             </div>
-            <div className="py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5">
+            {/* EMAIL ADDRESS SECTION */}
+            <div className="py-3 ">
               <dt className="text-sm font-medium text-gray-500">
                 Email address
               </dt>
@@ -56,7 +60,8 @@ const ProfileInfoFromContext = () => {
                 {emailAddress}
               </dd>
             </div>
-            <div className="py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5">
+            {/* PHONE NUMBER SECTION */}
+            <div className="py-3 ">
               <dt className="text-sm font-medium text-gray-500">
                 Phone number
               </dt>
@@ -64,14 +69,16 @@ const ProfileInfoFromContext = () => {
                 {contactNumber ? contactNumber : "no number yet"}
               </dd>
             </div>
-            <div className="py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5">
+            {/* BIRTH DAY SECTION  */}
+            <div className="py-3 ">
               <dt className="text-sm font-medium text-gray-500">Birth Day</dt>
               <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                 {dateOfBirth ? dateOfBirth : "no date yet"}
                 <br></br>
               </dd>
             </div>
-            <div className="py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5">
+            {/* ENTITY STATUS SECTION  */}
+            <div className="py-3 ">
               <dt className="text-sm font-medium text-gray-500">
                 EntityStatus
               </dt>

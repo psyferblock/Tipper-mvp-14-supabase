@@ -18,7 +18,6 @@ function ProfileBasicInfoSection() {
   const [editing, setEditing] = useState(false);
 
   const { session } = useSupabase();
-  console.log('session', session)
   const userId = session?.user.id;
 
   const {
@@ -132,15 +131,23 @@ function ProfileBasicInfoSection() {
       <div className=" ">
         {/* THE IMAGE  */}
         <div className="relative mx-auto h-32 w-32 overflow-hidden rounded-full bg-ruby-tint ring-2 ring-ruby-tint">
-          <Image width={500} height={500} alt={"profile Pic"} src={profilePictureUrl||"https://zluncbhyhpxonqhigbhn.supabase.co/storage/v1/object/public/tipper/websiteItems/basic%20pics/guest.png"}/>
+          <Image
+            width={500}
+            height={500}
+            alt={"profile Pic"}
+            src={
+              profilePictureUrl ||
+              "https://zluncbhyhpxonqhigbhn.supabase.co/storage/v1/object/public/tipper/websiteItems/basic%20pics/guest.png"
+            }
+          />
         </div>
         {/* DIV FOR UPLOADING THE PROFILE IMAGE */}
-        <div className="flex justify-center space-x-[3px] text-xs text-amethyst sm:flex sm:justify-center sm:space-x-[0.6px] sm:text-xs  ">
+        <div className="flex justify-center space-x-[3px] text-xs text-amethyst sm:flex sm:justify-center sm:space-x-[0.6px] sm:text-xs   ">
           <label
             htmlFor="profilePicture"
             className={
               editing
-                ? "relative cursor-pointer rounded-md bg-gray-100 font-medium text-amethyst-shade-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-amethyst focus-within:ring-offset-2 hover:text-amethyst-tint"
+                ? "text-amethyst-shade-600 relative cursor-pointer rounded-md bg-gray-100 font-medium focus-within:outline-none focus-within:ring-2 focus-within:ring-amethyst focus-within:ring-offset-2 hover:text-amethyst-tint"
                 : "text-gray-500"
             }
           >
@@ -175,11 +182,10 @@ function ProfileBasicInfoSection() {
           </button>
         </div>
         {/*  */}
-        <div className="space-y-3 sm:h-full sm:w-5/12 sm:space-y-3">
+        <div className="place-content-center space-y-3 sm:h-full sm:w-5/12 sm:space-y-3">
           {!editing ? (
             <ProfileInfoFromContext />
           ) : (
-            
             <div>
               {/* USER INFORMATION */}
               <div>
@@ -217,7 +223,7 @@ function ProfileBasicInfoSection() {
                     <input
                       type="text"
                       id="last name"
-                      value={lastName }
+                      value={lastName}
                       onChange={(e) => setUserLastName(toUpper(e.target.value))}
                       className="mb-3 block h-12 w-full rounded-md border-gray-300 pl-4 pr-12 text-xs focus:border-amethyst focus:ring-amethyst sm:text-sm"
                       placeholder="Enter Last Name"
