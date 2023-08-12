@@ -12,9 +12,10 @@ const SignOut = () => {
     await supabase.auth.signOut();
     // Redirect the user to the login page
     router.push("/");
+    router.refresh();
   };
   return (
-    <div className="text-base " >
+    <div className="text-base ">
       <button onClick={(e) => handleSignOut()}>Sign out</button>
     </div>
   );

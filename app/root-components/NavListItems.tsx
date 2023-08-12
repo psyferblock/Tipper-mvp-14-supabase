@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import React from "react";
 import ProfileIcon from "./ProfileIcon";
 import { Menu, Transition } from "@headlessui/react";
@@ -19,6 +18,7 @@ function NavListItems() {
         <ul className="mr-2 flex items-center justify-between space-x-2 pr-2 text-sm ">
           <GoToAboutUsPage />
           <GoToContactUsPage />
+          <SignOut />
           <ProfileIcon />
         </ul>
       </div>
@@ -48,7 +48,7 @@ function NavListItems() {
                       <div
                         className={`${
                           active ? "bg-amethyst text-white" : "text-gray-900"
-                        } group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-grey-300`}
+                        } hover:bg-grey-300 group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                       >
                         <GoToUserProfilePage />
                       </div>
