@@ -10,16 +10,16 @@ function AddProfessionalInfo() {
 
       <input type="text" name="fullName"/>
               </label>
-              <label>name
+              <label>phone number
+
+      <input type="number" name="phone"/>
+              </label>
+              <label>
 
       <input type="text" name="name"/>
               </label>
               <label>name
-
-      <input type="text" name="name"/>
-              </label>
-              <label>name
-
+    
       <input type="text" name="name"/>
               </label>
       <input type="submit" value="Submit" />

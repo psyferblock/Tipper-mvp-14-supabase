@@ -2,7 +2,7 @@ import React from "react";
 
 import HomePageListingOfEntitiesCards from "../entityCards-Components/HomePageListingOfEntitiesCards";
 import Image from "next/image";
-import CoverPhotosSection from "../entityPage-Components/entity sections/CoverPhotosSection";
+import CoverPhotosSection from "../entityPage-Components/entitySections/CoverPhotosSection";
 
 function MainPageComponent() {
   const mainCoverImages = [

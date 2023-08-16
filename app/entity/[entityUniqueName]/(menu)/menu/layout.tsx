@@ -1,12 +1,12 @@
 import ManageEntityButton from "@/app/(entityCreation)/entity-components/ManageEntityButton";
 import { getBasicPicturesServer } from "@/app/lib/get/getBasicPictures";
 import { getEntityUsingUniqueNameServer } from "@/app/lib/get/getEntityUsingUniqueName";
-import EntityPageAboutUsSection from "@/app/rootComponents/entityPage-Components/entity sections/AboutUsSection";
-import EntityPageContactUsSection from "@/app/rootComponents/entityPage-Components/entity sections/ContactUsSection";
-import CopyUrlShareWhatsappButtons from "@/app/rootComponents/entityPage-Components/entity sections/CopyUrlShareWhatsappButtons";
-import CoverPhotosSection from "@/app/rootComponents/entityPage-Components/entity sections/CoverPhotosSection";
-import EntityPageContainerWithEntityInfos from "@/app/rootComponents/entityPage-Components/entity sections/EntityPageContainerWithEntityInfos";
-import EntityPageHighlightsSection from "@/app/rootComponents/entityPage-Components/entity sections/HighlightsSection";
+import EntityPageAboutUsSection from "@/app/rootComponents/entityPage-Components/entitySections/AboutUsSection";
+import EntityPageContactUsSection from "@/app/rootComponents/entityPage-Components/entitySections/ContactUsSection";
+import CopyUrlShareWhatsappButtons from "@/app/rootComponents/entityPage-Components/entitySections/CopyUrlShareWhatsappButtons";
+import CoverPhotosSection from "@/app/rootComponents/entityPage-Components/entitySections/CoverPhotosSection";
+import EntityPageContainerWithEntityInfos from "@/app/rootComponents/entityPage-Components/entitySections/EntityPageContainerWithEntityInfos";
+import EntityPageHighlightsSection from "@/app/rootComponents/entityPage-Components/entitySections/HighlightsSection";
 import { createServerClient } from "@/app/utils/supabase-server";
 import Image from "next/image";
 import Link from "next/link";

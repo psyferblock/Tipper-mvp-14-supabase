@@ -1,7 +1,7 @@
 "use client";
 
 import BasicSearchBar from "@/app/rootComponents/toolsComponents/BasicSearchBar";
-import ToggleButton from "@/app/rootComponents/tools-Components/ToggleButton";
+import ToggleButton from "@/app/rootComponents/toolsComponents/ToggleButton";
 import { lazy, Suspense, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
