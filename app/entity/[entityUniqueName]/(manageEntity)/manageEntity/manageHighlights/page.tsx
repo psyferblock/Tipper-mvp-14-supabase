@@ -1,6 +1,6 @@
 import React from "react";
-import ManagementNavigationDropdownMobile from "../../manageEntity-components/ManagementNavigationDropdownMobile";
-import ManageHighlights from "./highlights-Components/ManageHighlights";
+import ManagementNavigationDropdownMobile from "../../manageEntity_components/ManagementNavigationDropdownMobile";
+import ManageHighlights from "./highlights_components/ManageHighlights";
 
 export default function ManageHighlightsPage(params) {
   const entityHighlights = [1, 2, 3, 4];

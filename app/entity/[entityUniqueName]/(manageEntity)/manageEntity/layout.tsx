@@ -1,7 +1,7 @@
 import React from "react";
-import MobileHeaderOfCurrentManagementPage from "../manageEntity-components/MobileHeaderOfCurrentManagementPage";
+import MobileHeaderOfCurrentManagementPage from "../manageEntity_components/MobileHeaderOfCurrentManagementPage";
 import Link from "next/link";
-import ManagementNavigationDropdownMobile from "../manageEntity-components/ManagementNavigationDropdownMobile";
+import ManagementNavigationDropdownMobile from "../manageEntity_components/ManagementNavigationDropdownMobile";
 import { getEntityIdFromUniqueNameServer } from "@/app/lib/get/getEntityIdFromUniqueName";
 import { createServerClient } from "@/app/utils/supabase-server";
 import { getEntityUsingUniqueNameServer } from "@/app/lib/get/getEntityUsingUniqueName";
@@ -13,8 +13,8 @@ import { getMenuCategoriesServer } from "@/app/lib/get/getMenuCategories";
 import { getBasicPicturesServer } from "@/app/lib/get/getBasicPictures";
 import EntityInfosContextProvider from "@/app/context/entityContext/entityContextStore";
 import EntityButton from "@/app/home/[uniqueUserProfile]/profilePageComponents/EntityButton";
-import CategoriesNavLink from "../manageEntity-components/CategoriesNavLink";
-import { managementCategories } from "../manageEntity-components/ManagementCategories";
+import CategoriesNavLink from "../manageEntity_components/CategoriesNavLink";
+import { managementCategories } from "../manageEntity_components/ManagementCategories";
 
 async function layout({
   children,

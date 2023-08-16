@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState } from "react";
-import { createBrowserClient } from "./utils/supabase-browser";
+import { createBrowserClient } from "./utils/supabase_browser";
 
 // @ts-ignore
 const Context = createContext<SupabaseContext>();

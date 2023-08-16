@@ -1,4 +1,4 @@
-import { supabase } from "@/app/utils/supabase-browser";
+import { supabase } from "@/app/utils/supabase_browser";
 
 async function createExchangeRate(entityId, exchangeRate) {
   const { data, error } = await supabase

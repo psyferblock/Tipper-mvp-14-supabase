@@ -1,8 +1,8 @@
 "use client";
 
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
-import ToggleButton from "@/app/root-components/tools-Components/ToggleButton";
-import { useManageEntityInfosContext } from "../Contexts/EntityInfoContext";
+import ToggleButton from "@/app/root_components/tools_components/ToggleButton";
+// import { useManageEntityInfosContext } from "../Contexts/EntityInfoContext";
 
 export default function ManageSocialMedia() {
   const {
@@ -26,14 +26,14 @@ export default function ManageSocialMedia() {
   } = useEntityContext();
 
   //Changing the state in context of isPublic to the opposite boolean value of current state
-  function handleInstagramToggleButton(boolean) {
+  function handleInstagramToggleButton(boolean:boolean) {
     setIsInstagramUrlPublic(boolean);
   }
 
-  function handleFacebookToggleButton(boolean) {
+  function handleFacebookToggleButton(boolean:boolean) {
     setIsFacebookUrlPublic(boolean);
   }
-  function handleWhatsappToggleButton(boolean) {
+  function handleWhatsappToggleButton(boolean:boolean) {
     setIsWhatsappNumberPublic(boolean);
   }
 

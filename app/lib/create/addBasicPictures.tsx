@@ -3,7 +3,7 @@
 
 // This function takes as parameter an array of ojects, each object represents a picture object
 //containing an id, media category, and media url
-import { supabase } from "@/app/utils/supabase-browser";
+import { supabase } from "@/app/utils/supabase_browser";
 
 export default async function addBasicPictures(
   arrayOfPictureObjects,

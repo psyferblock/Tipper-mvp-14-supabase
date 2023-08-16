@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { createServerClient } from "../utils/supabase-server";
+import { createServerClient } from "../utils/supabase_server";
 import NavListItems from "./NavListItems";
 import GoToAboutUsPage from "./GoTo-components/GoToAboutUsPage";
 import GoToTipperHomePage from "./GoTo-components/GoToTipperHomePage";

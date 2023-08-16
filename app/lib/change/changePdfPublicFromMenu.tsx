@@ -1,4 +1,4 @@
-import { supabase } from "@/app/utils/supabase-browser";
+import { supabase } from "@/app/utils/supabase_browser";
 
 export async function changePdfPublicFromMenu({
   isPdfPublic: isPdfPublic,

@@ -8,7 +8,7 @@ import SignOut from "./GoTo-components/SignOut";
 import GoToAboutUsPage from "./GoTo-components/GoToAboutUsPage";
 import GoToUserProfilePage from "./GoTo-components/GoToUserProfilePage";
 import GoToContactUsPage from "./GoTo-components/GoToContactUsPage";
-import NavBarSignOutButton from "./tools-Components/NavBarSignOutButton";
+import NavBarSignOutButton from "./tools_components/NavBarSignOutButton";
 import LgScreenProfileIcon from "./LgScreenProfileIcon";
 // import { ChevronDownIcon } from '@heroicons/react/20/solid'
 

@@ -2,7 +2,7 @@
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 import uploadPictureToBucket from "@/app/lib/create/uploadPictureToBucket";
 import { addMenuPdf } from "@/app/lib/update/addMenuPdf";
-import ToggleButton from "@/app/root-components/tools-Components/ToggleButton";
+import ToggleButton from "@/app/root_components/tools_components/ToggleButton";
 import Image from "next/image";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { supabase } from "../utils/supabase-browser";
+import { supabase } from "../utils/supabase_browser";
 import { useHasMounted } from "../hooks/useHasMounted";
 import { userContextState } from "../context/userContext/userContextReducer";
 import { useUsersContext } from "../context/userContext/userContextStore";

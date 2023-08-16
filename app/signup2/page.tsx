@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 
-import FormInput from "../root-components/FormInput";
+import FormInput from "../root_components/FormInput";
 
 export default function SignUp2() {
   const router = useRouter();
