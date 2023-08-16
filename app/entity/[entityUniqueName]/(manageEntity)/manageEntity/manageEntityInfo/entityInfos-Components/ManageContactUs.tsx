@@ -1,6 +1,6 @@
 "use client";
 
-import ToggleButton from "@/app/root-components/tools-Components/ToggleButton";
+import ToggleButton from "@/app/rootComponents/toolsComponents/ToggleButton";
 import Image from "next/image";
 import { ChangeEvent, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";

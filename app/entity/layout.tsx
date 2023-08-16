@@ -1,6 +1,6 @@
 import { createServerClient } from "@/app/utils/supabase-server";
 import React from "react";
-import MainPageNavBar from "../root-components/MainPageNav";
+import MainPageNavBar from "../rootComponents/MainPageNav";
 
 async function EntityLayout({ children }: { children: React.ReactNode }) {
   const supabaseServer = await createServerClient();

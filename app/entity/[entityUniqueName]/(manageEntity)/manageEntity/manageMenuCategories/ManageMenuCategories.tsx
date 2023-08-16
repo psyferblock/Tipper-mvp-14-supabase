@@ -1,6 +1,6 @@
 "use client";
 
-import BasicSearchBar from "@/app/root-components/tools-Components/BasicSearchBar";
+import BasicSearchBar from "@/app/rootComponents/toolsComponents/BasicSearchBar";
 import { useEffect, useState } from "react";
 
 import { getEntityMenu } from "@/app/lib/get/getEntityMenu";
