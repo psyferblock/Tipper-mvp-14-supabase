@@ -1,5 +1,5 @@
 import { getEntityUsingUniqueNameServer } from "@/app/lib/get/getEntityUsingUniqueName";
-import MenuNavigation from "@/app/root-components/menuComponents/MenuNavigation";
+import MenuNavigation from "@/app/root-components/menu-components/MenuNavigation";
 
 import { getExchangeRateServer } from "@/app/lib/get/getExchangeRate";
 import { createServerClient } from "@/app/utils/supabase-server";

@@ -12,7 +12,7 @@ import {
 import { getMenuCategoriesServer } from "@/app/lib/get/getMenuCategories";
 import { getBasicPicturesServer } from "@/app/lib/get/getBasicPictures";
 import EntityInfosContextProvider from "@/app/context/entityContext/entityContextStore";
-import EntityButton from "@/app/home/[uniqueUserProfile]/profilePageComponents/EntityButton";
+import EntityButton from "@/app/home/[uniqueUserProfile]/profilePage-components/EntityButton";
 import CategoriesNavLink from "../manageEntity-components/CategoriesNavLink";
 import { managementCategories } from "../manageEntity-components/ManagementCategories";
 
@@ -62,70 +62,69 @@ async function layout({
   const logoPictureObject = arrayOfLogoPictureObject[0];
 
   return (
-    <div >
+    <div>
       <EntityInfosContextProvider
         entityInfos={entityInformation}
         coverPictures={arrayOfCoverPictureObjects}
         logoPictureObject={logoPictureObject}
       >
-
-          <div className="flex h-20 w-full items-center justify-between bg-gray-300 px-2  text-xl font-bold  sm:mt-0 sm:hidden">
-            {/* // this is the back tick that will take us to the entityUniqueName Page.  */}
-            <Link
-              href={`/entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}
+        <div className="flex h-20 w-full items-center justify-between bg-gray-300 px-2  text-xl font-bold  sm:mt-0 sm:hidden">
+          {/* // this is the back tick that will take us to the entityUniqueName Page.  */}
+          <Link
+            href={`/entity/${entityUniqueName}/menu/${menuId}/category/${categoryId}
               `}
-              className="-ml-2 mr-1 flex w-fit items-center text-2xl font-bold"
-              passHref
+            className="-ml-2 mr-1 flex w-fit items-center text-2xl font-bold"
+            passHref
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2.5}
+              stroke="currentColor"
+              className="h-6 w-6"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2.5}
-                stroke="currentColor"
-                className="h-6 w-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 19.5L8.25 12l7.5-7.5"
-                />
-              </svg>
-            </Link>
-
-            <MobileHeaderOfCurrentManagementPage />
-            <div className="sm:hidden">
-              <ManagementNavigationDropdownMobile
-                entityUserName={entityUniqueName}
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 19.5L8.25 12l7.5-7.5"
               />
-            </div>
-            <div className="h-20 sm:h-0"></div>
-          </div>
-          {/* //////////////////////////////////////////////////////////////////// */}
+            </svg>
+          </Link>
 
-          <div className="hidden sm:visible">
-            <Link
-              href={`/entity/${entityUniqueName}/manageEntity/manageEntityInfo`}
-              className="hidden w-fit items-center pb-4 pt-6 text-2xl font-bold sm:flex"
-              passHref
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2.5}
-                stroke="currentColor"
-                className="h-6 w-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 19.5L8.25 12l7.5-7.5"
-                />
-              </svg>
-              <div>Manage Entity</div>
-            </Link>
+          <MobileHeaderOfCurrentManagementPage />
+          <div className="sm:hidden">
+            <ManagementNavigationDropdownMobile
+              entityUserName={entityUniqueName}
+            />
           </div>
+          <div className="h-20 sm:h-0"></div>
+        </div>
+        {/* //////////////////////////////////////////////////////////////////// */}
+
+        <div className="hidden sm:visible">
+          <Link
+            href={`/entity/${entityUniqueName}/manageEntity/manageEntityInfo`}
+            className="hidden w-fit items-center pb-4 pt-6 text-2xl font-bold sm:flex"
+            passHref
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2.5}
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 19.5L8.25 12l7.5-7.5"
+              />
+            </svg>
+            <div>Manage Entity</div>
+          </Link>
+        </div>
 
         <div className="flex">
           {/* LEFT MENU */}
@@ -143,7 +142,7 @@ async function layout({
               ))}
             </div>
           </div>
-          <div className="grow w-1/4 sm:w-1/4">{children}</div>
+          <div className="w-1/4 grow sm:w-1/4">{children}</div>
         </div>
       </EntityInfosContextProvider>
     </div>
