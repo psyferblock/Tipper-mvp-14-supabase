@@ -1,21 +1,21 @@
 "use client";
 
-import ToggleButton from "@/app/rootComponents/toolsComponents/ToggleButton";
-import Image from "next/image";
-import { ChangeEvent, useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
 import uploadPictureToBucket from "@/app/lib/create/uploadPictureToBucket";
+import ToggleButton from "@/app/root_components/toolsComponents/ToggleButton";
+import Image from "next/image";
+import { ChangeEvent } from "react";
+import { v4 as uuidv4 } from "uuid";
 
-export default function ManageContactUsPage(props: any) {
+export default function ManageAboutUsPage(props: any) {
   const {
-    isContactUsSectionPublic,
-    contactUsDescription,
-    contactUsPictureUrl,
+    aboutUsDescription,
+    aboutUsPictureUrl,
+    isAboutUsPublic,
     entityId,
-    setIsContactUsSectionPublic,
-    setContactUsDescription,
-    setContactUsPictureUrl,
+    setAboutUsDescription,
+    setAboutUsPictureUrl,
+    setIsAboutUsPublic,
   } = useEntityContext();
 
   async function handleUploadImageButton(e: ChangeEvent<HTMLInputElement>) {
@@ -35,63 +35,59 @@ export default function ManageContactUsPage(props: any) {
       uuid: uuid,
     });
     //Setting the picture URL in context
-    setContactUsPictureUrl(pictureUrl);
+    setAboutUsPictureUrl(pictureUrl);
   }
-
-  // Changing the state in context of isContactUsSectionPublic to the opposite boolean value of current state
   function handleToggleButton() {
-    setIsContactUsSectionPublic(!isContactUsSectionPublic);
+    setIsAboutUsPublic(!isAboutUsPublic);
   }
 
   async function handleDeletePictureButton() {
     //Delete picture from DB
-    // await deleteContactUsPicture(entityId);
+    // await deleteAboutUsPicture(entityId);
 
     //Delete picture from state
-    setContactUsPictureUrl("");
+    setAboutUsPictureUrl("");
   }
+
   return (
-    <div className="h-fit  space-y-4 rounded-lg bg-white p-3 pb-16 drop-shadow-lg sm:p-4">
-      <div className="items-center sm:flex sm:justify-between sm:space-x-6">
-        <div className="mb-1 text-lg font-bold">Contact Us</div>
+    <div className="h-fit  space-y-4 rounded-lg bg-white p-3 drop-shadow-lg sm:p-4">
+      <div className="items-center sm:flex sm:space-x-6">
+        <div className="mb-1 text-lg font-bold">About Us</div>
         <div className="flex items-center space-x-1 py-1 pb-0.5 sm:py-0">
-          <div className="pt-0.5">
-            <ToggleButton
-              handleToggleButton={() => handleToggleButton()}
-              switchedOn={isContactUsSectionPublic}
-            />
-          </div>
-          <div className="text-xs sm:mt-0">
-            Show `&quot;`Contact Us`&quot;` section on your Entity`&apos;`s
-            public page
-          </div>
+          <ToggleButton
+            handleToggleButton={() => handleToggleButton()}
+            switchedOn={isAboutUsPublic}
+          />
+          <p className="text-xs sm:mt-0">
+            Show `&quot;`About Us`&quot;` section on your Entity`&apos;`s public
+            page
+          </p>
         </div>
       </div>
       <div>
         <label htmlFor="about us" className="text-xs font-medium text-gray-600">
           Brief Description
         </label>
-        {/* CONTACT US INPUT FIELD */}
+        {/* ABOUT US INPUT FIELD */}
         <textarea
           wrap="soft"
-          name="contact us"
-          id="contact us"
-          className="wrap block h-20 w-full rounded-md border-2 border-gray-300 p-2 px-4 text-xs focus:border-amethyst focus:ring-amethyst sm:mt-1 sm:h-32 sm:pl-4 sm:pr-12 sm:text-sm"
-          placeholder="Enter a description of products people can order by contacting you."
-          value={contactUsDescription}
-          onChange={(e) => setContactUsDescription(e.target.value)}
+          name="about us"
+          id="about us"
+          className=" wrap peer block h-20 w-full rounded-md  border-2 border-gray-300 p-2 px-4 text-xs focus:border-amethyst focus:ring-amethyst sm:mt-1 sm:h-32 sm:pl-4 sm:pr-12 sm:text-sm"
+          placeholder="Enter a description of your wonderful business and people operating it!"
+          value={aboutUsDescription}
+          onChange={(e) => setAboutUsDescription(e.target.value)}
         />
       </div>
       <div>
         {/* UPLOAD PICTURE FIELD */}
         <label className="text-xs font-medium text-gray-600 ">Image</label>
-
         <div className="relative mt-1 h-40 rounded-lg border-2 border-dashed border-gray-400 bg-gray-100 sm:h-56">
-          {contactUsPictureUrl ? (
+          {aboutUsPictureUrl ? (
             <>
               <Image
-                src={contactUsPictureUrl}
-                alt="Picture of contact Us Section"
+                src={aboutUsPictureUrl}
+                alt="Picture of About Us Section"
                 fill
               />
               <button
@@ -105,7 +101,7 @@ export default function ManageContactUsPage(props: any) {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="z-10 m-1 h-6 w-6 text-amethyst"
+                  className="text-amythyst z-10 m-1 h-6 w-6"
                 >
                   <path
                     strokeLinecap="round"
@@ -134,26 +130,25 @@ export default function ManageContactUsPage(props: any) {
                 </svg>
                 <div className="flex justify-center text-sm text-gray-600">
                   <label
-                    htmlFor="contactUsPicture"
-                    className="relative cursor-pointer rounded-md bg-gray-100 font-medium text-amethyst-shade focus-within:outline-none focus-within:ring-2 focus-within:ring-amethyst focus-within:ring-offset-2 hover:text-amethyst-tint"
+                    htmlFor="aboutUsPicture"
+                    className="focus-within:ring-aethyst relative cursor-pointer rounded-md bg-gray-100 font-medium text-amethyst focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 hover:text-amethyst-shade"
                   >
                     <span className="text-amethyst">Upload a file</span>
                     <input
-                      id="contactUsPicture"
-                      name="contactUsPicture"
+                      id="aboutUsPicture"
+                      name="aboutUsPicture"
                       type="file"
-                      multiple // to upload multile files at once
                       className="sr-only"
                       onChange={(e) => {
                         handleUploadImageButton(e);
                       }}
                     />
                   </label>
-                  {/* <div className="pl-1">or drag and drop</div> */}
+                  {/* <p className="pl-1">or drag and drop</p> */}
                 </div>
-                <div className="text-xs text-gray-500">
+                <p className="text-xs text-gray-500">
                   PNG, JPG, GIF up to 10MB
-                </div>
+                </p>
               </div>
             </div>
           )}

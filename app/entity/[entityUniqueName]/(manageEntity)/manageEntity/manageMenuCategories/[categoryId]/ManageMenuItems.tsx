@@ -1,14 +1,14 @@
 "use client";
 
-import BasicSearchBar from "@/app/rootComponents/toolsComponents/BasicSearchBar";
-import ToggleButton from "@/app/rootComponents/toolsComponents/ToggleButton";
+import BasicSearchBar from "@/app/root_components/toolsComponents/BasicSearchBar";
+import ToggleButton from "@/app/root_components/toolsComponents/ToggleButton";
 import { lazy, Suspense, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import AddNewItemModal from "../menuItemsComponents/AddNewItemModal";
-import EditItemModal from "../menuItemsComponents/EditItemModal";
+import AddNewItemModal from "../menuItems_components/AddNewItemModal";
+import EditItemModal from "../menuItems_components/EditItemModal";
 import { useSearchParams } from "next/navigation";
-import DeleteMenuItemModal from "../menuItemsComponents/DeleteMenuItemModal";
+import DeleteMenuItemModal from "../menuItems_components/DeleteMenuItemModal";
 import { useSupabase } from "@/app/supabase-provider";
 import updateIsMenuItemPublic from "@/app/lib/update/updateIsMenuItemPublic";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";

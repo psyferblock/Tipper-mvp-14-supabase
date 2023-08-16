@@ -1,10 +1,10 @@
 "use client";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
-import QrCodeGenerator from "./qrCode-Components/QrCodeGenerator";
+import QrCodeGenerator from "./qrCode_components/QrCodeGenerator";
 import { useEffect, useState } from "react";
 import { getMenuCategories } from "@/app/lib/get/getMenuCategories";
-import QrCodeNext from "./qrCode-Components/QrCodeNext";
-import ManageQrCode from "./qrCode-Components/ManageQrCode";
+import QrCodeNext from "./qrCode_components/QrCodeNext";
+import ManageQrCode from "./qrCode_components/ManageQrCode";
 
 export default function ManageQrCodePage() {
   // const pageUrl;

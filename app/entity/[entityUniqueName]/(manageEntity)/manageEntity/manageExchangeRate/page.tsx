@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import ExchangeRateInputField from "./exchangeRate-Components/ExchangeRateInputField";
+import ExchangeRateInputField from "./exchangeRate_components/ExchangeRateInputField";
 import { getExchangeRateServer } from "@/app/lib/get/getExchangeRate";
 import { createServerClient } from "@/app/utils/supabase-server";
 import { getEntityUsingUniqueNameServer } from "@/app/lib/get/getEntityUsingUniqueName";

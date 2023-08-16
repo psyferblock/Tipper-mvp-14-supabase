@@ -1,8 +1,8 @@
 import React from "react";
 
-import HomePageListingOfEntitiesCards from "../entityCards-Components/HomePageListingOfEntitiesCards";
+import HomePageListingOfEntitiesCards from "../entityCards_components/HomePageListingOfEntitiesCards";
 import Image from "next/image";
-import CoverPhotosSection from "../entityPage-Components/entitySections/CoverPhotosSection";
+import CoverPhotosSection from "../entityPage_components/entitySections/CoverPhotosSection";
 
 function MainPageComponent() {
   const mainCoverImages = [

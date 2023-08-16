@@ -1,4 +1,4 @@
-import MainPageNavBar from "../rootComponents/MainPageNav";
+import MainPageNavBar from "../root_components/MainPageNav";
 
 async function HomeLayout({ children }: { children: React.ReactNode }) {
   return (
