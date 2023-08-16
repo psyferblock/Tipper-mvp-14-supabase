@@ -1,8 +1,8 @@
 "use client";
 
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";
-import ToggleButton from "@/app/root_components/tools_components/ToggleButton";
-// import { useManageEntityInfosContext } from "../Contexts/EntityInfoContext";
+import ToggleButton from "@/app/root-components/tools-Components/ToggleButton";
+import { useManageEntityInfosContext } from "../Contexts/EntityInfoContext";
 
 export default function ManageSocialMedia() {
   const {

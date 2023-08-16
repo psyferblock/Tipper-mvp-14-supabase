@@ -1,7 +1,12 @@
 "use client";
 
+<<<<<<< HEAD
 import ToggleButton from "@/app/root_components/tools_components/ToggleButton";
 // import { useSupabase } from "@/app/supabase-provider";
+=======
+import ToggleButton from "@/app/rootComponents/tools-Components/ToggleButton";
+import { useSupabase } from "@/app/supabase-provider";
+>>>>>>> 4505806e882d6419de0e818ff17cfbf348567966
 
 import updateIsMenuCategoryPublic from "@/app/lib/update/updateIsMenuCategoryPublic";
 import Link from "next/link";

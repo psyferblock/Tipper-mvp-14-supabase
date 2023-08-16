@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import MenuItemCard from "@/app/root_components/menuComponents/MenuItemCard";
+import MenuItemCard from "@/app/rootComponents/menu-Components/MenuItemCard";
 import { getExchangeRateServer } from "@/app/lib/get/getExchangeRate";
 import { getItemsOfCategoryServer } from "@/app/lib/get/getItemsOfCategory";
 import { createServerClient } from "@/app/utils/supabase_server";

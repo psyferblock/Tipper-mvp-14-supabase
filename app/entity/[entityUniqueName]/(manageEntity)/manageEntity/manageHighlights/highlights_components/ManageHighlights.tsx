@@ -1,5 +1,9 @@
 "use client";
+<<<<<<< HEAD
 import ToggleButton from "@/app/root_components/tools_components/ToggleButton";
+=======
+import ToggleButton from "@/app/rootComponents/tools-Components/ToggleButton";
+>>>>>>> 4505806e882d6419de0e818ff17cfbf348567966
 import deleteHighlight from "@/app/lib/delete/deleteHighlight";
 import updateIsHighlightPublic from "@/app/lib/update/updateIsHighlightPublic";
 import { useState } from "react";
