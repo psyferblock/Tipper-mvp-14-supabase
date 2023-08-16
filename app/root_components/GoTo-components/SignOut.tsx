@@ -11,7 +11,6 @@ const SignOut = () => {
   const handleSignOut = async () => {
     await supabase.auth.signOut();
     // Redirect the user to the login page
-    router.refresh()
     router.push("/");
   };
   return (

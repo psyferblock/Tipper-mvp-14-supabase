@@ -32,7 +32,17 @@ export default function SignUpPage() {
 
   // THE FUNCTION THAT HANDLES THE COMPARISON BETWEEN PASSWORDS
 
- 
+  const comparePasswords = (passA, passB) => {
+    if (!passB) {
+      setPasswordsDontMatchError(false);
+    } else if (passA != passB) {
+      setPasswordsDontMatchError(true);
+    } else {
+      setPasswordsDontMatchError(false);
+      setConfirmPass(passB);
+      setSubmitButton(true);
+    }
+  };
 
   //  THE FUNCTION THAT CHECKS FOR THE PASSWORD LENGTH
   const checkPasswordLength = (pass) => {
@@ -44,19 +54,6 @@ export default function SignUpPage() {
     } else {
       setPasswordIsTooShortError(false);
       setPassword(pass);
-      
-    }
-  };
-
-  const comparePasswords = (passA, passB) => {
-    if (!passB) {
-      setPasswordsDontMatchError(false);
-    } else if (passA != passB) {
-      setPasswordsDontMatchError(true);
-    } else {
-      setPasswordsDontMatchError(false);
-      setConfirmPass(passB);
-      setSubmitButton(true);
     }
   };
 
