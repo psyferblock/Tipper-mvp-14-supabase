@@ -1,5 +1,5 @@
 import React from "react";
-import ManagementNavigationDropdownMobile from "../../manageEntity_components/ManagementNavigationDropdownMobile";
+import ManagementNavigationDropdownMobile from "../../manageEntity-components/ManagementNavigationDropdownMobile";
 import ManageHighlights from "./highlights_components/ManageHighlights";
 
 export default function ManageHighlightsPage(params) {

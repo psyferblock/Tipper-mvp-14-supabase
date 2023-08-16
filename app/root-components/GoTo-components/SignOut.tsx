@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useSupabase } from "../../supabase_provider";
+import { useSupabase } from "../../supabase-provider";
 
 import { useRouter } from "next/navigation";
 

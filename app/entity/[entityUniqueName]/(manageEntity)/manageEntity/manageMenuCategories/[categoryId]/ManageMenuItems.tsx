@@ -8,7 +8,7 @@ import Image from "next/image";
 import AddNewItemModal from "../menuItemsComponents/AddNewItemModal";
 import EditItemModal from "../menuItemsComponents/EditItemModal";
 import { useSearchParams } from "next/navigation";
-import DeleteMenuItemModal from "../menuItems_components/DeleteMenuItemModal";
+import DeleteMenuItemModal from "../menuItems-components/DeleteMenuItemModal";
 import { useSupabase } from "@/app/supabase-provider";
 import updateIsMenuItemPublic from "@/app/lib/update/updateIsMenuItemPublic";
 import { useEntityContext } from "@/app/context/entityContext/entityContextStore";

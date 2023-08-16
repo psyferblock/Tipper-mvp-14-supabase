@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import "./globals.css";
-import SupabaseProvider from "./supabase_provider";
+import SupabaseProvider from "./supabase-provider";
 import UserInfoContextProvider from "@/app/context/userContext/userContextStore";
 import { getMyUserInfoServer } from "./lib/get/getMyUserInfo";
 import { Work_Sans } from "next/font/google";
