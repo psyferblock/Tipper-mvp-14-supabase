@@ -4,7 +4,7 @@ import { getEntityUsingUniqueNameServer } from "@/app/lib/get/getEntityUsingUniq
 import EntityPageAboutUsSection from "@/app/root-components/entityPage_components/entitySections/AboutUsSection";
 import EntityPageContactUsSection from "@/app/root-components/entityPage_components/entitySections/ContactUsSection";
 import CopyUrlShareWhatsappButtons from "@/app/root-components/entityPage_components/entitySections/CopyUrlShareWhatsappButtons";
-import CoverPhotosSection from "@/app/rootComponents/entityPage-Components/entitySections/CoverPhotosSection";
+import CoverPhotosSection from "@/app/root-components/entityPage_components/entitySections/CoverPhotosSection";
 import EntityPageContainerWithEntityInfos from "@/app/root-components/entityPage_components/entitySections/EntityPageContainerWithEntityInfos";
 import EntityPageHighlightsSection from "@/app/root-components/entityPage_components/entitySections/HighlightsSection";
 import { createServerClient } from "@/app/utils/supabase-server";
