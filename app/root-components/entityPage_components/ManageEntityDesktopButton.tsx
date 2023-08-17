@@ -6,7 +6,7 @@ export default function ManageEntityDesktopButton() {
 
   const handleManageEntityButton = (e) => {
     e.preventDefault();
-    router.push("1/1/manageEntity/entityInfo");
+    router.push("/manageEntity/entityInfo");
   };
   return (
     <button

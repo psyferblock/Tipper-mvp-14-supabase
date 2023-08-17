@@ -1,8 +1,7 @@
 import MainPageComponent from "./root-components/MainPage-component/MainPageComponent";
 
-import { createServerSupabaseClient } from "./utils/supabase-server";
+import { createServerSupabaseClient } from "@/app/utils/supabase-server";
 import MainPageNavBar from "./root-components/MainPageNav";
-import NavBar from "./root-components/NavBar";
 
 export default async function TipperLandingPage() {
   const supabaseServer = createServerSupabaseClient();
