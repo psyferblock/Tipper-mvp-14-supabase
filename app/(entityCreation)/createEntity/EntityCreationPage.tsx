@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { useHasMounted } from "@/app/hooks/useHasMounted";
 import getEntityTypes from "@/app/lib/get/getEntityTypes";
-import { useSupabase } from "@/app/supabase_provider";
+import { useSupabase } from "@/app/supabase-provider";
 import { useRouter } from "next/navigation";
 import createEntity from "@/app/lib/create/createEntity";
 import createExchangeRate from "@/app/lib/create/createExchangeRate";
@@ -13,7 +13,7 @@ import updateUserProfile from "@/app/lib/update/updateUserProfile";
 import { updateUserHasEntity } from "@/app/lib/update/updateUserHasEntity";
 import { createEntityMenu } from "@/app/lib/create/createEntityMenu";
 import { useUsersContext } from "@/app/context/userContext/userContextStore";
-import { supabase } from "@/app/utils/supabase_browser";
+import { supabase } from "@/app/utils/supabase-browser";
 import addOpeningHours from "@/app/lib/update/addOpeningHours";
 import addClosingHours from "@/app/lib/update/addClosingHours";
 

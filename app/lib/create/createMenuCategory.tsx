@@ -1,4 +1,4 @@
-import { supabase } from "@/app/utils/supabase_browser";
+import { supabase } from "@/app/utils/supabase-browser";
 
 export default async function createMenuCategory({
   categoryName: categoryName,

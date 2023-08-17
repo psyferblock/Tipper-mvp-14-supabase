@@ -4,7 +4,7 @@ import uploadPictureToBucket from "@/app/lib/create/uploadPictureToBucket";
 import updateUserProfile, {
   updateProfilePictureUrl,
 } from "@/app/lib/update/updateUserProfile";
-import { useSupabase } from "@/app/supabase_provider";
+import { useSupabase } from "@/app/supabase-provider";
 import Image from "next/image";
 import React, { useState, ChangeEvent } from "react";
 import { v4 as uuidv4 } from "uuid";
