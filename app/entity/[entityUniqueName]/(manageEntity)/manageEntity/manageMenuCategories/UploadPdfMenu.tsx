@@ -27,7 +27,7 @@ const UploadPdfMenu = () => {
 
   // an attempt to update teh database directly on toggle click
 
-  const handlePdfMenuTogglebutton = async (bool) => {
+  const handlePdfMenuTogglebutton = async ({bool } ) => {
     setIsPdfPublic(bool);
     await changePdfPublicFromMenu({
       menuId: menuId,
