@@ -5,6 +5,8 @@ import React from "react";
 
 function GoToTipperHomePage() {
   return (
+    <>
+
     <div className="h-12">
       {" "}
       <Link href="/" passHref>
@@ -19,6 +21,7 @@ function GoToTipperHomePage() {
         </div>
       </Link>
     </div>
+    </>
   );
 }
 
