@@ -1,4 +1,4 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
-export const  = createServerComponentClient: any({ cookies })
+export const  createServerClient= createServerComponentClient: any({ cookies })
 
