@@ -3,7 +3,7 @@ import { useEntityContext } from "@/app/context/entityContext/entityContextStore
 import uploadPictureToBucket from "@/app/lib/create/uploadPictureToBucket";
 import { addMenuPdf } from "@/app/lib/update/addMenuPdf";
 <<<<<<< HEAD
-import ToggleButton from "@/app/root-components/tools_components/ToggleButton";
+import ToggleButton from "@/app/root-components/tools-components/ToggleButton";
 =======
 import ToggleButton from "@/app/root_components/toolsComponents/ToggleButton";
 >>>>>>> 4505806e882d6419de0e818ff17cfbf348567966
