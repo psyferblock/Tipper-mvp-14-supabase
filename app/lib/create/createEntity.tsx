@@ -1,4 +1,5 @@
-import { supabase } from "@/app/utils/supabase_browser";
+
+import { supabase } from "@/app/utils/supabase-browser";
 async function createEntity(
   userId: string,
   entityName: string,

@@ -1,7 +1,6 @@
 import { getEntityUsingUniqueNameServer } from "@/app/lib/get/getEntityUsingUniqueName";
 import { getItemsOfCategory } from "@/app/lib/get/getItemsOfCategory";
-import MenuItemCard from "@/app/rootComponents/menu-Components/MenuItemCard";
-import { createServerClient } from "@/app/utils/supabase-server";
+import { createServerClient } from "@/app/utils/supabase-server"
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
