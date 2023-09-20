@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { useHasMounted } from "@/app/hooks/useHasMounted";
 import getEntityTypes from "@/app/lib/get/getEntityTypes";
-import { useSupabase } from "@/app/supabase_provider";
+import { useSupabase } from "@/app/supabase-provider";
 import { useRouter } from "next/navigation";
 import createEntity from "@/app/lib/create/createEntity";
 import createExchangeRate from "@/app/lib/create/createExchangeRate";
@@ -13,7 +13,7 @@ import updateUserProfile from "@/app/lib/update/updateUserProfile";
 import { updateUserHasEntity } from "@/app/lib/update/updateUserHasEntity";
 import { createEntityMenu } from "@/app/lib/create/createEntityMenu";
 import { useUsersContext } from "@/app/context/userContext/userContextStore";
-import { supabase } from "@/app/utils/supabase_browser";
+import { supabase } from "@/app/utils/supabase-browser";
 import addOpeningHours from "@/app/lib/update/addOpeningHours";
 import addClosingHours from "@/app/lib/update/addClosingHours";
 
@@ -111,14 +111,13 @@ const EntityCreationPage = () => {
   //Finding the entity type's id
 
   useEffect(() => {
-    const isTypeObject = (type:any) => {
+    const isTypeObject = (type: any) => {
       return type.entity_type_name === entityType;
     };
     // return entityTypeId;
     let eTypeId = listOfEntityTypes.find(isTypeObject);
     setEntityTypeId(eTypeId?.id);
-  }, [entityType,listOfEntityTypes]);
-  
+  }, [entityType, listOfEntityTypes]);
 
   ///////////// //////////// /////////// //////////////
 
@@ -484,7 +483,7 @@ text-grey peer-placeholder-shown:text-grey-400 peer-placeholder-shows:top-4 abso
                   setEntityType(selectedType);
                 }}
               >
-                {listOfEntityTypes.map((entityTypeObject:any) => (
+                {listOfEntityTypes.map((entityTypeObject: any) => (
                   <option
                     key={entityTypeObject.id}
                     value={entityTypeObject.entity_type_name}
